@@ -1,0 +1,66 @@
+export interface Antagonist {
+  id: string;
+  name: string;
+  description: string;
+  color: string;
+  icon: string;
+}
+
+export const antagonists: Antagonist[] = [
+  {
+    id: "traitor",
+    name: "Traidor",
+    description:
+      "Un tripulante con objetivos secretos del Sindicato. Usa equipamiento oculto para completar misiones sin ser descubierto.",
+    color: "#E74C3C",
+    icon: "Eye",
+  },
+  {
+    id: "nukeops",
+    name: "Operativos Nucleares",
+    description:
+      "Un equipo del Sindicato que asalta la estacion con armamento pesado. Su objetivo: detonar la ojiva nuclear.",
+    color: "#FF6B35",
+    icon: "Bomb",
+  },
+  {
+    id: "changeling",
+    name: "Cambiaformas",
+    description:
+      "Una criatura alienigena que puede absorber y copiar la apariencia de sus victimas. Puede ser cualquiera.",
+    color: "#27AE60",
+    icon: "Dna",
+  },
+  {
+    id: "heretic",
+    name: "Hereje",
+    description:
+      "Un seguidor de fuerzas oscuras que realiza rituales prohibidos para obtener poderes sobrenaturales.",
+    color: "#8E44AD",
+    icon: "Pentagram",
+  },
+  {
+    id: "shadowling",
+    name: "Sombra",
+    description:
+      "Una entidad de la oscuridad que convierte tripulantes en sus sirvientes. La luz es su debilidad.",
+    color: "#2C3E50",
+    icon: "Eclipse",
+  },
+  {
+    id: "zombie",
+    name: "Zombie",
+    description:
+      "Un brote zombi amenaza la estacion. Los infectados se convierten y atacan a los vivos. Sobrevive o unete a la horda.",
+    color: "#1ABC9C",
+    icon: "Skull",
+  },
+  {
+    id: "revolutionary",
+    name: "Revolucionario",
+    description:
+      "Lideres revolucionarios buscan derrocar al comando. Convencen tripulantes de unirse a su causa violenta.",
+    color: "#E67E22",
+    icon: "Flag",
+  },
+];
