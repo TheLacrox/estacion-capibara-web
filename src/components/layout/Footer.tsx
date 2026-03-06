@@ -7,7 +7,7 @@ export function Footer() {
       <HazardDivider />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -61,6 +61,47 @@ export function Footer() {
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Wiki
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Wiki */}
+          <div>
+            <h3 className="font-heading font-bold text-text-primary mb-4 uppercase tracking-wider text-sm">
+              Wiki
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="/wiki/jobs"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Trabajos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/wiki/antagonists"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Antagonistas
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/wiki/capibara-economy"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Economia
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/wiki/survival"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Supervivencia
                 </a>
               </li>
             </ul>

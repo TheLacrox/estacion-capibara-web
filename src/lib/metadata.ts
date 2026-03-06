@@ -19,10 +19,24 @@ export const siteMetadata: Metadata = {
     "space station 14 servidor",
     "juegos de roleplay",
     "ss14 server español",
+    "ss14 spesos",
+    "ss14 economia",
+    "ss14 antagonistas",
+    "ss14 departamentos",
+    "ss14 wiki español",
+    "space station 14 guia español",
+    "ss14 como empezar",
+    "ss14 roles y trabajos",
+    "ss14 descargar gratis",
+    "ss14 comunidad hispana",
   ],
   authors: [{ name: "Estacion Capibara" }],
   creator: "Estacion Capibara",
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "es_ES",
@@ -47,12 +61,25 @@ export const siteMetadata: Metadata = {
       "Unete al mejor servidor de Space Station 14 en espanol. Roleplay, economia, 30+ roles.",
     images: ["/branding/og-image.png"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   other: {

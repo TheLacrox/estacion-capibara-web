@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { siteMetadata, jsonLdWebsite, jsonLdFaq } from "@/lib/metadata";
+import { howToSchema, organizationSchema } from "@/lib/schema";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -38,6 +39,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLdFaq),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(howToSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema()),
           }}
         />
       </head>

@@ -68,6 +68,23 @@ export default function Home() {
         <CommunitySection />
       </main>
       <Footer />
+      <noscript>
+        <div style={{ padding: "2rem", color: "#fff", backgroundColor: "#0b0f19" }}>
+          <h1>Estacion Capibara - Servidor de Space Station 14 en Español</h1>
+          <p>
+            El mejor servidor de Space Station 14 en espanol. Unete a nuestra comunidad hispanohablante
+            con sistema economico de Spesos, 30+ roles, 8 departamentos, antagonistas y objetivos cooperativos.
+          </p>
+          <p>
+            Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca &quot;Capibara&quot;
+            en el navegador de servidores.
+          </p>
+          <p>
+            Visita nuestra <a href="/wiki" style={{ color: "#F1C40F" }}>Wiki</a> para guias completas
+            sobre trabajos, departamentos, economia y supervivencia.
+          </p>
+        </div>
+      </noscript>
     </SmoothScroll>
   );
 }

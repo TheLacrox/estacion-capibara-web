@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Security headers (X-Frame-Options, CSP, etc.) must be configured at
+  // nginx/caddy level since output: "export" ignores headers() in next.config.
 };
 
 export default nextConfig;

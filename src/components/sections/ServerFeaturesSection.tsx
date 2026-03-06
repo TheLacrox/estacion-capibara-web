@@ -70,7 +70,13 @@ export function ServerFeaturesSection() {
             <p className="text-text-muted mb-6 leading-relaxed">
               Cada tripulante recibe una cuenta bancaria con Spesos al unirse.
               Gana un salario cada 10 minutos segun tu rol, retira efectivo de
-              cajeros automaticos y compra en maquinas expendedoras.
+              cajeros automaticos y compra en maquinas expendedoras.{" "}
+              <a
+                href="/wiki/capibara-economy"
+                className="text-neon-cyan hover:underline"
+              >
+                Leer mas en la wiki →
+              </a>
             </p>
             <div className="flex gap-6">
               <div>
@@ -149,7 +155,13 @@ export function ServerFeaturesSection() {
             </h3>
             <p className="text-text-muted max-w-xl mx-auto">
               El enemigo puede estar en cualquier parte. Cada ronda trae amenazas
-              diferentes.
+              diferentes.{" "}
+              <a
+                href="/wiki/antagonists"
+                className="text-neon-cyan hover:underline"
+              >
+                Ver todos en la wiki →
+              </a>
             </p>
           </div>
         </FadeInView>

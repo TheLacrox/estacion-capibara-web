@@ -62,7 +62,13 @@ export function DepartmentsSection() {
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             8 departamentos, mas de 30 roles unicos. Cada trabajo tiene
-            responsabilidades, salario y herramientas diferentes.
+            responsabilidades, salario y herramientas diferentes.{" "}
+            <a
+              href="/wiki/jobs"
+              className="text-neon-cyan hover:underline"
+            >
+              Ver guia de trabajos →
+            </a>
           </p>
         </FadeInView>
 
