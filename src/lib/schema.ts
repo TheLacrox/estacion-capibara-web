@@ -102,8 +102,43 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Estación Capibara",
+    alternateName: "Servidor Español de SS14",
     url: SITE_URL,
     logo: `${SITE_URL}/branding/logo.svg`,
     sameAs: [DISCORD_URL],
+  };
+}
+
+export function gameEventSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: "Rondas de Space Station 14 en Español - Estación Capibara",
+    description:
+      "Partidas de SS14 en el servidor español Estación Capibara. Rondas normales con antagonistas y eventos especiales cada fin de semana.",
+    eventSchedule: {
+      "@type": "Schedule",
+      repeatFrequency: "P1W",
+      byDay: ["Friday", "Saturday", "Sunday"],
+    },
+    eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+    location: {
+      "@type": "VirtualLocation",
+      name: "Estación Capibara - SS14",
+      url: SITE_URL,
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Estación Capibara",
+      url: SITE_URL,
+    },
+    inLanguage: "es",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
   };
 }

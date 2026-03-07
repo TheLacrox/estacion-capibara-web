@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { siteMetadata, jsonLdWebsite, jsonLdFaq } from "@/lib/metadata";
-import { howToSchema, organizationSchema } from "@/lib/schema";
+import { howToSchema, organizationSchema, gameEventSchema } from "@/lib/schema";
 import "./globals.css";
 
 const GA_ID = "G-VZH5Y2ESMQ";
@@ -65,6 +65,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(gameEventSchema()),
           }}
         />
       </head>

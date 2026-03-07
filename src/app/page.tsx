@@ -114,28 +114,37 @@ export default function Home() {
       <Footer />
       <noscript>
         <div style={{ padding: "2rem", color: "#fff", backgroundColor: "#0b0f19" }}>
-          <h1>Estación Capibara - Servidor de Space Station 14 en Español</h1>
+          <h1>Estación Capibara - Servidor Español de SS14 | Space Station 14 en Español</h1>
           <p>
-            El mejor servidor de Space Station 14 en español. Únete a nuestra comunidad hispanohablante
-            con sistema económico de Spesos, 30+ roles, 8 departamentos, antagonistas y objetivos cooperativos.
+            Estación Capibara es el servidor español de SS14 (Space Station 14) con la comunidad hispanohablante
+            más activa. 30+ roles, 8 departamentos, sistema económico con Spesos, antagonistas y objetivos cooperativos.
           </p>
+          <h2>¿Qué es Space Station 14?</h2>
           <p>
             Space Station 14 es un juego de roleplay multijugador gratuito donde cada jugador asume un rol
             en una estación espacial: ingeniero, médico, científico, oficial de seguridad y muchos más.
             Trabaja en equipo, enfrenta amenazas y vive historias únicas cada partida.
           </p>
+          <h2>Horario de Juego</h2>
           <p>
-            ¿Por qué jugar en Estación Capibara? Somos la comunidad hispana más activa de SS14,
-            con un sistema de economía propio basado en Spesos, eventos regulares, guías en español
-            y bajo ping para Latinoamérica y España.
+            Jugamos los viernes, sábados y domingos. Dos tipos de rondas: rondas normales con traidor,
+            revolucionarios y otros antagonistas aleatorios; y rondas de evento con escenarios personalizados
+            organizados por los admins. Los horarios se anuncian en Discord cada semana.
           </p>
+          <h2>¿Por qué jugar en el servidor español de SS14 Estación Capibara?</h2>
+          <p>
+            Somos la comunidad hispana más activa de SS14, con un sistema de economía propio basado en Spesos,
+            eventos regulares cada fin de semana, wiki y guías completas en español, y bajo ping para
+            Latinoamérica y España.
+          </p>
+          <h2>Cómo Jugar</h2>
           <p>
             Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca &quot;Capibara&quot;
             en el navegador de servidores.
           </p>
           <p>
             Visita nuestra <a href="/wiki" style={{ color: "#F1C40F" }}>Wiki</a> para guías completas
-            sobre trabajos, departamentos, economía y supervivencia.
+            sobre trabajos, departamentos, economía y supervivencia en español.
           </p>
         </div>
       </noscript>
