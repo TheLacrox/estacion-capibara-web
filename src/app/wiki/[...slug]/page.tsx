@@ -17,6 +17,7 @@ export function generateStaticParams() {
 
 function stripMarkup(content: string): string {
   return content
+    .replace(/^#+\s+/gm, "")
     .replace(/<[^>]+\/?\s*>/g, " ")
     .replace(/\[color=[^\]]*\]|\[\/color\]/g, "")
     .replace(/\[bold\]|\[\/bold\]/g, "")

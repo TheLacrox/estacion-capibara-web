@@ -1,10 +1,8 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, LAST_CONTENT_UPDATE } from "@/lib/constants";
 import { allGuideSlugs } from "@/data/guides";
 
 export const dynamic = "force-static";
-
-const LAST_CONTENT_UPDATE = "2026-03-07";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const wikiPages: MetadataRoute.Sitemap = allGuideSlugs.map((slug) => ({

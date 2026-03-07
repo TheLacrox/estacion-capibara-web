@@ -20,56 +20,49 @@ const WhatIsSS14Section = dynamic(
   () =>
     import("@/components/sections/WhatIsSS14Section").then((m) => ({
       default: m.WhatIsSS14Section,
-    })),
-  { ssr: false }
+    }))
 );
 
 const ServerFeaturesSection = dynamic(
   () =>
     import("@/components/sections/ServerFeaturesSection").then((m) => ({
       default: m.ServerFeaturesSection,
-    })),
-  { ssr: false }
+    }))
 );
 
 const DepartmentsSection = dynamic(
   () =>
     import("@/components/sections/DepartmentsSection").then((m) => ({
       default: m.DepartmentsSection,
-    })),
-  { ssr: false }
+    }))
 );
 
 const ScheduleSection = dynamic(
   () =>
     import("@/components/sections/ScheduleSection").then((m) => ({
       default: m.ScheduleSection,
-    })),
-  { ssr: false }
+    }))
 );
 
 const HowToPlaySection = dynamic(
   () =>
     import("@/components/sections/HowToPlaySection").then((m) => ({
       default: m.HowToPlaySection,
-    })),
-  { ssr: false }
+    }))
 );
 
 const ServerStatusSection = dynamic(
   () =>
     import("@/components/sections/ServerStatusSection").then((m) => ({
       default: m.ServerStatusSection,
-    })),
-  { ssr: false }
+    }))
 );
 
 const CommunitySection = dynamic(
   () =>
     import("@/components/sections/CommunitySection").then((m) => ({
       default: m.CommunitySection,
-    })),
-  { ssr: false }
+    }))
 );
 
 export default function Home() {

@@ -103,7 +103,7 @@ export function Navbar() {
             className="md:hidden p-2 text-text-primary"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               {mobileOpen ? (
                 <motion.div
                   key="close"

@@ -27,6 +27,8 @@ export function articleSchema(guide: {
   title: string;
   slug: string;
   description: string;
+  datePublished?: string;
+  dateModified?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -35,8 +37,12 @@ export function articleSchema(guide: {
     description: guide.description,
     url: `${SITE_URL}/wiki/${guide.slug}`,
     inLanguage: "es",
-    datePublished: "2025-01-01",
-    dateModified: new Date().toISOString().split("T")[0],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/wiki/${guide.slug}`,
+    },
+    datePublished: guide.datePublished ?? "2025-01-01",
+    dateModified: guide.dateModified ?? guide.datePublished ?? "2025-01-01",
     author: {
       "@type": "Organization",
       name: "Estación Capibara",
@@ -66,8 +72,17 @@ export function organizationSchema() {
     description:
       "Comunidad hispanohablante de Space Station 14 con servidor propio, wiki en español y eventos cada fin de semana.",
     url: SITE_URL,
-    logo: `${SITE_URL}/branding/og-image.png`,
-    sameAs: [DISCORD_URL],
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/branding/og-image.png`,
+      width: 1200,
+      height: 630,
+    },
+    sameAs: [
+      DISCORD_URL,
+      "https://github.com/TheLacrox/Estacion-Capibara",
+      "https://ss14.io/about/hub",
+    ],
   };
 }
 
@@ -96,6 +111,8 @@ export function gameEventSchema() {
       url: SITE_URL,
     },
     inLanguage: "es",
+    image: `${SITE_URL}/branding/og-image.png`,
+    eventStatus: "https://schema.org/EventScheduled",
     isAccessibleForFree: true,
     offers: {
       "@type": "Offer",
@@ -114,6 +131,28 @@ export function websiteSchema() {
     alternateName: "Servidor Español de SS14",
     url: SITE_URL,
     inLanguage: "es",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/wiki?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function collectionPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Wiki - Estación Capibara",
+    description:
+      "Wiki completa en español para Space Station 14. Guías de departamentos, roles, química, ingeniería y más.",
+    url: `${SITE_URL}/wiki`,
+    inLanguage: "es",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Estación Capibara",
+      url: SITE_URL,
+    },
   };
 }
 

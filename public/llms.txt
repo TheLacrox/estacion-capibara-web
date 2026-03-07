@@ -1,0 +1,52 @@
+# Estación Capibara
+
+> Servidor español de Space Station 14 con comunidad hispanohablante activa. Wiki completa en español con 200+ guías de juego.
+
+## Sobre este sitio
+
+Estación Capibara es el servidor español de Space Station 14 (SS14), un juego de roleplay multijugador gratuito ambientado en una estación espacial. Este sitio contiene la página principal del servidor y una wiki completa en español.
+
+- Idioma: Español
+- Tipo: Comunidad de juego / Wiki
+- Juego: Space Station 14
+- Servidor: Estación Capibara
+- Código fuente: https://github.com/TheLacrox/Estacion-Capibara
+
+## Páginas principales
+
+- [Inicio](https://estacioncapibara.com): Página principal con información del servidor, horarios y cómo jugar.
+- [Wiki](https://estacioncapibara.com/wiki): Índice de todas las guías del juego en español.
+
+## Categorías de la Wiki
+
+- [Trabajos](https://estacioncapibara.com/wiki/jobs): Guías de los 30+ roles disponibles organizados por departamento.
+- [Supervivencia](https://estacioncapibara.com/wiki/survival): Guía de supervivencia y tratamiento de emergencia.
+- [Economía](https://estacioncapibara.com/wiki/capibara-economy): Sistema económico con Spesos, salarios y objetivos.
+- [Antagonistas](https://estacioncapibara.com/wiki/antagonists): Guías de todos los roles antagonistas.
+- [Artes Marciales](https://estacioncapibara.com/wiki/martial-arts): Sistemas de combate disponibles.
+- [Glosario](https://estacioncapibara.com/wiki/glossary): Terminología del juego en español.
+
+## Departamentos
+
+- [Cargo](https://estacioncapibara.com/wiki/cargo): Logística y salvamento.
+- [Comando](https://estacioncapibara.com/wiki/command): Liderazgo de la estación.
+- [Ingeniería](https://estacioncapibara.com/wiki/engineering): Energía, atmosféricos y construcción.
+- [Medicina](https://estacioncapibara.com/wiki/medical): Doctores, química y clonación.
+- [Ciencia](https://estacioncapibara.com/wiki/science): Investigación, robótica y xenobiología.
+- [Seguridad](https://estacioncapibara.com/wiki/security): Aplicación de la ley y procedimientos.
+- [Servicio](https://estacioncapibara.com/wiki/service): Cocina, botánica y mantenimiento.
+
+## Preguntas frecuentes
+
+- ¿Qué es Space Station 14?: Juego de roleplay multijugador gratuito de código abierto ambientado en una estación espacial. Hasta 30 jugadores asumen roles como ingeniero, médico, científico u oficial de seguridad.
+- ¿Cómo jugar en Estación Capibara?: Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca "Capibara" en el navegador de servidores.
+- ¿Cuándo se juega?: Viernes, sábados y domingos. Los horarios se anuncian en Discord cada semana.
+- ¿Qué son los Spesos?: La moneda del servidor. Cada rol tiene un salario por ciclo de 10 minutos y los jugadores pueden gastar Spesos en la estación.
+
+## Información adicional
+
+- Horario de juego: Viernes, sábados y domingos.
+- Descarga gratuita: spacestation14.com
+- Comunidad: Discord (discord.gg/xRsRcpmCVX)
+- Código fuente: github.com/TheLacrox/Estacion-Capibara
+- Sitemap: https://estacioncapibara.com/sitemap.xml

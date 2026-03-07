@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { guideTree } from "@/data/guides";
 import { WikiIndexClient } from "./WikiIndexClient";
 import { SITE_URL } from "@/lib/constants";
+import { collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Wiki - Estación Capibara | Guías de Space Station 14 en Español",
@@ -30,5 +31,15 @@ export const metadata: Metadata = {
 };
 
 export default function WikiPage() {
-  return <WikiIndexClient tree={guideTree} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionPageSchema()),
+        }}
+      />
+      <WikiIndexClient tree={guideTree} />
+    </>
+  );
 }

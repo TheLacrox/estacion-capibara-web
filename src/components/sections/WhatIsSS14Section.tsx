@@ -33,9 +33,21 @@ export function WhatIsSS14Section() {
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             ¿Qué es <GlowText color="cyan">Space Station 14</GlowText>?
           </h2>
-          <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Un juego de roleplay multijugador donde eres parte de la tripulación
-            de una estación espacial. Cada ronda es una historia diferente.
+          <p className="text-text-muted max-w-2xl mx-auto text-lg mb-4">
+            Space Station 14 (SS14) es un juego de roleplay multijugador gratuito
+            y de código abierto ambientado en una estación espacial. Cada partida
+            reúne hasta 30 jugadores que asumen roles específicos — desde ingeniero
+            y médico hasta científico, oficial de seguridad o capitán.
+          </p>
+          <p className="text-text-muted max-w-2xl mx-auto text-base">
+            Lo que distingue a SS14 es su naturaleza emergente: cada ronda genera
+            historias únicas porque los jugadores tienen libertad total para actuar
+            dentro de su rol, mientras antagonistas secretos como traidores,
+            revolucionarios o cambiaformas trabajan en las sombras para sabotear
+            la estación. Estación Capibara es el único servidor en español de SS14,
+            con una comunidad hispanohablante activa que juega cada fin de semana,
+            un sistema económico propio basado en Spesos y una wiki con más de 200
+            guías traducidas al español.
           </p>
         </FadeInView>
 

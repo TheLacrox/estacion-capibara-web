@@ -10,13 +10,14 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const HeroScene = dynamic(
   () => import("@/components/three/HeroScene").then((m) => ({ default: m.HeroScene })),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 
 export function HeroSection() {
   const reduced = useReducedMotion();
   const [showStatus, setShowStatus] = useState(false);
   const [showCTAs, setShowCTAs] = useState(false);
+  const [showScene, setShowScene] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -24,6 +25,18 @@ export function HeroSection() {
     const skeleton = document.getElementById("hero-skeleton");
     if (skeleton) skeleton.style.display = "none";
 
+    // Defer Three.js scene to after main thread is idle
+    const scheduleScene = () => setShowScene(true);
+    if ("requestIdleCallback" in window) {
+      const id = requestIdleCallback(scheduleScene, { timeout: 2000 });
+      return () => cancelIdleCallback(id);
+    } else {
+      const t = setTimeout(scheduleScene, 1000);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
+  useEffect(() => {
     if (reduced) {
       setShowStatus(true);
       setShowCTAs(true);
@@ -56,7 +69,7 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-space-void"
     >
-      <HeroScene />
+      {showScene && <HeroScene />}
 
       {/* Hazard stripes top/bottom */}
       <div className="absolute top-0 left-0 right-0 z-10">

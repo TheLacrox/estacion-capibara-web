@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText, Clock } from "lucide-react";
 import { type GuidePage, guidePages } from "@/data/guides";
 import { GuideMarkup } from "./GuideMarkup";
 import { WikiBreadcrumb } from "./WikiBreadcrumb";
+import { LAST_CONTENT_UPDATE } from "@/lib/constants";
 
 interface WikiContentProps {
   guide: GuidePage;
@@ -45,6 +46,17 @@ export function WikiContent({ guide }: WikiContentProps) {
       {/* Main content */}
       <article className="flex-1 min-w-0">
         <WikiBreadcrumb breadcrumb={guide.breadcrumb} />
+
+        <div className="flex items-center gap-1.5 text-xs font-mono text-text-muted/60 mb-4">
+          <Clock size={12} />
+          <time dateTime={LAST_CONTENT_UPDATE}>
+            Actualizado: {new Date(LAST_CONTENT_UPDATE).toLocaleDateString("es-ES", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -132,7 +144,7 @@ export function WikiContent({ guide }: WikiContentProps) {
       {/* Table of contents — desktop only */}
       {headings.length > 2 && (
         <motion.aside
-          className="hidden xl:block w-56 shrink-0"
+          className="hidden lg:block w-56 shrink-0"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
