@@ -5,6 +5,8 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { jsonLdWebsite } from "@/lib/metadata";
+import { gameEventSchema, websiteSchema } from "@/lib/schema";
 
 const HeroSection = dynamic(
   () =>
@@ -73,6 +75,24 @@ const CommunitySection = dynamic(
 export default function Home() {
   return (
     <SmoothScroll>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdWebsite),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gameEventSchema()),
+        }}
+      />
       <ScrollProgress />
       <Navbar />
       <main>
@@ -114,7 +134,7 @@ export default function Home() {
       <Footer />
       <noscript>
         <div style={{ padding: "2rem", color: "#fff", backgroundColor: "#0b0f19" }}>
-          <h1>Estación Capibara - Servidor Español de SS14 | Space Station 14 en Español</h1>
+          <h2>Estación Capibara - Servidor Español de SS14 | Space Station 14 en Español</h2>
           <p>
             Estación Capibara es el servidor español de SS14 (Space Station 14) con la comunidad hispanohablante
             más activa. 30+ roles, 8 departamentos, sistema económico con Spesos, antagonistas y objetivos cooperativos.

@@ -35,65 +35,25 @@ export function articleSchema(guide: {
     description: guide.description,
     url: `${SITE_URL}/wiki/${guide.slug}`,
     inLanguage: "es",
-    publisher: organizationSchema(),
+    datePublished: "2025-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    author: {
+      "@type": "Organization",
+      name: "Estación Capibara",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Estación Capibara",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/branding/og-image.png`,
+        width: 1200,
+        height: 630,
+      },
+    },
     image: `${SITE_URL}/branding/og-image.png`,
-  };
-}
-
-export function howToSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "Cómo jugar Space Station 14 en Estación Capibara",
-    description:
-      "Guía paso a paso para descargar, instalar y conectarse al servidor de Space Station 14 en español Estación Capibara.",
-    inLanguage: "es",
-    totalTime: "PT10M",
-    step: [
-      {
-        "@type": "HowToStep",
-        position: 1,
-        name: "Descarga SS14",
-        text: "Descarga Space Station 14 gratis desde spacestation14.com.",
-        url: "https://spacestation14.com",
-      },
-      {
-        "@type": "HowToStep",
-        position: 2,
-        name: "Crea una cuenta",
-        text: "Regístrate con tu email para poder jugar en servidores.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 3,
-        name: "Abre el launcher",
-        text: "Ejecuta el launcher de SS14 después de instalarlo.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 4,
-        name: 'Busca "Capibara"',
-        text: "En el navegador de servidores, busca 'Capibara' para encontrar nuestro servidor.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 5,
-        name: "Elige tu personaje",
-        text: "Personaliza tu personaje y elige un rol. Recomendamos empezar como Pasajero.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 6,
-        name: "Lee las reglas",
-        text: "Revisa las reglas del servidor antes de jugar.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 7,
-        name: "A jugar!",
-        text: "Conéctate y disfruta. La comunidad te ayudará si tienes preguntas.",
-      },
-    ],
   };
 }
 
@@ -103,8 +63,10 @@ export function organizationSchema() {
     "@type": "Organization",
     name: "Estación Capibara",
     alternateName: "Servidor Español de SS14",
+    description:
+      "Comunidad hispanohablante de Space Station 14 con servidor propio, wiki en español y eventos cada fin de semana.",
     url: SITE_URL,
-    logo: `${SITE_URL}/branding/logo.svg`,
+    logo: `${SITE_URL}/branding/og-image.png`,
     sameAs: [DISCORD_URL],
   };
 }
@@ -116,6 +78,7 @@ export function gameEventSchema() {
     name: "Rondas de Space Station 14 en Español - Estación Capibara",
     description:
       "Partidas de SS14 en el servidor español Estación Capibara. Rondas normales con antagonistas y eventos especiales cada fin de semana.",
+    startDate: getNextFriday(),
     eventSchedule: {
       "@type": "Schedule",
       repeatFrequency: "P1W",
@@ -141,4 +104,24 @@ export function gameEventSchema() {
       availability: "https://schema.org/InStock",
     },
   };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Estación Capibara",
+    alternateName: "Servidor Español de SS14",
+    url: SITE_URL,
+    inLanguage: "es",
+  };
+}
+
+function getNextFriday(): string {
+  const now = new Date();
+  const day = now.getDay();
+  const daysUntilFriday = (5 - day + 7) % 7 || 7;
+  const nextFriday = new Date(now);
+  nextFriday.setDate(now.getDate() + daysUntilFriday);
+  return nextFriday.toISOString().split("T")[0];
 }

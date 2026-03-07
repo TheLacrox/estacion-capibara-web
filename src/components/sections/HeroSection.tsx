@@ -86,8 +86,8 @@ export function HeroSection() {
         </motion.div>
 
         {/* Title: ESTACION */}
-        <div className="overflow-hidden mb-2">
-          <h1 className="font-heading font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.2em] text-text-primary">
+        <div className="overflow-hidden mb-2" aria-hidden="true">
+          <div className="font-heading font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.2em] text-text-primary">
             {"ESTACIÓN".split("").map((letter, i) => (
               <motion.span
                 key={i}
@@ -100,7 +100,7 @@ export function HeroSection() {
                 {letter}
               </motion.span>
             ))}
-          </h1>
+          </div>
         </div>
 
         {/* Title: CAPIBARA */}
