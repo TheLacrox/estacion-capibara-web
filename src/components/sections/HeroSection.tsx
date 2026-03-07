@@ -20,6 +20,10 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Hide the static hero skeleton now that the real hero has mounted
+    const skeleton = document.getElementById("hero-skeleton");
+    if (skeleton) skeleton.style.display = "none";
+
     if (reduced) {
       setShowStatus(true);
       setShowCTAs(true);
@@ -77,6 +81,7 @@ export function HeroSection() {
             className="w-32 h-32 sm:w-40 sm:h-40 mx-auto animate-float drop-shadow-[0_0_30px_rgba(241,196,15,0.3)]"
             width={160}
             height={160}
+            fetchPriority="high"
           />
         </motion.div>
 

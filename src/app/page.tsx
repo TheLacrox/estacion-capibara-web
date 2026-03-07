@@ -60,6 +60,32 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <main>
+        {/* Static hero skeleton — renders in initial HTML for fast LCP while JS loads */}
+        <div
+          id="hero-skeleton"
+          className="min-h-screen flex items-center justify-center bg-space-void text-center px-4"
+          style={{ position: "relative", zIndex: 1 }}
+        >
+          <div>
+            <img
+              src="/branding/logo.svg"
+              alt="Logo de Estación Capibara, servidor de Space Station 14 en español"
+              className="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 drop-shadow-[0_0_30px_rgba(241,196,15,0.3)]"
+              width={160}
+              height={160}
+              fetchPriority="high"
+            />
+            <h1 className="font-heading font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.2em] text-text-primary mb-2">
+              ESTACIÓN
+            </h1>
+            <p className="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.15em] text-hazard-yellow mb-6">
+              CAPIBARA
+            </p>
+            <p className="text-neon-cyan text-xs sm:text-sm tracking-wider font-mono">
+              {">> SERVIDOR EN LÍNEA // COMUNIDAD 100% EN ESPAÑOL <<"}
+            </p>
+          </div>
+        </div>
         <HeroSection />
         <WhatIsSS14Section />
         <ServerFeaturesSection />

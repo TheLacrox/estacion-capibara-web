@@ -32,6 +32,17 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <link
+          rel="preload"
+          href="/branding/logo.svg"
+          as="image"
+          type="image/svg+xml"
+          fetchPriority="high"
+        />
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
