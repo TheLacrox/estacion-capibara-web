@@ -38,10 +38,26 @@ const DepartmentsSection = dynamic(
   { ssr: false }
 );
 
+const ScheduleSection = dynamic(
+  () =>
+    import("@/components/sections/ScheduleSection").then((m) => ({
+      default: m.ScheduleSection,
+    })),
+  { ssr: false }
+);
+
 const HowToPlaySection = dynamic(
   () =>
     import("@/components/sections/HowToPlaySection").then((m) => ({
       default: m.HowToPlaySection,
+    })),
+  { ssr: false }
+);
+
+const ServerStatusSection = dynamic(
+  () =>
+    import("@/components/sections/ServerStatusSection").then((m) => ({
+      default: m.ServerStatusSection,
     })),
   { ssr: false }
 );
@@ -90,7 +106,9 @@ export default function Home() {
         <WhatIsSS14Section />
         <ServerFeaturesSection />
         <DepartmentsSection />
+        <ScheduleSection />
         <HowToPlaySection />
+        <ServerStatusSection />
         <CommunitySection />
       </main>
       <Footer />

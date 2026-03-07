@@ -8,7 +8,9 @@ export const NAV_LINKS = [
   { label: "¿Qué es SS14?", href: "#que-es-ss14" },
   { label: "Características", href: "#caracteristicas" },
   { label: "Departamentos", href: "#departamentos" },
+  { label: "Horario", href: "#horario" },
   { label: "Cómo Jugar", href: "#como-jugar" },
+  { label: "Servidor", href: "#servidor" },
   { label: "Comunidad", href: "#comunidad" },
 ] as const;
 
@@ -19,6 +21,8 @@ export const SECTION_IDS = {
   whatIsSS14: "que-es-ss14",
   features: "caracteristicas",
   departments: "departamentos",
+  schedule: "horario",
   howToPlay: "como-jugar",
+  serverStatus: "servidor",
   community: "comunidad",
 } as const;
