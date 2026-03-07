@@ -36,7 +36,7 @@ export function ServerFeaturesSection() {
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <FadeInView className="text-center mb-20">
+        <FadeInView className="relative z-10 text-center mb-20">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
             // SISTEMAS DEL SERVIDOR
           </p>
@@ -50,7 +50,7 @@ export function ServerFeaturesSection() {
         </FadeInView>
 
         {/* Vertical data pipeline */}
-        <div className="absolute left-1/2 top-48 bottom-0 w-px hidden lg:block">
+        <div className="absolute left-1/2 top-48 bottom-0 w-px hidden lg:block z-0">
           <div className="w-full h-full bg-grid-line" />
           <motion.div
             className="absolute top-0 left-0 w-full bg-gradient-to-b from-hazard-yellow to-neon-cyan"
@@ -59,7 +59,7 @@ export function ServerFeaturesSection() {
         </div>
 
         {/* Economy */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <FadeInView direction="left">
             <Badge color="#F1C40F" className="mb-4">
               <Coins className="w-3 h-3" /> Sistema Económico
@@ -111,10 +111,10 @@ export function ServerFeaturesSection() {
           </FadeInView>
         </div>
 
-        <HazardDivider className="mb-24" />
+        <HazardDivider className="relative z-10 mb-24" />
 
         {/* Station Objectives */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <FadeInView direction="right" className="lg:order-2">
             <Badge color="#E74C3C" className="mb-4">
               <Target className="w-3 h-3" /> Cooperación Requerida
@@ -142,10 +142,10 @@ export function ServerFeaturesSection() {
           </FadeInView>
         </div>
 
-        <HazardDivider className="mb-24" />
+        <HazardDivider className="relative z-10 mb-24" />
 
         {/* Antagonists */}
-        <FadeInView className="mb-8">
+        <FadeInView className="relative z-10 mb-8">
           <div className="text-center mb-12">
             <Badge color="#8E44AD" className="mb-4">
               <Skull className="w-3 h-3" /> Amenazas
@@ -165,7 +165,9 @@ export function ServerFeaturesSection() {
             </p>
           </div>
         </FadeInView>
-        <AntagonistCarousel />
+        <div className="relative z-10">
+          <AntagonistCarousel />
+        </div>
       </div>
     </section>
   );

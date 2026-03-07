@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Download,
@@ -68,6 +68,25 @@ const steps = [
 export function HowToPlaySection() {
   const [copied, setCopied] = useState(false);
   const reduced = useReducedMotion();
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const firstCircleRef = useRef<HTMLDivElement>(null);
+  const lastCircleRef = useRef<HTMLDivElement>(null);
+  const [lineStyle, setLineStyle] = useState<{ top: number; height: number }>({ top: 0, height: 0 });
+
+  useEffect(() => {
+    const updateLine = () => {
+      if (!timelineRef.current || !firstCircleRef.current || !lastCircleRef.current) return;
+      const parentRect = timelineRef.current.getBoundingClientRect();
+      const firstRect = firstCircleRef.current.getBoundingClientRect();
+      const lastRect = lastCircleRef.current.getBoundingClientRect();
+      const top = firstRect.top + firstRect.height / 2 - parentRect.top;
+      const bottom = lastRect.top + lastRect.height / 2 - parentRect.top;
+      setLineStyle({ top, height: bottom - top });
+    };
+    updateLine();
+    window.addEventListener("resize", updateLine);
+    return () => window.removeEventListener("resize", updateLine);
+  }, []);
 
   const copyServerName = useCallback(() => {
     navigator.clipboard.writeText("Capibara");
@@ -97,19 +116,23 @@ export function HowToPlaySection() {
         </FadeInView>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-grid-line" />
+        <div className="relative" ref={timelineRef}>
+          {/* Vertical line — from first circle center to last circle center */}
+          <div
+            className="absolute left-6 sm:left-8 w-px bg-grid-line"
+            style={{ top: lineStyle.top, height: lineStyle.height }}
+          />
           <motion.div
-            className="absolute left-6 sm:left-8 top-0 w-px bg-gradient-to-b from-hazard-yellow to-success-green"
-            initial={{ height: 0 }}
-            whileInView={{ height: "100%" }}
+            className="absolute left-6 sm:left-8 w-px bg-gradient-to-b from-hazard-yellow to-success-green origin-top"
+            style={{ top: lineStyle.top, height: lineStyle.height }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
             transition={{ duration: reduced ? 0 : 2, ease: "easeInOut" }}
           />
 
           {/* Steps */}
-          <div className="space-y-8">
+          <div className="relative z-10 space-y-8">
             {steps.map((step, i) => (
               <motion.div
                 key={i}
@@ -121,14 +144,22 @@ export function HowToPlaySection() {
               >
                 {/* Step circle */}
                 <div
+                  ref={i === 0 ? firstCircleRef : i === steps.length - 1 ? lastCircleRef : undefined}
                   className={cn(
                     "relative z-10 flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300",
                     step.final
-                      ? "border-success-green bg-success-green/10"
+                      ? "border-success-green"
                       : step.highlight
-                        ? "border-hazard-yellow bg-hazard-yellow/10"
+                        ? "border-hazard-yellow"
                         : "border-grid-line bg-hull-panel"
                   )}
+                  style={
+                    step.final
+                      ? { backgroundColor: "color-mix(in srgb, var(--color-success-green) 10%, var(--color-hull-panel))" }
+                      : step.highlight
+                        ? { backgroundColor: "color-mix(in srgb, var(--color-hazard-yellow) 10%, var(--color-hull-panel))" }
+                        : undefined
+                  }
                 >
                   <step.icon
                     className={cn(
