@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const description = extractDescription(guide.content);
-  const url = `${SITE_URL}/wiki/${guide.slug}`;
+  const url = `${SITE_URL}/wiki/${guide.slug}/`;
 
   return {
     title: `${guide.title} - Wiki Estación Capibara`,

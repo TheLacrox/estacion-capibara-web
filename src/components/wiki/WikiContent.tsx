@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, FileText, Clock } from "lucide-react";
-import { type GuidePage, guidePages } from "@/data/guides";
+import { type GuidePage } from "@/data/guides";
+import { guideSlugsToMeta } from "@/data/guide-lookup";
 import { GuideMarkup } from "./GuideMarkup";
 import { WikiBreadcrumb } from "./WikiBreadcrumb";
 import { LAST_CONTENT_UPDATE } from "@/lib/constants";
@@ -38,7 +39,7 @@ export function WikiContent({ guide }: WikiContentProps) {
   }));
 
   const childGuides = guide.childSlugs
-    .map((slug) => guidePages[slug])
+    .map((slug) => guideSlugsToMeta[slug])
     .filter(Boolean);
 
   return (

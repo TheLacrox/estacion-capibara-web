@@ -11,6 +11,7 @@ import { parse as parseYaml } from "yaml";
 
 const SERVER_ROOT = resolve("../Estacion-Capibara/Resources");
 const OUTPUT_FILE = resolve("src/data/guides.ts");
+const LOOKUP_FILE = resolve("src/data/guide-lookup.ts");
 
 // Directories containing guidebook YAML prototypes
 const YAML_DIRS = [
@@ -227,3 +228,24 @@ export const allGuideSlugs: string[] = guidePagesArray.map((g) => g.slug);
 
 writeFileSync(OUTPUT_FILE, output, "utf-8");
 console.log(`Written to ${OUTPUT_FILE}`);
+
+// ─── Step 6: Write lightweight lookup file for client components ───
+
+const idToSlug = {};
+const slugToMeta = {};
+for (const g of allGuides) {
+  idToSlug[g.id] = g.slug;
+  slugToMeta[g.slug] = { title: g.title, slug: g.slug };
+}
+
+const lookupOutput = `// AUTO-GENERATED — DO NOT EDIT
+// Lightweight lookup maps for client components (no guide content)
+// Run: node scripts/generate-guides.mjs
+
+export const guideIdToSlug: Record<string, string> = ${JSON.stringify(idToSlug, null, 2)};
+
+export const guideSlugsToMeta: Record<string, { title: string; slug: string }> = ${JSON.stringify(slugToMeta, null, 2)};
+`;
+
+writeFileSync(LOOKUP_FILE, lookupOutput, "utf-8");
+console.log(`Written lookup to ${LOOKUP_FILE}`);

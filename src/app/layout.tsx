@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { siteMetadata } from "@/lib/metadata";
 import { organizationSchema } from "@/lib/schema";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 import "./globals.css";
-
-const GA_ID = "G-VZH5Y2ESMQ";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -48,18 +46,7 @@ export default function RootLayout({
       </head>
       <body className="bg-space-void text-text-primary antialiased">
         {children}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}');
-          `}
-        </Script>
+        <CookieConsent />
       </body>
     </html>
   );

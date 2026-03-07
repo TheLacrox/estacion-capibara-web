@@ -16,8 +16,7 @@ import { FadeInView } from "@/components/animations/FadeInView";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
-const HUB_API_URL = "https://hub.spacestation14.com/api/servers";
-const SERVER_MATCH = "capibara";
+const STATUS_API_URL = "/api/status";
 const REFRESH_INTERVAL = 60_000; // 1 minute
 
 interface ServerData {
@@ -28,6 +27,7 @@ interface ServerData {
   round_id?: number;
   run_level?: number;
   panic_bunker?: boolean;
+  preset?: string;
 }
 
 type FetchState =
@@ -68,25 +68,15 @@ export function ServerStatusSection() {
 
   const fetchStatus = useCallback(async () => {
     try {
-      const res = await fetch(HUB_API_URL, {
+      const res = await fetch(STATUS_API_URL, {
         signal: AbortSignal.timeout(10000),
       });
-      if (!res.ok) throw new Error("Hub API error");
-      const servers = await res.json();
-
-      const server = servers.find(
-        (s: { statusData?: { name?: string } }) =>
-          s.statusData?.name?.toLowerCase().includes(SERVER_MATCH)
-      );
-
-      if (server?.statusData) {
-        setState({ status: "online", data: server.statusData });
-      } else {
-        setState({ status: "offline" });
-      }
+      if (!res.ok) throw new Error("Status API error");
+      const data: ServerData = await res.json();
+      setState({ status: "online", data });
       setLastUpdated(new Date());
     } catch {
-      setState({ status: "error" });
+      setState({ status: "offline" });
     }
   }, []);
 

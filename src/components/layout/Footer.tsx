@@ -129,6 +129,14 @@ export function Footer() {
           <p className="text-center text-text-muted text-xs font-mono mt-2">
             Space Station 14 es un proyecto de código abierto. Estación Capibara no está afiliada con Space Station 14 oficialmente.
           </p>
+          <p className="text-center mt-3">
+            <a
+              href="/privacidad"
+              className="text-text-muted text-xs font-mono hover:text-hazard-yellow transition-colors"
+            >
+              Política de Privacidad
+            </a>
+          </p>
         </div>
       </div>
     </footer>

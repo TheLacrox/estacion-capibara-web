@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     "Guías completas para Space Station 14 en español. Departamentos, trabajos, antagonistas, supervivencia y más. Aprende a jugar SS14 con tutoriales paso a paso.",
   alternates: {
-    canonical: `${SITE_URL}/wiki`,
+    canonical: `${SITE_URL}/wiki/`,
   },
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: `${SITE_URL}/wiki`,
+    url: `${SITE_URL}/wiki/`,
     title: "Wiki - Estación Capibara | Guías de Space Station 14 en Español",
     description:
       "Guías completas para Space Station 14 en español. Departamentos, trabajos, antagonistas, supervivencia y más.",

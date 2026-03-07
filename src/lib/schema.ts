@@ -11,13 +11,13 @@ export function breadcrumbSchema(
         "@type": "ListItem",
         position: 1,
         name: "Wiki",
-        item: `${SITE_URL}/wiki`,
+        item: `${SITE_URL}/wiki/`,
       },
       ...items.map((item, i) => ({
         "@type": "ListItem",
         position: i + 2,
         name: item.title,
-        item: `${SITE_URL}/wiki/${item.slug}`,
+        item: `${SITE_URL}/wiki/${item.slug}/`,
       })),
     ],
   };
@@ -35,11 +35,11 @@ export function articleSchema(guide: {
     "@type": "Article",
     headline: guide.title,
     description: guide.description,
-    url: `${SITE_URL}/wiki/${guide.slug}`,
+    url: `${SITE_URL}/wiki/${guide.slug}/`,
     inLanguage: "es",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/wiki/${guide.slug}`,
+      "@id": `${SITE_URL}/wiki/${guide.slug}/`,
     },
     datePublished: guide.datePublished ?? "2025-01-01",
     dateModified: guide.dateModified ?? guide.datePublished ?? "2025-01-01",
@@ -87,17 +87,22 @@ export function organizationSchema() {
 }
 
 export function gameEventSchema() {
+  const nextFriday = getNextFriday();
+  const nextSunday = getNextSunday(nextFriday);
   return {
     "@context": "https://schema.org",
     "@type": "Event",
     name: "Rondas de Space Station 14 en Español - Estación Capibara",
     description:
       "Partidas de SS14 en el servidor español Estación Capibara. Rondas normales con antagonistas y eventos especiales cada fin de semana.",
-    startDate: getNextFriday(),
+    startDate: `${nextFriday}T21:00:00-03:00`,
+    endDate: `${nextSunday}T23:59:00-03:00`,
     eventSchedule: {
       "@type": "Schedule",
       repeatFrequency: "P1W",
       byDay: ["Friday", "Saturday", "Sunday"],
+      startTime: "21:00:00",
+      endTime: "23:59:00",
     },
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
     location: {
@@ -119,6 +124,7 @@ export function gameEventSchema() {
       price: "0",
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
+      url: SITE_URL,
     },
   };
 }
@@ -131,11 +137,6 @@ export function websiteSchema() {
     alternateName: "Servidor Español de SS14",
     url: SITE_URL,
     inLanguage: "es",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/wiki?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -146,7 +147,7 @@ export function collectionPageSchema() {
     name: "Wiki - Estación Capibara",
     description:
       "Wiki completa en español para Space Station 14. Guías de departamentos, roles, química, ingeniería y más.",
-    url: `${SITE_URL}/wiki`,
+    url: `${SITE_URL}/wiki/`,
     inLanguage: "es",
     isPartOf: {
       "@type": "WebSite",
@@ -163,4 +164,11 @@ function getNextFriday(): string {
   const nextFriday = new Date(now);
   nextFriday.setDate(now.getDate() + daysUntilFriday);
   return nextFriday.toISOString().split("T")[0];
+}
+
+function getNextSunday(fridayDate: string): string {
+  const friday = new Date(fridayDate);
+  const sunday = new Date(friday);
+  sunday.setDate(friday.getDate() + 2);
+  return sunday.toISOString().split("T")[0];
 }

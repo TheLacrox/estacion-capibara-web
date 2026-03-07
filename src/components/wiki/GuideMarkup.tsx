@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Badge } from "@/components/ui/Badge";
-import { guidePages } from "@/data/guides";
+import { guideIdToSlug } from "@/data/guide-lookup";
 import { entitySprites } from "@/data/entity-sprites";
 
 interface GuideMarkupProps {
@@ -361,12 +361,12 @@ function parseInline(text: string): ReactNode {
       case "textlink": {
         const label = match[1];
         const linkId = match[2];
-        const targetPage = Object.values(guidePages).find((g) => g.id === linkId);
-        if (targetPage) {
+        const targetSlug = guideIdToSlug[linkId];
+        if (targetSlug) {
           parts.push(
             <Link
               key={`i${inlineKey++}`}
-              href={`/wiki/${targetPage.slug}`}
+              href={`/wiki/${targetSlug}`}
               className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors"
             >
               {label}

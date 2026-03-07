@@ -9,7 +9,7 @@ Add these directives to your nginx server block for `estacioncapibara.com`.
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
 # Content Security Policy — prevent XSS attacks (HIGH)
-add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://cdn.ss14.io; frame-ancestors 'self'; worker-src 'self' blob:;" always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'self'; worker-src 'self' blob:;" always;
 
 # Permissions Policy — disable unused browser features (MEDIUM)
 add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
@@ -30,8 +30,34 @@ location / {
     # Re-add security headers here since add_header in a location block
     # overrides server-level add_header directives
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://cdn.ss14.io; frame-ancestors 'self'; worker-src 'self' blob:;" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'self'; worker-src 'self' blob:;" always;
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}
+```
+
+## Game Server Status Proxy
+
+```nginx
+# Proxy /api/status to the SS14 game server status endpoint (CRITICAL)
+# This avoids mixed-content (HTTP→HTTPS) and CORS issues
+location = /api/status {
+    proxy_pass http://127.0.0.1:1212/status;
+    proxy_set_header Host $host;
+    proxy_connect_timeout 5s;
+    proxy_read_timeout 10s;
+
+    # Cache for 15 seconds to reduce load on game server
+    proxy_cache_valid 200 15s;
+
+    # CORS headers (same-origin, but explicit for clarity)
+    add_header Access-Control-Allow-Origin "https://estacioncapibara.com" always;
+    add_header Cache-Control "no-store, max-age=0";
+
+    # Re-add security headers (nginx location block overrides server-level headers)
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
