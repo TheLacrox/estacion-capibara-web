@@ -73,7 +73,7 @@ export function HeroSection() {
         >
           <img
             src="/branding/logo.svg"
-            alt="Estacion Capibara logo"
+            alt="Estación Capibara logo"
             className="w-32 h-32 sm:w-40 sm:h-40 mx-auto animate-float drop-shadow-[0_0_30px_rgba(241,196,15,0.3)]"
             width={160}
             height={160}
@@ -83,7 +83,7 @@ export function HeroSection() {
         {/* Title: ESTACION */}
         <div className="overflow-hidden mb-2">
           <h1 className="font-heading font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.2em] text-text-primary">
-            {"ESTACION".split("").map((letter, i) => (
+            {"ESTACIÓN".split("").map((letter, i) => (
               <motion.span
                 key={i}
                 custom={i}
@@ -114,7 +114,7 @@ export function HeroSection() {
         <div className="h-8 mb-8">
           {showStatus && (
             <TerminalText
-              text=">> SERVIDOR EN LINEA // COMUNIDAD 100% EN ESPANOL <<"
+              text=">> SERVIDOR EN LÍNEA // COMUNIDAD 100% EN ESPAÑOL <<"
               speed={30}
               className="text-neon-cyan text-xs sm:text-sm tracking-wider"
               onComplete={() => {}}
@@ -135,7 +135,7 @@ export function HeroSection() {
             glow
             href={`#${SECTION_IDS.howToPlay}`}
           >
-            Como Jugar
+            Cómo Jugar
           </Button>
           <Button variant="outline" size="lg" href={DISCORD_URL}>
             Unirse al Discord

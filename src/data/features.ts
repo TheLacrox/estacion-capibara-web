@@ -8,23 +8,23 @@ export interface Feature {
 export const whatIsSS14Features: Feature[] = [
   {
     id: "station",
-    title: "Estacion Espacial",
+    title: "Estación Espacial",
     description:
-      "Una estacion orbital completa con sistemas de energia, atmosfera, gravedad y mas. Cada area tiene un proposito y cada sistema puede fallar de formas catastroficas.",
+      "Una estación orbital completa con sistemas de energía, atmósfera, gravedad y más. Cada área tiene un propósito y cada sistema puede fallar de formas catastróficas.",
     icon: "Rocket",
   },
   {
     id: "roleplay",
     title: "Roleplay Inmersivo",
     description:
-      "Elige entre 30+ roles unicos. Se capitan, medico, ingeniero, cientifico o incluso payaso. Cada rol tiene responsabilidades y herramientas unicas.",
+      "Elige entre 30+ roles únicos. Sé capitán, médico, ingeniero, científico o incluso payaso. Cada rol tiene responsabilidades y herramientas únicas.",
     icon: "Theater",
   },
   {
     id: "chaos",
     title: "Caos Emergente",
     description:
-      "Traidores, operativos nucleares, cambiaformas y mas amenazan la estacion. Nunca sabes quien es el enemigo ni que desastre viene. Cada ronda es unica.",
+      "Traidores, operativos nucleares, cambiaformas y más amenazan la estación. Nunca sabes quién es el enemigo ni qué desastre viene. Cada ronda es única.",
     icon: "Flame",
   },
 ];
@@ -41,19 +41,19 @@ export interface ServerFeature {
 export const serverFeatures: ServerFeature[] = [
   {
     id: "economy",
-    title: "Economia con Spesos",
-    subtitle: "Sistema Economico Completo",
+    title: "Economía con Spesos",
+    subtitle: "Sistema Económico Completo",
     description:
-      "Cada tripulante recibe una cuenta bancaria con Spesos. Gana salario cada 10 minutos, usa cajeros automaticos, compra en maquinas expendedoras y comercia con otros jugadores.",
+      "Cada tripulante recibe una cuenta bancaria con Spesos. Gana salario cada 10 minutos, usa cajeros automáticos, compra en máquinas expendedoras y comercia con otros jugadores.",
     icon: "Coins",
     color: "#F1C40F",
   },
   {
     id: "objectives",
-    title: "Objetivos de Estacion",
-    subtitle: "Cooperacion o Consecuencias",
+    title: "Objetivos de Estación",
+    subtitle: "Cooperación o Consecuencias",
     description:
-      "Cada turno, la estacion recibe 2-3 objetivos cooperativos. Si no se completan en 30 minutos, los salarios se congelan. Trabaja en equipo o sufre las consecuencias.",
+      "Cada turno, la estación recibe 2-3 objetivos cooperativos. Si no se completan en 30 minutos, los salarios se congelan. Trabaja en equipo o sufre las consecuencias.",
     icon: "Target",
     color: "#E74C3C",
   },
@@ -62,7 +62,7 @@ export const serverFeatures: ServerFeature[] = [
     title: "Antagonistas",
     subtitle: "El Enemigo Entre Nosotros",
     description:
-      "Traidores infiltrados, operativos nucleares, cambiaformas, herejes y mas. Cada ronda puede tener amenazas diferentes que desafian a toda la tripulacion.",
+      "Traidores infiltrados, operativos nucleares, cambiaformas, herejes y más. Cada ronda puede tener amenazas diferentes que desafían a toda la tripulación.",
     icon: "Skull",
     color: "#8E44AD",
   },

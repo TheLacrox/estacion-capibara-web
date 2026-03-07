@@ -1,14 +1,14 @@
 export const DISCORD_URL = "https://discord.gg/xRsRcpmCVX";
 export const SS14_DOWNLOAD_URL = "https://spacestation14.com";
-export const SERVER_NAME = "Estacion Capibara";
+export const SERVER_NAME = "Estación Capibara";
 export const SITE_URL = "https://estacioncapibara.com";
 
 export const NAV_LINKS = [
   { label: "Inicio", href: "#hero" },
-  { label: "Que es SS14?", href: "#que-es-ss14" },
-  { label: "Caracteristicas", href: "#caracteristicas" },
+  { label: "¿Qué es SS14?", href: "#que-es-ss14" },
+  { label: "Características", href: "#caracteristicas" },
   { label: "Departamentos", href: "#departamentos" },
-  { label: "Como Jugar", href: "#como-jugar" },
+  { label: "Cómo Jugar", href: "#como-jugar" },
   { label: "Comunidad", href: "#comunidad" },
 ] as const;
 

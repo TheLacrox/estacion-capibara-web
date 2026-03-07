@@ -44,9 +44,9 @@ export function howToSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Como jugar Space Station 14 en Estacion Capibara",
+    name: "Cómo jugar Space Station 14 en Estación Capibara",
     description:
-      "Guia paso a paso para descargar, instalar y conectarse al servidor de Space Station 14 en espanol Estacion Capibara.",
+      "Guía paso a paso para descargar, instalar y conectarse al servidor de Space Station 14 en español Estación Capibara.",
     inLanguage: "es",
     totalTime: "PT10M",
     step: [
@@ -61,13 +61,13 @@ export function howToSchema() {
         "@type": "HowToStep",
         position: 2,
         name: "Crea una cuenta",
-        text: "Registrate con tu email para poder jugar en servidores.",
+        text: "Regístrate con tu email para poder jugar en servidores.",
       },
       {
         "@type": "HowToStep",
         position: 3,
         name: "Abre el launcher",
-        text: "Ejecuta el launcher de SS14 despues de instalarlo.",
+        text: "Ejecuta el launcher de SS14 después de instalarlo.",
       },
       {
         "@type": "HowToStep",
@@ -91,7 +91,7 @@ export function howToSchema() {
         "@type": "HowToStep",
         position: 7,
         name: "A jugar!",
-        text: "Conectate y disfruta. La comunidad te ayudara si tienes preguntas.",
+        text: "Conéctate y disfruta. La comunidad te ayudará si tienes preguntas.",
       },
     ],
   };
@@ -101,7 +101,7 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Estacion Capibara",
+    name: "Estación Capibara",
     url: SITE_URL,
     logo: `${SITE_URL}/branding/logo.svg`,
     sameAs: [DISCORD_URL],

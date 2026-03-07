@@ -70,18 +70,28 @@ export default function Home() {
       <Footer />
       <noscript>
         <div style={{ padding: "2rem", color: "#fff", backgroundColor: "#0b0f19" }}>
-          <h1>Estacion Capibara - Servidor de Space Station 14 en Español</h1>
+          <h1>Estación Capibara - Servidor de Space Station 14 en Español</h1>
           <p>
-            El mejor servidor de Space Station 14 en espanol. Unete a nuestra comunidad hispanohablante
-            con sistema economico de Spesos, 30+ roles, 8 departamentos, antagonistas y objetivos cooperativos.
+            El mejor servidor de Space Station 14 en español. Únete a nuestra comunidad hispanohablante
+            con sistema económico de Spesos, 30+ roles, 8 departamentos, antagonistas y objetivos cooperativos.
+          </p>
+          <p>
+            Space Station 14 es un juego de roleplay multijugador gratuito donde cada jugador asume un rol
+            en una estación espacial: ingeniero, médico, científico, oficial de seguridad y muchos más.
+            Trabaja en equipo, enfrenta amenazas y vive historias únicas cada partida.
+          </p>
+          <p>
+            ¿Por qué jugar en Estación Capibara? Somos la comunidad hispana más activa de SS14,
+            con un sistema de economía propio basado en Spesos, eventos regulares, guías en español
+            y bajo ping para Latinoamérica y España.
           </p>
           <p>
             Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca &quot;Capibara&quot;
             en el navegador de servidores.
           </p>
           <p>
-            Visita nuestra <a href="/wiki" style={{ color: "#F1C40F" }}>Wiki</a> para guias completas
-            sobre trabajos, departamentos, economia y supervivencia.
+            Visita nuestra <a href="/wiki" style={{ color: "#F1C40F" }}>Wiki</a> para guías completas
+            sobre trabajos, departamentos, economía y supervivencia.
           </p>
         </div>
       </noscript>

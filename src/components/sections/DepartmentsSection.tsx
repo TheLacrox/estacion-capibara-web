@@ -55,19 +55,19 @@ export function DepartmentsSection() {
         {/* Header */}
         <FadeInView className="text-center mb-12">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // TRIPULACION
+            // TRIPULACIÓN
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Departamentos y <GlowText color="yellow">Roles</GlowText>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            8 departamentos, mas de 30 roles unicos. Cada trabajo tiene
+            8 departamentos, más de 30 roles únicos. Cada trabajo tiene
             responsabilidades, salario y herramientas diferentes.{" "}
             <a
               href="/wiki/jobs"
               className="text-neon-cyan hover:underline"
             >
-              Ver guia de trabajos →
+              Ver guía de trabajos →
             </a>
           </p>
         </FadeInView>

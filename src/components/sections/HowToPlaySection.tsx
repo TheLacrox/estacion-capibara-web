@@ -23,19 +23,19 @@ const steps = [
   {
     icon: Download,
     title: "Descarga SS14",
-    description: "Descarga Space Station 14 gratis desde la pagina oficial.",
+    description: "Descarga Space Station 14 gratis desde la página oficial.",
     link: SS14_DOWNLOAD_URL,
     linkText: "spacestation14.com",
   },
   {
     icon: UserPlus,
     title: "Crea una cuenta",
-    description: "Registrate con tu email para poder jugar en servidores.",
+    description: "Regístrate con tu email para poder jugar en servidores.",
   },
   {
     icon: MonitorPlay,
     title: "Abre el launcher",
-    description: "Ejecuta el launcher de SS14 despues de instalarlo.",
+    description: "Ejecuta el launcher de SS14 después de instalarlo.",
   },
   {
     icon: Search,
@@ -54,13 +54,13 @@ const steps = [
     icon: BookOpen,
     title: "Lee las reglas",
     description:
-      "Revisa las reglas del servidor antes de jugar. Respeta a los demas jugadores.",
+      "Revisa las reglas del servidor antes de jugar. Respeta a los demás jugadores.",
   },
   {
     icon: Gamepad2,
-    title: "A jugar!",
+    title: "¡A jugar!",
     description:
-      "Conectate y disfruta. La comunidad te ayudara si tienes preguntas.",
+      "Conéctate y disfruta. La comunidad te ayudará si tienes preguntas.",
     final: true,
   },
 ];
@@ -86,10 +86,10 @@ export function HowToPlaySection() {
         {/* Header */}
         <FadeInView className="text-center mb-16">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // GUIA DE INICIO
+            // GUÍA DE INICIO
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
-            Como <GlowText color="yellow">Jugar</GlowText>
+            Cómo <GlowText color="yellow">Jugar</GlowText>
           </h2>
           <p className="text-text-muted max-w-xl mx-auto text-lg">
             Empieza a jugar en minutos. Solo necesitas seguir estos pasos.

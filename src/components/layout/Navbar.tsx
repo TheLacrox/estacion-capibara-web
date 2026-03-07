@@ -53,13 +53,13 @@ export function Navbar() {
           >
             <img
               src="/branding/logo.svg"
-              alt="Estacion Capibara"
+              alt="Estación Capibara"
               className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
               width={40}
               height={40}
             />
             <span className="font-heading font-bold text-text-primary text-sm tracking-wider hidden sm:block">
-              ESTACION <span className="text-hazard-yellow">CAPIBARA</span>
+              ESTACIÓN <span className="text-hazard-yellow">CAPIBARA</span>
             </span>
           </button>
 

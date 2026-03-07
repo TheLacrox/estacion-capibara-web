@@ -28,14 +28,14 @@ export function WhatIsSS14Section() {
         {/* Section header */}
         <FadeInView className="text-center mb-16">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // INTRODUCCION
+            // INTRODUCCIÓN
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
-            Que es <GlowText color="cyan">Space Station 14</GlowText>?
+            ¿Qué es <GlowText color="cyan">Space Station 14</GlowText>?
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Un juego de roleplay multijugador donde eres parte de la tripulacion
-            de una estacion espacial. Cada ronda es una historia diferente.
+            Un juego de roleplay multijugador donde eres parte de la tripulación
+            de una estación espacial. Cada ronda es una historia diferente.
           </p>
         </FadeInView>
 

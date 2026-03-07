@@ -40,14 +40,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const guide = guidePages[guideSlug];
 
   if (!guide) {
-    return { title: "Guia no encontrada - Wiki" };
+    return { title: "Guía no encontrada - Wiki" };
   }
 
   const description = extractDescription(guide.content);
   const url = `${SITE_URL}/wiki/${guide.slug}`;
 
   return {
-    title: `${guide.title} - Wiki Estacion Capibara`,
+    title: `${guide.title} - Wiki Estación Capibara`,
     description,
     alternates: {
       canonical: url,
@@ -56,21 +56,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       locale: "es_ES",
       url,
-      title: `${guide.title} - Wiki Estacion Capibara`,
+      title: `${guide.title} - Wiki Estación Capibara`,
       description,
-      siteName: "Estacion Capibara",
+      siteName: "Estación Capibara",
       images: [
         {
           url: "/branding/og-image.png",
           width: 1200,
           height: 630,
-          alt: `${guide.title} - Wiki Estacion Capibara`,
+          alt: `${guide.title} - Wiki Estación Capibara`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${guide.title} - Wiki Estacion Capibara`,
+      title: `${guide.title} - Wiki Estación Capibara`,
       description,
       images: ["/branding/og-image.png"],
     },

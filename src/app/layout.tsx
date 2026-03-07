@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { siteMetadata, jsonLdWebsite, jsonLdFaq } from "@/lib/metadata";
 import { howToSchema, organizationSchema } from "@/lib/schema";
 import "./globals.css";
+
+const GA_ID = "G-VZH5Y2ESMQ";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -56,6 +59,18 @@ export default function RootLayout({
       </head>
       <body className="bg-space-void text-text-primary antialiased">
         {children}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

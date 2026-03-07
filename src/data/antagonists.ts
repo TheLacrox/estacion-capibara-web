@@ -19,7 +19,7 @@ export const antagonists: Antagonist[] = [
     id: "nukeops",
     name: "Operativos Nucleares",
     description:
-      "Un equipo del Sindicato que asalta la estacion con armamento pesado. Su objetivo: detonar la ojiva nuclear.",
+      "Un equipo del Sindicato que asalta la estación con armamento pesado. Su objetivo: detonar la ojiva nuclear.",
     color: "#FF6B35",
     icon: "Bomb",
   },
@@ -27,7 +27,7 @@ export const antagonists: Antagonist[] = [
     id: "changeling",
     name: "Cambiaformas",
     description:
-      "Una criatura alienigena que puede absorber y copiar la apariencia de sus victimas. Puede ser cualquiera.",
+      "Una criatura alienígena que puede absorber y copiar la apariencia de sus víctimas. Puede ser cualquiera.",
     color: "#27AE60",
     icon: "Dna",
   },
@@ -51,7 +51,7 @@ export const antagonists: Antagonist[] = [
     id: "zombie",
     name: "Zombie",
     description:
-      "Un brote zombi amenaza la estacion. Los infectados se convierten y atacan a los vivos. Sobrevive o unete a la horda.",
+      "Un brote zombi amenaza la estación. Los infectados se convierten y atacan a los vivos. Sobrevive o únete a la horda.",
     color: "#1ABC9C",
     icon: "Skull",
   },
@@ -59,7 +59,7 @@ export const antagonists: Antagonist[] = [
     id: "revolutionary",
     name: "Revolucionario",
     description:
-      "Lideres revolucionarios buscan derrocar al comando. Convencen tripulantes de unirse a su causa violenta.",
+      "Líderes revolucionarios buscan derrocar al comando. Convencen tripulantes de unirse a su causa violenta.",
     color: "#E67E22",
     icon: "Flag",
   },

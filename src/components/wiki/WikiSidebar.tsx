@@ -282,7 +282,7 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
               transition={{ duration: 0.6 }}
             />
             <span className="group-hover:tracking-wider transition-all duration-300">
-              Estacion Capibara
+              Estación Capibara
             </span>
           </Link>
         </div>

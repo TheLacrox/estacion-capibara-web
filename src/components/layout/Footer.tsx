@@ -13,17 +13,17 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img
                 src="/branding/logo.svg"
-                alt="Estacion Capibara"
+                alt="Estación Capibara"
                 className="w-10 h-10"
                 width={40}
                 height={40}
               />
               <span className="font-heading font-bold text-text-primary tracking-wider">
-                ESTACION <span className="text-hazard-yellow">CAPIBARA</span>
+                ESTACIÓN <span className="text-hazard-yellow">CAPIBARA</span>
               </span>
             </div>
             <p className="text-text-muted text-sm font-mono">
-              Servidor de Space Station 14 en espanol.
+              Servidor de Space Station 14 en español.
               <br />
               Fork de Goob Station.
             </p>
@@ -93,7 +93,7 @@ export function Footer() {
                   href="/wiki/capibara-economy"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
-                  Economia
+                  Economía
                 </a>
               </li>
               <li>
@@ -110,7 +110,7 @@ export function Footer() {
           {/* Info */}
           <div>
             <h3 className="font-heading font-bold text-text-primary mb-4 uppercase tracking-wider text-sm">
-              Como Conectarse
+              Cómo Conectarse
             </h3>
             <p className="text-text-muted text-sm font-mono">
               1. Descarga SS14 desde spacestation14.com
@@ -127,7 +127,7 @@ export function Footer() {
             Hecho con amor para la comunidad hispanohablante de SS14
           </p>
           <p className="text-center text-text-muted/50 text-xs font-mono mt-2">
-            Space Station 14 es un proyecto de codigo abierto. Estacion Capibara no esta afiliada con Space Station 14 oficialmente.
+            Space Station 14 es un proyecto de código abierto. Estación Capibara no está afiliada con Space Station 14 oficialmente.
           </p>
         </div>
       </div>

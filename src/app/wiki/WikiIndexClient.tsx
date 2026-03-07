@@ -12,27 +12,27 @@ const CATEGORY_META: Record<string, { icon: LucideIcon; color: string; descripti
   jobs: {
     icon: Users,
     color: "var(--color-hazard-yellow)",
-    description: "Guias de cada departamento y rol de la estacion",
+    description: "Guías de cada departamento y rol de la estación",
   },
   survival: {
     icon: Book,
     color: "var(--color-success-green)",
-    description: "Lo basico para sobrevivir tu primer turno",
+    description: "Lo básico para sobrevivir tu primer turno",
   },
   "capibara-economy": {
     icon: ShoppingCart,
     color: "var(--color-hazard-yellow)",
-    description: "Sistema economico exclusivo de Capibara Station",
+    description: "Sistema económico exclusivo de Capibara Station",
   },
   antagonists: {
     icon: Skull,
     color: "var(--color-alert-red)",
-    description: "Todos los antagonistas y sus mecanicas",
+    description: "Todos los antagonistas y sus mecánicas",
   },
   glossary: {
     icon: Book,
     color: "var(--color-neon-cyan)",
-    description: "Terminologia y conceptos del juego",
+    description: "Terminología y conceptos del juego",
   },
   "martial-arts": {
     icon: Swords,
@@ -42,7 +42,7 @@ const CATEGORY_META: Record<string, { icon: LucideIcon; color: string; descripti
   sop: {
     icon: Shield,
     color: "var(--color-dept-command)",
-    description: "Procedimientos Operativos Estandar",
+    description: "Procedimientos Operativos Estándar",
   },
 };
 
@@ -69,16 +69,16 @@ export function WikiIndexClient({ tree }: WikiIndexClientProps) {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">
-          Wiki de Estacion{" "}
+          Wiki de Estación{" "}
           <span className="text-hazard-yellow text-glow-yellow">Capibara</span>
         </h1>
         <p className="text-text-muted font-mono text-sm max-w-xl">
-          Guias completas del servidor en espanol. Selecciona una categoria
+          Guías completas del servidor en español. Selecciona una categoría
           para comenzar o usa el buscador en la barra lateral.
         </p>
         <div className="mt-4 flex items-center gap-2 text-xs font-mono text-neon-cyan/60">
           <Zap size={12} className="animate-pulse-glow" />
-          <span>{countNodes(tree)} guias en la base de datos</span>
+          <span>{countNodes(tree)} guías en la base de datos</span>
         </div>
       </motion.div>
 
@@ -87,7 +87,7 @@ export function WikiIndexClient({ tree }: WikiIndexClientProps) {
           const meta = CATEGORY_META[child.slug];
           const Icon: LucideIcon = meta?.icon || Book;
           const color = meta?.color || "var(--color-text-muted)";
-          const description = meta?.description || `Guia de ${child.title}`;
+          const description = meta?.description || `Guía de ${child.title}`;
 
           return (
             <motion.div
@@ -143,7 +143,7 @@ export function WikiIndexClient({ tree }: WikiIndexClientProps) {
                       <div className="flex items-center gap-1.5 mt-2">
                         <div className="w-1 h-1 rounded-full animate-pulse-glow" style={{ backgroundColor: color }} />
                         <p className="text-xs font-mono text-text-muted/60">
-                          {child.children.length} subguias
+                          {child.children.length} subguías
                         </p>
                       </div>
                     )}

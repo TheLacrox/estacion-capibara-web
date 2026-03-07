@@ -41,10 +41,10 @@ export function ServerFeaturesSection() {
             // SISTEMAS DEL SERVIDOR
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
-            Caracteristicas <GlowText color="yellow">Unicas</GlowText>
+            Características <GlowText color="yellow">Únicas</GlowText>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Estacion Capibara tiene sistemas exclusivos que hacen cada ronda mas
+            Estación Capibara tiene sistemas exclusivos que hacen cada ronda más
             interesante y desafiante.
           </p>
         </FadeInView>
@@ -62,20 +62,20 @@ export function ServerFeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <FadeInView direction="left">
             <Badge color="#F1C40F" className="mb-4">
-              <Coins className="w-3 h-3" /> Sistema Economico
+              <Coins className="w-3 h-3" /> Sistema Económico
             </Badge>
             <h3 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mb-4">
-              Economia con <GlowText color="yellow">Spesos</GlowText>
+              Economía con <GlowText color="yellow">Spesos</GlowText>
             </h3>
             <p className="text-text-muted mb-6 leading-relaxed">
               Cada tripulante recibe una cuenta bancaria con Spesos al unirse.
-              Gana un salario cada 10 minutos segun tu rol, retira efectivo de
-              cajeros automaticos y compra en maquinas expendedoras.{" "}
+              Gana un salario cada 10 minutos según tu rol, retira efectivo de
+              cajeros automáticos y compra en máquinas expendedoras.{" "}
               <a
                 href="/wiki/capibara-economy"
                 className="text-neon-cyan hover:underline"
               >
-                Leer mas en la wiki →
+                Leer más en la wiki →
               </a>
             </p>
             <div className="flex gap-6">
@@ -117,13 +117,13 @@ export function ServerFeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <FadeInView direction="right" className="lg:order-2">
             <Badge color="#E74C3C" className="mb-4">
-              <Target className="w-3 h-3" /> Cooperacion Requerida
+              <Target className="w-3 h-3" /> Cooperación Requerida
             </Badge>
             <h3 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mb-4">
-              Objetivos de <GlowText color="cyan">Estacion</GlowText>
+              Objetivos de <GlowText color="cyan">Estación</GlowText>
             </h3>
             <p className="text-text-muted mb-6 leading-relaxed">
-              Cada turno, la estacion recibe 2-3 objetivos cooperativos. Si no se
+              Cada turno, la estación recibe 2-3 objetivos cooperativos. Si no se
               completan en 30 minutos, los salarios se congelan. Trabaja en
               equipo o sufre las consecuencias.
             </p>
