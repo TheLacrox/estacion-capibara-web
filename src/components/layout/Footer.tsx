@@ -13,7 +13,7 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img
                 src="/branding/logo.svg"
-                alt="Estación Capibara"
+                alt="Logo de Estación Capibara, servidor de Space Station 14 en español"
                 className="w-10 h-10"
                 width={40}
                 height={40}
@@ -126,7 +126,7 @@ export function Footer() {
           <p className="text-center text-text-muted text-xs font-mono">
             Hecho con amor para la comunidad hispanohablante de SS14
           </p>
-          <p className="text-center text-text-muted/50 text-xs font-mono mt-2">
+          <p className="text-center text-text-muted text-xs font-mono mt-2">
             Space Station 14 es un proyecto de código abierto. Estación Capibara no está afiliada con Space Station 14 oficialmente.
           </p>
         </div>

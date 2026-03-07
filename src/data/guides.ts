@@ -660,6 +660,12 @@ export const guideTree: GuideTreeNode = {
           "slug": "capibara-economy-objectives",
           "title": "Objetivos de Estación y Salarios",
           "children": []
+        },
+        {
+          "id": "CapibaraEconomyNanoGigs",
+          "slug": "capibara-economy-nano-gigs",
+          "title": "NanoGigs",
+          "children": []
         }
       ]
     },
@@ -4438,7 +4444,8 @@ const guidePagesArray: GuidePage[] = [
     "childSlugs": [
       "capibara-economy-atm",
       "capibara-economy-salary-console",
-      "capibara-economy-objectives"
+      "capibara-economy-objectives",
+      "capibara-economy-nano-gigs"
     ]
   },
   {
@@ -4503,6 +4510,28 @@ const guidePagesArray: GuidePage[] = [
       {
         "slug": "capibara-economy-objectives",
         "title": "Objetivos de Estación y Salarios"
+      }
+    ],
+    "childSlugs": []
+  },
+  {
+    "id": "CapibaraEconomyNanoGigs",
+    "slug": "capibara-economy-nano-gigs",
+    "title": "NanoGigs",
+    "content": "# NanoGigs\r\n\r\nNanoGigs es una aplicación del [color=cyan]PDA[/color] que permite a los tripulantes publicar y aceptar [color=#FFD700]trabajos pagados[/color]. Funciona como una economía de trabajos temporales dentro de la estación — publica una tarea, ofrece un pago, y alguien la completará por ti.\r\n\r\n## Cómo Acceder\r\n\r\nNanoGigs viene [color=#3dd425]preinstalado[/color] en todos los PDAs. Abre tu PDA y selecciona el programa NanoGigs (icono de maletín verde).\r\n\r\n## Publicar un Trabajo\r\n\r\n1. Ve a la pestaña [color=cyan]\"Post Job\"[/color].\r\n2. Escribe un título, descripción, ubicación y el pago en Spesos.\r\n3. Pulsa [color=cyan]\"Post Job\"[/color].\r\n\r\n[color=#ef973c]Importante:[/color] Al publicar, el pago se retira automáticamente de tu cuenta como [color=#FFD700]depósito de garantía[/color]. El dinero queda en custodia hasta que el trabajo se complete o lo canceles.\r\n\r\n## Aceptar un Trabajo\r\n\r\n1. Ve a la pestaña [color=cyan]\"Job Board\"[/color] para ver los trabajos disponibles.\r\n2. Pulsa [color=#3dd425]\"Accept\"[/color] en el trabajo que quieras tomar.\r\n3. Tu vista cambiará a mostrar los detalles del trabajo activo.\r\n\r\n[color=#ef973c]Nota:[/color] Solo puedes tener [color=cyan]un trabajo activo[/color] a la vez. Complétalo o abandónalo antes de aceptar otro.\r\n\r\n## Gestionar tus Trabajos\r\n\r\nEn la pestaña [color=cyan]\"My Jobs\"[/color] puedes ver todos los trabajos que has publicado:\r\n\r\n- [color=cyan]Trabajo disponible:[/color] Puedes cancelarlo y recuperar tu depósito.\r\n- [color=#ef973c]Trabajo aceptado:[/color] Muestra quién lo tomó. Puedes pulsar [color=#3dd425]\"Finish & Pay\"[/color] para completarlo y transferir el pago al trabajador, o [color=#e93d58]\"Cancel\"[/color] para cancelarlo (se te devuelve el dinero y se notifica al trabajador).\r\n\r\n## Notificaciones\r\n\r\nPulsa el botón [color=cyan]\"Notifications OFF\"[/color] en la barra superior para activar las alertas. Cuando estén activadas ([color=#3dd425]\"Notifications ON\"[/color]), recibirás una notificación en tu PDA cada vez que alguien publique un nuevo trabajo.\r\n\r\nTambién recibirás notificaciones automáticas cuando:\r\n- Alguien acepta tu trabajo publicado.\r\n- El publicador completa o cancela un trabajo que tomaste.\r\n- Un trabajador abandona tu trabajo.\r\n\r\n## Flujo de Dinero\r\n\r\n1. [color=#FFD700]Publicar:[/color] El pago se retira de tu cuenta (depósito de garantía).\r\n2. [color=#FFD700]Completar:[/color] El publicador pulsa \"Finish & Pay\" → el dinero se deposita en la cuenta del trabajador.\r\n3. [color=#FFD700]Cancelar:[/color] Si el publicador cancela → el dinero se devuelve al publicador.",
+    "parentSlug": "capibara-economy",
+    "breadcrumb": [
+      {
+        "slug": "ss14",
+        "title": "La Estación y los Turnos"
+      },
+      {
+        "slug": "capibara-economy",
+        "title": "Sistema Económico"
+      },
+      {
+        "slug": "capibara-economy-nano-gigs",
+        "title": "NanoGigs"
       }
     ],
     "childSlugs": []

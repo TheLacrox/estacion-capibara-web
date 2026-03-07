@@ -100,9 +100,16 @@ export const jsonLdWebsite = {
   "@type": "VideoGame",
   name: "Estación Capibara - Space Station 14",
   description:
-    "Servidor de Space Station 14 en español con sistema económico, objetivos de estación y comunidad hispanohablante.",
+    "Servidor hispanohablante de Space Station 14. Disfruta de roles, sistema de economía con Spesos, departamentos y objetivos cooperativos totalmente en español.",
+  url: SITE_URL,
   genre: ["Roleplay", "Simulation", "Multiplayer"],
   gamePlatform: "PC",
+  playMode: "MultiPlayer",
+  numberOfPlayers: {
+    "@type": "QuantitativeValue",
+    minValue: 1,
+    maxValue: 100,
+  },
   applicationCategory: "Game",
   operatingSystem: "Windows, Linux, macOS",
   inLanguage: "es",

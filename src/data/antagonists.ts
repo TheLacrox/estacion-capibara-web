@@ -44,7 +44,7 @@ export const antagonists: Antagonist[] = [
     name: "Sombra",
     description:
       "Una entidad de la oscuridad que convierte tripulantes en sus sirvientes. La luz es su debilidad.",
-    color: "#2C3E50",
+    color: "#5D7B9A",
     icon: "Eclipse",
   },
   {

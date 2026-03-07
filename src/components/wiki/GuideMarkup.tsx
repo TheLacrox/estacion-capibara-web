@@ -192,7 +192,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
                 <div key={idx} className="entity-embed group/entity flex flex-col items-center gap-2 px-4 py-3 rounded-sm border border-grid-line bg-space-void/50 min-w-[140px] hover:border-neon-cyan/30 hover:bg-hull-panel/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.06)]">
                   <div className="w-32 h-32 rounded-sm bg-hull-panel border border-grid-line flex items-center justify-center relative overflow-hidden">
                     {spriteSrc ? (
-                      <img src={spriteSrc} alt={caption || entity} className="w-28 h-28 object-contain sprite-hover" style={{ imageRendering: "pixelated", animation: "sprite-float 4s ease-in-out infinite", animationDelay: `${idx * 0.3}s` }} />
+                      <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-28 h-28 object-contain sprite-hover" style={{ imageRendering: "pixelated", animation: "sprite-float 4s ease-in-out infinite", animationDelay: `${idx * 0.3}s` }} />
                     ) : (
                       <span className="text-hazard-yellow text-base font-bold">
                         {entity.slice(0, 2).toUpperCase()}
@@ -244,7 +244,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
       elements.push(
         <div key={keyRef.current++} className="entity-embed inline-flex items-center gap-2 my-2 group/se relative">
           {spriteSrc && (
-            <img src={spriteSrc} alt={caption || entity} className="w-16 h-16 object-contain sprite-hover" style={{ imageRendering: "pixelated" }} />
+            <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-16 h-16 object-contain sprite-hover" style={{ imageRendering: "pixelated" }} />
           )}
           <Badge color="var(--color-hazard-yellow)">{caption || entity}</Badge>
         </div>
@@ -400,7 +400,7 @@ function parseInline(text: string): ReactNode {
         parts.push(
           <span key={`i${inlineKey++}`} className="entity-embed inline-flex items-center gap-1.5 mx-0.5 align-middle group/ie">
             {spriteSrc && (
-              <img src={spriteSrc} alt={caption || entity} className="w-12 h-12 object-contain inline-block sprite-hover" style={{ imageRendering: "pixelated" }} />
+              <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-12 h-12 object-contain inline-block sprite-hover" style={{ imageRendering: "pixelated" }} />
             )}
             <Badge color="var(--color-hazard-yellow)">
               {caption || entity}

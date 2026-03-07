@@ -188,7 +188,7 @@ function EconomyMockup() {
         </div>
         <div className="text-text-muted">
           {">"} Cargo:{" "}
-          <span className="text-hazard-yellow">Capitan</span>
+          <span className="text-hazard-yellow">Capitán</span>
         </div>
         <div className="text-text-muted">
           {">"} Saldo:{" "}
@@ -201,7 +201,7 @@ function EconomyMockup() {
           <span className="text-hazard-yellow">200 Sp/ciclo</span>
         </div>
         <div className="mt-4 pt-3 border-t border-grid-line text-success-green text-xs">
-          [OK] Proximo pago en 07:32
+          [OK] Próximo pago en 07:32
         </div>
       </div>
     </div>
@@ -342,10 +342,7 @@ function AntagonistCarousel() {
             >
               <Skull className="w-6 h-6" />
             </div>
-            <h4
-              className="font-heading font-bold text-lg mb-2"
-              style={{ color: antag.color }}
-            >
+            <h4 className="font-heading font-bold text-lg mb-2 text-text-primary">
               {antag.name}
             </h4>
             <p className="text-text-muted text-sm leading-relaxed">

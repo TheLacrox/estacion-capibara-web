@@ -73,7 +73,7 @@ export function HeroSection() {
         >
           <img
             src="/branding/logo.svg"
-            alt="Estación Capibara logo"
+            alt="Logo de Estación Capibara, servidor de Space Station 14 en español"
             className="w-32 h-32 sm:w-40 sm:h-40 mx-auto animate-float drop-shadow-[0_0_30px_rgba(241,196,15,0.3)]"
             width={160}
             height={160}

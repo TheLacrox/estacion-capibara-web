@@ -82,6 +82,7 @@ export function DepartmentsSection() {
               <button
                 key={dept.id}
                 onClick={() => setActiveDept(dept)}
+                aria-label={dept.name}
                 className={cn(
                   "relative flex items-center gap-2 px-4 py-2 rounded-sm border text-sm font-mono font-bold transition-all duration-300",
                   isActive

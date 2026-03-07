@@ -53,7 +53,7 @@ export function Navbar() {
           >
             <img
               src="/branding/logo.svg"
-              alt="Estación Capibara"
+              alt="Logo de Estación Capibara, servidor SS14 en español"
               className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
               width={40}
               height={40}

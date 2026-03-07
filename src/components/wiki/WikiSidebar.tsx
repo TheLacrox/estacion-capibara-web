@@ -274,7 +274,7 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
           >
             <motion.img
               src="/branding/logo.svg"
-              alt=""
+              alt="Logo de Estación Capibara"
               className="w-4 h-4"
               width={16}
               height={16}
