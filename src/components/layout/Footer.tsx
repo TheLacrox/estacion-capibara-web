@@ -57,10 +57,26 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/wiki"
+                  href="/wiki/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Wiki
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/quiz/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Quiz: ¿Qué Rol Eres?
                 </a>
               </li>
             </ul>
@@ -74,7 +90,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/wiki/jobs"
+                  href="/wiki/jobs/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Trabajos
@@ -82,7 +98,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/wiki/antagonists"
+                  href="/wiki/antagonists/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Antagonistas
@@ -90,7 +106,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/wiki/capibara-economy"
+                  href="/wiki/capibara-economy/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Economía
@@ -98,7 +114,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/wiki/survival"
+                  href="/wiki/survival/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Supervivencia
@@ -107,18 +123,109 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Info */}
+          {/* Articles */}
           <div>
             <h3 className="font-heading font-bold text-text-primary mb-4 uppercase tracking-wider text-sm">
-              Cómo Conectarse
+              Artículos
             </h3>
-            <p className="text-text-muted text-sm font-mono">
-              1. Descarga SS14 desde spacestation14.com
-              <br />
-              2. Abre el launcher
-              <br />
-              3. Busca &quot;Capibara&quot; en servidores
-            </p>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="/que-es-space-station-14/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  ¿Qué es SS14?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/como-jugar-space-station-14/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Cómo Jugar SS14
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-como-among-us/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos como Among Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-gratis-multijugador/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Gratis
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-de-rol-online/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos de Rol
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-sandbox-multijugador/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Sandbox
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-cooperativos-pc/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Cooperativos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-espaciales-pc/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Espaciales
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-para-pc-de-bajos-recursos/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Bajos Recursos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-de-supervivencia-multijugador/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos Supervivencia
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-parecidos-a-barotrauma/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos como Barotrauma
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/juegos-de-simulacion-pc/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Juegos de Simulación
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -131,7 +238,7 @@ export function Footer() {
           </p>
           <p className="text-center mt-3">
             <a
-              href="/privacidad"
+              href="/privacidad/"
               className="text-text-muted text-xs font-mono hover:text-hazard-yellow transition-colors"
             >
               Política de Privacidad

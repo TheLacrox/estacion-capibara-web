@@ -66,9 +66,39 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Consentimiento de cookies"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999]"
+      className="fixed bottom-0 left-0 right-0 sm:bottom-6 sm:right-6 sm:left-auto z-[9999]"
     >
-      <div className="w-[340px] sm:w-[380px] rounded-sm border border-grid-line bg-hull-panel/95 backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.5)] p-5">
+      {/* Mobile: compact bottom bar */}
+      <div className="sm:hidden border-t border-grid-line bg-hull-panel/95 backdrop-blur-md px-4 py-3">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-text-muted text-xs font-mono flex-1">
+            Usamos cookies para analytics.{" "}
+            <a
+              href="/privacidad/"
+              className="text-neon-cyan underline underline-offset-2"
+            >
+              Info
+            </a>
+          </p>
+          <div className="flex gap-2 shrink-0">
+            <button
+              onClick={handleReject}
+              className="px-3 py-1.5 text-xs font-mono text-text-muted border border-grid-line rounded-sm hover:text-text-primary transition-colors"
+            >
+              No
+            </button>
+            <button
+              onClick={handleAccept}
+              className="px-3 py-1.5 text-xs font-mono text-space-void bg-hazard-yellow rounded-sm font-bold hover:bg-hazard-yellow/90 transition-colors"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop: floating card */}
+      <div className="hidden sm:block w-[380px] rounded-sm border border-grid-line bg-hull-panel/95 backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.5)] p-5">
         <p className="font-heading font-bold text-text-primary text-sm mb-2">
           Uso de cookies
         </p>
@@ -76,7 +106,7 @@ export function CookieConsent() {
           Utilizamos Google Analytics para comprender como se usa este sitio y mejorar la
           experiencia. No recopilamos datos personales identificables.{" "}
           <a
-            href="/privacidad"
+            href="/privacidad/"
             className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors"
           >
             Politica de privacidad

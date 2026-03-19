@@ -10,12 +10,18 @@ export function breadcrumbSchema(
       {
         "@type": "ListItem",
         position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
         name: "Wiki",
         item: `${SITE_URL}/wiki/`,
       },
       ...items.map((item, i) => ({
         "@type": "ListItem",
-        position: i + 2,
+        position: i + 3,
         name: item.title,
         item: `${SITE_URL}/wiki/${item.slug}/`,
       })),
@@ -29,17 +35,20 @@ export function articleSchema(guide: {
   description: string;
   datePublished?: string;
   dateModified?: string;
+  basePath?: string;
 }) {
+  const basePath = guide.basePath ?? "/wiki";
+  const url = `${SITE_URL}${basePath}/${guide.slug}/`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: guide.title,
     description: guide.description,
-    url: `${SITE_URL}/wiki/${guide.slug}/`,
+    url,
     inLanguage: "es",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/wiki/${guide.slug}/`,
+      "@id": url,
     },
     datePublished: guide.datePublished ?? "2025-01-01",
     dateModified: guide.dateModified ?? guide.datePublished ?? "2025-01-01",
@@ -154,6 +163,55 @@ export function collectionPageSchema() {
       name: "Estación Capibara",
       url: SITE_URL,
     },
+  };
+}
+
+export function faqSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function itemListSchema(items: { name: string; url?: string; position: number }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item) => ({
+      "@type": "ListItem",
+      position: item.position,
+      name: item.name,
+      ...(item.url ? { url: item.url } : {}),
+    })),
+  };
+}
+
+export function seoBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      ...items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: item.name,
+        item: item.url,
+      })),
+    ],
   };
 }
 

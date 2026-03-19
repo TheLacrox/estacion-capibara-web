@@ -342,3 +342,68 @@ a, button, [role="button"] {
   filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4)) drop-shadow(0 0 12px rgba(0, 255, 255, 0.2));
   transform: scale(1.08);
 }
+
+/* ── Blog content styles ── */
+
+.blog-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-content h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.blog-content strong {
+  color: var(--color-text-primary);
+}
+
+.blog-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-hazard-yellow);
+  font-weight: 700;
+}
+
+.blog-content .patch-notes h2 {
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content .patch-notes ul li::before {
+  content: none;
+}
+
+.blog-content .patch-notes ul li {
+  padding-left: 0;
+  border-left: 2px solid var(--color-grid-line);
+  padding-left: 0.75rem;
+}
