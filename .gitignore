@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# screenshots and test artifacts
+screenshot-*.png
+test-*.png
+/screenshots/
+/scripts/capture_*.py
