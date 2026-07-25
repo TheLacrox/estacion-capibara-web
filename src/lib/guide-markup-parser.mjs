@@ -69,6 +69,16 @@ export function getGuideKeybindLabel(action) {
   return GUIDE_KEYBIND_LABELS[action] ?? "Control del juego";
 }
 
+export function getGuideMedicalGroupLabel(attributes) {
+  const group = attributes.Group ?? attributes.group;
+  if (!group) return "Recetas médicas del juego";
+  const readableGroup = group
+    .replace(/([a-záéíóúñ])([A-Z])/g, "$1 $2")
+    .replace(/[_-]+/g, " ")
+    .trim();
+  return `Grupo médico: ${readableGroup}`;
+}
+
 function appendNode(container, node) {
   if (node.type === "text" && !node.value) return;
   const previous = container.children.at(-1);

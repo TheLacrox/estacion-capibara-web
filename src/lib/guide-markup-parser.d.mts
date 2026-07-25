@@ -21,6 +21,8 @@ export function hasGuideKeybindLabel(action: string): boolean;
 
 export function getGuideKeybindLabel(action: string): string;
 
+export function getGuideMedicalGroupLabel(attributes: Record<string, string>): string;
+
 export function consumeBoxBlock(
   lines: string[],
   startIndex: number

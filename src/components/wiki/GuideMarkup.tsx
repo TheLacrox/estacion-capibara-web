@@ -10,6 +10,7 @@ import { monolithEntitySprites } from "@/data/monolith-entity-sprites";
 import {
   consumeBoxBlock,
   consumeColorBoxBlock,
+  getGuideMedicalGroupLabel,
   getGuideKeybindLabel,
   parseGuideInline,
   splitGuideBlockLines,
@@ -372,7 +373,7 @@ function renderEmbed(
   const value = attributes.reagent || attributes.group || attributes.discipline || "";
   if (name === "GuideReagentEmbed") return <Badge key={key} color="var(--color-success-green)">{humanize(value)}</Badge>;
   if (name === "GuideReagentGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">Grupo de reactivos: {humanize(value)}</span>;
-  if (name === "GuideMedicalGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">Grupo médico: {humanize(value)}</span>;
+  if (name === "GuideMedicalGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">{getGuideMedicalGroupLabel(attributes)}</span>;
   if (name === "GuideTechDisciplineEmbed") return <Badge key={key} color="var(--color-nebula-purple)">{humanize(value)}</Badge>;
   if (name === "GuideMicrowaveGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">Recetas: {humanize(value)}</span>;
   if (name === "GuideAutomationSlotsEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Tabla de automatización</span>;

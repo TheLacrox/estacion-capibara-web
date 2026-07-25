@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import {
   consumeBoxBlock,
   consumeColorBoxBlock,
+  getGuideMedicalGroupLabel,
   getGuideKeybindLabel,
   hasGuideKeybindLabel,
   parseGuideInline,
@@ -31,10 +32,6 @@ function loadGeneratedGuides(fileName) {
   const start = source.indexOf(marker) + marker.length;
   const end = source.indexOf("\n];", start) + 2;
   return JSON.parse(source.slice(start, end));
-}
-
-function loadGeneratedMonolithGuides() {
-  return loadGeneratedGuides("monolith-guides.ts");
 }
 
 test("parses self-closing keybinds inside nested formatting", () => {
@@ -124,6 +121,13 @@ test("turns protodata into a structured fallback instead of raw markup", () => {
   ]);
 });
 
+test("gives an attribute-less medical group embed a meaningful Spanish label", () => {
+  const [embed] = parseGuideInline("<GuideMedicalGroupEmbed/>");
+
+  assert.equal(embed.type, "embed");
+  assert.equal(getGuideMedicalGroupLabel(embed.attributes), "Recetas médicas del juego");
+});
+
 test("keeps escaped markup examples as literal text", () => {
   const nodes = parseGuideInline('Usa \\[bold\\]texto\\[\\/bold\\]');
   assert.deepEqual(nodes, [{ type: "text", value: "Usa [bold]texto[/bold]" }]);
@@ -196,20 +200,22 @@ test("splits adjacent block boundaries into independently consumable lines", () 
   );
 });
 
-test("consumes every non-literal inline tag in the generated Monolith corpus", () => {
+test("consumes every non-literal inline tag in both generated wiki corpora", () => {
   const failures = [];
   const rawMarkup = /\[(?:\/?[A-Za-z][^\]]*)\]|<[A-Z][A-Za-z0-9]+\b[^>]*\/>/;
 
-  for (const guide of loadGeneratedMonolithGuides()) {
-    if (guide.slug === "writing") continue;
-    for (const [lineIndex, sourceLine] of guide.content.split("\n").entries()) {
-      const line = sourceLine.replace(/<\/?(?:Box|ColorBox|Table)\b[^>]*>/g, "");
-      const rawText = walk(parseGuideInline(line))
-        .filter((node) => node.type === "text")
-        .map((node) => node.value)
-        .join("");
-      if (rawMarkup.test(rawText)) {
-        failures.push(`${guide.slug}:${lineIndex + 1}: ${rawText}`);
+  for (const fileName of ["guides.ts", "monolith-guides.ts"]) {
+    for (const guide of loadGeneratedGuides(fileName)) {
+      if (guide.slug === "writing") continue;
+      for (const [lineIndex, sourceLine] of guide.content.split("\n").entries()) {
+        const line = sourceLine.replace(/<\/?(?:Box|ColorBox|Table)\b[^>]*>/g, "");
+        const rawText = walk(parseGuideInline(line))
+          .filter((node) => node.type === "text")
+          .map((node) => node.value)
+          .join("");
+        if (rawMarkup.test(rawText)) {
+          failures.push(`${fileName}:${guide.slug}:${lineIndex + 1}: ${rawText}`);
+        }
       }
     }
   }
