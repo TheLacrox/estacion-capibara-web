@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Badge } from "@/components/ui/Badge";
-import { guideIdToSlug } from "@/data/guide-lookup";
-import { entitySprites } from "@/data/entity-sprites";
-import { monolithGuideIdToSlug } from "@/data/monolith-guide-lookup";
-import { monolithEntitySprites } from "@/data/monolith-entity-sprites";
+import { guideIdToSlug, guideSlugsToMeta } from "@/data/guide-lookup";
+import { entitySpriteLabels, entitySprites } from "@/data/entity-sprites";
+import { monolithGuideIdToSlug, monolithGuideSlugsToMeta } from "@/data/monolith-guide-lookup";
+import { monolithEntitySpriteLabels, monolithEntitySprites } from "@/data/monolith-entity-sprites";
 import {
   consumeBoxBlock,
   consumeColorBoxBlock,
+  getGuideEmbedLabel,
+  getGuideEntityLabel,
   getGuideMedicalGroupLabel,
   getGuideKeybindLabel,
+  getGuideProtoDataLabel,
   parseGuideInline,
   splitGuideBlockLines,
   type GuideInlineNode,
@@ -26,12 +29,9 @@ interface GuideMarkupProps {
 interface GuideMarkupContext {
   basePath: string;
   guideIdToSlug: Record<string, string>;
+  guideSlugsToMeta: Record<string, { title: string }>;
+  entityLabels: Record<string, string>;
   entitySprites: Record<string, string>;
-}
-
-// Humanize a PascalCase entity/reagent name: "Dylovene" → "Dylovene", "UnstableMutagen" → "Unstable Mutagen"
-function humanize(name: string): string {
-  return name.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
 }
 
 // ─── Block-level parser (shared between top-level and Table internals) ───
@@ -199,15 +199,16 @@ function parseBlocks(
               const captionMatch = embed.match(/Caption="([^"]*)"/);
               const entity = entityMatch?.[1] || "Unknown";
               const caption = captionMatch?.[1] || "";
+              const accessibleLabel = getGuideEntityLabel(caption, entity, context.entityLabels);
               const spriteSrc = context.entitySprites[entity];
               return (
                 <div key={idx} className="entity-embed group/entity flex flex-col items-center gap-2 px-4 py-3 rounded-sm border border-grid-line bg-space-void/50 min-w-[140px] hover:border-neon-cyan/30 hover:bg-hull-panel/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.06)]">
                   <div className="w-32 h-32 rounded-sm bg-hull-panel border border-grid-line flex items-center justify-center relative overflow-hidden">
                     {spriteSrc ? (
-                      <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-28 h-28 object-contain sprite-hover" style={{ imageRendering: "pixelated", animation: "sprite-float 4s ease-in-out infinite", animationDelay: `${idx * 0.3}s` }} />
+                      <img src={spriteSrc} alt={`Sprite de ${accessibleLabel} - Space Station 14`} className="w-28 h-28 object-contain sprite-hover" style={{ imageRendering: "pixelated", animation: "sprite-float 4s ease-in-out infinite", animationDelay: `${idx * 0.3}s` }} />
                     ) : (
                       <span className="text-hazard-yellow text-base font-bold">
-                        {entity.slice(0, 2).toUpperCase()}
+                        OBJ
                       </span>
                     )}
                   </div>
@@ -253,14 +254,14 @@ function parseBlocks(
       const entityMatch = trimmed.match(/Entity="([^"]+)"/);
       const captionMatch = trimmed.match(/Caption="([^"]*)"/);
       const entity = entityMatch?.[1] || "Unknown";
-      const caption = captionMatch?.[1] || entity;
+      const caption = getGuideEntityLabel(captionMatch?.[1] || "", entity, context.entityLabels);
       const spriteSrc = context.entitySprites[entity];
       elements.push(
         <div key={keyRef.current++} className="entity-embed inline-flex items-center gap-2 my-2 group/se relative">
           {spriteSrc && (
-            <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-16 h-16 object-contain sprite-hover" style={{ imageRendering: "pixelated" }} />
+            <img src={spriteSrc} alt={`Sprite de ${caption} - Space Station 14`} className="w-16 h-16 object-contain sprite-hover" style={{ imageRendering: "pixelated" }} />
           )}
-          <Badge color="var(--color-hazard-yellow)">{caption || entity}</Badge>
+          <Badge color="var(--color-hazard-yellow)">{caption}</Badge>
         </div>
       );
       i++;
@@ -290,6 +291,10 @@ export function GuideMarkup({
     basePath,
     guideIdToSlug:
       source === "monolith" ? monolithGuideIdToSlug : guideIdToSlug,
+    guideSlugsToMeta:
+      source === "monolith" ? monolithGuideSlugsToMeta : guideSlugsToMeta,
+    entityLabels:
+      source === "monolith" ? monolithEntitySpriteLabels : entitySpriteLabels,
     entitySprites:
       source === "monolith" ? monolithEntitySprites : entitySprites,
   };
@@ -322,7 +327,7 @@ function renderInlineNodes(
       case "heading":
         return <span key={key} className="text-lg font-heading font-bold">{children}</span>;
       case "click":
-        return <kbd key={key} title={`Acción del juego: ${node.value}`} className="inline-flex items-center px-2 py-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-neon-cyan">{children}</kbd>;
+        return <kbd key={key} title="Acción indicada en la guía" className="inline-flex items-center px-2 py-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-neon-cyan">{children}</kbd>;
       case "textlink": {
         const targetSlug = context.guideIdToSlug[node.linkId];
         return targetSlug ? (
@@ -330,7 +335,7 @@ function renderInlineNodes(
             {node.label}
           </Link>
         ) : (
-          <span key={key} className="text-neon-cyan" title={`Guía: ${node.linkId}`}>{node.label}</span>
+          <span key={key} className="text-neon-cyan" title="Referencia de guía no disponible">{node.label}</span>
         );
       }
       case "keybind": {
@@ -338,12 +343,14 @@ function renderInlineNodes(
         return <kbd key={key} title={`Control configurado: ${label}`} className="inline-flex items-center px-2 py-0.5 mx-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-hazard-yellow">{label}</kbd>;
       }
       case "protodata":
-        return <span key={key} title={`Componente: ${node.component || "sin especificar"}`} className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Dato del juego: {humanize(node.prototype)} · {humanize(node.member)}</span>;
+        return <span key={key} title="Referencia técnica del juego" className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">{getGuideProtoDataLabel(node)}</span>;
       case "bullet":
         return <span key={key} className="text-hazard-yellow" aria-hidden="true">•</span>;
       case "guide": {
         const targetSlug = context.guideIdToSlug[node.guideId];
-        const label = humanize(node.guideId);
+        const label = targetSlug
+          ? context.guideSlugsToMeta[targetSlug]?.title ?? "Guía relacionada"
+          : "Guía relacionada";
         return targetSlug ? <Link key={key} href={`${context.basePath}/${targetSlug}`} className="text-neon-cyan underline underline-offset-2">{label}</Link> : <span key={key}>{label}</span>;
       }
       case "embed":
@@ -360,7 +367,7 @@ function renderEmbed(
 ): ReactNode {
   if (name === "GuideEntityEmbed") {
     const entity = attributes.entity || "Unknown";
-    const caption = attributes.caption || entity;
+    const caption = getGuideEntityLabel(attributes.caption || "", entity, context.entityLabels);
     const spriteSrc = context.entitySprites[entity];
     return (
       <span key={key} className="entity-embed inline-flex items-center gap-1.5 mx-0.5 align-middle group/ie">
@@ -370,20 +377,18 @@ function renderEmbed(
     );
   }
 
-  const value = attributes.reagent || attributes.group || attributes.discipline || "";
-  if (name === "GuideReagentEmbed") return <Badge key={key} color="var(--color-success-green)">{humanize(value)}</Badge>;
-  if (name === "GuideReagentGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">Grupo de reactivos: {humanize(value)}</span>;
+  if (name === "GuideReagentEmbed") return <Badge key={key} color="var(--color-success-green)">{getGuideEmbedLabel(name, attributes)}</Badge>;
+  if (name === "GuideReagentGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">{getGuideEmbedLabel(name, attributes)}</span>;
   if (name === "GuideMedicalGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">{getGuideMedicalGroupLabel(attributes)}</span>;
-  if (name === "GuideTechDisciplineEmbed") return <Badge key={key} color="var(--color-nebula-purple)">{humanize(value)}</Badge>;
-  if (name === "GuideMicrowaveGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">Recetas: {humanize(value)}</span>;
-  if (name === "GuideAutomationSlotsEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Tabla de automatización</span>;
+  if (name === "GuideTechDisciplineEmbed") return <Badge key={key} color="var(--color-nebula-purple)">{getGuideEmbedLabel(name, attributes)}</Badge>;
+  if (name === "GuideMicrowaveGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">{getGuideEmbedLabel(name, attributes)}</span>;
+  if (name === "GuideAutomationSlotsEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">{getGuideEmbedLabel(name, attributes)}</span>;
   if (name === "CommandButton") {
-    const label = attributes.text?.includes("controls") ? "Abrir controles" : humanize(attributes.text || "Comando");
-    return <kbd key={key} title={`Comando del juego: ${attributes.command || ""}`} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-neon-cyan/30 bg-neon-cyan/5 text-xs font-mono text-neon-cyan">{label}</kbd>;
+    const label = attributes.text?.includes("controls") ? "Abrir controles" : "Ejecutar comando";
+    return <kbd key={key} title="Comando del juego" className="inline-flex items-center px-3 py-1.5 rounded-sm border border-neon-cyan/30 bg-neon-cyan/5 text-xs font-mono text-neon-cyan">{label}</kbd>;
   }
 
-  const label = humanize(name.replace(/^Guide/, "").replace(/Embed$/, ""));
-  return <span key={key} className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Contenido del juego: {label}</span>;
+  return <span key={key} className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">{getGuideEmbedLabel(name, attributes)}</span>;
 }
 
 function parseInline(text: string, context: GuideMarkupContext): ReactNode {

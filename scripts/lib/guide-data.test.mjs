@@ -205,3 +205,34 @@ test("supports explicit aliases for source guide paths with incorrect casing", (
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
 });
+
+test("transforms guide content before resolving titles and pages", () => {
+  let transformContext;
+  const collection = buildGuideCollection({
+    entries: new Map([
+      [
+        "Root",
+        {
+          id: "Root",
+          name: "Root",
+          text: "/Root.xml",
+          children: [],
+        },
+      ],
+    ]),
+    rootIds: ["Root"],
+    readContent: () => "# English title\nContenido",
+    transformContent: (content, context) => {
+      transformContext = context;
+      return content.replace("English title", "Título español");
+    },
+  });
+
+  assert.equal(collection.pages[0].title, "Título español");
+  assert.match(collection.pages[0].content, /Título español/);
+  assert.deepEqual(transformContext, {
+    id: "Root",
+    slug: "root",
+    textPath: "/Root.xml",
+  });
+});

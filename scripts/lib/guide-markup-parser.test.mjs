@@ -5,7 +5,10 @@ import { readFileSync } from "node:fs";
 import {
   consumeBoxBlock,
   consumeColorBoxBlock,
+  getGuideEntityLabel,
+  getGuideEmbedLabel,
   getGuideMedicalGroupLabel,
+  getGuideProtoDataLabel,
   getGuideKeybindLabel,
   hasGuideKeybindLabel,
   parseGuideInline,
@@ -126,6 +129,45 @@ test("gives an attribute-less medical group embed a meaningful Spanish label", (
 
   assert.equal(embed.type, "embed");
   assert.equal(getGuideMedicalGroupLabel(embed.attributes), "Recetas médicas del juego");
+  assert.equal(
+    getGuideMedicalGroupLabel({ group: "UnknownInternalMedicalGroup" }),
+    "Recetas médicas del juego"
+  );
+});
+
+test("uses a Spanish fallback instead of exposing an entity prototype ID", () => {
+  assert.equal(getGuideEntityLabel("", "GasVentPump"), "Objeto del juego");
+  assert.equal(getGuideEntityLabel("bomba de ventilación", "GasVentPump"), "bomba de ventilación");
+  assert.equal(
+    getGuideEntityLabel("", "GasVentPump", { GasVentPump: "bomba de ventilación" }),
+    "bomba de ventilación"
+  );
+});
+
+test("describes known protodata in Spanish without exposing internal IDs", () => {
+  assert.equal(
+    getGuideProtoDataLabel({ prototype: "GasVentPump", member: "MaxPressure" }),
+    "Dato del juego: presión máxima de la bomba de ventilación"
+  );
+  assert.equal(
+    getGuideProtoDataLabel({ prototype: "UnknownPrototype", member: "UnknownMember" }),
+    "Dato técnico del juego no disponible"
+  );
+});
+
+test("localizes known embed values and uses Spanish fallbacks for unknown IDs", () => {
+  assert.equal(
+    getGuideEmbedLabel("GuideReagentGroupEmbed", { group: "Botanical" }),
+    "Grupo de reactivos: Botánica"
+  );
+  assert.equal(
+    getGuideEmbedLabel("GuideTechDisciplineEmbed", { discipline: "CivilianServices" }),
+    "Servicios civiles"
+  );
+  assert.equal(
+    getGuideEmbedLabel("GuideReagentEmbed", { reagent: "UnknownInternalReagent" }),
+    "Reactivo del juego"
+  );
 });
 
 test("keeps escaped markup examples as literal text", () => {

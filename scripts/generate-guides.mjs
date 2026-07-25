@@ -17,6 +17,7 @@ import {
   loadFluentMessages,
   loadGuideEntries,
 } from "./lib/guide-data.mjs";
+import { localizeGuideContent } from "./lib/guide-localization.mjs";
 
 const TITLE_OVERRIDES = {
   Admins: "Admins",
@@ -53,6 +54,7 @@ const monolithResourcesRoot = findResourcesRoot("MONOLITH_RESOURCES_ROOT", [
 
 const sources = [
   {
+    id: "estacion",
     label: "Estación Capibara",
     resourcesRoot: estacionResourcesRoot,
     yamlNamespaces: ["", "_Capibara", "_Goobstation"],
@@ -71,6 +73,7 @@ const sources = [
     },
   },
   {
+    id: "monolith",
     label: "Monolith Capibara",
     resourcesRoot: monolithResourcesRoot,
     yamlNamespaces: [
@@ -212,6 +215,11 @@ function generateSource(source) {
     readContent: createGuideContentReader(resourcesRoot, {
       pathAliases: source.pathAliases,
     }),
+    transformContent: (content, context) =>
+      localizeGuideContent(content, {
+        source: source.id,
+        slug: context.slug,
+      }),
     titleOverrides: source.titleOverrides,
     localizedNames,
     fallbackToRawName: source.fallbackToRawName,

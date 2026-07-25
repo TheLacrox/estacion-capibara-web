@@ -23,6 +23,23 @@ export function getGuideKeybindLabel(action: string): string;
 
 export function getGuideMedicalGroupLabel(attributes: Record<string, string>): string;
 
+export function getGuideEntityLabel(
+  caption: string,
+  entity?: string,
+  localizedLabels?: Record<string, string>
+): string;
+
+export function getGuideProtoDataLabel(data?: {
+  prototype?: string;
+  component?: string;
+  member?: string;
+}): string;
+
+export function getGuideEmbedLabel(
+  name: string,
+  attributes?: Record<string, string>
+): string;
+
 export function consumeBoxBlock(
   lines: string[],
   startIndex: number

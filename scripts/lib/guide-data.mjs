@@ -155,6 +155,7 @@ export function buildGuideCollection({
   rootIds,
   virtualRoot = null,
   readContent,
+  transformContent = (content) => content,
   titleOverrides = {},
   localizedNames = {},
   fallbackToRawName = true,
@@ -172,14 +173,19 @@ export function buildGuideCollection({
     }
 
     visited.add(id);
-    const content = readContent(entry.text || "");
+    const slug = slugify(id);
+    const content = transformContent(readContent(entry.text || ""), {
+      id: entry.id,
+      slug,
+      textPath: entry.text || "",
+    });
     const children = (entry.children || [])
       .map(buildNode)
       .filter(Boolean);
 
     return {
       id,
-      slug: slugify(id),
+      slug,
       title: resolveTitle(
         entry,
         content,

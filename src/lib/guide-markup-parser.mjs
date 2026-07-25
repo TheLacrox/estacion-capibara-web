@@ -61,6 +61,143 @@ const GUIDE_KEYBIND_LABELS = Object.freeze({
   ZoomOut: "Alejar",
 });
 
+const GUIDE_REAGENT_LABELS = Object.freeze({
+  UnstableMutagen: "Mutágeno inestable",
+  Cryoxadone: "Cryoxadone",
+  Dylovene: "Dylovene",
+  Phalanximine: "Phalanximine",
+  Bruizine: "Bruizine",
+  Puncturase: "Puncturase",
+  Lacerinol: "Lacerinol",
+  Razorium: "Razorium",
+  Oil: "Aceite",
+  Ash: "Ceniza",
+  SulfuricAcid: "Ácido sulfúrico",
+  Aloxadone: "Aloxadone",
+  Doxarubixadone: "Doxarubixadone",
+  Dexalin: "Dexalin",
+  Leporazine: "Leporazine",
+  Necrosol: "Necrosol",
+  Opporozidone: "Opporozidone",
+  SpaceCleaner: "Limpiador espacial",
+  Ammonia: "Amoníaco",
+  Romerol: "Romerol",
+  Ambuzol: "Ambuzol",
+  AmbuzolPlus: "Ambuzol Plus",
+  Phenoxzine: "Phenoxzine",
+  Meroxzine: "Meroxzine",
+  GastroToxin: "Toxina gástrica",
+  Toxin: "Toxina",
+  Impedrezene: "Impedrezene",
+  ChloralHydrate: "Hidrato de cloral",
+  Letoferol: "Letoferol",
+  NaturalLetoferol: "Letoferol natural",
+  Mesotaxinide: "Mesotaxinide",
+  Mesophenerol: "Mesophenerol",
+  ProtoLetoferol: "Protoletoferol",
+  Stelloxadone: "Stelloxadone",
+  Traumoxadone: "Traumoxadone",
+  Bicaridine: "Bicaridine",
+  Kelotane: "Kelotane",
+  Dermaline: "Dermaline",
+  Inaprovaline: "Inaprovaline",
+  DexalinPlus: "Dexalin Plus",
+  Iron: "Hierro",
+  Epinephrine: "Epinefrina",
+  Hyronalin: "Hyronalin",
+  Arithrazine: "Arithrazine",
+  Tricordrazine: "Tricordrazine",
+  TranexamicAcid: "Ácido tranexámico",
+  Oculine: "Oculine",
+});
+
+const GUIDE_REAGENT_GROUP_LABELS = Object.freeze({
+  Botanical: "Botánica",
+  Elements: "Elementos",
+  Medicine: "Medicina",
+  Narcotics: "Narcóticos",
+  Pyrotechnic: "Pirotecnia",
+  Toxins: "Toxinas",
+  Foods: "Alimentos",
+  Biological: "Biológicos",
+  Special: "Especiales",
+  Unknown: "Desconocidos",
+  Drinks: "Bebidas",
+});
+
+const GUIDE_TECH_DISCIPLINE_LABELS = Object.freeze({
+  Industrial: "Industrial",
+  Arsenal: "Arsenal",
+  Experimental: "Experimental",
+  CivilianServices: "Servicios civiles",
+});
+
+const GUIDE_RECIPE_GROUP_LABELS = Object.freeze({
+  ArcFurnace: "Horno de arco",
+  Pizza: "Pizzas",
+  Savory: "Platos salados",
+  Breads: "Panes",
+  Breakfast: "Desayunos",
+  Moth: "Cocina de polillas",
+  Pasta: "Pasta",
+  Dessert: "Postres",
+  Soup: "Sopas",
+  Pie: "Tartas",
+  BarsAndCookies: "Barritas y galletas",
+  Cake: "Pasteles",
+  Salad: "Ensaladas",
+  Medicinal: "Medicinales",
+  Other: "Otras",
+  Secret: "Secretas",
+});
+
+const GUIDE_PROTODATA_PROTOTYPE_LABELS = Object.freeze({
+  Firelock: "de la compuerta cortafuegos",
+  GasOutletInjector: "del inyector de salida de gas",
+  GasPressurePump: "de la bomba de presión",
+  GasPressureRegulator: "del regulador de presión",
+  GasThermoMachineFreezer: "de la máquina térmica refrigeradora",
+  GasThermoMachineHellfireFreezer: "de la máquina térmica de alta temperatura",
+  GasVentPump: "de la bomba de ventilación",
+  GasVolumePump: "de la bomba volumétrica",
+  GeneratorRTG: "del generador RTG",
+  PortableGeneratorJrPacman: "del generador portátil J.R.P.A.C.M.A.N.",
+  PortableGeneratorSuperPacman: "del generador portátil S.U.P.E.R.P.A.C.M.A.N.",
+  PortableScrubber: "del depurador portátil",
+  PressureControlledValve: "de la válvula controlada por presión",
+  SMESAdvanced: "del SMES avanzado",
+  SMESBasic: "del SMES básico",
+  SolarPanel: "del panel solar",
+  SolarPanelPlasma: "del panel solar de plasma",
+  SolarPanelUranium: "del panel solar de uranio",
+  SpaceHeater: "del calentador espacial",
+  StorageCanister: "de la bombona de almacenamiento",
+  SyndicateBomb: "de la bomba del Sindicato",
+});
+
+const GUIDE_PROTODATA_MEMBER_LABELS = Object.freeze({
+  DefaultExternalBound: "límite externo predeterminado",
+  EnergyLeakPercentage: "porcentaje de fuga de energía",
+  HeatCapacity: "capacidad térmica",
+  HigherThreshold: "umbral superior",
+  LongestDelayOption: "retardo máximo",
+  MaxCharge: "carga máxima",
+  MaxPressure: "presión máxima",
+  MaxSupply: "suministro máximo",
+  MaxTargetPower: "potencia objetivo máxima",
+  MaxTargetPressure: "presión objetivo máxima",
+  MaxTemperature: "temperatura máxima",
+  MaxTransferRate: "tasa de transferencia máxima",
+  MinTemperature: "temperatura mínima",
+  PressureThreshold: "umbral de presión",
+  ShortestDelayOption: "retardo mínimo",
+  TemperatureThreshold: "umbral de temperatura",
+  TemperatureTolerance: "tolerancia de temperatura",
+  Threshold: "umbral de activación",
+  UnderPressureLockoutThreshold: "umbral de bloqueo por baja presión",
+  Volume: "volumen",
+});
+
 export function hasGuideKeybindLabel(action) {
   return Object.hasOwn(GUIDE_KEYBIND_LABELS, action);
 }
@@ -69,14 +206,49 @@ export function getGuideKeybindLabel(action) {
   return GUIDE_KEYBIND_LABELS[action] ?? "Control del juego";
 }
 
-export function getGuideMedicalGroupLabel(attributes) {
-  const group = attributes.Group ?? attributes.group;
-  if (!group) return "Recetas médicas del juego";
-  const readableGroup = group
-    .replace(/([a-záéíóúñ])([A-Z])/g, "$1 $2")
-    .replace(/[_-]+/g, " ")
-    .trim();
-  return `Grupo médico: ${readableGroup}`;
+export function getGuideMedicalGroupLabel() {
+  return "Recetas médicas del juego";
+}
+
+export function getGuideEntityLabel(caption, entity, localizedLabels = {}) {
+  return caption?.trim() || localizedLabels[entity] || "Objeto del juego";
+}
+
+export function getGuideProtoDataLabel(data = {}) {
+  const prototype = GUIDE_PROTODATA_PROTOTYPE_LABELS[data.prototype];
+  const member = GUIDE_PROTODATA_MEMBER_LABELS[data.member];
+  if (!prototype || !member) return "Dato técnico del juego no disponible";
+  return `Dato del juego: ${member} ${prototype}`;
+}
+
+export function getGuideEmbedLabel(name, attributes = {}) {
+  const value =
+    attributes.reagent ??
+    attributes.group ??
+    attributes.discipline ??
+    "";
+
+  if (name === "GuideReagentEmbed") {
+    return GUIDE_REAGENT_LABELS[value] ?? "Reactivo del juego";
+  }
+  if (name === "GuideReagentGroupEmbed") {
+    const label = GUIDE_REAGENT_GROUP_LABELS[value] ?? "grupo del juego";
+    return `Grupo de reactivos: ${label}`;
+  }
+  if (name === "GuideMedicalGroupEmbed") {
+    return getGuideMedicalGroupLabel(attributes);
+  }
+  if (name === "GuideTechDisciplineEmbed") {
+    return GUIDE_TECH_DISCIPLINE_LABELS[value] ?? "Disciplina tecnológica";
+  }
+  if (name === "GuideMicrowaveGroupEmbed") {
+    const label = GUIDE_RECIPE_GROUP_LABELS[value] ?? "grupo del juego";
+    return `Recetas: ${label}`;
+  }
+  if (name === "GuideAutomationSlotsEmbed") {
+    return "Tabla de automatización";
+  }
+  return "Contenido complementario del juego";
 }
 
 function appendNode(container, node) {
