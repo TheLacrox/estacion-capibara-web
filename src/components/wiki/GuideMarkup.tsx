@@ -7,6 +7,14 @@ import { guideIdToSlug } from "@/data/guide-lookup";
 import { entitySprites } from "@/data/entity-sprites";
 import { monolithGuideIdToSlug } from "@/data/monolith-guide-lookup";
 import { monolithEntitySprites } from "@/data/monolith-entity-sprites";
+import {
+  consumeBoxBlock,
+  consumeColorBoxBlock,
+  getGuideKeybindLabel,
+  parseGuideInline,
+  splitGuideBlockLines,
+  type GuideInlineNode,
+} from "@/lib/guide-markup-parser.mjs";
 
 interface GuideMarkupProps {
   content: string;
@@ -23,14 +31,6 @@ interface GuideMarkupContext {
 // Humanize a PascalCase entity/reagent name: "Dylovene" → "Dylovene", "UnstableMutagen" → "Unstable Mutagen"
 function humanize(name: string): string {
   return name.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
-}
-
-// Strip <Box ...> and </Box> wrappers, returning just inner text
-function stripBoxTags(text: string): string {
-  return text
-    .replace(/<Box[^>]*>/g, "")
-    .replace(/<\/Box>/g, "")
-    .trim();
 }
 
 // ─── Block-level parser (shared between top-level and Table internals) ───
@@ -150,50 +150,47 @@ function parseBlocks(
       continue;
     }
 
-    // <ColorBox> blocks — collect until </ColorBox>
-    if (trimmed === "<ColorBox>" || trimmed.startsWith("<ColorBox ")) {
+    // <ColorBox> blocks — consume single-line and multiline forms.
+    if (trimmed.startsWith("<ColorBox>") || trimmed.startsWith("<ColorBox ")) {
       const colorMatch = trimmed.match(/Color="([^"]+)"/);
       const color = colorMatch?.[1] || undefined;
-      const boxLines: string[] = [];
-      i++;
-      while (i < lines.length && !lines[i].trim().startsWith("</ColorBox>")) {
-        boxLines.push(lines[i]);
-        i++;
-      }
-      i++; // skip </ColorBox>
+      const consumed = consumeColorBoxBlock(lines, i);
+      const innerElements = parseBlocks(consumed?.innerLines ?? [], keyRef, context);
+      i = consumed?.nextIndex ?? i + 1;
 
-      // Strip inner <Box ...> wrappers and join text
-      const text = stripBoxTags(boxLines.map((l) => l.trim()).filter(Boolean).join(" "));
-      if (text) {
+      if (innerElements.length > 0) {
         elements.push(
           <div
             key={keyRef.current++}
-            className="px-4 py-3 text-sm font-mono"
+            className="px-4 py-3 text-sm font-mono space-y-2"
             style={color ? { backgroundColor: `${color}20`, borderLeft: `3px solid ${color}` } : { backgroundColor: "rgba(255,255,255,0.05)", borderLeft: "3px solid var(--color-grid-line)" }}
           >
-            {parseInline(text, context)}
+            {innerElements}
           </div>
         );
+      }
+      if (consumed?.trailingText.trim()) {
+        elements.push(...parseBlocks([consumed.trailingText], keyRef, context));
       }
       continue;
     }
 
-    // <Box> containers — collect until </Box>
-    if (trimmed === "<Box>" || trimmed.startsWith("<Box ")) {
-      const boxContent: string[] = [];
-      i++;
-      while (i < lines.length && !lines[i].trim().startsWith("</Box>")) {
-        boxContent.push(lines[i]);
-        i++;
-      }
-      i++; // skip </Box>
+    // <Box> containers — consume balanced, nested, and single-line forms.
+    if (trimmed.startsWith("<Box>") || trimmed.startsWith("<Box ")) {
+      const consumed = consumeBoxBlock(lines, i);
+      const boxContent = consumed?.innerLines ?? [];
+      i = consumed?.nextIndex ?? i + 1;
 
       // Check if Box contains GuideEntityEmbeds
       const embeds = boxContent
         .map((l) => l.trim())
         .filter((l) => l.startsWith("<GuideEntityEmbed"));
+      const otherContent = boxContent
+        .map((l) => l.trim())
+        .filter(Boolean)
+        .filter((l) => !l.startsWith("<GuideEntityEmbed"));
 
-      if (embeds.length > 0) {
+      if (embeds.length > 0 && otherContent.length === 0) {
         elements.push(
           <div key={keyRef.current++} className="flex flex-wrap gap-3 my-4 justify-center">
             {embeds.map((embed, idx) => {
@@ -224,15 +221,17 @@ function parseBlocks(
           </div>
         );
       } else {
-        // Box with non-embed content (like quoted text)
-        const text = boxContent.map((l) => l.trim()).filter(Boolean).join(" ");
-        if (text) {
+        const innerElements = parseBlocks(boxContent, keyRef, context);
+        if (innerElements.length > 0) {
           elements.push(
-            <div key={keyRef.current++} className="my-4 p-4 rounded-sm border border-grid-line bg-hull-panel/50 text-sm font-mono">
-              {parseInline(text, context)}
+            <div key={keyRef.current++} className="my-4 p-4 rounded-sm border border-grid-line bg-hull-panel/50 text-sm font-mono space-y-2">
+              {innerElements}
             </div>
           );
         }
+      }
+      if (consumed?.trailingText.trim()) {
+        elements.push(...parseBlocks([consumed.trailingText], keyRef, context));
       }
       continue;
     }
@@ -284,7 +283,7 @@ export function GuideMarkup({
   source = "estacion",
   basePath = "/wiki",
 }: GuideMarkupProps) {
-  const lines = content.split("\n");
+  const lines = splitGuideBlockLines(content);
   const keyRef = { current: 0 };
   const context: GuideMarkupContext = {
     basePath,
@@ -299,220 +298,93 @@ export function GuideMarkup({
 
 // ─── Inline markup parser ───
 
-function parseInline(text: string, context: GuideMarkupContext): ReactNode {
-  const parts: ReactNode[] = [];
-  let remaining = text;
-  let inlineKey = 0;
+function renderInlineNodes(
+  nodes: GuideInlineNode[],
+  context: GuideMarkupContext,
+  keyPrefix = "i"
+): ReactNode {
+  return nodes.map((node, index) => {
+    const key = `${keyPrefix}${index}`;
+    const children = "children" in node
+      ? renderInlineNodes(node.children, context, `${key}-`)
+      : null;
 
-  while (remaining.length > 0) {
-    // Find the earliest markup match
-    let earliest: { index: number; type: string; match: RegExpMatchArray } | null = null;
-
-    const patterns: [string, RegExp][] = [
-      ["color", /\[color=([^\]]+)\]([\s\S]*?)\[\/color\]/],
-      ["bold", /\[bold\]([\s\S]*?)\[\/bold\]/],
-      ["italic", /\[italic\]([\s\S]*?)\[\/italic\]/],
-      ["head", /\[head=\d+\]([\s\S]*?)\[\/head\]/],
-      ["textlink", /\[textlink="([^"]+)"\s+link="([^"]+)"\]/],
-      ["keybind", /\[keybind="([^"]+)"\]/],
-      ["entityEmbed", /<GuideEntityEmbed\s+Entity="([^"]+)"(?:\s+Caption="([^"]*)")?(?:\s+State="([^"]*)")?\s*\/>/],
-      ["reagentEmbed", /<GuideReagentEmbed\s+Reagent="([^"]+)"\s*\/>/],
-      ["reagentGroupEmbed", /<GuideReagentGroupEmbed\s+Group="([^"]+)"\s*\/>/],
-      ["techDisciplineEmbed", /<GuideTechDisciplineEmbed\s+Discipline="([^"]+)"\s*\/>/],
-      ["automationSlots", /<GuideAutomationSlotsEmbed\s*\/>/],
-      ["microwaveGroupEmbed", /<GuideMicrowaveGroupEmbed\s+Group="([^"]+)"\s*\/>/],
-      ["commandButton", /<CommandButton\s+Text="([^"]+)"\s+Command="([^"]+)"\s*\/>/],
-      ["genericEmbed", /<([A-Z][A-Za-z0-9]+)\b[^>]*\/>/],
-    ];
-
-    for (const [type, pattern] of patterns) {
-      const match = remaining.match(pattern);
-      if (match && match.index !== undefined) {
-        if (!earliest || match.index < earliest.index) {
-          earliest = { index: match.index, type, match };
-        }
-      }
-    }
-
-    if (!earliest) {
-      // No more markup, push remaining text
-      parts.push(remaining);
-      break;
-    }
-
-    // Push text before the match
-    if (earliest.index > 0) {
-      parts.push(remaining.slice(0, earliest.index));
-    }
-
-    const { type, match } = earliest;
-
-    switch (type) {
-      case "color": {
-        const color = match[1];
-        const inner = match[2];
-        parts.push(
-          <span key={`i${inlineKey++}`} style={{ color }}>
-            {parseInline(inner, context)}
-          </span>
-        );
-        break;
-      }
-      case "bold": {
-        const inner = match[1];
-        parts.push(
-          <strong key={`i${inlineKey++}`} className="font-bold text-text-primary">
-            {parseInline(inner, context)}
-          </strong>
-        );
-        break;
-      }
-      case "italic": {
-        const inner = match[1];
-        parts.push(
-          <em key={`i${inlineKey++}`} className="italic">
-            {parseInline(inner, context)}
-          </em>
-        );
-        break;
-      }
-      case "head": {
-        const inner = match[1];
-        parts.push(
-          <span key={`i${inlineKey++}`} className="text-lg font-heading font-bold">
-            {parseInline(inner, context)}
-          </span>
-        );
-        break;
-      }
+    switch (node.type) {
+      case "text":
+        return node.value;
+      case "strong":
+        return <strong key={key} className="font-bold text-text-primary">{children}</strong>;
+      case "emphasis":
+        return <em key={key} className="italic">{children}</em>;
+      case "color":
+        return <span key={key} style={{ color: node.value }}>{children}</span>;
+      case "heading":
+        return <span key={key} className="text-lg font-heading font-bold">{children}</span>;
+      case "click":
+        return <kbd key={key} title={`Acción del juego: ${node.value}`} className="inline-flex items-center px-2 py-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-neon-cyan">{children}</kbd>;
       case "textlink": {
-        const label = match[1];
-        const linkId = match[2];
-        const targetSlug = context.guideIdToSlug[linkId];
-        if (targetSlug) {
-          parts.push(
-            <Link
-              key={`i${inlineKey++}`}
-              href={`${context.basePath}/${targetSlug}`}
-              className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors"
-            >
-              {label}
-            </Link>
-          );
-        } else {
-          parts.push(
-            <span key={`i${inlineKey++}`} className="text-neon-cyan" title={`Guide: ${linkId}`}>
-              {label}
-            </span>
-          );
-        }
-        break;
+        const targetSlug = context.guideIdToSlug[node.linkId];
+        return targetSlug ? (
+          <Link key={key} href={`${context.basePath}/${targetSlug}`} className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors">
+            {node.label}
+          </Link>
+        ) : (
+          <span key={key} className="text-neon-cyan" title={`Guía: ${node.linkId}`}>{node.label}</span>
+        );
       }
       case "keybind": {
-        const keyName = match[1];
-        parts.push(
-          <kbd
-            key={`i${inlineKey++}`}
-            className="inline-flex items-center px-2 py-0.5 mx-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-hazard-yellow"
-          >
-            {keyName}
-          </kbd>
-        );
-        break;
+        const label = getGuideKeybindLabel(node.value);
+        return <kbd key={key} title={`Control configurado: ${label}`} className="inline-flex items-center px-2 py-0.5 mx-0.5 rounded-sm border border-grid-line bg-hull-panel text-xs font-mono text-hazard-yellow">{label}</kbd>;
       }
-      case "entityEmbed": {
-        const entity = match[1];
-        const caption = match[2] || entity;
-        const spriteSrc = context.entitySprites[entity];
-        parts.push(
-          <span key={`i${inlineKey++}`} className="entity-embed inline-flex items-center gap-1.5 mx-0.5 align-middle group/ie">
-            {spriteSrc && (
-              <img src={spriteSrc} alt={`Sprite de ${caption || entity} - Space Station 14`} className="w-12 h-12 object-contain inline-block sprite-hover" style={{ imageRendering: "pixelated" }} />
-            )}
-            <Badge color="var(--color-hazard-yellow)">
-              {caption || entity}
-            </Badge>
-          </span>
-        );
-        break;
+      case "protodata":
+        return <span key={key} title={`Componente: ${node.component || "sin especificar"}`} className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Dato del juego: {humanize(node.prototype)} · {humanize(node.member)}</span>;
+      case "bullet":
+        return <span key={key} className="text-hazard-yellow" aria-hidden="true">•</span>;
+      case "guide": {
+        const targetSlug = context.guideIdToSlug[node.guideId];
+        const label = humanize(node.guideId);
+        return targetSlug ? <Link key={key} href={`${context.basePath}/${targetSlug}`} className="text-neon-cyan underline underline-offset-2">{label}</Link> : <span key={key}>{label}</span>;
       }
-      case "reagentEmbed": {
-        const reagent = match[1];
-        parts.push(
-          <Badge key={`i${inlineKey++}`} color="var(--color-success-green)">
-            {humanize(reagent)}
-          </Badge>
-        );
-        break;
-      }
-      case "reagentGroupEmbed": {
-        const group = match[1];
-        parts.push(
-          <span key={`i${inlineKey++}`} className="inline-flex items-center gap-1.5 my-1 px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">
-            Grupo de reactivos: {humanize(group)}
-          </span>
-        );
-        break;
-      }
-      case "techDisciplineEmbed": {
-        const discipline = match[1];
-        parts.push(
-          <Badge key={`i${inlineKey++}`} color="var(--color-nebula-purple)">
-            {humanize(discipline)}
-          </Badge>
-        );
-        break;
-      }
-      case "automationSlots": {
-        parts.push(
-          <span key={`i${inlineKey++}`} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">
-            [Tabla de Automatizacion]
-          </span>
-        );
-        break;
-      }
-      case "microwaveGroupEmbed": {
-        const group = match[1];
-        parts.push(
-          <span key={`i${inlineKey++}`} className="inline-flex items-center gap-1.5 my-1 px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">
-            Recetas: {humanize(group)}
-          </span>
-        );
-        break;
-      }
-      case "commandButton": {
-        const label = match[1].includes("controls")
-          ? "Abrir controles"
-          : humanize(match[1]);
-        parts.push(
-          <kbd
-            key={`i${inlineKey++}`}
-            title={`Comando del juego: ${match[2]}`}
-            className="inline-flex items-center px-3 py-1.5 rounded-sm border border-neon-cyan/30 bg-neon-cyan/5 text-xs font-mono text-neon-cyan"
-          >
-            {label}
-          </kbd>
-        );
-        break;
-      }
-      case "genericEmbed": {
-        const label = humanize(
-          match[1].replace(/^Guide/, "").replace(/Embed$/, "")
-        );
-        parts.push(
-          <span
-            key={`i${inlineKey++}`}
-            className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted"
-          >
-            Contenido del juego: {label}
-          </span>
-        );
-        break;
-      }
+      case "embed":
+        return renderEmbed(node.name, node.attributes, context, key);
     }
+  });
+}
 
-    remaining = remaining.slice(earliest.index + match[0].length);
+function renderEmbed(
+  name: string,
+  attributes: Record<string, string>,
+  context: GuideMarkupContext,
+  key: string
+): ReactNode {
+  if (name === "GuideEntityEmbed") {
+    const entity = attributes.entity || "Unknown";
+    const caption = attributes.caption || entity;
+    const spriteSrc = context.entitySprites[entity];
+    return (
+      <span key={key} className="entity-embed inline-flex items-center gap-1.5 mx-0.5 align-middle group/ie">
+        {spriteSrc && <img src={spriteSrc} alt={`Sprite de ${caption} - Space Station 14`} className="w-12 h-12 object-contain inline-block sprite-hover" style={{ imageRendering: "pixelated" }} />}
+        <Badge color="var(--color-hazard-yellow)">{caption}</Badge>
+      </span>
+    );
   }
 
-  return parts.length === 1 && typeof parts[0] === "string" ? parts[0] : <>{parts}</>;
+  const value = attributes.reagent || attributes.group || attributes.discipline || "";
+  if (name === "GuideReagentEmbed") return <Badge key={key} color="var(--color-success-green)">{humanize(value)}</Badge>;
+  if (name === "GuideReagentGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">Grupo de reactivos: {humanize(value)}</span>;
+  if (name === "GuideMedicalGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-success-green">Grupo médico: {humanize(value)}</span>;
+  if (name === "GuideTechDisciplineEmbed") return <Badge key={key} color="var(--color-nebula-purple)">{humanize(value)}</Badge>;
+  if (name === "GuideMicrowaveGroupEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">Recetas: {humanize(value)}</span>;
+  if (name === "GuideAutomationSlotsEmbed") return <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Tabla de automatización</span>;
+  if (name === "CommandButton") {
+    const label = attributes.text?.includes("controls") ? "Abrir controles" : humanize(attributes.text || "Comando");
+    return <kbd key={key} title={`Comando del juego: ${attributes.command || ""}`} className="inline-flex items-center px-3 py-1.5 rounded-sm border border-neon-cyan/30 bg-neon-cyan/5 text-xs font-mono text-neon-cyan">{label}</kbd>;
+  }
+
+  const label = humanize(name.replace(/^Guide/, "").replace(/Embed$/, ""));
+  return <span key={key} className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted">Contenido del juego: {label}</span>;
+}
+
+function parseInline(text: string, context: GuideMarkupContext): ReactNode {
+  return renderInlineNodes(parseGuideInline(text), context);
 }
