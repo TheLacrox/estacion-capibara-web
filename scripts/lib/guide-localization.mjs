@@ -69,6 +69,19 @@ function replaceAttribute(tag, attributeName, translate) {
   });
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function replaceVisibleLiteral(text, english, spanish) {
+  if (!/^[\p{L}\p{N}_]+$/u.test(english)) return text.replaceAll(english, spanish);
+  const pattern = new RegExp(
+    `(?<![\\p{L}\\p{N}_])${escapeRegExp(english)}(?![\\p{L}\\p{N}_])`,
+    "gu"
+  );
+  return text.replace(pattern, spanish);
+}
+
 function localizeVisibleText(content, route) {
   const translations = CATALOG_GROUPS.text[route] ?? {};
   const fallbackTranslations = route ? new Map() : UNAMBIGUOUS_FALLBACKS.text;
@@ -81,7 +94,7 @@ function localizeVisibleText(content, route) {
       for (const [english, spanish] of [...entries].sort(
         ([left], [right]) => right.length - left.length
       )) {
-        localized = localized.replaceAll(english, spanish);
+        localized = replaceVisibleLiteral(localized, english, spanish);
       }
       return localized;
     })

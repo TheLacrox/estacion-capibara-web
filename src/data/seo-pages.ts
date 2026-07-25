@@ -51,7 +51,7 @@ export const SEO_PAGES: SeoPageData[] = [
       { label: "Antagonistas", href: "/wiki/antagonists" },
       { label: "Sistema de Economía", href: "/wiki/capibara-economy" },
       { label: "Guía de Supervivencia", href: "/wiki/survival" },
-      { label: "Reglas del Servidor", href: "/wiki/rules" },
+      { label: "Procedimiento Operativo Estándar", href: "/wiki/sop" },
     ],
     relatedPages: [
       "como-jugar-space-station-14",
@@ -255,7 +255,7 @@ export const SEO_PAGES: SeoPageData[] = [
     relatedWikiLinks: [
       { label: "Guía de Supervivencia", href: "/wiki/survival" },
       { label: "Trabajos y Roles", href: "/wiki/jobs" },
-      { label: "Reglas del Servidor", href: "/wiki/rules" },
+      { label: "Procedimiento Operativo Estándar", href: "/wiki/sop" },
       { label: "Sistema de Economía", href: "/wiki/capibara-economy" },
     ],
     relatedPages: [
@@ -387,7 +387,7 @@ export const SEO_PAGES: SeoPageData[] = [
     relatedWikiLinks: [
       { label: "Cómo Empezar", href: "/wiki/survival" },
       { label: "Trabajos y Roles", href: "/wiki/jobs" },
-      { label: "Guía Básica", href: "/wiki/controls" },
+      { label: "La Estación y los Turnos", href: "/wiki/ss14" },
     ],
     relatedPages: [
       "como-jugar-space-station-14",

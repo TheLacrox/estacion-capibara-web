@@ -1008,7 +1008,7 @@ export const monolithGuideSlugsToMeta: Record<string, GuideMeta> = {
     "slug": "breakfast-recipes"
   },
   "moth-recipes": {
-    "title": "Alimentos para Moth",
+    "title": "Alimentos para polillas",
     "slug": "moth-recipes"
   },
   "pasta-recipes": {

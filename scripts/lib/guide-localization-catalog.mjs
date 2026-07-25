@@ -327,6 +327,9 @@ export const GUIDE_LOCALIZATION_CATALOG = Object.freeze({
     }
   },
   "supplemental_entity_caption_translations": {
+    "/wiki/bingle/": {
+      "Bingle Pit": "hoyo bingle"
+    },
     "/wiki-monolith/expeditions/": {
       "and that guy": "y ese tipo"
     }
@@ -334,9 +337,41 @@ export const GUIDE_LOCALIZATION_CATALOG = Object.freeze({
   "supplemental_textlink_label_translations": {
     "/wiki/chef-sop/": {
       "Close Quarters Cooking (CQC)": "Cocina cuerpo a cuerpo (CQC)"
+    },
+    "/wiki/medical-sop/": {
+      "Medical Doctor": "Médico"
+    },
+    "/wiki/science-sop/": {
+      "Roboticist": "Roboticista"
     }
   },
   "supplemental_ui_literal_translations": {
+    "/wiki/xenomorph-play-guide/": {
+      "Lo generates con el tiempo": "Lo generas con el tiempo"
+    },
+    "/wiki/capibara-economy-objectives/": {
+      "Insertar mineral crudo en un procesador de mineral (ore processor / lathe con puntos de minería).": "Insertar mineral crudo en un procesador o torno que otorgue puntos de minería.",
+      "Cosechar plantas de las bandejas de hidroponía (plant holders).": "Cosechar plantas de las bandejas de hidroponía.",
+      "Solo se cuentan máquinas que tengan el componente de puntos de minería (MiningPointsLathe) — lathes normales no cuentan.": "Solo se cuentan máquinas que tengan el componente de puntos de minería; los tornos normales no cuentan.",
+      "\"Medicine\"": "\"Medicina\"",
+      "crates": "cajas",
+      "bounty": "recompensa",
+      "grid": "red"
+    },
+    "/wiki/defusal/": {
+      "un multitool": "una multiherramienta"
+    },
+    "/wiki/automation/": {
+      "Auto Start": "Inicio automático",
+      "Started": "Iniciado",
+      "Completed": "Completado",
+      "Failed": "Fallido",
+      "Moved": "Movido",
+      "Start": "Iniciar"
+    },
+    "/wiki/chaplain/": {
+      "Plasteel": "plastiacero"
+    },
     "/wiki/capibara-botany-machines/": {
       "Tier 1": "Nivel 1",
       "Tier 2": "Nivel 2",
@@ -349,24 +384,99 @@ export const GUIDE_LOCALIZATION_CATALOG = Object.freeze({
     },
     "/wiki-monolith/air-alarms/": {
       "Filtering (Wide)": "Filtrado (amplio)",
-      "Filtering": "Filtrado"
+      "Filtering": "Filtrado",
+      "None": "Ninguno",
+      "Fill": "Llenado",
+      "Panic": "Pánico",
+      "\"Auto\"": "\"Automático\"",
+      "WideNet": "alcance ampliado"
+    },
+    "/wiki-monolith/air-vent/": {
+      "PressureBounds": "límites de presión",
+      "PressureBound": "Límite de presión",
+      "ExternalBound": "Límite externo",
+      "InternalBound": "Límite interno",
+      "NoBound": "Sin límites",
+      "Both": "Ambos"
+    },
+    "/wiki-monolith/air-scrubber/": {
+      "WideNet": "alcance ampliado"
     },
     "/wiki-monolith/automation/": {
-      "canisteres de gas": "bombonas de gas"
+      "los canisteres de gas": "las bombonas de gas",
+      "Colector de Radiación y puertos de canisteres de gas": "Colector de radiación y puertos de bombonas de gas",
+      "un tile de entrada": "una casilla de entrada",
+      "un tile de salida": "una casilla de salida",
+      "un tile al otro": "una casilla a la otra",
+      "RadEmpty": "Depósito vacío",
+      "RadLow": "Presión baja",
+      "RadHigh": "Presión alta"
     },
     "/wiki-monolith/machine-upgrading/": {
       "Piezas de Stock": "Piezas de repuesto"
     },
     "/wiki-monolith/networking/": {
-      "Clear": "Limpiar"
+      "el Multitool": "la multiherramienta",
+      "Network Configurator": "configurador de red",
+      "Multitool": "multiherramienta",
+      "Clear": "Limpiar",
+      "Set": "Establecer",
+      "Add": "Añadir",
+      "Copy": "Copiar",
+      "Show": "Mostrar"
     },
     "/wiki-monolith/piloting/": {
       "DOCK": "ACOPLAR"
+    },
+    "/wiki-monolith/utility-surgeries/": {
+      "Hemostat": "pinza hemostática",
+      "Cautery": "cauterio"
+    },
+    "/wiki-monolith/moth-recipes/": {
+      "Alimentos para Moth": "Alimentos para polillas",
+      "Moths": "polillas"
+    },
+    "/wiki-monolith/food-recipes/": {
+      "Alimentos para Moth": "Alimentos para polillas"
+    },
+    "/wiki-monolith/vox/": {
+      "un canister de nitrógeno": "una bombona de nitrógeno",
+      "canister de nitrógeno": "bombona de nitrógeno"
+    },
+    "/wiki-monolith/mobs-expedition-guide-carps/": {
+      "Small": "Pequeña",
+      "Poison": "Veneno"
+    },
+    "/wiki-monolith/airlock-security/": {
+      "plasteel": "plastiacero"
+    },
+    "/wiki-monolith/nuclear-materials/": {
+      "Plasteel": "Plastiacero"
+    },
+    "/wiki-monolith/gas-mining/": {
+      "Los canisters": "Las bombonas",
+      "canisters": "bombonas",
+      "plasteel": "plastiacero"
+    },
+    "/wiki-monolith/monolith-rule-roleplay-seven-safe-zones/": {
+      "Medical Dispatch": "Centro de Despacho Médico"
+    },
+    "/wiki-monolith/monolith-rule-roleplay-nine-commanding-roles/": {
+      "Medical Dispatch": "Centro de Despacho Médico"
     }
   },
   "entity_label_translations": {
     "Salvage Vendor": "dispensador de salvamento",
-    "Plasteel Chef's Dinnerware Vendor": "dispensador de vajilla de plastiacero del chef"
+    "Plasteel Chef's Dinnerware Vendor": "dispensador de vajilla de plastiacero del chef",
+    "Canister de nitrógeno": "bombona de nitrógeno",
+    "canister de plasma": "bombona de plasma",
+    "canister de pluoxium": "bombona de pluoxium",
+    "Canister de óxido nitroso": "bombona de óxido nitroso",
+    "Syndicate Recruitment": "Reclutamiento del Sindicato",
+    "Enlist": "Alístate",
+    "Revolt": "Revuelta",
+    "multitool": "multiherramienta",
+    "plasteel": "plastiacero"
   },
   "entity_id_label_translations": {
     "AirlockCommandGlass": "esclusa de mando de cristal",
