@@ -24,6 +24,13 @@ const WhatIsSS14Section = dynamic(
     }))
 );
 
+const ServersSection = dynamic(
+  () =>
+    import("@/components/sections/ServersSection").then((m) => ({
+      default: m.ServersSection,
+    }))
+);
+
 const ServerFeaturesSection = dynamic(
   () =>
     import("@/components/sections/ServerFeaturesSection").then((m) => ({
@@ -118,6 +125,7 @@ export default function Home() {
         </div>
         <HeroSection />
         <WhatIsSS14Section />
+        <ServersSection />
         <ServerFeaturesSection />
         <DepartmentsSection />
         <ScheduleSection />
@@ -132,6 +140,20 @@ export default function Home() {
           <p>
             Estación Capibara es el servidor español de SS14 (Space Station 14) con la comunidad hispanohablante
             más activa. 30+ roles, 8 departamentos, sistema económico con Spesos, antagonistas y objetivos cooperativos.
+          </p>
+          <h2>Dos servidores en español</h2>
+          <p>
+            La comunidad reúne Estación Capibara, centrada en departamentos y
+            rondas dentro de una estación, y Capibara Monolith, una edición
+            comunitaria en español de Monolith Station con naves, expediciones,
+            economía persistente, facciones y artillería naval.
+          </p>
+          <p>
+            Consulta la{" "}
+            <Link href="/wiki-monolith/" style={{ color: "#00ffff" }}>
+              Wiki de Capibara Monolith
+            </Link>{" "}
+            para conocer sus sistemas y reglas.
           </p>
           <h2>¿Qué es Space Station 14?</h2>
           <p>

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { MessageCircle, Users, Clock } from "lucide-react";
+import { BookOpen, Server, Users } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { GlowText } from "@/components/ui/GlowText";
@@ -13,27 +13,28 @@ import { SECTION_IDS, DISCORD_URL } from "@/lib/constants";
 
 const stats = [
   {
-    icon: Users,
-    value: 67,
-    suffix: "+",
-    label: "Roles Disponibles",
-  },
-  {
-    icon: MessageCircle,
-    value: 8,
+    icon: Server,
+    value: 2,
     suffix: "",
-    label: "Departamentos",
+    label: "Servidores",
   },
   {
-    icon: Clock,
-    value: 100,
-    suffix: "%",
-    label: "En Español",
+    icon: BookOpen,
+    value: 2,
+    suffix: "",
+    label: "Wikis en Español",
+  },
+  {
+    icon: Users,
+    value: 1,
+    suffix: "",
+    label: "Comunidad",
   },
 ];
 
 const badges = [
-  { label: "100% en Español", color: "#F1C40F" },
+  { label: "Soporte en Español", color: "#F1C40F" },
+  { label: "Dos Servidores", color: "#8E44AD" },
   { label: "Admins Activos", color: "#2ECC71" },
   { label: "Comunidad Amigable", color: "#00ffff" },
 ];

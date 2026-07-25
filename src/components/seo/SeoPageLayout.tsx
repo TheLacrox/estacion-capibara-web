@@ -31,10 +31,16 @@ export function SeoPageLayout({ children, jsonLd }: SeoPageLayoutProps) {
           </Link>
           <div className="flex items-center gap-4">
             <Link
-              href="/wiki"
+              href="/wiki/"
               className="text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
             >
-              Wiki
+              Wiki Estación
+            </Link>
+            <Link
+              href="/wiki-monolith/"
+              className="hidden md:block text-sm font-mono text-neon-cyan hover:text-hazard-yellow transition-colors"
+            >
+              Wiki Monolith
             </Link>
             <a
               href={DISCORD_URL}

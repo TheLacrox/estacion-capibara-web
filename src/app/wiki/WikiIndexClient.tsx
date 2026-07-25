@@ -4,9 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Users, Skull, Book, ShoppingCart, Shield, Swords,
-  type LucideIcon, Zap,
+  type LucideIcon, Zap, Rocket, FlaskConical,
 } from "lucide-react";
-import { type GuideTreeNode } from "@/data/guides";
+import type { GuideTreeNode } from "@/data/guide-types";
 
 const CATEGORY_META: Record<string, { icon: LucideIcon; color: string; description: string }> = {
   jobs: {
@@ -44,6 +44,41 @@ const CATEGORY_META: Record<string, { icon: LucideIcon; color: string; descripti
     color: "var(--color-dept-command)",
     description: "Procedimientos Operativos Estándar",
   },
+  "new-player": {
+    icon: Book,
+    color: "var(--color-success-green)",
+    description: "Primeros pasos en el Sector Colossus",
+  },
+  nf14: {
+    icon: Rocket,
+    color: "var(--color-neon-cyan)",
+    description: "Naves, expediciones y sistemas de frontera",
+  },
+  economy: {
+    icon: ShoppingCart,
+    color: "var(--color-hazard-yellow)",
+    description: "Dinero, comercio y economía persistente",
+  },
+  factions: {
+    icon: Shield,
+    color: "var(--color-nebula-purple)",
+    description: "Facciones, diplomacia y conflicto del sector",
+  },
+  "basic-lore": {
+    icon: Book,
+    color: "#a78bfa",
+    description: "Historia y cronología del Sector Colossus",
+  },
+  references: {
+    icon: FlaskConical,
+    color: "#fb923c",
+    description: "Referencias de sistemas, recetas y materiales",
+  },
+  "monolith-ruleset": {
+    icon: Shield,
+    color: "var(--color-alert-red)",
+    description: "Reglas específicas de Capibara Monolith",
+  },
 };
 
 const cardVariants = {
@@ -57,9 +92,21 @@ const cardVariants = {
 
 interface WikiIndexClientProps {
   tree: GuideTreeNode;
+  basePath?: string;
+  title?: string;
+  highlightedTitle?: string;
+  description?: string;
+  hasRootPage?: boolean;
 }
 
-export function WikiIndexClient({ tree }: WikiIndexClientProps) {
+export function WikiIndexClient({
+  tree,
+  basePath = "/wiki",
+  title = "Wiki de Estación",
+  highlightedTitle = "Capibara",
+  description = "Guías completas del servidor en español. Selecciona una categoría para comenzar o usa el buscador en la barra lateral.",
+  hasRootPage = true,
+}: WikiIndexClientProps) {
   return (
     <div>
       <motion.div
@@ -69,16 +116,15 @@ export function WikiIndexClient({ tree }: WikiIndexClientProps) {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">
-          Wiki de Estación{" "}
-          <span className="text-hazard-yellow text-glow-yellow">Capibara</span>
+          {title}{" "}
+          <span className="text-hazard-yellow text-glow-yellow">{highlightedTitle}</span>
         </h1>
         <p className="text-text-muted font-mono text-sm max-w-xl">
-          Guías completas del servidor en español. Selecciona una categoría
-          para comenzar o usa el buscador en la barra lateral.
+          {description}
         </p>
         <div className="mt-4 flex items-center gap-2 text-xs font-mono text-neon-cyan/60">
           <Zap size={12} className="animate-pulse-glow" />
-          <span>{countNodes(tree)} guías en la base de datos</span>
+          <span>{countNodes(tree) - (hasRootPage ? 0 : 1)} guías en la base de datos</span>
         </div>
       </motion.div>
 
@@ -98,7 +144,7 @@ export function WikiIndexClient({ tree }: WikiIndexClientProps) {
               animate="visible"
             >
               <Link
-                href={`/wiki/${child.slug}`}
+                href={`${basePath}/${child.slug}`}
                 className="wiki-card holo-shimmer group relative block p-5 rounded-sm border border-grid-line bg-hull-panel/80 backdrop-blur-sm overflow-hidden"
                 style={{
                   borderColor: `color-mix(in srgb, ${color} 30%, var(--color-grid-line))`,

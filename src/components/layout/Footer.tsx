@@ -24,9 +24,9 @@ export function Footer() {
               </span>
             </div>
             <p className="text-text-muted text-sm font-mono">
-              Servidor de Space Station 14 en español.
+              Comunidad de Space Station 14 en español.
               <br />
-              Fork de Goob Station.
+              Dos servidores, dos wikis, una comunidad.
             </p>
           </div>
 
@@ -83,42 +83,58 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Wiki */}
+          {/* Wikis */}
           <div>
             <h3 className="font-heading font-bold text-text-primary mb-4 uppercase tracking-wider text-sm">
-              Wiki
+              Wikis
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/wiki/jobs/"
+                  href="/wiki/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
-                  Trabajos
+                  Wiki Estación
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/wiki/antagonists/"
-                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                  href="/wiki-monolith/"
+                  className="text-neon-cyan text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
-                  Antagonistas
+                  Wiki Monolith
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/wiki/capibara-economy/"
+                  href="/wiki-monolith/nf14/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
-                  Economía
+                  Naves y Frontera
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/wiki/survival/"
+                  href="/wiki-monolith/economy/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
-                  Supervivencia
+                  Economía Monolith
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/wiki-monolith/factions/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Facciones
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/wiki-monolith/weapons-systems/"
+                  className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Artillería Naval
                 </Link>
               </li>
             </ul>
@@ -130,6 +146,14 @@ export function Footer() {
               Artículos
             </h3>
             <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/monolith-station-en-espanol/"
+                  className="text-neon-cyan text-sm font-mono hover:text-hazard-yellow transition-colors"
+                >
+                  Monolith Station en Español
+                </Link>
+              </li>
               <li>
                 <a
                   href="/que-es-space-station-14/"

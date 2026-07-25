@@ -6,11 +6,19 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Search, X, Book, Wrench, Shield, FlaskConical, Stethoscope, ShoppingCart, UtensilsCrossed, Users, Skull, type LucideIcon, Radio } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { type GuideTreeNode, guideTree } from "@/data/guides";
+import type { GuideTreeNode } from "@/data/guide-types";
 
 interface WikiSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  tree: GuideTreeNode;
+  basePath: string;
+  wikiLabel: string;
+  hasRootPage: boolean;
+  switcher: {
+    href: string;
+    label: string;
+  };
 }
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
@@ -25,6 +33,13 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   antagonists: Skull,
   survival: Book,
   "capibara-economy": ShoppingCart,
+  "new-player": Book,
+  nf14: Radio,
+  economy: ShoppingCart,
+  factions: Users,
+  "basic-lore": Book,
+  references: FlaskConical,
+  "monolith-ruleset": Shield,
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -37,15 +52,31 @@ const CATEGORY_COLORS: Record<string, string> = {
   service: "var(--color-dept-service)",
   antagonists: "var(--color-alert-red)",
   "capibara-economy": "var(--color-hazard-yellow)",
+  nf14: "var(--color-neon-cyan)",
+  economy: "var(--color-hazard-yellow)",
+  factions: "var(--color-nebula-purple)",
+  "monolith-ruleset": "var(--color-alert-red)",
 };
 
 function flattenTree(node: GuideTreeNode): GuideTreeNode[] {
   return [node, ...node.children.flatMap(flattenTree)];
 }
 
-function TreeNode({ node, depth = 0 }: { node: GuideTreeNode; depth?: number }) {
+function TreeNode({
+  node,
+  basePath,
+  depth = 0,
+}: {
+  node: GuideTreeNode;
+  basePath: string;
+  depth?: number;
+}) {
   const pathname = usePathname();
-  const currentSlug = pathname?.replace("/wiki/", "").replace(/\/$/, "") || "";
+  const currentSlug =
+    pathname
+      ?.slice(basePath.length)
+      .replace(/^\//, "")
+      .replace(/\/$/, "") || "";
   const isActive = currentSlug === node.slug;
   const hasChildren = node.children.length > 0;
 
@@ -75,7 +106,7 @@ function TreeNode({ node, depth = 0 }: { node: GuideTreeNode; depth?: number }) 
           </button>
         )}
         <Link
-          href={`/wiki/${node.slug}`}
+          href={`${basePath}/${node.slug}`}
           className={cn(
             "sidebar-active flex-1 flex items-center gap-2 px-2 py-1.5 text-sm font-mono rounded-sm transition-all duration-200 truncate relative",
             !hasChildren && "ml-6",
@@ -121,7 +152,12 @@ function TreeNode({ node, depth = 0 }: { node: GuideTreeNode; depth?: number }) 
             className={cn("ml-2 border-l border-grid-line overflow-hidden", depth > 2 && "ml-3")}
           >
             {node.children.map((child) => (
-              <TreeNode key={child.id} node={child} depth={depth + 1} />
+              <TreeNode
+                key={child.id}
+                node={child}
+                basePath={basePath}
+                depth={depth + 1}
+              />
             ))}
           </motion.div>
         )}
@@ -130,11 +166,25 @@ function TreeNode({ node, depth = 0 }: { node: GuideTreeNode; depth?: number }) 
   );
 }
 
-export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
+export function WikiSidebar({
+  isOpen,
+  onClose,
+  tree,
+  basePath,
+  wikiLabel,
+  hasRootPage,
+  switcher,
+}: WikiSidebarProps) {
   const [search, setSearch] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
 
-  const allNodes = useMemo(() => flattenTree(guideTree), []);
+  const allNodes = useMemo(
+    () =>
+      hasRootPage
+        ? flattenTree(tree)
+        : tree.children.flatMap((child) => flattenTree(child)),
+    [hasRootPage, tree]
+  );
 
   const filtered = useMemo(() => {
     if (!search.trim()) return null;
@@ -170,7 +220,7 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
       >
         {/* Header */}
         <div className="p-4 border-b border-grid-line flex items-center justify-between shrink-0">
-          <Link href="/wiki" className="flex items-center gap-2.5 group" onClick={onClose}>
+          <Link href={basePath} className="flex items-center gap-2.5 group" onClick={onClose}>
             <motion.div
               whileHover={{ rotate: 15, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -178,7 +228,7 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
               <Book size={18} className="text-hazard-yellow" />
             </motion.div>
             <span className="font-heading font-bold text-text-primary text-sm tracking-wider group-hover:text-hazard-yellow transition-colors">
-              WIKI
+              {wikiLabel}
             </span>
             <Radio size={10} className="text-neon-cyan animate-pulse-glow" />
           </Link>
@@ -239,7 +289,7 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
                     transition={{ delay: idx * 0.03, duration: 0.2 }}
                   >
                     <Link
-                      href={`/wiki/${node.slug}`}
+                      href={`${basePath}/${node.slug}`}
                       onClick={onClose}
                       className="block px-3 py-2 text-sm font-mono text-text-muted hover:text-text-primary hover:bg-hull-panel rounded-sm transition-all duration-200 truncate hover:translate-x-1"
                     >
@@ -259,12 +309,23 @@ export function WikiSidebar({ isOpen, onClose }: WikiSidebarProps) {
             )
           ) : (
             <div className="space-y-1">
-              {guideTree.children.map((child) => (
-                <TreeNode key={child.id} node={child} />
+              {tree.children.map((child) => (
+                <TreeNode key={child.id} node={child} basePath={basePath} />
               ))}
             </div>
           )}
         </nav>
+
+        <div className="px-3 pt-3 border-t border-grid-line shrink-0">
+          <Link
+            href={switcher.href}
+            onClick={onClose}
+            className="flex items-center justify-center gap-2 px-3 py-2 rounded-sm border border-neon-cyan/20 bg-neon-cyan/5 text-xs font-mono text-neon-cyan hover:text-hazard-yellow hover:border-hazard-yellow/30 transition-colors"
+          >
+            <Book size={13} />
+            {switcher.label}
+          </Link>
+        </div>
 
         {/* Footer link back to landing */}
         <div className="p-3 border-t border-grid-line shrink-0">

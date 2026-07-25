@@ -1,105 +1,23 @@
 /**
- * Build-time script: parses guidebook YAML (hierarchy) + XML (content)
- * and generates src/data/guides.ts with the full guide tree.
+ * Build-time guidebook generator for both Estación Capibara and Monolith
+ * Capibara. Each source keeps its own generated tree, content, and lookup maps.
  *
  * Usage: node scripts/generate-guides.mjs
+ * Optional roots:
+ *   ESTACION_RESOURCES_ROOT=/path/to/Resources
+ *   MONOLITH_RESOURCES_ROOT=/path/to/Resources
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
-import { join, resolve } from "path";
-import { parse as parseYaml } from "yaml";
+import { existsSync, writeFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 
-const SERVER_ROOT = resolve("../Estacion-Capibara/Resources");
-const OUTPUT_FILE = resolve("src/data/guides.ts");
-const LOOKUP_FILE = resolve("src/data/guide-lookup.ts");
+import {
+  buildGuideCollection,
+  createGuideContentReader,
+  loadFluentMessages,
+  loadGuideEntries,
+} from "./lib/guide-data.mjs";
 
-// Directories containing guidebook YAML prototypes
-const YAML_DIRS = [
-  join(SERVER_ROOT, "Prototypes/Guidebook"),
-  join(SERVER_ROOT, "Prototypes/_Capibara/Guidebook"),
-  join(SERVER_ROOT, "Prototypes/_Goobstation/Guidebook"),
-];
-
-// Base directory for XML content files
-const SERVERINFO_ROOT = join(SERVER_ROOT, "ServerInfo");
-
-// ─── Step 1: Parse all YAML files ───
-
-/** @type {Map<string, {id: string, name: string, text: string, children: string[]}>} */
-const entries = new Map();
-
-for (const dir of YAML_DIRS) {
-  if (!existsSync(dir)) {
-    console.warn(`YAML dir not found: ${dir}`);
-    continue;
-  }
-
-  const files = readdirSync(dir).filter((f) => f.endsWith(".yml"));
-  for (const file of files) {
-    const content = readFileSync(join(dir, file), "utf-8");
-    const docs = parseYaml(content);
-    if (!Array.isArray(docs)) continue;
-
-    for (const doc of docs) {
-      if (doc?.type !== "guideEntry" || !doc.id) continue;
-      // Later entries override earlier ones (Goob/Capibara can override base)
-      entries.set(doc.id, {
-        id: doc.id,
-        name: doc.name || doc.id,
-        text: doc.text || "",
-        children: doc.children || [],
-      });
-    }
-  }
-}
-
-console.log(`Parsed ${entries.size} guide entries from YAML`);
-
-// ─── Step 2: Read XML content for each entry ───
-
-function readXmlContent(textPath) {
-  if (!textPath) return "";
-  // textPath starts with /ServerInfo/...
-  const fullPath = join(SERVERINFO_ROOT, textPath.replace(/^\/ServerInfo\//, ""));
-  if (!existsSync(fullPath)) {
-    console.warn(`XML not found: ${fullPath}`);
-    return "";
-  }
-  const raw = readFileSync(fullPath, "utf-8");
-  // Strip SPDX comments and <Document> wrapper
-  const stripped = raw
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/<\/?Document>/g, "")
-    .trim();
-  return stripped;
-}
-
-// ─── Step 3: Build tree structure ───
-
-function slugify(id) {
-  // Convert CamelCase/PascalCase to kebab-case
-  return id
-    .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
-
-// Derive a readable display name from the guide ID
-function displayName(entry) {
-  // The `name` field is a localization key like "guide-entry-engineering", not useful
-  // We'll derive the name from the ID
-  const id = entry.id;
-  // Add spaces before capitals, handle acronyms
-  return id
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
-    .replace(/^Capibara\s?/, "")
-    .trim();
-}
-
-// Spanish title overrides for guides that lack a clear heading
 const TITLE_OVERRIDES = {
   Admins: "Admins",
   ScannersAndVessels: "Escáneres y Recipientes",
@@ -112,140 +30,210 @@ const TITLE_OVERRIDES = {
   XenomorphPlayGuide: "Guía de Juego Xenomorfo",
 };
 
-// Extract title from XML content (first # or ## heading)
-function extractTitle(content, id) {
-  // Check overrides first
-  if (TITLE_OVERRIDES[id]) return TITLE_OVERRIDES[id];
-  // Strip \r for Windows line endings
-  const clean = content.replace(/\r/g, "");
-  // Try # heading (with or without space after #)
-  const h1 = clean.match(/^#{1}\s*([^#\n].+)$/m);
-  if (h1) return h1[1].trim();
-  // Try ## heading as fallback
-  const h2 = clean.match(/^#{2}\s+(.+)$/m);
-  if (h2) return h2[1].trim();
-  return null;
+function findResourcesRoot(environmentVariable, candidates) {
+  const explicit = process.env[environmentVariable];
+  const paths = explicit ? [explicit] : candidates;
+  const resolvedPaths = paths.map((path) => resolve(path));
+  return (
+    resolvedPaths.find(
+      (path) =>
+        existsSync(join(path, "Prototypes")) &&
+        existsSync(join(path, "ServerInfo"))
+    ) ?? resolvedPaths[0]
+  );
 }
 
-function buildNode(id, visited = new Set()) {
-  if (visited.has(id)) return null;
-  visited.add(id);
+const estacionResourcesRoot = findResourcesRoot("ESTACION_RESOURCES_ROOT", [
+  "../Estacion-Capibara/Resources",
+]);
+const monolithResourcesRoot = findResourcesRoot("MONOLITH_RESOURCES_ROOT", [
+  "../../forge-projects/Monolith-Capibara-ESP/Resources",
+  "../Monolith-Capibara-ESP/Resources",
+]);
 
-  const entry = entries.get(id);
-  if (!entry) return null;
+const sources = [
+  {
+    label: "Estación Capibara",
+    resourcesRoot: estacionResourcesRoot,
+    yamlNamespaces: ["", "_Capibara", "_Goobstation"],
+    rootIds: ["SS14"],
+    virtualRoot: null,
+    titleOverrides: TITLE_OVERRIDES,
+    fallbackToRawName: false,
+    outputFile: resolve("src/data/guides.ts"),
+    lookupFile: resolve("src/data/guide-lookup.ts"),
+    exports: {
+      tree: "guideTree",
+      pages: "guidePages",
+      slugs: "allGuideSlugs",
+      idToSlug: "guideIdToSlug",
+      slugsToMeta: "guideSlugsToMeta",
+    },
+  },
+  {
+    label: "Monolith Capibara",
+    resourcesRoot: monolithResourcesRoot,
+    yamlNamespaces: [
+      "",
+      "_CE",
+      "_DV",
+      "_FarHorizons",
+      "_Goobstation",
+      "_NF",
+      "_Mono",
+      "_Capibara",
+    ],
+    rootIds: [
+      "NewPlayer",
+      "NF14",
+      "Jobs",
+      "Economy",
+      "Factions",
+      "BasicLore",
+      "References",
+      "MonolithRuleset",
+    ],
+    virtualRoot: {
+      id: "MonolithWiki",
+      slug: "monolith",
+      title: "Wiki de Monolith Capibara",
+    },
+    titleOverrides: {
+      NF14: "El Monolith llama",
+      NewPlayer: "Primeros pasos",
+      Jobs: "Trabajos y roles",
+      BasicLore: "Historia del sector",
+      MonolithRuleset: "Reglas de Monolith",
+      References: "Referencias",
+    },
+    pathAliases: {
+      "ServerInfo/_Mono/Guidebook/Factions/Minor_Factions.xml":
+        "ServerInfo/_Mono/Guidebook/Factions/minor_factions.xml",
+    },
+    fallbackToRawName: true,
+    outputFile: resolve("src/data/monolith-guides.ts"),
+    lookupFile: resolve("src/data/monolith-guide-lookup.ts"),
+    exports: {
+      tree: "monolithGuideTree",
+      pages: "monolithGuidePages",
+      slugs: "allMonolithGuideSlugs",
+      idToSlug: "monolithGuideIdToSlug",
+      slugsToMeta: "monolithGuideSlugsToMeta",
+    },
+  },
+];
 
-  const content = readXmlContent(entry.text);
-  const slug = slugify(id);
-  const title = extractTitle(content, id) || displayName(entry);
+function renderGuideModule(source, collection) {
+  const { exports } = source;
+  return `// AUTO-GENERATED by scripts/generate-guides.mjs — DO NOT EDIT
+// Run: npm run generate-guides
 
-  const children = [];
-  for (const childId of entry.children) {
-    const childNode = buildNode(childId, visited);
-    if (childNode) children.push(childNode);
-  }
+import type { GuidePage, GuideTreeNode } from "./guide-types";
+export type { GuidePage, GuideTreeNode } from "./guide-types";
 
-  return { id, slug, title, content, children };
-}
+export const ${exports.tree}: GuideTreeNode = ${JSON.stringify(collection.tree, null, 2)};
 
-// The root entry is "SS14"
-const rootEntry = entries.get("SS14");
-if (!rootEntry) {
-  console.error("Root entry 'SS14' not found!");
-  process.exit(1);
-}
+const guidePagesArray: GuidePage[] = ${JSON.stringify(collection.pages, null, 2)};
 
-const tree = buildNode("SS14");
-
-// ─── Step 4: Build flat index for quick lookup ───
-
-function collectAll(node, parent = null, path = []) {
-  const items = [];
-  const currentPath = [...path, { slug: node.slug, title: node.title }];
-  items.push({
-    id: node.id,
-    slug: node.slug,
-    title: node.title,
-    content: node.content,
-    parentSlug: parent?.slug || null,
-    breadcrumb: currentPath,
-    childSlugs: node.children.map((c) => c.slug),
-  });
-  for (const child of node.children) {
-    items.push(...collectAll(child, node, currentPath));
-  }
-  return items;
-}
-
-const allGuides = collectAll(tree);
-console.log(`Generated ${allGuides.length} guide pages`);
-
-// ─── Step 5: Write TypeScript file ───
-
-// Build the tree structure (without content, for sidebar)
-function buildTreeData(node) {
-  return {
-    id: node.id,
-    slug: node.slug,
-    title: node.title,
-    children: node.children.map(buildTreeData),
-  };
-}
-
-const treeData = buildTreeData(tree);
-
-const output = `// AUTO-GENERATED by scripts/generate-guides.mjs — DO NOT EDIT
-// Run: node scripts/generate-guides.mjs
-
-export interface GuideTreeNode {
-  id: string;
-  slug: string;
-  title: string;
-  children: GuideTreeNode[];
-}
-
-export interface GuidePage {
-  id: string;
-  slug: string;
-  title: string;
-  content: string;
-  parentSlug: string | null;
-  breadcrumb: { slug: string; title: string }[];
-  childSlugs: string[];
-}
-
-export const guideTree: GuideTreeNode = ${JSON.stringify(treeData, null, 2)};
-
-const guidePagesArray: GuidePage[] = ${JSON.stringify(allGuides, null, 2)};
-
-// Indexed by slug for O(1) lookup
-export const guidePages: Record<string, GuidePage> = Object.fromEntries(
-  guidePagesArray.map((g) => [g.slug, g])
+export const ${exports.pages}: Record<string, GuidePage> = Object.fromEntries(
+  guidePagesArray.map((guide) => [guide.slug, guide])
 );
 
-// All slugs for generateStaticParams
-export const allGuideSlugs: string[] = guidePagesArray.map((g) => g.slug);
+export const ${exports.slugs}: string[] = guidePagesArray.map((guide) => guide.slug);
 `;
-
-writeFileSync(OUTPUT_FILE, output, "utf-8");
-console.log(`Written to ${OUTPUT_FILE}`);
-
-// ─── Step 6: Write lightweight lookup file for client components ───
-
-const idToSlug = {};
-const slugToMeta = {};
-for (const g of allGuides) {
-  idToSlug[g.id] = g.slug;
-  slugToMeta[g.slug] = { title: g.title, slug: g.slug };
 }
 
-const lookupOutput = `// AUTO-GENERATED — DO NOT EDIT
+function renderLookupModule(source, pages) {
+  const { exports } = source;
+  const idToSlug = {};
+  const slugsToMeta = {};
+
+  for (const page of pages) {
+    idToSlug[page.id] = page.slug;
+    slugsToMeta[page.slug] = { title: page.title, slug: page.slug };
+  }
+
+  return `// AUTO-GENERATED by scripts/generate-guides.mjs — DO NOT EDIT
 // Lightweight lookup maps for client components (no guide content)
-// Run: node scripts/generate-guides.mjs
+// Run: npm run generate-guides
 
-export const guideIdToSlug: Record<string, string> = ${JSON.stringify(idToSlug, null, 2)};
+import type { GuideMeta } from "./guide-types";
 
-export const guideSlugsToMeta: Record<string, { title: string; slug: string }> = ${JSON.stringify(slugToMeta, null, 2)};
+export const ${exports.idToSlug}: Record<string, string> = ${JSON.stringify(idToSlug, null, 2)};
+
+export const ${exports.slugsToMeta}: Record<string, GuideMeta> = ${JSON.stringify(slugsToMeta, null, 2)};
 `;
+}
 
-writeFileSync(LOOKUP_FILE, lookupOutput, "utf-8");
-console.log(`Written lookup to ${LOOKUP_FILE}`);
+function assertUniqueSlugs(label, pages) {
+  const seen = new Map();
+  for (const page of pages) {
+    const previousId = seen.get(page.slug);
+    if (previousId) {
+      throw new Error(
+        `${label} has duplicate slug '${page.slug}' for '${previousId}' and '${page.id}'`
+      );
+    }
+    seen.set(page.slug, page.id);
+  }
+}
+
+function generateSource(source) {
+  const { resourcesRoot } = source;
+  if (
+    !existsSync(join(resourcesRoot, "Prototypes")) ||
+    !existsSync(join(resourcesRoot, "ServerInfo"))
+  ) {
+    if (existsSync(source.outputFile) && existsSync(source.lookupFile)) {
+      console.warn(
+        `[guides] ${source.label} source not found at ${resourcesRoot}; keeping tracked generated files.`
+      );
+      return;
+    }
+    throw new Error(
+      `${source.label} resources were not found at ${resourcesRoot}. Set the corresponding *_RESOURCES_ROOT variable.`
+    );
+  }
+
+  const yamlDirectories = source.yamlNamespaces.map((namespace) =>
+    namespace
+      ? join(resourcesRoot, "Prototypes", namespace, "Guidebook")
+      : join(resourcesRoot, "Prototypes", "Guidebook")
+  );
+  const entries = loadGuideEntries(yamlDirectories);
+  const localizedNames = loadFluentMessages(
+    join(resourcesRoot, "Locale", "es-ES")
+  );
+  const missingEntries = new Set();
+  const collection = buildGuideCollection({
+    entries,
+    rootIds: source.rootIds,
+    virtualRoot: source.virtualRoot,
+    readContent: createGuideContentReader(resourcesRoot, {
+      pathAliases: source.pathAliases,
+    }),
+    titleOverrides: source.titleOverrides,
+    localizedNames,
+    fallbackToRawName: source.fallbackToRawName,
+    onMissingEntry: (id) => missingEntries.add(id),
+  });
+
+  assertUniqueSlugs(source.label, collection.pages);
+  writeFileSync(source.outputFile, renderGuideModule(source, collection), "utf8");
+  writeFileSync(
+    source.lookupFile,
+    renderLookupModule(source, collection.pages),
+    "utf8"
+  );
+
+  console.log(
+    `[guides] ${source.label}: ${entries.size} entries parsed, ${collection.pages.length} pages written.`
+  );
+  if (missingEntries.size > 0) {
+    console.warn(
+      `[guides] ${source.label}: skipped missing child entries: ${[...missingEntries].sort().join(", ")}`
+    );
+  }
+}
+
+for (const source of sources) generateSource(source);

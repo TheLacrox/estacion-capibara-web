@@ -5,9 +5,19 @@ import { type ReactNode } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { guideIdToSlug } from "@/data/guide-lookup";
 import { entitySprites } from "@/data/entity-sprites";
+import { monolithGuideIdToSlug } from "@/data/monolith-guide-lookup";
+import { monolithEntitySprites } from "@/data/monolith-entity-sprites";
 
 interface GuideMarkupProps {
   content: string;
+  source?: "estacion" | "monolith";
+  basePath?: string;
+}
+
+interface GuideMarkupContext {
+  basePath: string;
+  guideIdToSlug: Record<string, string>;
+  entitySprites: Record<string, string>;
 }
 
 // Humanize a PascalCase entity/reagent name: "Dylovene" → "Dylovene", "UnstableMutagen" → "Unstable Mutagen"
@@ -25,7 +35,11 @@ function stripBoxTags(text: string): string {
 
 // ─── Block-level parser (shared between top-level and Table internals) ───
 
-function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] {
+function parseBlocks(
+  lines: string[],
+  keyRef: { current: number },
+  context: GuideMarkupContext
+): ReactNode[] {
   const elements: ReactNode[] = [];
   let i = 0;
 
@@ -61,25 +75,25 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
       if (level === 1) {
         elements.push(
           <h1 key={keyRef.current++} id={id} className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-6 mt-2 first:mt-0">
-            {parseInline(text)}
+            {parseInline(text, context)}
           </h1>
         );
       } else if (level === 2) {
         elements.push(
           <h2 key={keyRef.current++} id={id} className="text-2xl font-heading font-bold text-text-primary mb-4 mt-8 border-b border-grid-line pb-2">
-            {parseInline(text)}
+            {parseInline(text, context)}
           </h2>
         );
       } else if (level === 3) {
         elements.push(
           <h3 key={keyRef.current++} id={id} className="text-xl font-heading font-bold text-text-primary mb-3 mt-6">
-            {parseInline(text)}
+            {parseInline(text, context)}
           </h3>
         );
       } else {
         elements.push(
           <h4 key={keyRef.current++} id={id} className="text-lg font-heading font-bold text-text-primary mb-2 mt-4">
-            {parseInline(text)}
+            {parseInline(text, context)}
           </h4>
         );
       }
@@ -99,7 +113,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
           {listItems.map((item, idx) => (
             <li key={idx} className="flex gap-2 text-text-primary/90 font-mono text-sm leading-relaxed">
               <span className="text-hazard-yellow mt-0.5 shrink-0">{">"}</span>
-              <span>{parseInline(item)}</span>
+              <span>{parseInline(item, context)}</span>
             </li>
           ))}
         </ul>
@@ -120,7 +134,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
       i++; // skip </Table>
 
       // Recursively parse inner content as blocks
-      const innerElements = parseBlocks(tableContent, keyRef);
+      const innerElements = parseBlocks(tableContent, keyRef, context);
 
       if (innerElements.length > 0) {
         elements.push(
@@ -157,7 +171,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
             className="px-4 py-3 text-sm font-mono"
             style={color ? { backgroundColor: `${color}20`, borderLeft: `3px solid ${color}` } : { backgroundColor: "rgba(255,255,255,0.05)", borderLeft: "3px solid var(--color-grid-line)" }}
           >
-            {parseInline(text)}
+            {parseInline(text, context)}
           </div>
         );
       }
@@ -187,7 +201,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
               const captionMatch = embed.match(/Caption="([^"]*)"/);
               const entity = entityMatch?.[1] || "Unknown";
               const caption = captionMatch?.[1] || "";
-              const spriteSrc = entitySprites[entity];
+              const spriteSrc = context.entitySprites[entity];
               return (
                 <div key={idx} className="entity-embed group/entity flex flex-col items-center gap-2 px-4 py-3 rounded-sm border border-grid-line bg-space-void/50 min-w-[140px] hover:border-neon-cyan/30 hover:bg-hull-panel/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.06)]">
                   <div className="w-32 h-32 rounded-sm bg-hull-panel border border-grid-line flex items-center justify-center relative overflow-hidden">
@@ -215,7 +229,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
         if (text) {
           elements.push(
             <div key={keyRef.current++} className="my-4 p-4 rounded-sm border border-grid-line bg-hull-panel/50 text-sm font-mono">
-              {parseInline(text)}
+              {parseInline(text, context)}
             </div>
           );
         }
@@ -227,7 +241,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
     if (/^<[A-Z]/.test(trimmed) && /\/>$/.test(trimmed)) {
       elements.push(
         <div key={keyRef.current++} className="my-2">
-          {parseInline(trimmed)}
+          {parseInline(trimmed, context)}
         </div>
       );
       i++;
@@ -240,7 +254,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
       const captionMatch = trimmed.match(/Caption="([^"]*)"/);
       const entity = entityMatch?.[1] || "Unknown";
       const caption = captionMatch?.[1] || entity;
-      const spriteSrc = entitySprites[entity];
+      const spriteSrc = context.entitySprites[entity];
       elements.push(
         <div key={keyRef.current++} className="entity-embed inline-flex items-center gap-2 my-2 group/se relative">
           {spriteSrc && (
@@ -256,7 +270,7 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
     // Regular paragraph
     elements.push(
       <p key={keyRef.current++} className="text-text-primary/90 font-mono text-sm leading-relaxed my-3">
-        {parseInline(trimmed)}
+        {parseInline(trimmed, context)}
       </p>
     );
     i++;
@@ -265,16 +279,27 @@ function parseBlocks(lines: string[], keyRef: { current: number }): ReactNode[] 
   return elements;
 }
 
-export function GuideMarkup({ content }: GuideMarkupProps) {
+export function GuideMarkup({
+  content,
+  source = "estacion",
+  basePath = "/wiki",
+}: GuideMarkupProps) {
   const lines = content.split("\n");
   const keyRef = { current: 0 };
-  const elements = parseBlocks(lines, keyRef);
+  const context: GuideMarkupContext = {
+    basePath,
+    guideIdToSlug:
+      source === "monolith" ? monolithGuideIdToSlug : guideIdToSlug,
+    entitySprites:
+      source === "monolith" ? monolithEntitySprites : entitySprites,
+  };
+  const elements = parseBlocks(lines, keyRef, context);
   return <div className="wiki-content">{elements}</div>;
 }
 
 // ─── Inline markup parser ───
 
-function parseInline(text: string): ReactNode {
+function parseInline(text: string, context: GuideMarkupContext): ReactNode {
   const parts: ReactNode[] = [];
   let remaining = text;
   let inlineKey = 0;
@@ -296,6 +321,8 @@ function parseInline(text: string): ReactNode {
       ["techDisciplineEmbed", /<GuideTechDisciplineEmbed\s+Discipline="([^"]+)"\s*\/>/],
       ["automationSlots", /<GuideAutomationSlotsEmbed\s*\/>/],
       ["microwaveGroupEmbed", /<GuideMicrowaveGroupEmbed\s+Group="([^"]+)"\s*\/>/],
+      ["commandButton", /<CommandButton\s+Text="([^"]+)"\s+Command="([^"]+)"\s*\/>/],
+      ["genericEmbed", /<([A-Z][A-Za-z0-9]+)\b[^>]*\/>/],
     ];
 
     for (const [type, pattern] of patterns) {
@@ -326,7 +353,7 @@ function parseInline(text: string): ReactNode {
         const inner = match[2];
         parts.push(
           <span key={`i${inlineKey++}`} style={{ color }}>
-            {parseInline(inner)}
+            {parseInline(inner, context)}
           </span>
         );
         break;
@@ -335,7 +362,7 @@ function parseInline(text: string): ReactNode {
         const inner = match[1];
         parts.push(
           <strong key={`i${inlineKey++}`} className="font-bold text-text-primary">
-            {parseInline(inner)}
+            {parseInline(inner, context)}
           </strong>
         );
         break;
@@ -344,7 +371,7 @@ function parseInline(text: string): ReactNode {
         const inner = match[1];
         parts.push(
           <em key={`i${inlineKey++}`} className="italic">
-            {parseInline(inner)}
+            {parseInline(inner, context)}
           </em>
         );
         break;
@@ -353,7 +380,7 @@ function parseInline(text: string): ReactNode {
         const inner = match[1];
         parts.push(
           <span key={`i${inlineKey++}`} className="text-lg font-heading font-bold">
-            {parseInline(inner)}
+            {parseInline(inner, context)}
           </span>
         );
         break;
@@ -361,12 +388,12 @@ function parseInline(text: string): ReactNode {
       case "textlink": {
         const label = match[1];
         const linkId = match[2];
-        const targetSlug = guideIdToSlug[linkId];
+        const targetSlug = context.guideIdToSlug[linkId];
         if (targetSlug) {
           parts.push(
             <Link
               key={`i${inlineKey++}`}
-              href={`/wiki/${targetSlug}`}
+              href={`${context.basePath}/${targetSlug}`}
               className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors"
             >
               {label}
@@ -396,7 +423,7 @@ function parseInline(text: string): ReactNode {
       case "entityEmbed": {
         const entity = match[1];
         const caption = match[2] || entity;
-        const spriteSrc = entitySprites[entity];
+        const spriteSrc = context.entitySprites[entity];
         parts.push(
           <span key={`i${inlineKey++}`} className="entity-embed inline-flex items-center gap-1.5 mx-0.5 align-middle group/ie">
             {spriteSrc && (
@@ -449,6 +476,35 @@ function parseInline(text: string): ReactNode {
         parts.push(
           <span key={`i${inlineKey++}`} className="inline-flex items-center gap-1.5 my-1 px-3 py-1.5 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-hazard-orange">
             Recetas: {humanize(group)}
+          </span>
+        );
+        break;
+      }
+      case "commandButton": {
+        const label = match[1].includes("controls")
+          ? "Abrir controles"
+          : humanize(match[1]);
+        parts.push(
+          <kbd
+            key={`i${inlineKey++}`}
+            title={`Comando del juego: ${match[2]}`}
+            className="inline-flex items-center px-3 py-1.5 rounded-sm border border-neon-cyan/30 bg-neon-cyan/5 text-xs font-mono text-neon-cyan"
+          >
+            {label}
+          </kbd>
+        );
+        break;
+      }
+      case "genericEmbed": {
+        const label = humanize(
+          match[1].replace(/^Guide/, "").replace(/Embed$/, "")
+        );
+        parts.push(
+          <span
+            key={`i${inlineKey++}`}
+            className="inline-flex items-center px-2 py-1 rounded-sm border border-grid-line bg-hull-panel/50 text-xs font-mono text-text-muted"
+          >
+            Contenido del juego: {label}
           </span>
         );
         break;

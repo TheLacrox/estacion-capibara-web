@@ -1,8 +1,11 @@
 import { SITE_URL, DISCORD_URL } from "./constants";
 
 export function breadcrumbSchema(
-  items: { slug: string; title: string }[]
+  items: { slug: string; title: string }[],
+  options: { basePath?: string; wikiName?: string } = {}
 ) {
+  const basePath = options.basePath ?? "/wiki";
+  const wikiName = options.wikiName ?? "Wiki";
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -16,14 +19,14 @@ export function breadcrumbSchema(
       {
         "@type": "ListItem",
         position: 2,
-        name: "Wiki",
-        item: `${SITE_URL}/wiki/`,
+        name: wikiName,
+        item: `${SITE_URL}${basePath}/`,
       },
       ...items.map((item, i) => ({
         "@type": "ListItem",
         position: i + 3,
         name: item.title,
-        item: `${SITE_URL}/wiki/${item.slug}/`,
+        item: `${SITE_URL}${basePath}/${item.slug}/`,
       })),
     ],
   };
@@ -149,20 +152,54 @@ export function websiteSchema() {
   };
 }
 
-export function collectionPageSchema() {
+interface CollectionPageSchemaOptions {
+  name?: string;
+  description?: string;
+  url?: string;
+  numberOfItems?: number;
+  items?: { name: string; url: string }[];
+}
+
+export function collectionPageSchema(
+  options: CollectionPageSchemaOptions = {}
+) {
+  const pagePath = options.url ?? "/wiki/";
+  const pageUrl = pagePath.startsWith("http")
+    ? pagePath
+    : `${SITE_URL}${pagePath}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Wiki - Estación Capibara",
+    name: options.name ?? "Wiki - Estación Capibara",
     description:
+      options.description ??
       "Wiki completa en español para Space Station 14. Guías de departamentos, roles, química, ingeniería y más.",
-    url: `${SITE_URL}/wiki/`,
+    url: pageUrl,
     inLanguage: "es",
     isPartOf: {
       "@type": "WebSite",
       name: "Estación Capibara",
       url: SITE_URL,
     },
+    ...(options.numberOfItems !== undefined
+      ? { numberOfItems: options.numberOfItems }
+      : {}),
+    ...(options.items
+      ? {
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: options.items.map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: item.name,
+              url: item.url.startsWith("http")
+                ? item.url
+                : `${SITE_URL}${item.url}`,
+            })),
+          },
+        }
+      : {}),
   };
 }
 

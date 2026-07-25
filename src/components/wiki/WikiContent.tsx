@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, FileText, Clock } from "lucide-react";
-import { type GuidePage } from "@/data/guides";
+import type { GuidePage } from "@/data/guide-types";
 import { guideSlugsToMeta } from "@/data/guide-lookup";
+import { monolithGuideSlugsToMeta } from "@/data/monolith-guide-lookup";
 import { GuideMarkup } from "./GuideMarkup";
 import { WikiBreadcrumb } from "./WikiBreadcrumb";
 import { LAST_CONTENT_UPDATE } from "@/lib/constants";
 
 interface WikiContentProps {
   guide: GuidePage;
+  source?: "estacion" | "monolith";
+  basePath?: string;
 }
 
 const childCardVariants = {
@@ -23,7 +26,13 @@ const childCardVariants = {
   }),
 };
 
-export function WikiContent({ guide }: WikiContentProps) {
+export function WikiContent({
+  guide,
+  source = "estacion",
+  basePath = "/wiki",
+}: WikiContentProps) {
+  const slugsToMeta =
+    source === "monolith" ? monolithGuideSlugsToMeta : guideSlugsToMeta;
   const headings = Array.from(
     guide.content.matchAll(/^(#{2,3})\s+(.+)$/gm)
   ).map((m) => ({
@@ -39,14 +48,14 @@ export function WikiContent({ guide }: WikiContentProps) {
   }));
 
   const childGuides = guide.childSlugs
-    .map((slug) => guideSlugsToMeta[slug])
+    .map((slug) => slugsToMeta[slug])
     .filter(Boolean);
 
   return (
     <div className="flex gap-8 w-full max-w-full">
       {/* Main content */}
       <article className="flex-1 min-w-0">
-        <WikiBreadcrumb breadcrumb={guide.breadcrumb} />
+        <WikiBreadcrumb breadcrumb={guide.breadcrumb} basePath={basePath} />
 
         <div className="flex items-center gap-1.5 text-xs font-mono text-text-muted/60 mb-4">
           <Clock size={12} />
@@ -64,7 +73,7 @@ export function WikiContent({ guide }: WikiContentProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          <GuideMarkup content={guide.content} />
+          <GuideMarkup content={guide.content} source={source} basePath={basePath} />
         </motion.div>
 
         {/* Child guide cards */}
@@ -89,7 +98,7 @@ export function WikiContent({ guide }: WikiContentProps) {
                   animate="visible"
                 >
                   <Link
-                    href={`/wiki/${child.slug}`}
+                    href={`${basePath}/${child.slug}`}
                     className="wiki-card holo-shimmer group relative block p-4 rounded-sm border border-grid-line bg-hull-panel/80 overflow-hidden"
                   >
                     {/* Hover glow line */}
@@ -124,7 +133,7 @@ export function WikiContent({ guide }: WikiContentProps) {
             transition={{ delay: 0.4 }}
           >
             <Link
-              href={`/wiki/${guide.parentSlug}`}
+              href={`${basePath}/${guide.parentSlug}`}
               className="group inline-flex items-center gap-2 text-sm font-mono text-text-muted hover:text-hazard-yellow transition-all duration-200"
             >
               <motion.span

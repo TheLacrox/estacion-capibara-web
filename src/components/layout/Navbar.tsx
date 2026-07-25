@@ -1,10 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { NAV_LINKS, DISCORD_URL, WIKI_NAV_LINK } from "@/lib/constants";
+import {
+  NAV_LINKS,
+  DISCORD_URL,
+  WIKI_NAV_LINK,
+  MONOLITH_WIKI_NAV_LINK,
+} from "@/lib/constants";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,12 +87,18 @@ export function Navbar() {
                 )}
               </button>
             ))}
-            <a
+            <Link
               href={WIKI_NAV_LINK.href}
               className="px-3 py-2 text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
             >
               {WIKI_NAV_LINK.label}
-            </a>
+            </Link>
+            <Link
+              href={MONOLITH_WIKI_NAV_LINK.href}
+              className="hidden xl:block px-3 py-2 text-sm font-mono text-neon-cyan hover:text-hazard-yellow transition-colors"
+            >
+              {MONOLITH_WIKI_NAV_LINK.label}
+            </Link>
             <a
               href={DISCORD_URL}
               target="_blank"
@@ -154,12 +166,18 @@ export function Navbar() {
                   {link.label}
                 </button>
               ))}
-              <a
+              <Link
                 href={WIKI_NAV_LINK.href}
                 className="block w-full text-left px-4 py-3 text-sm font-mono text-text-muted hover:text-hazard-yellow hover:bg-hull-panel/50 rounded-sm transition-colors"
               >
                 {WIKI_NAV_LINK.label}
-              </a>
+              </Link>
+              <Link
+                href={MONOLITH_WIKI_NAV_LINK.href}
+                className="block w-full text-left px-4 py-3 text-sm font-mono text-neon-cyan hover:text-hazard-yellow hover:bg-hull-panel/50 rounded-sm transition-colors"
+              >
+                {MONOLITH_WIKI_NAV_LINK.label}
+              </Link>
               <a
                 href={DISCORD_URL}
                 target="_blank"

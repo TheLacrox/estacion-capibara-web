@@ -6,9 +6,13 @@ import { ChevronRight, Home } from "lucide-react";
 
 interface WikiBreadcrumbProps {
   breadcrumb: { slug: string; title: string }[];
+  basePath?: string;
 }
 
-export function WikiBreadcrumb({ breadcrumb }: WikiBreadcrumbProps) {
+export function WikiBreadcrumb({
+  breadcrumb,
+  basePath = "/wiki",
+}: WikiBreadcrumbProps) {
   return (
     <motion.nav
       className="flex items-center gap-1 text-sm font-mono text-text-muted flex-wrap mb-6"
@@ -17,7 +21,7 @@ export function WikiBreadcrumb({ breadcrumb }: WikiBreadcrumbProps) {
       transition={{ duration: 0.3 }}
     >
       <Link
-        href="/wiki"
+        href={basePath}
         className="hover:text-hazard-yellow transition-colors shrink-0 hover:drop-shadow-[0_0_4px_rgba(241,196,15,0.4)]"
       >
         <Home size={14} />
@@ -37,7 +41,7 @@ export function WikiBreadcrumb({ breadcrumb }: WikiBreadcrumbProps) {
               <span className="text-text-primary truncate max-w-[200px]">{item.title}</span>
             ) : (
               <Link
-                href={`/wiki/${item.slug}`}
+                href={`${basePath}/${item.slug}`}
                 className="hover:text-hazard-yellow transition-colors truncate max-w-[200px] hover:drop-shadow-[0_0_4px_rgba(241,196,15,0.3)]"
               >
                 {item.title}
