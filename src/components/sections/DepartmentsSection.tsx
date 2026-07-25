@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Crown,
@@ -55,7 +56,7 @@ export function DepartmentsSection() {
         {/* Header */}
         <FadeInView className="text-center mb-12">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // TRIPULACIÓN
+            {"// TRIPULACIÓN"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Departamentos y <GlowText color="yellow">Roles</GlowText>
@@ -63,12 +64,12 @@ export function DepartmentsSection() {
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             8 departamentos, más de 30 roles únicos. Cada trabajo tiene
             responsabilidades, salario y herramientas diferentes.{" "}
-            <a
+            <Link
               href="/wiki/jobs"
               className="text-neon-cyan hover:underline"
             >
               Ver guía de trabajos →
-            </a>
+            </Link>
           </p>
         </FadeInView>
 

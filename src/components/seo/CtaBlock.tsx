@@ -1,5 +1,6 @@
 import { DISCORD_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL } from "@/lib/constants";
 import { HazardDivider } from "@/components/ui/HazardDivider";
+import Link from "next/link";
 
 export function CtaBlock() {
   return (
@@ -38,12 +39,12 @@ export function CtaBlock() {
           >
             Unirse al Discord
           </a>
-          <a
+          <Link
             href="/wiki"
             className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-transparent text-text-muted border-2 border-transparent rounded-sm hover:text-text-primary hover:bg-hull-panel transition-all"
           >
             Explorar la Wiki
-          </a>
+          </Link>
         </div>
       </div>
     </section>

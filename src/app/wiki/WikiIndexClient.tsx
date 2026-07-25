@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Users, Skull, Book, ShoppingCart, Wrench, Stethoscope, FlaskConical, Shield, UtensilsCrossed, Swords,
+  Users, Skull, Book, ShoppingCart, Shield, Swords,
   type LucideIcon, Zap,
 } from "lucide-react";
 import { type GuideTreeNode } from "@/data/guides";

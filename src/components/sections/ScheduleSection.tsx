@@ -55,7 +55,7 @@ export function ScheduleSection() {
         {/* Header */}
         <FadeInView className="text-center mb-16">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // HORARIO DE JUEGO
+            {"// HORARIO DE JUEGO"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Cuándo <GlowText color="yellow">Jugamos</GlowText>

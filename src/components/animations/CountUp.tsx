@@ -24,11 +24,7 @@ export function CountUp({
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
-    if (reduced) {
-      setCount(end);
-      return;
-    }
+    if (!isInView || reduced) return;
 
     let startTime: number;
     let animationFrame: number;
@@ -48,10 +44,12 @@ export function CountUp({
     return () => cancelAnimationFrame(animationFrame);
   }, [isInView, end, duration, reduced]);
 
+  const displayCount = reduced && isInView ? end : count;
+
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {count}
+      {displayCount}
       {suffix}
     </span>
   );

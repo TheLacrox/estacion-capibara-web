@@ -1,5 +1,6 @@
 import { DISCORD_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
 import { HazardDivider } from "@/components/ui/HazardDivider";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -56,20 +57,20 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
+                <Link
                   href="/wiki/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Wiki
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/blog/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -89,36 +90,36 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/wiki/jobs/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Trabajos
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/wiki/antagonists/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Antagonistas
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/wiki/capibara-economy/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Economía
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/wiki/survival/"
                   className="text-text-muted text-sm font-mono hover:text-hazard-yellow transition-colors"
                 >
                   Supervivencia
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

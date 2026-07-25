@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, DISCORD_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
+import { SITE_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
 import { articleSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { BLOG_POSTS, BLOG_SLUGS, TAG_LABELS, type BlogTag } from "@/data/blog-posts";
 import { Footer } from "@/components/layout/Footer";

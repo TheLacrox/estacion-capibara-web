@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
@@ -156,7 +157,7 @@ export default function Home() {
             en el navegador de servidores.
           </p>
           <p>
-            Visita nuestra <a href="/wiki" style={{ color: "#F1C40F" }}>Wiki</a> para guías completas
+            Visita nuestra <Link href="/wiki" style={{ color: "#F1C40F" }}>Wiki</Link> para guías completas
             sobre trabajos, departamentos, economía y supervivencia en español.
           </p>
         </div>

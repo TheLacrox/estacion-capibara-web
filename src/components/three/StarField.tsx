@@ -4,15 +4,20 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+function pseudoRandom(index: number, seed: number): number {
+  const value = Math.sin(index * 12.9898 + seed * 78.233) * 43758.5453;
+  return value - Math.floor(value);
+}
+
 export function StarField({ count = 1500 }) {
   const ref = useRef<THREE.Points>(null);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 30;
+      pos[i * 3] = (pseudoRandom(i * 3, count) - 0.5) * 30;
+      pos[i * 3 + 1] = (pseudoRandom(i * 3 + 1, count) - 0.5) * 30;
+      pos[i * 3 + 2] = (pseudoRandom(i * 3 + 2, count) - 0.5) * 30;
     }
     return pos;
   }, [count]);
@@ -20,7 +25,7 @@ export function StarField({ count = 1500 }) {
   const sizes = useMemo(() => {
     const s = new Float32Array(count);
     for (let i = 0; i < count; i++) {
-      s[i] = Math.random() * 2 + 0.5;
+      s[i] = pseudoRandom(i, count + 1) * 2 + 0.5;
     }
     return s;
   }, [count]);

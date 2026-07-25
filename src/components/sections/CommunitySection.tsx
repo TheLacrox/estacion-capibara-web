@@ -38,6 +38,15 @@ const badges = [
   { label: "Comunidad Amigable", color: "#00ffff" },
 ];
 
+const floatingBubbles = [
+  { id: 0, size: 96, left: 8, top: 12, duration: 5.5, delay: 0.2 },
+  { id: 1, size: 138, left: 72, top: 18, duration: 7.2, delay: 1.1 },
+  { id: 2, size: 74, left: 24, top: 64, duration: 4.8, delay: 0.7 },
+  { id: 3, size: 121, left: 84, top: 70, duration: 6.4, delay: 1.6 },
+  { id: 4, size: 88, left: 48, top: 34, duration: 7.7, delay: 0.4 },
+  { id: 5, size: 152, left: 58, top: 82, duration: 5.9, delay: 1.9 },
+];
+
 export function CommunitySection() {
   return (
     <section
@@ -46,25 +55,25 @@ export function CommunitySection() {
     >
       {/* Floating bubbles background */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {floatingBubbles.map((bubble) => (
           <motion.div
-            key={i}
+            key={bubble.id}
             className="absolute rounded-full bg-hazard-yellow/5 border border-hazard-yellow/10"
             style={{
-              width: 60 + Math.random() * 100,
-              height: 60 + Math.random() * 100,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: bubble.size,
+              height: bubble.size,
+              left: `${bubble.left}%`,
+              top: `${bubble.top}%`,
             }}
             animate={{
               y: [-20, 20, -20],
               x: [-10, 10, -10],
             }}
             transition={{
-              duration: 4 + Math.random() * 4,
+              duration: bubble.duration,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 2,
+              delay: bubble.delay,
             }}
           />
         ))}
@@ -74,7 +83,7 @@ export function CommunitySection() {
         {/* Header */}
         <FadeInView className="text-center mb-16">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // ÚNETE A NOSOTROS
+            {"// ÚNETE A NOSOTROS"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Nuestra <GlowText color="yellow">Comunidad</GlowText>

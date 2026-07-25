@@ -1,30 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { WikiSidebar } from "@/components/wiki/WikiSidebar";
 
+const floatingParticles = Array.from({ length: 30 }, (_, i) => ({
+  id: i,
+  x: (i * 37 + 11) % 100,
+  delay: (i * 7) % 20,
+  duration: 15 + ((i * 13) % 25),
+  size: 1 + ((i * 17) % 20) / 10,
+}));
+
 function FloatingParticles() {
-  const [particles, setParticles] = useState<
-    { id: number; x: number; delay: number; duration: number; size: number }[]
-  >([]);
-
-  useEffect(() => {
-    setParticles(
-      Array.from({ length: 30 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        delay: Math.random() * 20,
-        duration: 15 + Math.random() * 25,
-        size: 1 + Math.random() * 2,
-      }))
-    );
-  }, []);
-
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {particles.map((p) => (
+      {floatingParticles.map((p) => (
         <div
           key={p.id}
           className="absolute rounded-full opacity-20"

@@ -5,7 +5,7 @@
  * Usage: node scripts/generate-guides.mjs
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join, resolve } from "path";
 import { parse as parseYaml } from "yaml";
 

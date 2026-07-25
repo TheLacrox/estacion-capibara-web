@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Coins,
@@ -38,7 +39,7 @@ export function ServerFeaturesSection() {
         {/* Section header */}
         <FadeInView className="relative z-10 text-center mb-20">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // SISTEMAS DEL SERVIDOR
+            {"// SISTEMAS DEL SERVIDOR"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Características <GlowText color="yellow">Únicas</GlowText>
@@ -71,12 +72,12 @@ export function ServerFeaturesSection() {
               Cada tripulante recibe una cuenta bancaria con Spesos al unirse.
               Gana un salario cada 10 minutos según tu rol, retira efectivo de
               cajeros automáticos y compra en máquinas expendedoras.{" "}
-              <a
+              <Link
                 href="/wiki/capibara-economy"
                 className="text-neon-cyan hover:underline"
               >
                 Leer más en la wiki →
-              </a>
+              </Link>
             </p>
             <div className="flex gap-6">
               <div>
@@ -156,12 +157,12 @@ export function ServerFeaturesSection() {
             <p className="text-text-muted max-w-xl mx-auto">
               El enemigo puede estar en cualquier parte. Cada ronda trae amenazas
               diferentes.{" "}
-              <a
+              <Link
                 href="/wiki/antagonists"
                 className="text-neon-cyan hover:underline"
               >
                 Ver todos en la wiki →
-              </a>
+              </Link>
             </p>
           </div>
         </FadeInView>
@@ -252,12 +253,12 @@ function ObjectivesGrid() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 style={{
-                  pathLength: 0.7 + Math.random() * 0.3,
+                  pathLength: 0.7 + ((i * 7) % 3) / 10,
                   rotate: -90,
                   transformOrigin: "center",
                 }}
                 initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 0.7 + Math.random() * 0.3 }}
+                whileInView={{ pathLength: 0.7 + ((i * 7) % 3) / 10 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 + i * 0.1, duration: 1.5 }}
               />

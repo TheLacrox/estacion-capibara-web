@@ -6,7 +6,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, readdirSync, statSync, mkdirSync, copyFileSync } from "fs";
-import { join, resolve, basename } from "path";
+import { join, resolve } from "path";
 import { parse as parseYaml } from "yaml";
 import sharp from "sharp";
 
@@ -287,7 +287,7 @@ for (const entityId of neededEntities) {
           continue;
         }
       }
-    } catch (err) {
+    } catch {
       // Fallback
       if (existsSync(iconPath)) {
         try {

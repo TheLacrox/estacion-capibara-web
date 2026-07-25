@@ -81,9 +81,12 @@ export function ServerStatusSection() {
   }, []);
 
   useEffect(() => {
-    fetchStatus();
-    const interval = setInterval(fetchStatus, REFRESH_INTERVAL);
-    return () => clearInterval(interval);
+    const initialFetch = window.setTimeout(() => void fetchStatus(), 0);
+    const interval = window.setInterval(() => void fetchStatus(), REFRESH_INTERVAL);
+    return () => {
+      window.clearTimeout(initialFetch);
+      window.clearInterval(interval);
+    };
   }, [fetchStatus]);
 
   return (
@@ -95,7 +98,7 @@ export function ServerStatusSection() {
         {/* Header */}
         <FadeInView className="text-center mb-12">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // ESTADO DEL SERVIDOR
+            {"// ESTADO DEL SERVIDOR"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             Servidor <GlowText color="cyan">En Vivo</GlowText>

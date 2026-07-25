@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Search, X, Book, Swords, Wrench, Shield, FlaskConical, Stethoscope, ShoppingCart, UtensilsCrossed, Users, Skull, type LucideIcon, Radio } from "lucide-react";
+import { ChevronRight, Search, X, Book, Wrench, Shield, FlaskConical, Stethoscope, ShoppingCart, UtensilsCrossed, Users, Skull, type LucideIcon, Radio } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { type GuideTreeNode, guideTree } from "@/data/guides";
 

@@ -1,17 +1,37 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback, useSyncExternalStore } from "react";
 
 const GA_ID = "G-VZH5Y2ESMQ";
 const CONSENT_KEY = "cookie-consent";
+const CONSENT_EVENT = "cookie-consent-change";
 
 type ConsentStatus = "accepted" | "rejected" | null;
+type ConsentSnapshot = ConsentStatus | "pending";
 
-function getConsent(): ConsentStatus {
-  if (typeof window === "undefined") return null;
+function getConsent(): ConsentSnapshot {
   const value = localStorage.getItem(CONSENT_KEY);
   if (value === "accepted" || value === "rejected") return value;
   return null;
+}
+
+function getServerConsent(): ConsentSnapshot {
+  return "pending";
+}
+
+function subscribeToConsent(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(CONSENT_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(CONSENT_EVENT, onStoreChange);
+  };
+}
+
+function saveConsent(consent: Exclude<ConsentStatus, null>) {
+  localStorage.setItem(CONSENT_KEY, consent);
+  window.dispatchEvent(new Event(CONSENT_EVENT));
 }
 
 function loadGA() {
@@ -38,29 +58,27 @@ declare global {
 }
 
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+  const consent = useSyncExternalStore(
+    subscribeToConsent,
+    getConsent,
+    getServerConsent
+  );
 
   useEffect(() => {
-    const consent = getConsent();
     if (consent === "accepted") {
       loadGA();
-    } else if (consent === null) {
-      setVisible(true);
     }
-  }, []);
+  }, [consent]);
 
   const handleAccept = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
-    setVisible(false);
-    loadGA();
+    saveConsent("accepted");
   }, []);
 
   const handleReject = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "rejected");
-    setVisible(false);
+    saveConsent("rejected");
   }, []);
 
-  if (!visible) return null;
+  if (consent !== null) return null;
 
   return (
     <div

@@ -28,7 +28,7 @@ export function WhatIsSS14Section() {
         {/* Section header */}
         <FadeInView className="text-center mb-16">
           <p className="font-mono text-hazard-yellow text-sm tracking-widest uppercase mb-4">
-            // INTRODUCCIÓN
+            {"// INTRODUCCIÓN"}
           </p>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary mb-6">
             ¿Qué es <GlowText color="cyan">Space Station 14</GlowText>?

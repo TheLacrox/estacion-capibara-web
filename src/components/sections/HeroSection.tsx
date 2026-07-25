@@ -37,11 +37,7 @@ export function HeroSection() {
   }, []);
 
   useEffect(() => {
-    if (reduced) {
-      setShowStatus(true);
-      setShowCTAs(true);
-      return;
-    }
+    if (reduced) return;
     const t1 = setTimeout(() => setShowStatus(true), 1800);
     const t2 = setTimeout(() => setShowCTAs(true), 2200);
     return () => {
@@ -49,6 +45,9 @@ export function HeroSection() {
       clearTimeout(t2);
     };
   }, [reduced]);
+
+  const statusVisible = reduced || showStatus;
+  const ctasVisible = reduced || showCTAs;
 
   const letterVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -130,7 +129,7 @@ export function HeroSection() {
 
         {/* Status line */}
         <div className="h-8 mb-8">
-          {showStatus && (
+          {statusVisible && (
             <TerminalText
               text=">> SERVIDOR EN LÍNEA // COMUNIDAD 100% EN ESPAÑOL <<"
               speed={30}
@@ -143,7 +142,7 @@ export function HeroSection() {
         {/* CTAs */}
         <motion.div
           initial={reduced ? {} : { opacity: 0, y: 30 }}
-          animate={showCTAs ? { opacity: 1, y: 0 } : {}}
+          animate={ctasVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { DISCORD_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
 import { Footer } from "@/components/layout/Footer";
