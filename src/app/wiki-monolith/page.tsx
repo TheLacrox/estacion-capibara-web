@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     "Wiki en español de Capibara Monolith: primeros pasos, naves, expediciones, economía persistente, facciones, artillería, trabajos y reglas.",
   keywords: [
     "Monolith Station español",
-    "wiki Monolith Station",
-    "Capibara Monolith",
+    "monolith station wiki",
+    "wiki Capibara Monolith",
     "Space Station 14 español",
     "guía Frontier Station 14",
   ],

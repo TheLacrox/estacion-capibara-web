@@ -173,7 +173,7 @@ export const SEO_PAGES: SeoPageData[] = [
       "juegos-cooperativos-pc",
       "juegos-sandbox-multijugador",
       "juegos-de-simulacion-pc",
-      "que-es-space-station-14",
+      "juego-roleplay-espacial-con-naves",
     ],
   },
   {
@@ -210,7 +210,7 @@ export const SEO_PAGES: SeoPageData[] = [
     ],
     relatedPages: [
       "juegos-de-simulacion-pc",
-      "juegos-de-supervivencia-multijugador",
+      "monolith-station-en-espanol",
       "juegos-cooperativos-pc",
       "juegos-parecidos-a-barotrauma",
     ],
@@ -305,7 +305,7 @@ export const SEO_PAGES: SeoPageData[] = [
     relatedPages: [
       "juegos-de-supervivencia-multijugador",
       "juegos-gratis-multijugador",
-      "juegos-como-among-us",
+      "juego-espacial-cooperativo",
       "juegos-parecidos-a-barotrauma",
     ],
   },
@@ -350,7 +350,7 @@ export const SEO_PAGES: SeoPageData[] = [
       "que-es-space-station-14",
       "juegos-parecidos-a-barotrauma",
       "juegos-de-simulacion-pc",
-      "juegos-de-supervivencia-multijugador",
+      "juego-de-naves-espaciales-multijugador",
     ],
   },
   {
@@ -480,7 +480,7 @@ export const SEO_PAGES: SeoPageData[] = [
     relatedPages: [
       "juegos-espaciales-pc",
       "juegos-de-supervivencia-multijugador",
-      "juegos-de-simulacion-pc",
+      "juego-de-naves-espaciales-multijugador",
       "juegos-cooperativos-pc",
     ],
   },

@@ -42,6 +42,7 @@ export function articleSchema(guide: {
 }) {
   const basePath = guide.basePath ?? "/wiki";
   const url = `${SITE_URL}${basePath}/${guide.slug}/`;
+  const dateModified = guide.dateModified ?? guide.datePublished;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -53,8 +54,8 @@ export function articleSchema(guide: {
       "@type": "WebPage",
       "@id": url,
     },
-    datePublished: guide.datePublished ?? "2025-01-01",
-    dateModified: guide.dateModified ?? guide.datePublished ?? "2025-01-01",
+    ...(guide.datePublished ? { datePublished: guide.datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
     author: {
       "@type": "Organization",
       name: "Estación Capibara",

@@ -20,6 +20,7 @@ export function createMonolithSeoMetadata(
   return {
     title: page.metaTitle,
     description: page.metaDescription,
+    keywords: page.searchQueries,
     alternates: { canonical: url },
     openGraph: {
       type: "article",

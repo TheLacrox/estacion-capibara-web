@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { SEO_PAGES } from "@/data/seo-pages";
+import { MONOLITH_SEO_PAGES } from "@/data/monolith-seo-pages";
+
+const ALL_SEO_PAGES = [...SEO_PAGES, ...MONOLITH_SEO_PAGES];
 
 interface InternalLinkGridProps {
   currentSlug: string;
@@ -8,12 +11,12 @@ interface InternalLinkGridProps {
 }
 
 export function InternalLinkGrid({ currentSlug, wikiLinks, relatedSlugs }: InternalLinkGridProps) {
-  let otherPages = SEO_PAGES.filter((p) => p.slug !== currentSlug);
+  let otherPages = ALL_SEO_PAGES.filter((p) => p.slug !== currentSlug);
 
   if (relatedSlugs && relatedSlugs.length > 0) {
     otherPages = relatedSlugs
-      .map((slug) => SEO_PAGES.find((p) => p.slug === slug))
-      .filter((p): p is (typeof SEO_PAGES)[number] => p != null);
+      .map((slug) => ALL_SEO_PAGES.find((p) => p.slug === slug))
+      .filter((p): p is (typeof ALL_SEO_PAGES)[number] => p != null);
   } else {
     otherPages = otherPages.slice(0, 4);
   }
