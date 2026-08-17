@@ -1,5 +1,6 @@
 import { monolithGuideTree } from "@/data/monolith-guides";
 import { WikiShell } from "@/components/wiki/WikiShell";
+import { wikiSwitchersFor } from "@/components/wiki/wiki-switchers";
 
 export default function MonolithWikiLayout({
   children,
@@ -12,7 +13,7 @@ export default function MonolithWikiLayout({
       basePath="/wiki-monolith"
       wikiLabel="WIKI MONOLITH"
       hasRootPage={false}
-      switcher={{ href: "/wiki/", label: "Abrir Wiki Estación" }}
+      switchers={wikiSwitchersFor("/wiki-monolith")}
     >
       {children}
     </WikiShell>

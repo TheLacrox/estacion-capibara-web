@@ -47,9 +47,16 @@ const UNAMBIGUOUS_FALLBACKS = Object.freeze({
   text: buildUnambiguousFallbacks(CATALOG_GROUPS.text),
 });
 
+const SOURCE_ROUTE_NAMESPACES = {
+  estacion: "/wiki",
+  monolith: "/wiki-monolith",
+  marines: "/wiki-marines",
+  scp: "/wiki-scp",
+};
+
 function guideRoute({ source = "estacion", slug = "" } = {}) {
   if (!slug) return "";
-  const namespace = source === "monolith" ? "/wiki-monolith" : "/wiki";
+  const namespace = SOURCE_ROUTE_NAMESPACES[source] ?? "/wiki";
   return `${namespace}/${slug}/`;
 }
 

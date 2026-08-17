@@ -4,16 +4,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, FileText, Clock } from "lucide-react";
 import type { GuidePage } from "@/data/guide-types";
-import { guideSlugsToMeta } from "@/data/guide-lookup";
-import { monolithGuideSlugsToMeta } from "@/data/monolith-guide-lookup";
+import type { WikiSourceConfig } from "./wiki-source-config";
 import { GuideMarkup } from "./GuideMarkup";
 import { WikiBreadcrumb } from "./WikiBreadcrumb";
 import { LAST_CONTENT_UPDATE } from "@/lib/constants";
 
 interface WikiContentProps {
   guide: GuidePage;
-  source?: "estacion" | "monolith";
-  basePath?: string;
+  sourceConfig: WikiSourceConfig;
 }
 
 const childCardVariants = {
@@ -26,13 +24,8 @@ const childCardVariants = {
   }),
 };
 
-export function WikiContent({
-  guide,
-  source = "estacion",
-  basePath = "/wiki",
-}: WikiContentProps) {
-  const slugsToMeta =
-    source === "monolith" ? monolithGuideSlugsToMeta : guideSlugsToMeta;
+export function WikiContent({ guide, sourceConfig }: WikiContentProps) {
+  const { basePath, slugsToMeta } = sourceConfig;
   const headings = Array.from(
     guide.content.matchAll(/^(#{2,3})\s+(.+)$/gm)
   ).map((m) => ({
@@ -73,7 +66,7 @@ export function WikiContent({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          <GuideMarkup content={guide.content} source={source} basePath={basePath} />
+          <GuideMarkup content={guide.content} sourceConfig={sourceConfig} />
         </motion.div>
 
         {/* Child guide cards */}

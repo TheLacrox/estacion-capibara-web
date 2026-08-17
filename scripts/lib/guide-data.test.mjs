@@ -206,6 +206,104 @@ test("supports explicit aliases for source guide paths with incorrect casing", (
   }
 });
 
+test("prefers the locale mirror and falls back to the base document", () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), "guide-mirror-"));
+  const baseDir = join(fixtureRoot, "ServerInfo", "Guidebook");
+  const mirrorDir = join(fixtureRoot, "ServerInfo", "es-ES", "Guidebook");
+  mkdirSync(baseDir, { recursive: true });
+  mkdirSync(mirrorDir, { recursive: true });
+  writeFileSync(
+    join(baseDir, "Intro.xml"),
+    "<Document># English intro</Document>",
+    "utf8"
+  );
+  writeFileSync(
+    join(mirrorDir, "Intro.xml"),
+    "<Document># Introducción en español</Document>",
+    "utf8"
+  );
+  writeFileSync(
+    join(baseDir, "OnlyEnglish.xml"),
+    "<Document># Untranslated page</Document>",
+    "utf8"
+  );
+
+  try {
+    const fallbacks = [];
+    const readContent = createGuideContentReader(fixtureRoot, {
+      localeMirror: "es-ES",
+      onLocaleFallback: (path) => fallbacks.push(path),
+    });
+
+    assert.equal(
+      readContent("/ServerInfo/Guidebook/Intro.xml"),
+      "# Introducción en español"
+    );
+    assert.deepEqual(fallbacks, []);
+
+    assert.equal(
+      readContent("/ServerInfo/Guidebook/OnlyEnglish.xml"),
+      "# Untranslated page"
+    );
+    assert.deepEqual(fallbacks, ["Guidebook/OnlyEnglish.xml"]);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("resolves guide paths whose directory casing differs from the source", () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), "guide-case-"));
+  const actualDir = join(fixtureRoot, "ServerInfo", "_Scp", "GuideBook");
+  mkdirSync(actualDir, { recursive: true });
+  writeFileSync(
+    join(actualDir, "Fear.xml"),
+    "<Document># Sistema de miedo</Document>",
+    "utf8"
+  );
+
+  try {
+    const readContent = createGuideContentReader(fixtureRoot);
+    assert.equal(
+      readContent("/ServerInfo/_Scp/Guidebook/Fear.xml"),
+      "# Sistema de miedo"
+    );
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("skips abstract guide entries and unparsable YAML files with a warning", () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), "guide-abstract-"));
+  writeFileSync(
+    join(fixtureRoot, "guides.yml"),
+    [
+      "- type: guideEntry",
+      "  id: Concrete",
+      "  name: Guía real",
+      "- type: guideEntry",
+      "  id: Template",
+      "  name: Plantilla",
+      "  abstract: true",
+      "",
+    ].join("\n"),
+    "utf8"
+  );
+  writeFileSync(join(fixtureRoot, "broken.yml"), "foo: [unclosed", "utf8");
+
+  try {
+    const warnings = [];
+    const entries = loadGuideEntries([fixtureRoot], {
+      onWarning: (message) => warnings.push(message),
+    });
+    assert.equal(entries.has("Concrete"), true);
+    assert.equal(entries.has("Template"), false);
+    assert.equal(warnings.length, 1);
+    assert.match(warnings[0], /broken\.yml/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
 test("transforms guide content before resolving titles and pages", () => {
   let transformContext;
   const collection = buildGuideCollection({

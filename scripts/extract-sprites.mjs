@@ -41,10 +41,32 @@ const SOURCE_CONFIGS = {
     labelsExportName: "monolithEntitySpriteLabels",
     namespaceOrder: ["_CE", "_DV", "_FarHorizons", "_Goobstation", "_NF", "_Mono", "_Capibara"],
   },
+  marines: {
+    resourcesRoot: process.env.MARINES_RESOURCES_ROOT || "../ColonialMarinesUniverse-ESP-Capibara/Resources",
+    guidesFile: "src/data/marines-guides.ts",
+    outputDir: "public/sprites/marines",
+    mappingFile: "src/data/marines-entity-sprites.ts",
+    publicPath: "/sprites/marines",
+    exportName: "marinesEntitySprites",
+    labelsExportName: "marinesEntitySpriteLabels",
+    namespaceOrder: ["_SS14", "_AU14", "_RMC14", "_CMU14"],
+  },
+  scp: {
+    resourcesRoot: process.env.SCP_RESOURCES_ROOT || "../project-fire-capibara-fundation/Resources",
+    guidesFile: "src/data/scp-guides.ts",
+    outputDir: "public/sprites/scp",
+    mappingFile: "src/data/scp-entity-sprites.ts",
+    publicPath: "/sprites/scp",
+    exportName: "scpEntitySprites",
+    labelsExportName: "scpEntitySpriteLabels",
+    namespaceOrder: ["_Starlight", "_RMC14", "_FarHorizons", "_Fish", "_Afterlight", "_Sunrise", "_Scp"],
+  },
 };
 const source = SOURCE_CONFIGS[sourceName];
 if (!source) {
-  throw new Error(`Unknown sprite source '${sourceName}'. Use 'estacion' or 'monolith'.`);
+  throw new Error(
+    `Unknown sprite source '${sourceName}'. Use one of: ${Object.keys(SOURCE_CONFIGS).join(", ")}.`
+  );
 }
 
 const SERVER_ROOT = resolve(source.resourcesRoot);
@@ -178,7 +200,9 @@ function resolveSprite(entityId, visited = new Set()) {
 }
 
 // Step 4: Find and copy/composite icon files
-if (sourceName === "monolith") {
+// estacion writes into public/sprites root (shared with the per-source
+// subdirectories), so it must never be wiped wholesale.
+if (sourceName !== "estacion") {
   rmSync(OUTPUT_DIR, { recursive: true, force: true });
 }
 mkdirSync(OUTPUT_DIR, { recursive: true });

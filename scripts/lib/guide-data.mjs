@@ -1,27 +1,76 @@
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, realpathSync } from "node:fs";
 import { join } from "node:path";
 import { parse as parseYaml } from "yaml";
 
-export function loadGuideEntries(yamlDirectories) {
+/**
+ * Resolves a path under `root` tolerating case mismatches in any segment
+ * (e.g. `_Scp/GuideBook` vs `_Scp/Guidebook`). Case-insensitive filesystems
+ * hit the existsSync fast path; on Linux the segment walk kicks in.
+ * Returns the resolved absolute path or null.
+ */
+export function resolvePathCaseInsensitive(root, relativePath) {
+  const direct = join(root, relativePath);
+  if (existsSync(direct)) return direct;
+
+  let current = root;
+  for (const segment of relativePath.split(/[/\\]/).filter(Boolean)) {
+    const next = join(current, segment);
+    if (existsSync(next)) {
+      current = next;
+      continue;
+    }
+    if (!existsSync(current)) return null;
+    const match = readdirSync(current).find(
+      (name) => name.toLowerCase() === segment.toLowerCase()
+    );
+    if (!match) return null;
+    current = join(current, match);
+  }
+  return current;
+}
+
+export function loadGuideEntries(yamlDirectories, options = {}) {
+  const { onWarning = console.warn } = options;
   const entries = new Map();
+  const seenDirectories = new Set();
 
   for (const directory of yamlDirectories) {
     if (!existsSync(directory)) continue;
+
+    // Candidate lists may contain casing variants of the same directory;
+    // canonicalize so case-insensitive filesystems don't parse files twice.
+    let canonical;
+    try {
+      canonical = realpathSync.native(directory);
+    } catch {
+      canonical = directory;
+    }
+    if (seenDirectories.has(canonical)) continue;
+    seenDirectories.add(canonical);
 
     const files = readdirSync(directory)
       .filter((name) => name.endsWith(".yml") || name.endsWith(".yaml"))
       .sort();
 
     for (const file of files) {
-      const yaml = readFileSync(join(directory, file), "utf8").replace(
-        /^\uFEFF/,
-        ""
-      );
-      const documents = parseYaml(yaml);
+      let documents;
+      try {
+        const yaml = readFileSync(join(directory, file), "utf8").replace(
+          /^\uFEFF/,
+          ""
+        );
+        documents = parseYaml(yaml);
+      } catch (error) {
+        onWarning(
+          `Failed to parse guide YAML ${join(directory, file)}: ${error.message}`
+        );
+        continue;
+      }
       if (!Array.isArray(documents)) continue;
 
       for (const document of documents) {
         if (document?.type !== "guideEntry" || !document.id) continue;
+        if (document.abstract === true) continue;
         entries.set(document.id, {
           id: document.id,
           name: document.name || document.id,
@@ -73,6 +122,8 @@ export function createGuideContentReader(resourcesRoot, options = {}) {
   const {
     onMissing = console.warn,
     pathAliases = {},
+    localeMirror = null,
+    onLocaleFallback = () => {},
   } = normalizedOptions;
   const serverInfoRoot = join(resourcesRoot, "ServerInfo");
 
@@ -85,9 +136,25 @@ export function createGuideContentReader(resourcesRoot, options = {}) {
       /^[/\\]?ServerInfo[/\\]/,
       ""
     );
-    const fullPath = join(serverInfoRoot, relativePath);
-    if (!existsSync(fullPath)) {
-      onMissing(`Guide XML not found: ${fullPath}`);
+
+    // Forks like RMC14/Fire Station keep translations in a parallel
+    // ServerInfo/<locale>/ tree instead of translating XML in place.
+    let fullPath = null;
+    if (localeMirror) {
+      fullPath = resolvePathCaseInsensitive(
+        serverInfoRoot,
+        join(localeMirror, relativePath)
+      );
+      if (!fullPath) {
+        fullPath = resolvePathCaseInsensitive(serverInfoRoot, relativePath);
+        if (fullPath) onLocaleFallback(relativePath);
+      }
+    } else {
+      fullPath = resolvePathCaseInsensitive(serverInfoRoot, relativePath);
+    }
+
+    if (!fullPath) {
+      onMissing(`Guide XML not found: ${join(serverInfoRoot, relativePath)}`);
       return "";
     }
 

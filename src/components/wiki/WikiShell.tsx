@@ -12,10 +12,10 @@ interface WikiShellProps {
   basePath: string;
   wikiLabel: string;
   hasRootPage?: boolean;
-  switcher: {
+  switchers: {
     href: string;
     label: string;
-  };
+  }[];
 }
 
 const floatingParticles = Array.from({ length: 30 }, (_, index) => ({
@@ -57,7 +57,7 @@ export function WikiShell({
   basePath,
   wikiLabel,
   hasRootPage = true,
-  switcher,
+  switchers,
 }: WikiShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -81,7 +81,7 @@ export function WikiShell({
         basePath={basePath}
         wikiLabel={wikiLabel}
         hasRootPage={hasRootPage}
-        switcher={switcher}
+        switchers={switchers}
       />
 
       <div className="flex-1 flex flex-col min-w-0 relative z-10">

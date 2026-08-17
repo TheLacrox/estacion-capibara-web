@@ -1,12 +1,9 @@
 "use client";
 
-import { type GuidePage } from "@/data/guides";
+import type { GuidePage } from "@/data/guide-types";
 import { WikiContent } from "@/components/wiki/WikiContent";
+import { estacionWikiSource } from "@/components/wiki/sources/estacion";
 
-interface GuidePageClientProps {
-  guide: GuidePage;
-}
-
-export function GuidePageClient({ guide }: GuidePageClientProps) {
-  return <WikiContent guide={guide} />;
+export function GuidePageClient({ guide }: { guide: GuidePage }) {
+  return <WikiContent guide={guide} sourceConfig={estacionWikiSource} />;
 }

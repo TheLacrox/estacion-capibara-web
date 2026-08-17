@@ -3,10 +3,7 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Badge } from "@/components/ui/Badge";
-import { guideIdToSlug, guideSlugsToMeta } from "@/data/guide-lookup";
-import { entitySpriteLabels, entitySprites } from "@/data/entity-sprites";
-import { monolithGuideIdToSlug, monolithGuideSlugsToMeta } from "@/data/monolith-guide-lookup";
-import { monolithEntitySpriteLabels, monolithEntitySprites } from "@/data/monolith-entity-sprites";
+import type { WikiSourceConfig } from "./wiki-source-config";
 import {
   consumeBoxBlock,
   consumeColorBoxBlock,
@@ -22,8 +19,7 @@ import {
 
 interface GuideMarkupProps {
   content: string;
-  source?: "estacion" | "monolith";
-  basePath?: string;
+  sourceConfig: WikiSourceConfig;
 }
 
 interface GuideMarkupContext {
@@ -280,23 +276,15 @@ function parseBlocks(
   return elements;
 }
 
-export function GuideMarkup({
-  content,
-  source = "estacion",
-  basePath = "/wiki",
-}: GuideMarkupProps) {
+export function GuideMarkup({ content, sourceConfig }: GuideMarkupProps) {
   const lines = splitGuideBlockLines(content);
   const keyRef = { current: 0 };
   const context: GuideMarkupContext = {
-    basePath,
-    guideIdToSlug:
-      source === "monolith" ? monolithGuideIdToSlug : guideIdToSlug,
-    guideSlugsToMeta:
-      source === "monolith" ? monolithGuideSlugsToMeta : guideSlugsToMeta,
-    entityLabels:
-      source === "monolith" ? monolithEntitySpriteLabels : entitySpriteLabels,
-    entitySprites:
-      source === "monolith" ? monolithEntitySprites : entitySprites,
+    basePath: sourceConfig.basePath,
+    guideIdToSlug: sourceConfig.idToSlug,
+    guideSlugsToMeta: sourceConfig.slugsToMeta,
+    entityLabels: sourceConfig.entityLabels,
+    entitySprites: sourceConfig.entitySprites,
   };
   const elements = parseBlocks(lines, keyRef, context);
   return <div className="wiki-content">{elements}</div>;

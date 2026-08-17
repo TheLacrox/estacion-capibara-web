@@ -1,11 +1,13 @@
 /**
- * Build-time guidebook generator for both Estación Capibara and Monolith
- * Capibara. Each source keeps its own generated tree, content, and lookup maps.
+ * Build-time guidebook generator for the four Capibara servers. Each source
+ * keeps its own generated tree, content, and lookup maps.
  *
  * Usage: node scripts/generate-guides.mjs
  * Optional roots:
  *   ESTACION_RESOURCES_ROOT=/path/to/Resources
  *   MONOLITH_RESOURCES_ROOT=/path/to/Resources
+ *   MARINES_RESOURCES_ROOT=/path/to/Resources
+ *   SCP_RESOURCES_ROOT=/path/to/Resources
  */
 
 import { existsSync, writeFileSync } from "node:fs";
@@ -50,6 +52,12 @@ const estacionResourcesRoot = findResourcesRoot("ESTACION_RESOURCES_ROOT", [
 const monolithResourcesRoot = findResourcesRoot("MONOLITH_RESOURCES_ROOT", [
   "../../forge-projects/Monolith-Capibara-ESP/Resources",
   "../Monolith-Capibara-ESP/Resources",
+]);
+const marinesResourcesRoot = findResourcesRoot("MARINES_RESOURCES_ROOT", [
+  "../ColonialMarinesUniverse-ESP-Capibara/Resources",
+]);
+const scpResourcesRoot = findResourcesRoot("SCP_RESOURCES_ROOT", [
+  "../project-fire-capibara-fundation/Resources",
 ]);
 
 const sources = [
@@ -122,6 +130,104 @@ const sources = [
       slugs: "allMonolithGuideSlugs",
       idToSlug: "monolithGuideIdToSlug",
       slugsToMeta: "monolithGuideSlugsToMeta",
+    },
+  },
+  {
+    id: "marines",
+    label: "Capibara Marines",
+    resourcesRoot: marinesResourcesRoot,
+    yamlNamespaces: ["", "_CMU14/Entities/Objects", "_RMC14"],
+    localeMirror: "es-ES",
+    rootIds: [
+      "NewPlayer",
+      "SS14",
+      "RMC14",
+      "RMCOverview",
+      "AU14SOP",
+      "AU14UCMJ",
+      "AU14CCLaw",
+      "AU14Comms",
+      "References",
+    ],
+    virtualRoot: {
+      id: "MarinesWiki",
+      slug: "marines",
+      title: "Wiki de Capibara Marines",
+    },
+    titleOverrides: {
+      NewPlayer: "Primeros pasos",
+      SS14: "Space Station 14",
+      RMC14: "Guía Colonial Marines",
+      RMCOverview: "Resumen de reglas",
+      AU14SOP: "Procedimiento operativo estándar",
+      AU14UCMJ: "Código Uniforme de Justicia Militar",
+      AU14CCLaw: "Código Civil Colonial",
+      AU14Comms: "Referencia de comunicaciones",
+      References: "Referencias",
+    },
+    fallbackToRawName: true,
+    outputFile: resolve("src/data/marines-guides.ts"),
+    lookupFile: resolve("src/data/marines-guide-lookup.ts"),
+    exports: {
+      tree: "marinesGuideTree",
+      pages: "marinesGuidePages",
+      slugs: "allMarinesGuideSlugs",
+      idToSlug: "marinesGuideIdToSlug",
+      slugsToMeta: "marinesGuideSlugsToMeta",
+    },
+  },
+  {
+    id: "scp",
+    label: "Capibara SCP",
+    resourcesRoot: scpResourcesRoot,
+    // _Scp ships its guidebook dir as "GuideBook" (capital B); both spellings
+    // are listed and deduped by realpath so either casing works everywhere.
+    yamlDirectories: [
+      "Guidebook",
+      "_Sunrise/Guidebook",
+      "_Scp/Guidebook",
+      "_Scp/GuideBook",
+    ],
+    localeMirror: "es-ES",
+    rootIds: [
+      "NewPlayer",
+      "SS14",
+      "ScpResearch",
+      "ScpGlossary",
+      "ScpFear",
+      "Scp173About",
+      "Scp096About",
+      "Scp082About",
+      "Scp106About",
+      "Scp457About",
+      "Expeditions",
+      "FireStationRuleset",
+      "References",
+    ],
+    virtualRoot: {
+      id: "ScpWiki",
+      slug: "scp",
+      title: "Wiki de Capibara SCP",
+    },
+    titleOverrides: {
+      NewPlayer: "Primeros pasos",
+      SS14: "Space Station 14",
+      ScpResearch: "Investigación de la Fundación",
+      ScpGlossary: "Glosario SCP",
+      ScpFear: "Sistema de miedo",
+      Expeditions: "Expediciones",
+      FireStationRuleset: "Reglas del servidor",
+      References: "Referencias",
+    },
+    fallbackToRawName: false,
+    outputFile: resolve("src/data/scp-guides.ts"),
+    lookupFile: resolve("src/data/scp-guide-lookup.ts"),
+    exports: {
+      tree: "scpGuideTree",
+      pages: "scpGuidePages",
+      slugs: "allScpGuideSlugs",
+      idToSlug: "scpGuideIdToSlug",
+      slugsToMeta: "scpGuideSlugsToMeta",
     },
   },
 ];
@@ -198,22 +304,31 @@ function generateSource(source) {
     );
   }
 
-  const yamlDirectories = source.yamlNamespaces.map((namespace) =>
-    namespace
-      ? join(resourcesRoot, "Prototypes", namespace, "Guidebook")
-      : join(resourcesRoot, "Prototypes", "Guidebook")
-  );
-  const entries = loadGuideEntries(yamlDirectories);
+  const yamlDirectories = source.yamlDirectories
+    ? source.yamlDirectories.map((directory) =>
+        join(resourcesRoot, "Prototypes", directory)
+      )
+    : source.yamlNamespaces.map((namespace) =>
+        namespace
+          ? join(resourcesRoot, "Prototypes", namespace, "Guidebook")
+          : join(resourcesRoot, "Prototypes", "Guidebook")
+      );
+  const entries = loadGuideEntries(yamlDirectories, {
+    onWarning: (message) => console.warn(`[guides] ${source.label}: ${message}`),
+  });
   const localizedNames = loadFluentMessages(
     join(resourcesRoot, "Locale", "es-ES")
   );
   const missingEntries = new Set();
+  const localeFallbacks = new Set();
   const collection = buildGuideCollection({
     entries,
     rootIds: source.rootIds,
     virtualRoot: source.virtualRoot,
     readContent: createGuideContentReader(resourcesRoot, {
       pathAliases: source.pathAliases,
+      localeMirror: source.localeMirror ?? null,
+      onLocaleFallback: (path) => localeFallbacks.add(path),
     }),
     transformContent: (content, context) =>
       localizeGuideContent(content, {
@@ -237,6 +352,11 @@ function generateSource(source) {
   console.log(
     `[guides] ${source.label}: ${entries.size} entries parsed, ${collection.pages.length} pages written.`
   );
+  if (localeFallbacks.size > 0) {
+    console.warn(
+      `[guides] ${source.label}: ${localeFallbacks.size} pages fell back to untranslated content (no ${source.localeMirror} mirror).`
+    );
+  }
   if (missingEntries.size > 0) {
     console.warn(
       `[guides] ${source.label}: skipped missing child entries: ${[...missingEntries].sort().join(", ")}`

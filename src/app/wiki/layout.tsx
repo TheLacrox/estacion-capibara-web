@@ -1,5 +1,6 @@
 import { guideTree } from "@/data/guides";
 import { WikiShell } from "@/components/wiki/WikiShell";
+import { wikiSwitchersFor } from "@/components/wiki/wiki-switchers";
 
 export default function WikiLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +8,7 @@ export default function WikiLayout({ children }: { children: React.ReactNode }) 
       tree={guideTree}
       basePath="/wiki"
       wikiLabel="WIKI ESTACIÓN"
-      switcher={{ href: "/wiki-monolith/", label: "Abrir Wiki Monolith" }}
+      switchers={wikiSwitchersFor("/wiki")}
     >
       {children}
     </WikiShell>

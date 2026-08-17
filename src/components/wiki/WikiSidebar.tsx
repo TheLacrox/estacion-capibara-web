@@ -15,10 +15,10 @@ interface WikiSidebarProps {
   basePath: string;
   wikiLabel: string;
   hasRootPage: boolean;
-  switcher: {
+  switchers: {
     href: string;
     label: string;
-  };
+  }[];
 }
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
@@ -173,7 +173,7 @@ export function WikiSidebar({
   basePath,
   wikiLabel,
   hasRootPage,
-  switcher,
+  switchers,
 }: WikiSidebarProps) {
   const [search, setSearch] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
@@ -316,15 +316,18 @@ export function WikiSidebar({
           )}
         </nav>
 
-        <div className="px-3 pt-3 border-t border-grid-line shrink-0">
-          <Link
-            href={switcher.href}
-            onClick={onClose}
-            className="flex items-center justify-center gap-2 px-3 py-2 rounded-sm border border-neon-cyan/20 bg-neon-cyan/5 text-xs font-mono text-neon-cyan hover:text-hazard-yellow hover:border-hazard-yellow/30 transition-colors"
-          >
-            <Book size={13} />
-            {switcher.label}
-          </Link>
+        <div className="px-3 pt-3 border-t border-grid-line shrink-0 space-y-1.5">
+          {switchers.map((switcher) => (
+            <Link
+              key={switcher.href}
+              href={switcher.href}
+              onClick={onClose}
+              className="flex items-center justify-center gap-2 px-3 py-2 rounded-sm border border-neon-cyan/20 bg-neon-cyan/5 text-xs font-mono text-neon-cyan hover:text-hazard-yellow hover:border-hazard-yellow/30 transition-colors"
+            >
+              <Book size={13} />
+              {switcher.label}
+            </Link>
+          ))}
         </div>
 
         {/* Footer link back to landing */}
