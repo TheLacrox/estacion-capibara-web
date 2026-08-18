@@ -6,16 +6,9 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { DiagonalHero } from "@/components/sections/DiagonalHero";
 import { jsonLdWebsite } from "@/lib/metadata";
 import { gameEventSchema, websiteSchema } from "@/lib/schema";
-
-const HeroSection = dynamic(
-  () =>
-    import("@/components/sections/HeroSection").then((m) => ({
-      default: m.HeroSection,
-    })),
-  { ssr: false }
-);
 
 const WhatIsSS14Section = dynamic(
   () =>
@@ -31,20 +24,6 @@ const ServersSection = dynamic(
     }))
 );
 
-const ServerFeaturesSection = dynamic(
-  () =>
-    import("@/components/sections/ServerFeaturesSection").then((m) => ({
-      default: m.ServerFeaturesSection,
-    }))
-);
-
-const DepartmentsSection = dynamic(
-  () =>
-    import("@/components/sections/DepartmentsSection").then((m) => ({
-      default: m.DepartmentsSection,
-    }))
-);
-
 const ScheduleSection = dynamic(
   () =>
     import("@/components/sections/ScheduleSection").then((m) => ({
@@ -52,17 +31,10 @@ const ScheduleSection = dynamic(
     }))
 );
 
-const HowToPlaySection = dynamic(
+const MultiServerStatus = dynamic(
   () =>
-    import("@/components/sections/HowToPlaySection").then((m) => ({
-      default: m.HowToPlaySection,
-    }))
-);
-
-const ServerStatusSection = dynamic(
-  () =>
-    import("@/components/sections/ServerStatusSection").then((m) => ({
-      default: m.ServerStatusSection,
+    import("@/components/sections/MultiServerStatus").then((m) => ({
+      default: m.MultiServerStatus,
     }))
 );
 
@@ -97,64 +69,44 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Static hero skeleton — renders in initial HTML for fast LCP while JS loads */}
-        <div
-          id="hero-skeleton"
-          className="min-h-screen flex items-center justify-center bg-space-void text-center px-4"
-          style={{ position: "relative", zIndex: 1 }}
-        >
-          <div>
-            <img
-              src="/branding/logo.svg"
-              alt="Logo de Estación Capibara, servidor de Space Station 14 en español"
-              className="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 drop-shadow-[0_0_30px_rgba(241,196,15,0.3)]"
-              width={160}
-              height={160}
-              fetchPriority="high"
-            />
-            <h1 className="font-heading font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.2em] text-text-primary mb-2">
-              ESTACIÓN
-            </h1>
-            <p className="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.15em] text-hazard-yellow mb-6">
-              CAPIBARA
-            </p>
-            <p className="text-neon-cyan text-xs sm:text-sm tracking-wider font-mono">
-              {">> SERVIDOR EN LÍNEA // COMUNIDAD 100% EN ESPAÑOL <<"}
-            </p>
-          </div>
-        </div>
-        <HeroSection />
+        <DiagonalHero />
         <WhatIsSS14Section />
         <ServersSection />
-        <ServerFeaturesSection />
-        <DepartmentsSection />
         <ScheduleSection />
-        <HowToPlaySection />
-        <ServerStatusSection />
+        <MultiServerStatus />
         <CommunitySection />
       </main>
       <Footer />
       <noscript>
         <div style={{ padding: "2rem", color: "#fff", backgroundColor: "#0b0f19" }}>
-          <h2>Estación Capibara - Servidor Español de SS14 | Space Station 14 en Español</h2>
+          <h2>Estación Capibara - Comunidad Española de SS14 | Space Station 14 en Español</h2>
           <p>
-            Estación Capibara es el servidor español de SS14 (Space Station 14) con la comunidad hispanohablante
-            más activa. 30+ roles, 8 departamentos, sistema económico con Spesos, antagonistas y objetivos cooperativos.
+            Estación Capibara es la comunidad hispanohablante de SS14 (Space Station 14) con
+            cuatro servidores en español, cada uno con su propia wiki y estilo de juego.
           </p>
-          <h2>Dos servidores en español</h2>
-          <p>
-            La comunidad reúne Estación Capibara, centrada en departamentos y
-            rondas dentro de una estación, y Capibara Monolith, una edición
-            comunitaria en español de Monolith Station con naves, expediciones,
-            economía persistente, facciones y artillería naval.
-          </p>
-          <p>
-            Consulta la{" "}
-            <Link href="/wiki-monolith/" style={{ color: "#00ffff" }}>
-              Wiki de Capibara Monolith
-            </Link>{" "}
-            para conocer sus sistemas y reglas.
-          </p>
+          <h2>Cuatro servidores en español</h2>
+          <ul>
+            <li>
+              <Link href="/estacion/" style={{ color: "#F1C40F" }}>Estación Capibara</Link>: la
+              experiencia clásica de estación con departamentos, economía de Spesos, antagonistas
+              y objetivos cooperativos. <Link href="/wiki/" style={{ color: "#F1C40F" }}>Wiki Estación</Link>.
+            </li>
+            <li>
+              <Link href="/marines/" style={{ color: "#7FB069" }}>Capibara Marines</Link>: combate
+              táctico asimétrico de marines coloniales contra xenomorfos, derivado de RMC-14.{" "}
+              <Link href="/wiki-marines/" style={{ color: "#7FB069" }}>Wiki Marines</Link>.
+            </li>
+            <li>
+              <Link href="/scp/" style={{ color: "#A55EEA" }}>Capibara SCP</Link>: contención de
+              anomalías y roleplay de terror en una instalación de la Fundación SCP.{" "}
+              <Link href="/wiki-scp/" style={{ color: "#A55EEA" }}>Wiki SCP</Link>.
+            </li>
+            <li>
+              <Link href="/monolith/" style={{ color: "#00ffff" }}>Capibara Monolith</Link>: naves
+              propias, expediciones, economía persistente y facciones en el Sector Colossus.{" "}
+              <Link href="/wiki-monolith/" style={{ color: "#00ffff" }}>Wiki Monolith</Link>.
+            </li>
+          </ul>
           <h2>¿Qué es Space Station 14?</h2>
           <p>
             Space Station 14 es un juego de roleplay multijugador gratuito donde cada jugador asume un rol
@@ -163,24 +115,14 @@ export default function Home() {
           </p>
           <h2>Horario de Juego</h2>
           <p>
-            Jugamos los viernes, sábados y domingos. Dos tipos de rondas: rondas normales con traidor,
-            revolucionarios y otros antagonistas aleatorios; y rondas de evento con escenarios personalizados
-            organizados por los admins. Los horarios se anuncian en Discord cada semana.
-          </p>
-          <h2>¿Por qué jugar en el servidor español de SS14 Estación Capibara?</h2>
-          <p>
-            Somos la comunidad hispana más activa de SS14, con un sistema de economía propio basado en Spesos,
-            eventos regulares cada fin de semana, wiki y guías completas en español, y bajo ping para
-            Latinoamérica y España.
+            Jugamos los viernes, sábados y domingos. Rondas normales con antagonistas aleatorios y
+            rondas de evento con escenarios personalizados organizados por los admins. Los horarios
+            se anuncian en Discord cada semana.
           </p>
           <h2>Cómo Jugar</h2>
           <p>
             Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca &quot;Capibara&quot;
-            en el navegador de servidores.
-          </p>
-          <p>
-            Visita nuestra <Link href="/wiki" style={{ color: "#F1C40F" }}>Wiki</Link> para guías completas
-            sobre trabajos, departamentos, economía y supervivencia en español.
+            en el navegador de servidores para encontrar los cuatro servidores de la comunidad.
           </p>
         </div>
       </noscript>

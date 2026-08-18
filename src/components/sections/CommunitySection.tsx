@@ -14,13 +14,13 @@ import { SECTION_IDS, DISCORD_URL } from "@/lib/constants";
 const stats = [
   {
     icon: Server,
-    value: 2,
+    value: 4,
     suffix: "",
     label: "Servidores",
   },
   {
     icon: BookOpen,
-    value: 2,
+    value: 4,
     suffix: "",
     label: "Wikis en Español",
   },
@@ -34,7 +34,7 @@ const stats = [
 
 const badges = [
   { label: "Soporte en Español", color: "#F1C40F" },
-  { label: "Dos Servidores", color: "#8E44AD" },
+  { label: "Cuatro Servidores", color: "#8E44AD" },
   { label: "Admins Activos", color: "#2ECC71" },
   { label: "Comunidad Amigable", color: "#00ffff" },
 ];
