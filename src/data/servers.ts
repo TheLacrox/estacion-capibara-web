@@ -83,7 +83,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     features: ["Combate táctico", "Marines vs xenomorfos", "Cadena de mando"],
     featureIcons: [Crosshair, ShieldHalf, Radio],
     repoEnvVar: "MARINES_RESOURCES_ROOT",
-    live: false,
+    live: true,
   },
   {
     id: "scp",
@@ -104,7 +104,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     features: ["Anomalías SCP", "Brechas de contención", "Roleplay de terror"],
     featureIcons: [Radiation, Lock, Eye],
     repoEnvVar: "SCP_RESOURCES_ROOT",
-    live: false,
+    live: true,
   },
   {
     id: "monolith",

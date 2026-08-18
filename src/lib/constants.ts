@@ -6,20 +6,11 @@ export const SERVER_NAME = "Estación Capibara";
 export const SITE_URL = "https://estacioncapibara.com";
 
 export const NAV_LINKS = [
-  { label: "Inicio", href: "#hero" },
-  { label: "Servidores", href: "#servidores" },
-  { label: "¿Qué es SS14?", href: "#que-es-ss14" },
-  { label: "Características", href: "#caracteristicas" },
-  { label: "Horario", href: "#horario" },
-  { label: "Cómo Jugar", href: "#como-jugar" },
-  { label: "Comunidad", href: "#comunidad" },
+  { label: "Inicio", href: "/#hero" },
+  { label: "¿Qué es SS14?", href: "/#que-es-ss14" },
+  { label: "Horario", href: "/#horario" },
+  { label: "Comunidad", href: "/#comunidad" },
 ] as const;
-
-export const WIKI_NAV_LINK = { label: "Wiki Estación", href: "/wiki/" } as const;
-export const MONOLITH_WIKI_NAV_LINK = {
-  label: "Wiki Monolith",
-  href: "/wiki-monolith/",
-} as const;
 
 export const SECTION_IDS = {
   hero: "hero",

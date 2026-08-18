@@ -120,14 +120,12 @@ export function ServersSection() {
                     {server.wikiLabel}
                     <ArrowRight size={15} />
                   </Link>
-                  {server.id === "monolith" && (
-                    <Link
-                      href="/monolith-station-en-espanol/"
-                      className="inline-flex items-center gap-2 rounded-sm border border-neon-cyan/30 px-4 py-2.5 font-mono text-sm text-neon-cyan hover:border-hazard-yellow/50 hover:text-hazard-yellow transition-colors"
-                    >
-                      Conocer el servidor
-                    </Link>
-                  )}
+                  <Link
+                    href={`/${server.slug}/`}
+                    className="inline-flex items-center gap-2 rounded-sm border border-neon-cyan/30 px-4 py-2.5 font-mono text-sm text-neon-cyan hover:border-hazard-yellow/50 hover:text-hazard-yellow transition-colors"
+                  >
+                    Conocer el servidor
+                  </Link>
                 </div>
               </article>
             </StaggerItem>

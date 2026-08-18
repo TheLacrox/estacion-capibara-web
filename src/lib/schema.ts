@@ -99,6 +99,40 @@ export function organizationSchema() {
   };
 }
 
+export function videoGameSchema(server: {
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  lineage: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: `${server.name} - Servidor Español de SS14`,
+    alternateName: [server.name],
+    description: `${server.description} ${server.lineage}. Servidor en español de Space Station 14.`,
+    url: `${SITE_URL}/${server.slug}/`,
+    genre: ["Roleplay", "Simulation", "Multiplayer"],
+    gamePlatform: "PC",
+    playMode: "MultiPlayer",
+    applicationCategory: "Game",
+    operatingSystem: "Windows, Linux, macOS",
+    inLanguage: "es",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Estación Capibara",
+      url: SITE_URL,
+    },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+  };
+}
+
 export function gameEventSchema() {
   const nextFriday = getNextFriday();
   const nextSunday = getNextSunday(nextFriday);
