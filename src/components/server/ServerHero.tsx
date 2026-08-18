@@ -23,10 +23,10 @@ export function ServerHero({ server }: { server: ServerDescriptor }) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(11,15,25,0.82) 0%, rgba(11,15,25,0.66) 50%, rgba(11,15,25,0.94) 100%)",
+            "linear-gradient(180deg, rgba(11,15,25,0.62) 0%, rgba(11,15,25,0.42) 50%, rgba(11,15,25,0.9) 100%)",
         }}
       />
-      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
