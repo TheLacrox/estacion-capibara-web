@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/wiki-marines/`,
     type: "website",
     locale: "es_ES",
-    images: [{ url: `${SITE_URL}/branding/og-image.png`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/branding/og-marines.png`, width: 1200, height: 630 }],
   },
 };
 

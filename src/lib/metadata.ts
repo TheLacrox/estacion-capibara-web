@@ -7,7 +7,7 @@ export function serverPageMetadata(server: ServerDescriptor): Metadata {
   const description = `${server.description} ${server.lineage}. Busca "${server.searchTerm}" en el launcher de Space Station 14.`;
   const canonical = `${SITE_URL}/${server.slug}/`;
   const ogImage = {
-    url: `${SITE_URL}/branding/og-image.png`,
+    url: `${SITE_URL}/branding/og-${server.slug}.png`,
     width: 1200,
     height: 630,
     alt: title,
@@ -99,10 +99,10 @@ export const siteMetadata: Metadata = {
 export const jsonLdWebsite = {
   "@context": "https://schema.org",
   "@type": "VideoGame",
-  name: "Estación Capibara - Servidor Español de SS14",
+  name: "Estación Capibara - Servidores Españoles de SS14",
   alternateName: ["Estación Capibara", "Servidor Español de SS14", "SS14 en Español"],
   description:
-    "Servidor español de Space Station 14. Jugamos viernes, sábados y domingos con rondas normales y eventos especiales. Sistema de economía con Spesos, 30+ roles, 8 departamentos y objetivos cooperativos totalmente en español.",
+    "Comunidad española de Space Station 14 con cuatro servidores: Estación Capibara (estación clásica), Capibara Marines (Colonial Marines), Capibara SCP (Fundación SCP) y Capibara Monolith (naves y frontera). Jugamos viernes, sábados y domingos, totalmente en español.",
   url: SITE_URL,
   genre: ["Roleplay", "Simulation", "Multiplayer"],
   gamePlatform: "PC",

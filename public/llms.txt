@@ -1,51 +1,52 @@
 # Estación Capibara
 
-> Servidor español de Space Station 14 con comunidad hispanohablante activa. Wiki completa en español con 200+ guías de juego.
+> Comunidad española de Space Station 14 con cuatro servidores, cada uno con su propia wiki en español (800+ guías en total).
 
 ## Sobre este sitio
 
-Estación Capibara es el servidor español de Space Station 14 (SS14), un juego de roleplay multijugador gratuito ambientado en una estación espacial. Este sitio contiene la página principal del servidor y una wiki completa en español.
+Estación Capibara es la comunidad hispanohablante de Space Station 14 (SS14), un juego de roleplay multijugador gratuito. La comunidad mantiene cuatro servidores con estilos de juego distintos, y este sitio contiene la página de cada servidor y sus wikis completas en español.
 
 - Idioma: Español
-- Tipo: Comunidad de juego / Wiki
+- Tipo: Comunidad de juego / Wikis
 - Juego: Space Station 14
-- Servidor: Estación Capibara
 - Código fuente: https://github.com/TheLacrox/Estacion-Capibara
+
+## Los cuatro servidores
+
+- [Estación Capibara](https://estacioncapibara.com/estacion/): la experiencia clásica de estación. Departamentos, economía con Spesos, antagonistas y objetivos cooperativos. Basado en Goob Station.
+- [Capibara Marines](https://estacioncapibara.com/marines/): combate táctico asimétrico de marines coloniales contra xenomorfos. Derivado de RMC-14 y CM-SS14.
+- [Capibara SCP](https://estacioncapibara.com/scp/): contención de anomalías y roleplay de terror en una instalación de la Fundación SCP. Derivado de SCP: Project Fire.
+- [Capibara Monolith](https://estacioncapibara.com/monolith/): naves propias, expediciones, economía persistente y facciones en el Sector Colossus. Derivado de Monolith Station y Frontier Station 14.
 
 ## Páginas principales
 
-- [Inicio](https://estacioncapibara.com): Página principal con información del servidor, horarios y cómo jugar.
-- [Wiki](https://estacioncapibara.com/wiki): Índice de todas las guías del juego en español.
+- [Inicio](https://estacioncapibara.com): página principal con los cuatro servidores, horarios y cómo jugar.
+- [Wiki Estación](https://estacioncapibara.com/wiki/): guías del servidor de estación clásica.
+- [Wiki Marines](https://estacioncapibara.com/wiki-marines/): guías de Colonial Marines en español.
+- [Wiki SCP](https://estacioncapibara.com/wiki-scp/): guías de la Fundación SCP en español.
+- [Wiki Monolith](https://estacioncapibara.com/wiki-monolith/): guías de naves, economía y facciones.
 
-## Categorías de la Wiki
+## Categorías destacadas de las wikis
 
-- [Trabajos](https://estacioncapibara.com/wiki/jobs): Guías de los 30+ roles disponibles organizados por departamento.
-- [Supervivencia](https://estacioncapibara.com/wiki/survival): Guía de supervivencia y tratamiento de emergencia.
-- [Economía](https://estacioncapibara.com/wiki/capibara-economy): Sistema económico con Spesos, salarios y objetivos.
-- [Antagonistas](https://estacioncapibara.com/wiki/antagonists): Guías de todos los roles antagonistas.
-- [Artes Marciales](https://estacioncapibara.com/wiki/martial-arts): Sistemas de combate disponibles.
-- [Glosario](https://estacioncapibara.com/wiki/glossary): Terminología del juego en español.
-
-## Departamentos
-
-- [Cargo](https://estacioncapibara.com/wiki/cargo): Logística y salvamento.
-- [Comando](https://estacioncapibara.com/wiki/command): Liderazgo de la estación.
-- [Ingeniería](https://estacioncapibara.com/wiki/engineering): Energía, atmosféricos y construcción.
-- [Medicina](https://estacioncapibara.com/wiki/medical): Doctores, química y clonación.
-- [Ciencia](https://estacioncapibara.com/wiki/science): Investigación, robótica y xenobiología.
-- [Seguridad](https://estacioncapibara.com/wiki/security): Aplicación de la ley y procedimientos.
-- [Servicio](https://estacioncapibara.com/wiki/service): Cocina, botánica y mantenimiento.
+- [Trabajos (Estación)](https://estacioncapibara.com/wiki/jobs): guías de los 30+ roles organizados por departamento.
+- [Supervivencia (Estación)](https://estacioncapibara.com/wiki/survival): guía de supervivencia y tratamiento de emergencia.
+- [Economía (Estación)](https://estacioncapibara.com/wiki/capibara-economy): sistema económico con Spesos, salarios y objetivos.
+- [Antagonistas (Estación)](https://estacioncapibara.com/wiki/antagonists): guías de todos los roles antagonistas.
+- [Guía Colonial Marines](https://estacioncapibara.com/wiki-marines/rmc14/): sistemas del combate marine contra xenomorfos.
+- [Glosario SCP](https://estacioncapibara.com/wiki-scp/scp-glossary/): terminología y anomalías de la Fundación.
+- [Economía Monolith](https://estacioncapibara.com/wiki-monolith/economy/): economía persistente entre rondas.
+- [Facciones Monolith](https://estacioncapibara.com/wiki-monolith/factions/): facciones del Sector Colossus.
 
 ## Preguntas frecuentes
 
-- ¿Qué es Space Station 14?: Juego de roleplay multijugador gratuito de código abierto ambientado en una estación espacial. Hasta 30 jugadores asumen roles como ingeniero, médico, científico u oficial de seguridad.
-- ¿Cómo jugar en Estación Capibara?: Descarga SS14 gratis desde spacestation14.com, abre el launcher y busca "Capibara" en el navegador de servidores.
-- ¿Cuándo se juega?: Viernes, sábados y domingos. Los horarios se anuncian en Discord cada semana.
-- ¿Qué son los Spesos?: La moneda del servidor. Cada rol tiene un salario por ciclo de 10 minutos y los jugadores pueden gastar Spesos en la estación.
+- ¿Qué es Space Station 14?: juego de roleplay multijugador gratuito de código abierto ambientado en el espacio. Los jugadores asumen roles como ingeniero, médico, científico u oficial de seguridad.
+- ¿Cómo jugar?: descarga SS14 gratis desde spacestation14.com, abre el launcher y busca "Capibara" en el navegador de servidores para ver los cuatro servidores.
+- ¿Cuándo se juega?: viernes, sábados y domingos. Los horarios se anuncian en Discord cada semana.
+- ¿Qué servidor elijo?: Estación para la experiencia clásica, Marines para combate táctico, SCP para terror y contención, Monolith para naves y economía persistente.
 
 ## Información adicional
 
-- Horario de juego: Viernes, sábados y domingos.
+- Horario de juego: viernes, sábados y domingos.
 - Descarga gratuita: spacestation14.com
 - Comunidad: Discord (discord.gg/xRsRcpmCVX)
 - Código fuente: github.com/TheLacrox/Estacion-Capibara
