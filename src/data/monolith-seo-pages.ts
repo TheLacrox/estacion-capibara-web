@@ -92,9 +92,9 @@ export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
       description: "Cómo se relacionan Frontier, Monolith y la edición de Capibara.",
     },
     {
-      label: "Roleplay espacial con naves",
-      href: "/juego-roleplay-espacial-con-naves/",
-      description: "Naves, oficios, economía y exploración en un sandbox multijugador.",
+      label: "RMC14 en Español: Capibara Marines",
+      href: "/rmc14-en-espanol/",
+      description: "Conoce otro servidor Capibara: marines contra xenónidos en RMC14.",
     },
     {
       label: "Facciones y lore de Monolith",
@@ -548,9 +548,9 @@ export const MULTIPLAYER_SPACESHIPS_PAGE: MonolithSeoPageData = {
       description: "El origen del estilo de frontera, naves y expediciones.",
     },
     {
-      label: "Juego espacial cooperativo",
-      href: "/juego-espacial-cooperativo/",
-      description: "Coordinación entre pilotaje, soporte y expedicionarios.",
+      label: "Juegos de marines espaciales",
+      href: "/juegos-de-marines-espaciales/",
+      description: "Acción y escuadras: más juegos de combate en el espacio.",
     },
   ],
 };
@@ -639,9 +639,9 @@ export const SPACE_COOP_PAGE: MonolithSeoPageData = {
       description: "Responsabilidades que mantienen unida a la tripulación.",
     },
     {
-      label: "Expediciones de Monolith Station",
-      href: "/expediciones-monolith-station/",
-      description: "Preparación, recuperación de recursos y regreso seguro.",
+      label: "Juegos de terror cooperativo",
+      href: "/juegos-de-terror-cooperativo/",
+      description: "Más juegos cooperativos para PC: terror, presión y equipo.",
     },
   ],
 };
