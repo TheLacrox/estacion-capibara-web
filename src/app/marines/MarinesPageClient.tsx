@@ -8,9 +8,12 @@ import { DepartmentsShowcase } from "@/components/server/DepartmentsShowcase";
 import { HowToConnect } from "@/components/server/HowToConnect";
 import { ServerLiveStatus } from "@/components/server/ServerLiveStatus";
 import { WikiCtaSection } from "@/components/server/WikiCtaSection";
+import { MediaShowcase } from "@/components/server/MediaShowcase";
 import { SERVER_BY_SLUG } from "@/data/servers";
 import {
+  marinesAmbientParagraphs,
   marinesFeatures,
+  marinesGalleryImages,
   marinesShowcaseDepartments,
 } from "@/data/servers/marines";
 
@@ -32,6 +35,18 @@ export function MarinesPageClient() {
           }
           description="Colonial Marines convierte SS14 en un juego de combate táctico asimétrico inspirado en Aliens."
           features={marinesFeatures}
+          accentVar={server.accentVar}
+        />
+        <MediaShowcase
+          eyebrow="// LA OPERACIÓN"
+          title={
+            <>
+              Así se vive una{" "}
+              <span style={{ color: "var(--color-marine-green)" }}>ronda</span>
+            </>
+          }
+          paragraphs={marinesAmbientParagraphs}
+          images={marinesGalleryImages}
           accentVar={server.accentVar}
         />
         <DepartmentsShowcase

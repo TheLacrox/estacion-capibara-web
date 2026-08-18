@@ -12,6 +12,20 @@ export function ServerHero({ server }: { server: ServerDescriptor }) {
 
   return (
     <section className="relative overflow-hidden bg-space-void pt-28 pb-20 sm:pt-36 sm:pb-24">
+      {/* Server art backdrop */}
+      <img
+        src={server.heroWide}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        fetchPriority="high"
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(11,15,25,0.82) 0%, rgba(11,15,25,0.66) 50%, rgba(11,15,25,0.94) 100%)",
+        }}
+      />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -35,8 +49,7 @@ export function ServerHero({ server }: { server: ServerDescriptor }) {
           <img
             src={server.logo}
             alt={`Logo de ${server.name}`}
-            className="w-20 h-20 mx-auto mb-6 object-contain"
-            width={80}
+            className="h-20 w-auto max-w-[320px] mx-auto mb-6 object-contain"
             height={80}
           />
           <p

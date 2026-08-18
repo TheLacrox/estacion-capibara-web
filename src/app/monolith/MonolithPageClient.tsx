@@ -9,9 +9,12 @@ import { DepartmentsShowcase } from "@/components/server/DepartmentsShowcase";
 import { HowToConnect } from "@/components/server/HowToConnect";
 import { ServerLiveStatus } from "@/components/server/ServerLiveStatus";
 import { WikiCtaSection } from "@/components/server/WikiCtaSection";
+import { MediaShowcase } from "@/components/server/MediaShowcase";
 import { SERVER_BY_SLUG } from "@/data/servers";
 import {
+  monolithAmbientParagraphs,
   monolithFeatures,
+  monolithGalleryImages,
   monolithShowcaseDepartments,
 } from "@/data/servers/monolith";
 
@@ -33,6 +36,18 @@ export function MonolithPageClient() {
           }
           description="Monolith convierte SS14 en un sandbox espacial de frontera: naves propias, comercio persistente y guerra de facciones."
           features={monolithFeatures}
+          accentVar={server.accentVar}
+        />
+        <MediaShowcase
+          eyebrow="// VIDA DE FRONTERA"
+          title={
+            <>
+              Historias del{" "}
+              <span style={{ color: "var(--color-neon-cyan)" }}>sector</span>
+            </>
+          }
+          paragraphs={monolithAmbientParagraphs}
+          images={monolithGalleryImages}
           accentVar={server.accentVar}
         />
         <DepartmentsShowcase

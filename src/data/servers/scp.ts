@@ -63,6 +63,30 @@ export const scpFeatures: ServerPageFeature[] = [
   },
 ];
 
+export const scpAmbientParagraphs = [
+  "La instalación se hunde varios niveles bajo tierra: laboratorios, celdas de contención y pasillos que nadie quiere patrullar de noche. Arriba, el mundo no sabe que existes; abajo, las anomalías esperan un descuido.",
+  "Cuando suena la alarma de brecha todo cambia: la clase D corre, el personal científico sella las puertas y las unidades de contención avanzan hacia el problema mientras todos los demás se alejan de él.",
+  "El sistema de miedo hace el resto: presenciar lo imposible afecta a tu personaje, y mantener la cordura es parte del trabajo.",
+];
+
+export const scpGalleryImages = [
+  {
+    src: "/gallery/scp-1.webp",
+    alt: "Figura anómala entre árboles iluminada en rojo",
+    caption: "Avistamiento anómalo",
+  },
+  {
+    src: "/gallery/scp-2.webp",
+    alt: "Metraje de una cámara de contención con manchas de sangre",
+    caption: "Metraje de contención",
+  },
+  {
+    src: "/gallery/scp-3.webp",
+    alt: "Logo de la Fundación SCP en una cinta VHS",
+    caption: "La Fundación",
+  },
+];
+
 const DEPARTMENT_OVERLAY: Record<string, { icon: LucideIcon; order: number }> = {
   Administration: { icon: Crown, order: 0 },
   ScientificService: { icon: FlaskConical, order: 1 },

@@ -65,14 +65,13 @@ export function ServersSection() {
 
                 <div className="flex items-start gap-4 mb-6">
                   <div
-                    className="w-16 h-16 rounded-sm border border-grid-line bg-space-void/70 p-2 flex items-center justify-center shrink-0"
+                    className="h-16 min-w-16 max-w-[190px] rounded-sm border border-grid-line bg-space-void/70 p-2 flex items-center justify-center shrink-0"
                     style={{ borderColor: `color-mix(in srgb, ${server.accentVar} 35%, transparent)` }}
                   >
                     <img
                       src={server.logo}
                       alt={`Logo de ${server.name}`}
-                      className="w-full h-full object-contain"
-                      width={64}
+                      className="h-full w-auto object-contain"
                       height={64}
                     />
                   </div>

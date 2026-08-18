@@ -143,8 +143,7 @@ export function DiagonalHero() {
                 <img
                   src={server.logo}
                   alt=""
-                  className="w-16 h-16 lg:w-20 lg:h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                  width={80}
+                  className="h-16 lg:h-20 w-auto max-w-[240px] object-contain transition-transform duration-300 group-hover:scale-110"
                   height={80}
                 />
                 <span
@@ -225,8 +224,7 @@ export function DiagonalHero() {
               <img
                 src={server.logo}
                 alt=""
-                className="w-12 h-12 object-contain shrink-0"
-                width={48}
+                className="h-12 w-auto max-w-[120px] object-contain shrink-0"
                 height={48}
               />
               <div className="min-w-0 flex-1">

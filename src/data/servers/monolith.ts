@@ -65,6 +65,30 @@ export const monolithFeatures: ServerPageFeature[] = [
   },
 ];
 
+export const monolithAmbientParagraphs = [
+  "Colossus Central es el corazón del sector: un puerto donde los colonos reposan naves, cierran contratos y presumen de cargamento. Desde ahí, cada tripulación traza su propia ruta.",
+  "Puedes pasar la tarde salvando chatarra, montar una farmacia orbital, escoltar convoyes de la TSF o unirte a la Phaethon Dynasty y quemar todo lo anterior. El dinero persiste entre rondas; tus enemigos también.",
+  "Cuando dos naves se cruzan en el vacío con las bodegas llenas, la artillería decide quién llega a puerto.",
+];
+
+export const monolithGalleryImages = [
+  {
+    src: "/gallery/monolith-1.webp",
+    alt: "Nave Reclaimer junto a una detonación nuclear en el espacio",
+    caption: "Operación Reclaimer",
+  },
+  {
+    src: "/gallery/monolith-2.webp",
+    alt: "Terminal espacial del sector Colossus",
+    caption: "Terminal Station",
+  },
+  {
+    src: "/gallery/monolith-3.webp",
+    alt: "Ilustración de un rescate médico entre asteroides",
+    caption: "Rescate en el vacío",
+  },
+];
+
 const DEPARTMENT_OVERLAY: Record<string, { icon: LucideIcon; order: number }> = {
   Frontier: { icon: Rocket, order: 0 },
   Command: { icon: Crown, order: 1 },

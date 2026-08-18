@@ -58,6 +58,30 @@ export const marinesFeatures: ServerPageFeature[] = [
   },
 ];
 
+export const marinesAmbientParagraphs = [
+  "Cada ronda es una operación completa: el pelotón se equipa en la UNS Almayer, desciende en la dropship y toma contacto con una colonia silenciada. Lo que encuentra abajo nunca es bueno.",
+  "La colmena crece mientras los marines discuten el plan. Cada baja alimenta al enemigo, cada minuto perdido lo hace más fuerte. La coordinación por radio, las líneas de suministro y el fuego de apoyo deciden la operación.",
+  "Y si prefieres el otro bando: evoluciona de larva a Ravager y enséñales a los humanos por qué no deberían haber venido.",
+];
+
+export const marinesGalleryImages = [
+  {
+    src: "/gallery/marines-1.webp",
+    alt: "Arte oficial de RMC-14 con un marine en un planeta hostil",
+    caption: "RMC-14",
+  },
+  {
+    src: "/gallery/marines-2.webp",
+    alt: "Hangar con la dropship de los marines coloniales",
+    caption: "La dropship",
+  },
+  {
+    src: "/gallery/marines-3.webp",
+    alt: "Un médico de campaña huye de un Ravager en una cueva",
+    caption: "Huyendo del Ravager",
+  },
+];
+
 const DEPARTMENT_OVERLAY: Record<string, { icon: LucideIcon; order: number }> = {
   CMCommand: { icon: Crown, order: 0 },
   CMSquad: { icon: Crosshair, order: 1 },

@@ -29,8 +29,10 @@ export interface ServerDescriptor {
   /** CSS var reference, e.g. "var(--color-hazard-yellow)" */
   accentVar: string;
   logo: string;
-  /** Gameplay screenshot used as the hero panel background */
+  /** Gameplay/lobby art used as the landing hero panel background (portrait) */
   heroImage: string;
+  /** Wide variant of the same art, used behind each server page's hero */
+  heroWide: string;
   wikiBasePath: string;
   wikiLabel: string;
   statusEndpoint: string;
@@ -58,6 +60,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     accentVar: "var(--color-hazard-yellow)",
     logo: "/branding/logo.svg",
     heroImage: "/heroes/panel-estacion.webp",
+    heroWide: "/heroes/bg-estacion.webp",
     wikiBasePath: "/wiki",
     wikiLabel: "Wiki Estación",
     statusEndpoint: "/api/status/estacion",
@@ -78,8 +81,9 @@ export const SERVERS: readonly ServerDescriptor[] = [
       "La edición en español de Colonial Marines Universe: escuadrones de marines, cadena de mando, xenomorfos y operaciones tácticas por rondas.",
     lineage: "Derivado de RMC-14 y CM-SS14",
     accentVar: "var(--color-marine-green)",
-    logo: "/branding/logo.svg",
+    logo: "/branding/marines-logo.png",
     heroImage: "/heroes/panel-marines.webp",
+    heroWide: "/heroes/bg-marines.webp",
     wikiBasePath: "/wiki-marines",
     wikiLabel: "Wiki Marines",
     statusEndpoint: "/api/status/marines",
@@ -102,6 +106,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     accentVar: "var(--color-scp-purple)",
     logo: "/branding/logo.svg",
     heroImage: "/heroes/panel-scp.webp",
+    heroWide: "/heroes/bg-scp.webp",
     wikiBasePath: "/wiki-scp",
     wikiLabel: "Wiki SCP",
     statusEndpoint: "/api/status/scp",
@@ -124,6 +129,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     accentVar: "var(--color-neon-cyan)",
     logo: "/branding/monolith-logo.svg",
     heroImage: "/heroes/panel-monolith.webp",
+    heroWide: "/heroes/bg-monolith.webp",
     wikiBasePath: "/wiki-monolith",
     wikiLabel: "Wiki Monolith",
     statusEndpoint: "/api/status/monolith",

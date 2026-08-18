@@ -8,8 +8,14 @@ import { DepartmentsShowcase } from "@/components/server/DepartmentsShowcase";
 import { HowToConnect } from "@/components/server/HowToConnect";
 import { ServerLiveStatus } from "@/components/server/ServerLiveStatus";
 import { WikiCtaSection } from "@/components/server/WikiCtaSection";
+import { MediaShowcase } from "@/components/server/MediaShowcase";
 import { SERVER_BY_SLUG } from "@/data/servers";
-import { scpFeatures, scpShowcaseDepartments } from "@/data/servers/scp";
+import {
+  scpAmbientParagraphs,
+  scpFeatures,
+  scpGalleryImages,
+  scpShowcaseDepartments,
+} from "@/data/servers/scp";
 
 const server = SERVER_BY_SLUG.scp;
 
@@ -30,6 +36,19 @@ export function ScpPageClient() {
           description="La Fundación llega a SS14: contención de anomalías, investigación y terror dentro de una instalación secreta."
           features={scpFeatures}
           accentVar={server.accentVar}
+        />
+        <MediaShowcase
+          eyebrow="// BAJO TIERRA"
+          title={
+            <>
+              Dentro de la{" "}
+              <span style={{ color: "var(--color-scp-purple)" }}>instalación</span>
+            </>
+          }
+          paragraphs={scpAmbientParagraphs}
+          images={scpGalleryImages}
+          accentVar={server.accentVar}
+          reverse
         />
         <DepartmentsShowcase
           eyebrow="// LA INSTALACIÓN"
