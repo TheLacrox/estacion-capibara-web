@@ -27,10 +27,13 @@ single container. No server-side rendering, no Node at runtime.
 
    ```
    STATUS_UPSTREAM_ESTACION=http://<host>:1212/status
-   STATUS_UPSTREAM_MARINES=http://<host>:1213/status
    STATUS_UPSTREAM_SCP=http://<host>:1214/status
-   STATUS_UPSTREAM_MONOLITH=http://<host>:1215/status
    ```
+
+   Marines and Monolith already default to their live endpoints in the
+   Dockerfile (`https://cmu.estacioncapibara.com/status` and
+   `https://monolith.estacioncapibara.com/status`); set the variables only to
+   override them.
 
    If the game servers run on the same Docker host, use the host's LAN IP or
    `host.docker.internal` (add it as extra host), not `127.0.0.1`.

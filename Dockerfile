@@ -21,11 +21,12 @@ COPY --from=builder /app/out /usr/share/nginx/html
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY nginx-status-proxy.conf /etc/nginx/status-proxy.conf
 
-# Status upstreams for the four game servers. Override these in Dokploy
-# (Environment tab) with the real host:port of each SS14 server's status API.
+# Status upstreams for the four game servers. Marines and Monolith point at
+# their live status APIs; estación and SCP still use placeholders — override
+# any of these in Dokploy (Environment tab) when the real endpoint changes.
 ENV STATUS_UPSTREAM_ESTACION=http://127.0.0.1:1212/status \
-    STATUS_UPSTREAM_MARINES=http://127.0.0.1:1213/status \
+    STATUS_UPSTREAM_MARINES=https://cmu.estacioncapibara.com/status \
     STATUS_UPSTREAM_SCP=http://127.0.0.1:1214/status \
-    STATUS_UPSTREAM_MONOLITH=http://127.0.0.1:1215/status
+    STATUS_UPSTREAM_MONOLITH=https://monolith.estacioncapibara.com/status
 
 EXPOSE 80
