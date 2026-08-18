@@ -1,22 +1,10 @@
-export interface MonolithSeoSection {
-  title: string;
-  paragraphs: string[];
-  points?: string[];
-}
+import type {
+  ServerSeoPageData,
+  ServerSeoSection,
+} from "@/data/server-seo-types";
 
-export interface MonolithSeoPageData {
-  slug: string;
-  title: string;
-  subtitle: string;
-  metaTitle: string;
-  metaDescription: string;
-  searchQueries: string[];
-  eyebrow: string;
-  sections: MonolithSeoSection[];
-  faqs: { question: string; answer: string }[];
-  wikiLinks: { label: string; href: string }[];
-  relatedPages: { label: string; href: string; description: string }[];
-}
+export type MonolithSeoSection = ServerSeoSection;
+export type MonolithSeoPageData = ServerSeoPageData;
 
 export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
   slug: "monolith-station-en-espanol",
