@@ -80,6 +80,7 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "Estación Capibara",
     alternateName: "Servidor Español de SS14",
     description:
@@ -180,6 +181,7 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     name: "Estación Capibara",
     alternateName: "Servidor Español de SS14",
     url: SITE_URL,

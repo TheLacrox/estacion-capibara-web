@@ -31,7 +31,7 @@ export function BlogCard({ post }: BlogCardProps) {
             </span>
           ))}
         </div>
-        <time className="shrink-0 text-text-muted/60 font-mono text-xs">
+        <time dateTime={post.publishedAt} className="shrink-0 text-text-muted/60 font-mono text-xs">
           {new Date(post.publishedAt).toLocaleDateString("es-ES", {
             day: "numeric",
             month: "short",

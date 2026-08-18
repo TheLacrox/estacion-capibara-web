@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
 import type { GuidePage } from "@/data/guide-types";
-import { SITE_URL } from "@/lib/constants";
+import { LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export interface WikiRouteConfig {
@@ -106,7 +106,13 @@ export function createWikiGuidePage(config: WikiRouteConfig) {
       config.fallbackDescription
     );
     const schemas = [
-      articleSchema({ title: guide.title, slug: guide.slug, description, basePath }),
+      articleSchema({
+        title: guide.title,
+        slug: guide.slug,
+        description,
+        dateModified: LAST_CONTENT_UPDATE,
+        basePath,
+      }),
       breadcrumbSchema(guide.breadcrumb, { basePath, wikiName }),
     ];
 

@@ -36,9 +36,9 @@ export function serverPageMetadata(server: ServerDescriptor): Metadata {
 }
 
 export const siteMetadata: Metadata = {
-  title: "Estación Capibara | Servidor Español de SS14 | Space Station 14 en Español",
+  title: "Estación Capibara | Space Station 14 en Español",
   description:
-    "Servidor español de SS14 con comunidad hispanohablante activa. Jugamos viernes, sábados y domingos con rondas normales y eventos especiales. 30+ roles, economía con Spesos, wiki en español. ¡Descarga gratis y busca Capibara!",
+    "Comunidad hispana de Space Station 14 con 4 servidores propios y wiki en español. Rondas de viernes a domingo, 30+ roles, gratis. Busca 'Capibara' y juega.",
   authors: [{ name: "Estación Capibara" }],
   creator: "Estación Capibara",
   metadataBase: new URL(SITE_URL),
@@ -50,7 +50,7 @@ export const siteMetadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: SITE_URL,
-    title: "Estación Capibara | Servidor Español de SS14 | Space Station 14 en Español",
+    title: "Estación Capibara | Space Station 14 en Español",
     description:
       "Servidor español de SS14. Jugamos viernes a domingo con economía de Spesos, eventos especiales, 30+ roles y comunidad hispanohablante activa.",
     siteName: "Estación Capibara",

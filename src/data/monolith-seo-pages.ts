@@ -8,6 +8,7 @@ export type MonolithSeoPageData = ServerSeoPageData;
 
 export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
   slug: "monolith-station-en-espanol",
+  datePublished: "2026-07-25",
   title: "Monolith Station en Español: Capibara Monolith",
   subtitle:
     "Conoce la edición comunitaria en español de Monolith Station: un servidor separado de Estación Capibara, ambientado en el Sector Colossus y centrado en naves, economía persistente, expediciones y facciones.",
@@ -106,6 +107,7 @@ export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
 
 export const FRONTIER_SPANISH_PAGE: MonolithSeoPageData = {
   slug: "frontier-station-14-en-espanol",
+  datePublished: "2026-07-25",
   title: "Frontier Station 14 en Español y Capibara Monolith",
   subtitle:
     "Descubre el estilo Frontier de Space Station 14: tripulaciones con naves propias, expediciones y una economía que conecta todo un sector.",
@@ -191,6 +193,7 @@ export const FRONTIER_SPANISH_PAGE: MonolithSeoPageData = {
 
 export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
   slug: "juego-roleplay-espacial-con-naves",
+  datePublished: "2026-07-25",
   title: "Juego de Roleplay Espacial con Naves y Tripulaciones",
   subtitle:
     "Capibara Monolith combina el sandbox de Space Station 14 con naves pilotables, trabajos especializados, expediciones, economía y facciones en un sector persistente.",
@@ -282,6 +285,7 @@ export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
 
 export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
   slug: "como-jugar-capibara-monolith",
+  datePublished: "2026-07-25",
   title: "Cómo Jugar Capibara Monolith: Guía para Empezar",
   subtitle:
     "Una ruta clara para conocer Monolith Station en español, preparar tu personaje, dominar los controles básicos y elegir una primera responsabilidad en el Sector Colossus.",
@@ -372,6 +376,7 @@ export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
 
 export const MONOLITH_ROLES_PAGE: MonolithSeoPageData = {
   slug: "roles-y-trabajos-monolith-station",
+  datePublished: "2026-07-25",
   title: "Roles y Trabajos de Monolith Station en Space Station 14",
   subtitle:
     "Descubre cómo se organizan los trabajos de Capibara Monolith y qué responsabilidades conectan naves, puestos, expediciones, comercio, medicina y facciones.",
@@ -463,6 +468,7 @@ export const MONOLITH_ROLES_PAGE: MonolithSeoPageData = {
 
 export const MULTIPLAYER_SPACESHIPS_PAGE: MonolithSeoPageData = {
   slug: "juego-de-naves-espaciales-multijugador",
+  datePublished: "2026-07-25",
   title: "Juego de Naves Espaciales Multijugador con Tripulación",
   subtitle:
     "Capibara Monolith propone una experiencia de Space Station 14 donde las naves son espacios de trabajo compartidos: se pilotan, mantienen, abastecen y defienden entre varios jugadores.",
@@ -557,6 +563,7 @@ export const MULTIPLAYER_SPACESHIPS_PAGE: MonolithSeoPageData = {
 
 export const SPACE_COOP_PAGE: MonolithSeoPageData = {
   slug: "juego-espacial-cooperativo",
+  datePublished: "2026-07-25",
   title: "Juego Espacial Cooperativo con Roles y Tripulaciones",
   subtitle:
     "Una experiencia multijugador donde pilotaje, ingeniería, medicina, carga y expediciones dependen de la comunicación entre personas, no de una tripulación automática.",
@@ -648,6 +655,7 @@ export const SPACE_COOP_PAGE: MonolithSeoPageData = {
 
 export const MONOLITH_ECONOMY_PAGE: MonolithSeoPageData = {
   slug: "economia-monolith-station",
+  datePublished: "2026-07-25",
   title: "Economía de Monolith Station: Comercio, Carga y Recursos",
   subtitle:
     "Entiende cómo la economía persistente de Capibara Monolith conecta bancos, transporte de carga, expediciones, minería y decisiones de las tripulaciones.",
@@ -739,6 +747,7 @@ export const MONOLITH_ECONOMY_PAGE: MonolithSeoPageData = {
 
 export const MONOLITH_EXPEDITIONS_PAGE: MonolithSeoPageData = {
   slug: "expediciones-monolith-station",
+  datePublished: "2026-07-25",
   title: "Expediciones de Monolith Station: Salvamento y Exploración",
   subtitle:
     "Conoce cómo las expediciones de Capibara Monolith combinan preparación, transporte, recuperación de recursos, amenazas y cooperación entre trabajos.",
@@ -833,6 +842,7 @@ export const MONOLITH_EXPEDITIONS_PAGE: MonolithSeoPageData = {
 
 export const MONOLITH_FACTIONS_PAGE: MonolithSeoPageData = {
   slug: "facciones-y-lore-monolith-station",
+  datePublished: "2026-07-25",
   title: "Facciones y Lore de Monolith Station en el Sector Colossus",
   subtitle:
     "Explora el contexto de Capibara Monolith: El Monolith, el Sector Colossus, el conflicto entre TSF y PDV, y las organizaciones que dan forma al roleplay.",

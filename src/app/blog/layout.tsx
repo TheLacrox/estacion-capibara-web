@@ -30,51 +30,8 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: "Blog - Estación Capibara",
-      description:
-        "Noticias, guías, patch notes y todo sobre el servidor de Space Station 14 en español.",
-      url: `${SITE_URL}/blog/`,
-      inLanguage: "es",
-      isPartOf: {
-        "@type": "WebSite",
-        name: "Estación Capibara",
-        url: SITE_URL,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Inicio",
-          item: SITE_URL,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Blog",
-          item: `${SITE_URL}/blog/`,
-        },
-      ],
-    },
-  ];
-
-  return (
-    <>
-      {children}
-      {schemas.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-    </>
-  );
+  // Section-level JSON-LD lives in the blog index page, not here: this layout
+  // also wraps /blog/[slug]/, and injecting a second BreadcrumbList there
+  // conflicts with the post's own 3-level trail.
+  return <>{children}</>;
 }

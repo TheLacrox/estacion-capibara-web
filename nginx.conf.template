@@ -10,7 +10,13 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
+    # TLS terminates at the reverse proxy, so nginx only sees http; absolute
+    # redirects would therefore emit http:// Location targets. Relative
+    # redirects preserve whatever scheme the client used.
+    absolute_redirect off;
+
     # Security headers (the static export cannot set them itself).
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;

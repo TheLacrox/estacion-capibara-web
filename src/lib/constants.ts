@@ -1,5 +1,5 @@
 export const DISCORD_URL = "https://discord.gg/xRsRcpmCVX";
-export const LAST_CONTENT_UPDATE = "2026-07-25";
+export const LAST_CONTENT_UPDATE = "2026-08-18";
 export const SS14_DOWNLOAD_URL = "https://spacestation14.com";
 export const SS14_STEAM_URL = "https://store.steampowered.com/app/1255460/Space_Station_14/";
 export const SERVER_NAME = "Estación Capibara";

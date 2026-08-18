@@ -2,6 +2,7 @@ import type { ServerSeoPageData } from "@/data/server-seo-types";
 
 export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
   slug: "rmc14-en-espanol",
+  datePublished: "2026-08-18",
   title: "RMC14 en Español: Capibara Marines",
   subtitle:
     "Conoce el servidor comunitario en español que ejecuta contenido de RMC14: rondas asimétricas donde una fuerza de marines desembarca y una colmena de xenónidos controlada por jugadores intenta detenerla.",
@@ -108,6 +109,7 @@ export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
 
 export const MARINES_GETTING_STARTED_PAGE: ServerSeoPageData = {
   slug: "como-jugar-capibara-marines",
+  datePublished: "2026-08-18",
   title: "Cómo Jugar Capibara Marines: Guía para Empezar",
   subtitle:
     "Desde la descarga de Space Station 14 hasta tu primera ronda como fusilero: los pasos básicos para entrar en Capibara Marines sin perderte.",
@@ -209,6 +211,7 @@ export const MARINES_GETTING_STARTED_PAGE: ServerSeoPageData = {
 
 export const MARINE_ROLES_PAGE: ServerSeoPageData = {
   slug: "roles-y-escuadras-marines-rmc14",
+  datePublished: "2026-08-18",
   title: "Roles y Escuadras de Marines en RMC14",
   subtitle:
     "Cómo se reparte el trabajo dentro de una escuadra de la UNMC: fusileros, líderes, especialistas, médicos, técnicos, mando, apoyo aéreo y requisiciones.",
@@ -315,6 +318,7 @@ export const MARINE_ROLES_PAGE: ServerSeoPageData = {
 
 export const XENONIDS_PAGE: ServerSeoPageData = {
   slug: "xenonidos-rmc14",
+  datePublished: "2026-08-18",
   title: "Xenónidos en RMC14: Castas, Tiers y Colmena",
   subtitle:
     "Guía en español del bando alienígena: cómo funcionan las castas por tiers, qué papel tiene la Reina y por qué las estructuras de resina deciden buena parte de la ronda.",
@@ -425,6 +429,7 @@ export const XENONIDS_PAGE: ServerSeoPageData = {
 
 export const CM_SS13_PAGE: ServerSeoPageData = {
   slug: "cm-ss13-en-espanol",
+  datePublished: "2026-08-18",
   title: "CM-SS13 en Español: La Alternativa Moderna",
   subtitle:
     "Si llegas desde Colonial Marines de Space Station 13 y buscas la misma clase de partida en un motor actual y con comunidad hispanohablante, esta página explica cómo encajan RMC14 y Capibara Marines.",
@@ -517,6 +522,7 @@ export const CM_SS13_PAGE: ServerSeoPageData = {
 
 export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-marines-espaciales",
+  datePublished: "2026-08-18",
   title: "Juegos de Marines Espaciales para PC",
   subtitle:
     "Una selección de juegos donde encarnas a un soldado de infantería espacial, con opciones cooperativas, competitivas y de escuadra, incluida una alternativa gratuita en español.",
@@ -571,6 +577,7 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
     entries: [
       {
         name: "Capibara Marines (RMC14)",
+        url: "/marines/",
         description:
           "Servidor comunitario gratis y en español sobre Space Station 14. Rondas asimétricas de marines con escuadras y especialistas contra una colmena de xenónidos controlada por jugadores. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
         free: true,
@@ -671,6 +678,7 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
 
 export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-aliens-para-pc",
+  datePublished: "2026-08-18",
   title: "Juegos de Aliens para PC: Terror, Acción y Multijugador",
   subtitle:
     "Del terror en solitario al multijugador donde tú eres la criatura: una comparación de juegos de alienígenas para PC, con una alternativa gratuita en español.",
@@ -725,6 +733,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
     entries: [
       {
         name: "Capibara Marines (RMC14)",
+        url: "/marines/",
         description:
           "Servidor comunitario gratis y en español sobre Space Station 14. Puedes jugar como marine o como xenónido dentro de una colmena controlada íntegramente por jugadores. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
         free: true,
@@ -822,6 +831,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
 
 export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
   slug: "juegos-como-helldivers-2",
+  datePublished: "2026-08-18",
   title: "Juegos como Helldivers 2 para PC",
   subtitle:
     "Cooperativo contra hordas, misiones que se tuercen y equipos que dependen de la comunicación: alternativas a Helldivers 2, incluida una gratuita en español.",
@@ -876,6 +886,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
     entries: [
       {
         name: "Capibara Marines (RMC14)",
+        url: "/marines/",
         description:
           "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles y radio contra una colmena de xenónidos jugada por personas. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
         free: true,
@@ -967,6 +978,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
 
 export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
   slug: "juegos-pvp-asimetrico",
+  datePublished: "2026-08-18",
   title: "Juegos de PvP Asimétrico para PC",
   subtitle:
     "Partidas donde los dos bandos no juegan al mismo juego: un grupo numeroso frente a criaturas controladas por jugadores. Comparativa y una opción gratuita en español.",
@@ -1021,6 +1033,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
     entries: [
       {
         name: "Capibara Marines (RMC14)",
+        url: "/marines/",
         description:
           "Servidor comunitario gratis y en español sobre Space Station 14. Decenas de marines con escuadras y especialistas contra una colmena de xenónidos controlada por jugadores. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
         free: true,
@@ -1112,6 +1125,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
 
 export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
   slug: "juegos-parecidos-a-starship-troopers",
+  datePublished: "2026-08-18",
   title: "Juegos Parecidos a Starship Troopers",
   subtitle:
     "Infantería, oleadas de bichos y pelotones que solo funcionan si se coordinan: alternativas para PC en esa línea, con una opción gratuita en español.",
@@ -1166,6 +1180,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
     entries: [
       {
         name: "Capibara Marines (RMC14)",
+        url: "/marines/",
         description:
           "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles, radio y logística contra una colmena de xenónidos jugada por personas. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
         free: true,

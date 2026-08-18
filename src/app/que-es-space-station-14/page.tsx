@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
-import { seoBreadcrumbSchema } from "@/lib/schema";
+import { faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES } from "@/data/seo-pages";
 import { departments } from "@/data/departments";
 import { antagonists } from "@/data/antagonists";
@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = [
+  faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
   {
     "@context": "https://schema.org",

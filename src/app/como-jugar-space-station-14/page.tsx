@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL, DISCORD_URL } from "@/lib/constants";
-import { seoBreadcrumbSchema } from "@/lib/schema";
+import { faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES } from "@/data/seo-pages";
 import { departments } from "@/data/departments";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
@@ -56,6 +56,7 @@ const TUTORIAL_STEPS = [
 ];
 
 const jsonLd = [
+  faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
 ];
 

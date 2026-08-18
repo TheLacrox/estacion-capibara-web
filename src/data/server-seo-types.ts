@@ -7,6 +7,8 @@ export interface ServerSeoSection {
 export interface ServerSeoGame {
   name: string;
   description: string;
+  /** Internal path (e.g. "/scp/") linked from the ItemList JSON-LD entry. */
+  url?: string;
   free: boolean;
   features: Record<string, boolean>;
   highlighted?: boolean;
@@ -21,6 +23,8 @@ export interface ServerSeoGamesBlock {
 
 export interface ServerSeoPageData {
   slug: string;
+  /** ISO date (YYYY-MM-DD) the landing page was first published. */
+  datePublished?: string;
   title: string;
   subtitle: string;
   metaTitle: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
-import { itemListSchema, seoBreadcrumbSchema } from "@/lib/schema";
+import { faqSchema, itemListSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES, ROLEPLAY_GAMES } from "@/data/seo-pages";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = [
+  faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
   itemListSchema(
     ROLEPLAY_GAMES.map((g, i) => ({ name: g.name, position: i + 1 }))

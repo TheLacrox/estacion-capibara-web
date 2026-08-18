@@ -5,7 +5,7 @@ import type {
   ServerSeoGamesBlock,
   ServerSeoPageData,
 } from "@/data/server-seo-types";
-import { DISCORD_URL, SITE_URL } from "@/lib/constants";
+import { DISCORD_URL, LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
 import {
   articleSchema,
   faqSchema,
@@ -140,6 +140,8 @@ export function createServerSeoSchemas(page: ServerSeoPageData) {
       title: page.title,
       slug: page.slug,
       description: page.metaDescription,
+      datePublished: page.datePublished,
+      dateModified: LAST_CONTENT_UPDATE,
       basePath: "",
     }),
     seoBreadcrumbSchema([{ name: page.title, url }]),
@@ -148,7 +150,11 @@ export function createServerSeoSchemas(page: ServerSeoPageData) {
   if (page.games) {
     schemas.push(
       itemListSchema(
-        page.games.entries.map((g, i) => ({ name: g.name, position: i + 1 }))
+        page.games.entries.map((g, i) => ({
+          name: g.name,
+          position: i + 1,
+          ...(g.url ? { url: `${SITE_URL}${g.url}` } : {}),
+        }))
       )
     );
   }

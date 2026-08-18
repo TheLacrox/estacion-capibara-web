@@ -178,13 +178,27 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="flex items-center gap-4 text-text-muted font-mono text-xs">
             <span>Por {post.author}</span>
             <span className="text-grid-line">|</span>
-            <time>
+            <time dateTime={post.publishedAt}>
+              Publicado:{" "}
               {new Date(post.publishedAt).toLocaleDateString("es-ES", {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
               })}
             </time>
+            {post.updatedAt && post.updatedAt !== post.publishedAt && (
+              <>
+                <span className="text-grid-line">|</span>
+                <time dateTime={post.updatedAt}>
+                  Actualizado:{" "}
+                  {new Date(post.updatedAt).toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </time>
+              </>
+            )}
           </div>
 
           <HazardDivider className="mt-6" />

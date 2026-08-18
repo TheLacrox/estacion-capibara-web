@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { DISCORD_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
+import { DISCORD_URL, SITE_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
 import { Footer } from "@/components/layout/Footer";
 import { BLOG_POSTS, BLOG_TAGS, TAG_LABELS, type BlogTag } from "@/data/blog-posts";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -61,9 +61,51 @@ function BlogIndex() {
   );
 }
 
+const BLOG_INDEX_SCHEMAS = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Blog - Estación Capibara",
+    description:
+      "Noticias, guías, patch notes y todo sobre el servidor de Space Station 14 en español.",
+    url: `${SITE_URL}/blog/`,
+    inLanguage: "es",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Estación Capibara",
+      url: SITE_URL,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${SITE_URL}/blog/`,
+      },
+    ],
+  },
+];
+
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-space-void">
+      {BLOG_INDEX_SCHEMAS.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <nav className="sticky top-0 z-50 border-b border-grid-line bg-space-void/95 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
           <Link

@@ -14,11 +14,11 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "que-es-space-station-14",
     title: "¿Qué es Space Station 14?",
     subtitle:
-      "La guía definitiva en español sobre el juego de simulación espacial más complejo y adictivo. Descubre cómo funciona, qué roles puedes jugar y por qué la comunidad hispana está creciendo.",
+      "Space Station 14 (SS14) es un juego multijugador gratuito de simulación espacial donde cada jugador cumple un rol real dentro de una estación. Aquí tienes la guía completa en español: cómo funciona, qué roles existen y por qué crece la comunidad hispana.",
     metaTitle:
-      "¿Qué es Space Station 14? Guía Completa en Español | Estación Capibara",
+      "¿Qué es Space Station 14? Guía Completa en Español",
     metaDescription:
-      "Descubre qué es Space Station 14: juego multijugador gratis de simulación espacial con roleplay, 30+ roles, economía y caos. Guía en español con todo lo que necesitas saber.",
+      "Qué es Space Station 14: juego multijugador gratis de simulación espacial con roleplay, 30+ roles y caos emergente. Guía completa en español.",
     faqs: [
       {
         question: "¿Space Station 14 es gratis?",

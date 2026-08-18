@@ -105,6 +105,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/privacidad/`,
       lastModified: new Date(LAST_CONTENT_UPDATE),
     },
+    {
+      url: `${SITE_URL}/sobre-nosotros/`,
+      lastModified: new Date(LAST_CONTENT_UPDATE),
+    },
     ...serverPages,
     ...seoPages,
     ...monolithSeoPages,
