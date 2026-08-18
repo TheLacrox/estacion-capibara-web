@@ -29,6 +29,8 @@ export interface ServerDescriptor {
   /** CSS var reference, e.g. "var(--color-hazard-yellow)" */
   accentVar: string;
   logo: string;
+  /** Gameplay screenshot used as the hero panel background */
+  heroImage: string;
   wikiBasePath: string;
   wikiLabel: string;
   statusEndpoint: string;
@@ -55,6 +57,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Basado en Goob Station",
     accentVar: "var(--color-hazard-yellow)",
     logo: "/branding/logo.svg",
+    heroImage: "/heroes/panel-estacion.webp",
     wikiBasePath: "/wiki",
     wikiLabel: "Wiki Estación",
     statusEndpoint: "/api/status/estacion",
@@ -76,6 +79,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de RMC-14 y CM-SS14",
     accentVar: "var(--color-marine-green)",
     logo: "/branding/logo.svg",
+    heroImage: "/heroes/panel-marines.webp",
     wikiBasePath: "/wiki-marines",
     wikiLabel: "Wiki Marines",
     statusEndpoint: "/api/status/marines",
@@ -97,6 +101,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de SCP: Project Fire (Fire Station)",
     accentVar: "var(--color-scp-purple)",
     logo: "/branding/logo.svg",
+    heroImage: "/heroes/panel-scp.webp",
     wikiBasePath: "/wiki-scp",
     wikiLabel: "Wiki SCP",
     statusEndpoint: "/api/status/scp",
@@ -118,6 +123,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de Monolith Station y Frontier Station 14",
     accentVar: "var(--color-neon-cyan)",
     logo: "/branding/monolith-logo.svg",
+    heroImage: "/heroes/panel-monolith.webp",
     wikiBasePath: "/wiki-monolith",
     wikiLabel: "Wiki Monolith",
     statusEndpoint: "/api/status/monolith",

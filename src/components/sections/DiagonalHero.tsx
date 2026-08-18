@@ -53,7 +53,7 @@ export function DiagonalHero() {
     >
       {showScene && <HeroScene />}
 
-      <div className="absolute top-0 left-0 right-0 z-10">
+      <div className="absolute top-0 left-0 right-0 z-30">
         <div className="hazard-stripe h-1.5" />
       </div>
 
@@ -72,7 +72,7 @@ export function DiagonalHero() {
 
       {/* Desktop: 4 panels with diagonal separators */}
       <div
-        className="relative z-20 hidden md:flex flex-1 min-h-0 px-6 pb-6"
+        className="relative z-20 hidden md:flex flex-1 min-h-0"
         onMouseLeave={() => setExpanded(null)}
       >
         {LIVE_SERVERS.map((server, index) => {
@@ -98,12 +98,28 @@ export function DiagonalHero() {
                 zIndex: isExpanded ? 2 : 1,
               }}
             >
+              {/* Gameplay background */}
+              <img
+                src={server.heroImage}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+                fetchPriority={index < 2 ? "high" : "auto"}
+              />
+              {/* Legibility dim (lighter when expanded) */}
               <div
-                className="absolute inset-0 bg-hull-panel/70 border-y border-grid-line transition-colors duration-300"
+                className="absolute inset-0 transition-opacity duration-300"
                 style={{
-                  background: isExpanded
-                    ? `linear-gradient(180deg, color-mix(in srgb, ${server.accentVar} 14%, var(--color-hull-panel)) 0%, var(--color-space-void) 100%)`
-                    : undefined,
+                  background:
+                    "linear-gradient(180deg, rgba(11,15,25,0.62) 0%, rgba(11,15,25,0.45) 45%, rgba(11,15,25,0.92) 100%)",
+                  opacity: isExpanded ? 0.82 : 1,
+                }}
+              />
+              {/* Accent tint on expand */}
+              <div
+                className="absolute inset-0 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: `linear-gradient(180deg, color-mix(in srgb, ${server.accentVar} 24%, transparent) 0%, transparent 65%)`,
+                  opacity: isExpanded ? 1 : 0,
                 }}
               />
               {/* Accent edge */}
@@ -187,19 +203,25 @@ export function DiagonalHero() {
       </div>
 
       {/* Mobile: stacked banners, tap navigates */}
-      <div className="relative z-20 flex md:hidden flex-col flex-1 px-4 pb-6 gap-2">
+      <div className="relative z-20 flex md:hidden flex-col flex-1 gap-1.5">
         {LIVE_SERVERS.map((server) => (
           <Link
             key={server.id}
             href={`/${server.slug}/`}
             aria-label={`${server.name} — ${server.tagline}`}
-            className="relative flex flex-1 min-h-24 overflow-hidden rounded-sm border border-grid-line bg-hull-panel/70"
+            className="relative flex flex-1 min-h-24 overflow-hidden border-y border-grid-line bg-hull-panel/70"
           >
+            <img
+              src={server.heroImage}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-space-void/60" />
             <div
-              className="absolute inset-y-0 left-0 w-1"
+              className="absolute inset-y-0 left-0 w-1 z-10"
               style={{ backgroundColor: server.accentVar }}
             />
-            <div className="w-full flex items-center gap-4 pl-5 pr-4">
+            <div className="relative w-full flex items-center gap-4 pl-5 pr-4">
               <img
                 src={server.logo}
                 alt=""
@@ -224,7 +246,7 @@ export function DiagonalHero() {
         ))}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 z-10">
+      <div className="absolute bottom-0 left-0 right-0 z-30">
         <div className="hazard-stripe h-1.5" />
       </div>
     </section>
