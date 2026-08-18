@@ -84,7 +84,6 @@ export function DiagonalHero() {
               onMouseEnter={() => setExpanded(index)}
               onFocus={() => setExpanded(index)}
               onBlur={() => setExpanded((current) => (current === index ? null : current))}
-              aria-label={`${server.shortName} ${server.descriptor} — ${server.tagline}`}
               className="group relative block self-stretch outline-none"
               style={{
                 flexGrow: isExpanded ? 2.2 : 1,
@@ -207,7 +206,6 @@ export function DiagonalHero() {
           <Link
             key={server.id}
             href={`/${server.slug}/`}
-            aria-label={`${server.shortName} ${server.descriptor} — ${server.tagline}`}
             className="relative flex flex-1 min-h-24 overflow-hidden border-y border-grid-line bg-hull-panel/70"
           >
             <img
