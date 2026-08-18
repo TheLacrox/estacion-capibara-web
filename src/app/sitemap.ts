@@ -7,6 +7,8 @@ import { allScpGuideSlugs } from "@/data/scp-guides";
 import { LIVE_SERVERS } from "@/data/servers";
 import { SEO_PAGE_SLUGS } from "@/data/seo-pages";
 import { MONOLITH_SEO_PAGES } from "@/data/monolith-seo-pages";
+import { MARINES_SEO_PAGES } from "@/data/marines-seo-pages";
+import { SCP_SEO_PAGES } from "@/data/scp-seo-pages";
 import { BLOG_POSTS } from "@/data/blog-posts";
 
 export const dynamic = "force-static";
@@ -53,6 +55,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const marinesSeoPages: MetadataRoute.Sitemap = MARINES_SEO_PAGES.map(
+    (page) => ({
+      url: `${SITE_URL}/${page.slug}/`,
+      lastModified: new Date(LAST_CONTENT_UPDATE),
+    })
+  );
+
+  const scpSeoPages: MetadataRoute.Sitemap = SCP_SEO_PAGES.map((page) => ({
+    url: `${SITE_URL}/${page.slug}/`,
+    lastModified: new Date(LAST_CONTENT_UPDATE),
+  }));
+
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}/`,
     lastModified: new Date(post.updatedAt ?? post.publishedAt),
@@ -94,6 +108,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serverPages,
     ...seoPages,
     ...monolithSeoPages,
+    ...marinesSeoPages,
+    ...scpSeoPages,
     ...blogPages,
     ...wikiPages,
     ...monolithWikiPages,

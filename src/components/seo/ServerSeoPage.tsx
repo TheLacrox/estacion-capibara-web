@@ -133,10 +133,7 @@ export function createServerSeoMetadata(
   };
 }
 
-export function createServerSeoSchemas(
-  page: ServerSeoPageData,
-  _server: SeoServerKey
-) {
+export function createServerSeoSchemas(page: ServerSeoPageData) {
   const url = `${SITE_URL}/${page.slug}/`;
   const schemas: Record<string, unknown>[] = [
     articleSchema({

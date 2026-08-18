@@ -18,7 +18,7 @@ export function createMonolithSeoMetadata(
 }
 
 export function createMonolithSeoSchemas(page: MonolithSeoPageData) {
-  return createServerSeoSchemas(page, "monolith");
+  return createServerSeoSchemas(page);
 }
 
 export function MonolithSeoPage({ page, jsonLd }: MonolithSeoPageProps) {
