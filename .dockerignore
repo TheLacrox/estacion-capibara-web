@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+.git
+.playwright-mcp
+*.md
+!README.md
+Dockerfile
+.dockerignore

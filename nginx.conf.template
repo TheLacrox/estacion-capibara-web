@@ -1,0 +1,63 @@
+# Rendered by the nginx image entrypoint via envsubst; ${VARS} come from the
+# container environment (see Dockerfile / Dokploy environment settings).
+
+proxy_cache_path /var/cache/nginx/status levels=1 keys_zone=status_cache:1m max_size=10m inactive=60s;
+
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Security headers (the static export cannot set them itself).
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+
+    gzip on;
+    gzip_min_length 1024;
+    gzip_types text/css application/javascript application/json image/svg+xml text/plain application/xml text/xml;
+
+    error_page 404 /404.html;
+
+    # Hashed build assets: cache forever.
+    location /_next/static/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        add_header X-Content-Type-Options "nosniff" always;
+    }
+
+    # Wiki sprites and branding: stable names, refresh daily.
+    location ~ ^/(sprites|branding)/ {
+        add_header Cache-Control "public, max-age=86400";
+        add_header X-Content-Type-Options "nosniff" always;
+    }
+
+    # SS14 game-server status proxies. `/api/status` is kept as a legacy
+    # alias for the estación endpoint (older cached JS still calls it).
+    location = /api/status {
+        proxy_pass ${STATUS_UPSTREAM_ESTACION};
+        include /etc/nginx/status-proxy.conf;
+    }
+    location = /api/status/estacion {
+        proxy_pass ${STATUS_UPSTREAM_ESTACION};
+        include /etc/nginx/status-proxy.conf;
+    }
+    location = /api/status/marines {
+        proxy_pass ${STATUS_UPSTREAM_MARINES};
+        include /etc/nginx/status-proxy.conf;
+    }
+    location = /api/status/scp {
+        proxy_pass ${STATUS_UPSTREAM_SCP};
+        include /etc/nginx/status-proxy.conf;
+    }
+    location = /api/status/monolith {
+        proxy_pass ${STATUS_UPSTREAM_MONOLITH};
+        include /etc/nginx/status-proxy.conf;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

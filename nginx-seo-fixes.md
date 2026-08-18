@@ -1,5 +1,11 @@
 # Nginx Configuration — SEO & Security Fixes
 
+> **Superseded for Docker/Dokploy deploys**: the in-repo `nginx.conf.template`
+> (baked into the `Dockerfile` image) is now the source of truth — it already
+> includes security headers, caching, gzip and the four `/api/status/*`
+> proxies. Keep this file only as reference for a bare-metal nginx in front
+> of the container (where TLS/HSTS/CSP still belong).
+
 Add these directives to your nginx server block for `estacioncapibara.com`.
 
 ## Security Headers
