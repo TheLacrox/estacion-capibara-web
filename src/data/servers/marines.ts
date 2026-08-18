@@ -77,8 +77,8 @@ export const marinesGalleryImages = [
   },
   {
     src: "/gallery/marines-3.webp",
-    alt: "Un médico de campaña huye de un Ravager en una cueva",
-    caption: "Huyendo del Ravager",
+    alt: "Consola de armamento de la nave durante una partida de RMC-14",
+    caption: "Consola de armamento",
   },
 ];
 
