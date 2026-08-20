@@ -3,6 +3,8 @@ import type { ServerSeoPageData } from "@/data/server-seo-types";
 export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
   slug: "rmc14-en-espanol",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Sí, hay RMC14 en español: Capibara Marines es un servidor comunitario hispanohablante que ejecuta ese contenido sobre Space Station 14, con la wiki traducida y rondas asimétricas entre una fuerza de marines y una colmena de xenónidos controlada por jugadores. No es el servidor oficial del proyecto, sino una comunidad aparte que se organiza en Discord.",
   title: "RMC14 en Español: Capibara Marines",
   subtitle:
     "Conoce el servidor comunitario en español que ejecuta contenido de RMC14: rondas asimétricas donde una fuerza de marines desembarca y una colmena de xenónidos controlada por jugadores intenta detenerla.",
@@ -42,7 +44,7 @@ export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
       title: "Cómo empezar",
       paragraphs: [
         "Space Station 14 es gratuito y de código abierto, y se descarga desde spacestation14.com para Windows, Linux y macOS. Al ser un juego en dos dimensiones con vista cenital, funciona en equipos modestos y no exige una tarjeta gráfica dedicada.",
-        "Antes de tu primer despliegue conviene leer la guía para nuevos jugadores y el manual del fusilero, que explican el equipo básico, la munición y la disciplina de fuego. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord para saber cómo entrar.",
+        "Antes de tu primer despliegue conviene leer la guía para nuevos jugadores y el manual del fusilero, que explican el equipo básico, la munición y la disciplina de fuego. Por política, esta web no publica direcciones de conexión sin verificar: el acceso se anuncia en el Discord de la comunidad.",
       ],
     },
   ],
@@ -70,7 +72,7 @@ export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
     {
       question: "¿Dónde encuentro el servidor?",
       answer:
-        "Consulta los anuncios actuales de la comunidad en Discord. La web no publica una dirección de conexión que no haya sido verificada.",
+        "En el Discord de la comunidad, que es donde se publican los avisos de acceso. Aquí no aparece ninguna dirección de conexión, porque no difundimos las que no están verificadas.",
     },
   ],
   wikiLinks: [
@@ -110,6 +112,8 @@ export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
 export const MARINES_GETTING_STARTED_PAGE: ServerSeoPageData = {
   slug: "como-jugar-capibara-marines",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Para jugar hacen falta tres pasos: descargar gratis Space Station 14 desde spacestation14.com, crear tu personaje en el editor y entrar como fusilero, el rol de escuadra pensado para la primera ronda. El juego se mueve en portátiles sin tarjeta gráfica dedicada y la comunidad anuncia horarios y despliegues en su Discord.",
   title: "Cómo Jugar Capibara Marines: Guía para Empezar",
   subtitle:
     "Desde la descarga de Space Station 14 hasta tu primera ronda como fusilero: los pasos básicos para entrar en Capibara Marines sin perderte.",
@@ -148,7 +152,7 @@ export const MARINES_GETTING_STARTED_PAGE: ServerSeoPageData = {
       title: "Coordinación y comunidad",
       paragraphs: [
         "Las escuadras se organizan por radio: el líder marca objetivos, los especialistas anuncian su equipo y los médicos piden posiciones. Escuchar antes de hablar y usar el canal correcto evita el ruido que suele hundir a los grupos improvisados.",
-        "No publicamos una dirección de conexión sin verificar. Consulta los anuncios actuales de la comunidad en Discord, donde se avisan despliegues, cambios y horarios, y aprovecha la wiki en español para preparar el rol que quieras aprender.",
+        "El Discord de la comunidad es donde se avisan despliegues, cambios y horarios, y también el único sitio donde se comparte la forma de entrar: aquí no difundimos direcciones de conexión sin verificar. Mientras tanto, aprovecha la wiki en español para preparar el rol que quieras aprender.",
       ],
     },
   ],
@@ -212,6 +216,8 @@ export const MARINES_GETTING_STARTED_PAGE: ServerSeoPageData = {
 export const MARINE_ROLES_PAGE: ServerSeoPageData = {
   slug: "roles-y-escuadras-marines-rmc14",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Una escuadra de la UNMC combina un líder, fusileros y funciones de apoyo, y sobre ellas se añaden cuatro especialistas —francotirador, demoliciones, granadero y explorador—, médico de combate, técnico de combate, policía militar, roles de mando, apoyo aéreo cercano y requisiciones. Para la primera ronda conviene el fusilero, que recibe equipo estándar y órdenes claras de su líder.",
   title: "Roles y Escuadras de Marines en RMC14",
   subtitle:
     "Cómo se reparte el trabajo dentro de una escuadra de la UNMC: fusileros, líderes, especialistas, médicos, técnicos, mando, apoyo aéreo y requisiciones.",
@@ -319,6 +325,8 @@ export const MARINE_ROLES_PAGE: ServerSeoPageData = {
 export const XENONIDS_PAGE: ServerSeoPageData = {
   slug: "xenonidos-rmc14",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "La colmena de xenónidos la juegan personas, no la máquina, y progresa por tres tiers de castas: del corredor, el defensor, el centinela y el dron en tier 1 hasta el triturador, el pretoriano, el devastador y el boiler en tier 3. Por encima de todas está la Reina, que dirige la evolución y cuya pérdida desarma al bando entero.",
   title: "Xenónidos en RMC14: Castas, Tiers y Colmena",
   subtitle:
     "Guía en español del bando alienígena: cómo funcionan las castas por tiers, qué papel tiene la Reina y por qué las estructuras de resina deciden buena parte de la ronda.",
@@ -430,6 +438,8 @@ export const XENONIDS_PAGE: ServerSeoPageData = {
 export const CM_SS13_PAGE: ServerSeoPageData = {
   slug: "cm-ss13-en-espanol",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "No existe una versión en español de CM-SS13; lo más parecido es RMC14, un proyecto independiente que recrea ese tipo de ronda sobre el motor moderno de Space Station 14 en lugar del veterano BYOND. Capibara Marines lo ejecuta para jugadores hispanohablantes, con la wiki traducida y una comunidad que se coordina en Discord.",
   title: "CM-SS13 en Español: La Alternativa Moderna",
   subtitle:
     "Si llegas desde Colonial Marines de Space Station 13 y buscas la misma clase de partida en un motor actual y con comunidad hispanohablante, esta página explica cómo encajan RMC14 y Capibara Marines.",
@@ -467,7 +477,7 @@ export const CM_SS13_PAGE: ServerSeoPageData = {
       title: "Dónde entra Capibara Marines",
       paragraphs: [
         "Capibara Marines es un servidor de la comunidad Capibara que ejecuta contenido de RMC14 para jugadores hispanohablantes. No representa a CM-SS13 ni al equipo de RMC14: es una comunidad separada, con sus propias reglas y una wiki traducida al español.",
-        "Para alguien que viene de CM-SS13, esa wiki es el atajo. Roles de marine, castas de xenónido y comunicaciones explicados en tu idioma evitan tener que reconstruir los procedimientos partida a partida. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "Para alguien que viene de CM-SS13, esa wiki es el atajo. Roles de marine, castas de xenónido y comunicaciones explicados en tu idioma evitan tener que reconstruir los procedimientos partida a partida. Sobre cómo entrar, la referencia es el Discord de la comunidad: en esta web no figura ninguna dirección de conexión que no se haya verificado antes.",
       ],
     },
   ],
@@ -523,6 +533,8 @@ export const CM_SS13_PAGE: ServerSeoPageData = {
 export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-marines-espaciales",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Entre los juegos de marines espaciales para PC destacan Warhammer 40,000: Space Marine 2, Helldivers 2, Aliens: Dark Descent y StarCraft II; la tabla de esta página compara seis títulos según su cooperativo, su PvP y su uso de escuadras. La propuesta comunitaria de la lista es Capibara Marines: gratis, en español y jugable sobre Space Station 14.",
   title: "Juegos de Marines Espaciales para PC",
   subtitle:
     "Una selección de juegos donde encarnas a un soldado de infantería espacial, con opciones cooperativas, competitivas y de escuadra, incluida una alternativa gratuita en español.",
@@ -561,7 +573,7 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si te interesa la parte táctica del género (escuadras reales, órdenes por radio, especialistas y un enemigo que piensa) puedes probarlo sin gastar nada. Space Station 14 se descarga desde spacestation14.com para Windows, Linux y macOS, y Capibara Marines es uno de los servidores en español dentro de esa lista de comunidades.",
-        "La wiki en español explica los roles de marine, las castas de xenónido y las comunicaciones antes de tu primera partida. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "La wiki en español explica los roles de marine, las castas de xenónido y las comunicaciones antes de tu primera partida. Ten en cuenta que no difundimos direcciones de conexión sin verificar: los avisos de acceso salen en el Discord de la comunidad.",
       ],
     },
   ],
@@ -601,14 +613,14 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
       {
         name: "Deep Rock Galactic",
         description:
-          "Cooperativo de cuatro jugadores con clases complementarias en cuevas generadas por procedimientos. Menos militar, pero muy centrado en el trabajo de equipo.",
+          "Cuatro clases que se necesitan entre sí: una perfora la roca, otra tiende tirolinas, otra ilumina la cueva y otra despliega plataformas y torretas. No hay uniforme ni cadena de mando, pero sí la misma dependencia del compañero que define al género.",
         free: false,
         features: { coop: true, pvp: false, squads: true },
       },
       {
         name: "Aliens: Dark Descent",
         description:
-          "Táctico en tiempo real donde diriges un pelotón de marines y gestionas estrés, heridas y recursos entre misiones. Experiencia para un solo jugador.",
+          "Táctico en tiempo real con pausa en el que no manejas a un soldado sino a un pelotón entero, y esos marines arrastran heridas y desgaste de una misión a la siguiente. Experiencia para un solo jugador.",
         free: false,
         features: { coop: false, pvp: false, squads: true },
       },
@@ -679,6 +691,8 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
 export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-aliens-para-pc",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Alien: Isolation encabeza la vertiente de terror, Aliens: Fireteam Elite la de acción cooperativa y Aliens vs. Predator (2010) fue el clásico que dejaba jugar con la criatura, aunque hoy apenas conserva actividad en línea. La alternativa gratuita y con comunidad activa es Capibara Marines, donde el bando alienígena lo controlan íntegramente jugadores.",
   title: "Juegos de Aliens para PC: Terror, Acción y Multijugador",
   subtitle:
     "Del terror en solitario al multijugador donde tú eres la criatura: una comparación de juegos de alienígenas para PC, con una alternativa gratuita en español.",
@@ -709,7 +723,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
     {
       title: "Space Station 14, la opción menos conocida",
       paragraphs: [
-        "Space Station 14 es un juego multijugador gratuito y de código abierto que se ve desde arriba, en dos dimensiones. Detrás de esa presentación sencilla hay una simulación muy detallada de atmósfera, heridas, electricidad, objetos y comunicaciones. Al ser 2D funciona en ordenadores modestos.",
+        "Space Station 14 se juega gratis y su código está abierto a cualquiera. Lo que parece un mapa plano visto desde arriba esconde en realidad una simulación densa: el aire que respira tu personaje, las heridas que va acumulando, la corriente que alimenta cada puerta y la radio por la que se pide ayuda. Esa apuesta por el detalle en lugar de por la potencia gráfica es la que permite jugarlo en ordenadores modestos.",
         "El proyecto de código abierto RMC14 usa ese motor para recrear el enfrentamiento entre una fuerza de marines y una colmena de xenónidos, inspirado en el cine clásico de terror y acción de ciencia ficción. La diferencia con casi todo lo demás de la lista es que la colmena no la controla la máquina: la controlan otros jugadores, que evolucionan de castas básicas a criaturas mucho más peligrosas.",
       ],
     },
@@ -717,7 +731,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si lo que te atrae es estar al otro lado (construir la colmena, tender emboscadas y coordinar un ataque contra un grupo mucho mejor armado) puedes probarlo sin coste. Space Station 14 se descarga gratis desde spacestation14.com para Windows, Linux y macOS.",
-        "Capibara Marines es el servidor comunitario en español que ejecuta ese contenido, con una wiki traducida donde se explican las castas, la Reina y las estructuras de resina. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "Capibara Marines es el servidor comunitario en español que ejecuta ese contenido, con una wiki traducida donde se explican las castas, la Reina y las estructuras de resina. Quien quiera entrar tendrá que pasar por el Discord de la comunidad, donde se publican los avisos, ya que ninguna dirección de conexión llega a esta web sin verificarse antes.",
       ],
     },
   ],
@@ -735,7 +749,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
         name: "Capibara Marines (RMC14)",
         url: "/marines/",
         description:
-          "Servidor comunitario gratis y en español sobre Space Station 14. Puedes jugar como marine o como xenónido dentro de una colmena controlada íntegramente por jugadores. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
+          "Servidor comunitario gratis y en español sobre Space Station 14. Puedes jugar como marine o como xenónido dentro de una colmena controlada íntegramente por jugadores. Se juega en español, funciona en equipos modestos y su wiki traduce las guías de castas y estructuras.",
         free: true,
         features: { multiplayer: true, horror: true, playAlien: true },
         highlighted: true,
@@ -757,7 +771,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
       {
         name: "Aliens: Dark Descent",
         description:
-          "Táctico en tiempo real donde diriges un pelotón y gestionas estrés, heridas y recursos entre misiones. Solo para un jugador, con un tono más cercano al terror.",
+          "El enemigo acecha fuera del plano y el estrés acumulado por el pelotón pesa tanto como la munición que le queda. Solo para un jugador, con un tono más cercano al terror que a la acción.",
         free: false,
         features: { multiplayer: false, horror: true, playAlien: false },
       },
@@ -779,7 +793,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
     {
       question: "¿Hay juegos de aliens gratis para PC?",
       answer:
-        "Sí. Space Station 14 es gratuito y de código abierto, y el contenido de RMC14 recrea el enfrentamiento entre marines y una colmena alienígena. Se descarga desde spacestation14.com.",
+        "Los grandes nombres del género son de pago, pero Space Station 14 no cuesta nada y su código es abierto. Sobre él, el contenido de RMC14 recrea el choque entre una fuerza de marines y una colmena alienígena; el lanzador está en spacestation14.com.",
     },
     {
       question: "¿Cuál es el juego de aliens más terrorífico?",
@@ -789,7 +803,7 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
     {
       question: "¿Necesito un PC potente para estos juegos?",
       answer:
-        "Los títulos comerciales en 3D tienen requisitos altos. Space Station 14, al ser un juego en dos dimensiones con vista cenital, funciona en ordenadores modestos y portátiles sin gráfica dedicada.",
+        "Depende del juego. Alien: Isolation y el resto de títulos en tres dimensiones de esta lista piden un equipo relativamente reciente; Space Station 14, en cambio, se dibuja en dos dimensiones y arranca en portátiles sin gráfica dedicada.",
     },
   ],
   wikiLinks: [
@@ -832,6 +846,8 @@ export const ALIEN_GAMES_PAGE: ServerSeoPageData = {
 export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
   slug: "juegos-como-helldivers-2",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Ningún juego reproduce exactamente la mezcla de Helldivers 2, pero Deep Rock Galactic, Starship Troopers: Extermination, Earth Defense Force 6 y Aliens: Fireteam Elite se le acercan con su cooperativo por clases contra oleadas de enemigos. La alternativa gratuita es Capibara Marines, que sube la escala a decenas de jugadores por ronda y pone al enemigo en manos de otras personas.",
   title: "Juegos como Helldivers 2 para PC",
   subtitle:
     "Cooperativo contra hordas, misiones que se tuercen y equipos que dependen de la comunicación: alternativas a Helldivers 2, incluida una gratuita en español.",
@@ -862,7 +878,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
     {
       title: "Qué es Space Station 14",
       paragraphs: [
-        "Space Station 14 es un juego multijugador gratuito y de código abierto con vista cenital en dos dimensiones. Simula en detalle atmósfera, heridas, energía, objetos y comunicaciones, y al ser 2D funciona en ordenadores modestos, sin tarjeta gráfica dedicada.",
+        "Space Station 14 no cuesta nada y su código está abierto a quien quiera revisarlo. La cámara mira desde arriba y el escenario es plano, pero por debajo corre un modelo que sigue la presión del aire, el estado de cada herida, el reparto de energía y el tráfico de radio. Como no hay que dibujar un mundo en tres dimensiones, lo mueve un portátil sin tarjeta gráfica dedicada.",
         "Sobre ese motor, el proyecto de código abierto RMC14 recrea rondas de infantería espacial: escuadras de marines con especialistas, médicos y cadena de mando frente a una colmena de xenónidos. Las diferencias principales con Helldivers 2 son la escala, con decenas de jugadores en la misma ronda, y que el enemigo también son personas.",
       ],
     },
@@ -870,7 +886,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si buscas la parte de coordinación bajo presión sin pagar por otro juego, Space Station 14 se descarga gratis desde spacestation14.com para Windows, Linux y macOS. No incluye compras dentro del juego ni contenido de pago.",
-        "Capibara Marines es el servidor comunitario en español, con una wiki traducida donde se explican los roles, las comunicaciones y el equipo antes de tu primer despliegue. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "Capibara Marines es el servidor comunitario en español, con una wiki traducida donde se explican los roles, las comunicaciones y el equipo antes de tu primer despliegue. Una advertencia sobre el acceso: aquí no verás una dirección de conexión, porque solo se difunden las verificadas y siempre a través del Discord de la comunidad.",
       ],
     },
   ],
@@ -888,7 +904,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
         name: "Capibara Marines (RMC14)",
         url: "/marines/",
         description:
-          "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles y radio contra una colmena de xenónidos jugada por personas. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
+          "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles y radio contra una colmena de xenónidos jugada por personas. No pide un PC potente y su comunidad hispanohablante mantiene al día la wiki y los horarios.",
         free: true,
         features: { coop: true, hordes: true, pvp: true },
         highlighted: true,
@@ -896,28 +912,28 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
       {
         name: "Deep Rock Galactic",
         description:
-          "Cooperativo de cuatro jugadores con clases complementarias, cuevas generadas por procedimientos y oleadas de criaturas. Muy centrado en la coordinación del equipo.",
+          "Cada cueva se genera por procedimientos, así que la ruta de vuelta hay que improvisarla mientras las criaturas llegan en oleadas. La carrera final hacia la cápsula de extracción es lo más parecido a la tensión de Helldivers 2.",
         free: false,
         features: { coop: true, hordes: true, pvp: false },
       },
       {
         name: "Starship Troopers: Extermination",
         description:
-          "Disparos cooperativos a gran escala donde varios pelotones construyen defensas y resisten oleadas de insectos hasta la extracción.",
+          "Es la adaptación licenciada de esa ficción, y su diferencia con Helldivers 2 está en la escala: pelotones mucho más numerosos y una fase de fortificación antes de que llegue la oleada que decide la misión.",
         free: false,
         features: { coop: true, hordes: true, pvp: false },
       },
       {
         name: "Earth Defense Force 6",
         description:
-          "Acción contra cantidades enormes de enemigos, con clases diferenciadas y modo cooperativo. Tono deliberadamente exagerado.",
+          "Serie japonesa de larga trayectoria en la que la cantidad de enemigos en pantalla es el argumento. Sus clases se juegan de forma radicalmente distinta —infantería a pie, vuelo, artillería a distancia— y el cooperativo asume su tono de serie B sin ningún complejo.",
         free: false,
         features: { coop: true, hordes: true, pvp: false },
       },
       {
         name: "Aliens: Fireteam Elite",
         description:
-          "Cooperativo en tercera persona para tres jugadores, con clases, mejoras y oleadas de enemigos en misiones cerradas.",
+          "Campañas de pasillo para tres jugadores donde los enemigos brotan de conductos y rejillas en lugar de llegar de frente. Las clases se van especializando con puntos de mejora entre despliegues.",
         free: false,
         features: { coop: true, hordes: true, pvp: false },
       },
@@ -942,7 +958,7 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
     {
       question: "¿Funcionan en un PC modesto?",
       answer:
-        "Los títulos comerciales en 3D piden equipos relativamente actuales. Space Station 14, al ser un juego en dos dimensiones con vista cenital, funciona en ordenadores modestos y portátiles sin gráfica dedicada.",
+        "Para las alternativas comerciales, sí: todas son juegos en tres dimensiones con requisitos de gama media. La excepción es Space Station 14, cuyo motor bidimensional apenas exige hardware y se mueve sin tarjeta gráfica dedicada.",
     },
   ],
   wikiLinks: [
@@ -979,6 +995,8 @@ export const HELLDIVERS_LIKE_PAGE: ServerSeoPageData = {
 export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
   slug: "juegos-pvp-asimetrico",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "El PvP asimétrico enfrenta a dos bandos con reglas distintas, y el género casi siempre se queda en partidas pequeñas: cuatro supervivientes contra un asesino en Dead by Daylight, cuatro cazadores contra un monstruo en Evolve. Capibara Marines rompe esa proporción con decenas de jugadores por ronda repartidos entre marines y colmena, y es además la única opción gratuita de la comparativa.",
   title: "Juegos de PvP Asimétrico para PC",
   subtitle:
     "Partidas donde los dos bandos no juegan al mismo juego: un grupo numeroso frente a criaturas controladas por jugadores. Comparativa y una opción gratuita en español.",
@@ -1009,7 +1027,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
     {
       title: "Space Station 14 y la asimetría a gran escala",
       paragraphs: [
-        "Space Station 14 es un juego multijugador gratuito y de código abierto, en dos dimensiones y con vista cenital, que simula con detalle atmósfera, heridas, energía, objetos y comunicaciones. Al ser 2D funciona en ordenadores modestos y no requiere una tarjeta gráfica dedicada.",
+        "Space Station 14 es un título multijugador de código abierto que puede descargarse sin pagar nada. Su vista cenital disimula una simulación exigente —atmósfera, traumatismos, red eléctrica, objetos y canales de comunicación— que se ejecuta sin pedir una tarjeta gráfica dedicada, algo poco habitual en una partida que reúne a decenas de personas a la vez.",
         "El proyecto de código abierto RMC14 lleva ese motor al PvP asimétrico a gran escala: decenas de marines organizados en escuadras, con especialistas, médicos y mando, frente a una colmena de xenónidos que también controlan jugadores y que evoluciona durante la ronda desde castas básicas hasta criaturas mucho más capaces.",
       ],
     },
@@ -1017,7 +1035,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si te interesa la asimetría con muchos jugadores por bando y roles que pesan de verdad, puedes probarlo sin gastar nada. Space Station 14 se descarga desde spacestation14.com para Windows, Linux y macOS, y no tiene compras dentro del juego.",
-        "Capibara Marines es el servidor comunitario en español, con wiki traducida donde se explican tanto los roles de marine como las castas de la colmena. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "Capibara Marines es el servidor comunitario en español, con wiki traducida donde se explican tanto los roles de marine como las castas de la colmena. El paso final lo da la propia comunidad en Discord, que es donde se anuncia la forma de conectarse; esta web no lista direcciones sin verificar.",
       ],
     },
   ],
@@ -1035,7 +1053,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
         name: "Capibara Marines (RMC14)",
         url: "/marines/",
         description:
-          "Servidor comunitario gratis y en español sobre Space Station 14. Decenas de marines con escuadras y especialistas contra una colmena de xenónidos controlada por jugadores. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
+          "Servidor comunitario gratis y en español sobre Space Station 14. Decenas de marines con escuadras y especialistas contra una colmena de xenónidos controlada por jugadores. Basta un equipo modesto para moverlo, y la documentación en español cubre los dos bandos.",
         free: true,
         features: { teams: true, horror: true, persistentRoles: true },
         highlighted: true,
@@ -1079,7 +1097,7 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
     {
       question: "¿Hay juegos de PvP asimétrico gratuitos?",
       answer:
-        "Sí. Space Station 14 es gratuito y de código abierto, y el contenido de RMC14 enfrenta a una fuerza de marines contra una colmena alienígena jugada por personas. Se descarga desde spacestation14.com.",
+        "Sí, aunque son pocos. Space Station 14 se descarga sin coste desde spacestation14.com y el contenido de RMC14 enfrenta a una fuerza de marines con una colmena alienígena jugada por personas; el resto de títulos de la tabla hay que comprarlos.",
     },
     {
       question: "¿Cuál tiene los equipos más grandes?",
@@ -1126,6 +1144,8 @@ export const ASYMMETRIC_PVP_PAGE: ServerSeoPageData = {
 export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
   slug: "juegos-parecidos-a-starship-troopers",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Starship Troopers: Extermination es la adaptación más directa de esa ficción; Helldivers 2, Earth Defense Force 6 y Deep Rock Galactic repiten la fórmula del pelotón contra oleadas sin estar ambientados en ella. Si prefieres no pagar, Capibara Marines añade munición que se agota, heridos que evacuar y órdenes por radio, y su comunidad hispana se coordina en Discord.",
   title: "Juegos Parecidos a Starship Troopers",
   subtitle:
     "Infantería, oleadas de bichos y pelotones que solo funcionan si se coordinan: alternativas para PC en esa línea, con una opción gratuita en español.",
@@ -1156,7 +1176,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
     {
       title: "Qué es Space Station 14",
       paragraphs: [
-        "Space Station 14 es un juego multijugador gratuito y de código abierto que se ve desde arriba, en dos dimensiones. Bajo esa presentación hay una simulación detallada de atmósfera, heridas, energía, objetos y comunicaciones, y al ser 2D funciona en ordenadores modestos.",
+        "Space Station 14 es gratuito, de código abierto y se contempla desde arriba en dos dimensiones. Lo interesante no es su aspecto, sino lo que ocurre por debajo: aire, heridas, energía, objetos y comunicaciones se simulan pieza a pieza. Ese enfoque también explica que arranque en equipos que jamás moverían un juego de disparos en tres dimensiones.",
         "El proyecto de código abierto RMC14 recrea sobre ese motor el combate de infantería espacial: escuadras de marines con fusileros, especialistas, médicos, técnicos y cadena de mando frente a una colmena de xenónidos. A diferencia del resto de títulos de la lista, esa colmena está controlada por jugadores y evoluciona a lo largo de la ronda.",
       ],
     },
@@ -1164,7 +1184,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si lo que buscas es la sensación de pelotón, con órdenes por radio, munición que se acaba y heridos que hay que evacuar, puedes probarlo sin coste. Space Station 14 se descarga desde spacestation14.com para Windows, Linux y macOS, y no incluye compras dentro del juego.",
-        "Capibara Marines es el servidor comunitario en español, con una wiki traducida donde se explican los roles, las comunicaciones y las requisiciones. No publicamos una dirección de conexión sin verificar: consulta los anuncios actuales de la comunidad en Discord.",
+        "Capibara Marines es el servidor comunitario en español, con una wiki traducida donde se explican los roles, las comunicaciones y las requisiciones. Falta un detalle: la forma de entrar se comparte en el Discord de la comunidad y no en esta página, donde no se publican direcciones de conexión sin verificar.",
       ],
     },
   ],
@@ -1182,7 +1202,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
         name: "Capibara Marines (RMC14)",
         url: "/marines/",
         description:
-          "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles, radio y logística contra una colmena de xenónidos jugada por personas. Corre en PC modestos y cuenta con comunidad hispana y wiki traducida.",
+          "Servidor comunitario gratis y en español sobre Space Station 14. Escuadras de marines con roles, radio y logística contra una colmena de xenónidos jugada por personas. Requisitos bajos, comunidad en español y guías traducidas de cada puesto del pelotón.",
         free: true,
         features: { coop: true, hordes: true, classes: true },
         highlighted: true,
@@ -1197,7 +1217,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
       {
         name: "Helldivers 2",
         description:
-          "Cooperativo en tercera persona con equipos reducidos, fuego amigo activo y misiones que dependen de coordinar bombardeos y extracción.",
+          "El parentesco con Starship Troopers es evidente: propaganda satírica, infantería sacrificable y un frente de insectos que avanza o retrocede sobre el mapa galáctico según lo que consiga el conjunto de jugadores.",
         free: false,
         features: { coop: true, hordes: true, classes: false },
       },
@@ -1211,7 +1231,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
       {
         name: "Deep Rock Galactic",
         description:
-          "Cooperativo de cuatro jugadores con clases complementarias en cuevas generadas por procedimientos y oleadas de criaturas.",
+          "Aquí los bichos también llegan por decenas y hay contratos que consisten en aguantar una posición mientras el resto del equipo termina el trabajo. Cambia el uniforme militar por una compañía minera de enanos espaciales.",
         free: false,
         features: { coop: true, hordes: true, classes: true },
       },
@@ -1226,7 +1246,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
     {
       question: "¿Hay alguno gratis?",
       answer:
-        "Sí. Space Station 14 es gratuito y de código abierto, y el contenido de RMC14 recrea el combate de infantería contra una colmena alienígena. Se descarga desde spacestation14.com.",
+        "Uno: Space Station 14, de código abierto y sin coste, donde el contenido de RMC14 recrea el combate de infantería contra una colmena alienígena. Los otros cuatro títulos de la tabla son de pago.",
     },
     {
       question: "¿Se pueden jugar en cooperativo?",
@@ -1236,7 +1256,7 @@ export const STARSHIP_TROOPERS_LIKE_PAGE: ServerSeoPageData = {
     {
       question: "¿Necesito un PC potente?",
       answer:
-        "Los juegos comerciales en 3D requieren equipos relativamente actuales. Space Station 14, al ser un juego en dos dimensiones con vista cenital, funciona en ordenadores modestos y portátiles sin tarjeta gráfica dedicada.",
+        "Los cuatro títulos comerciales de la tabla necesitan un ordenador actualizado. Space Station 14 no: su vista cenital en dos dimensiones se mueve con soltura en máquinas antiguas y en portátiles de oficina.",
     },
   ],
   wikiLinks: [

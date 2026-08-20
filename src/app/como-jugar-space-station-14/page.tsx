@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { SITE_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL, DISCORD_URL } from "@/lib/constants";
-import { faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
+import { SITE_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL, DISCORD_URL, LAST_CONTENT_UPDATE } from "@/lib/constants";
+import { articleSchema, faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES } from "@/data/seo-pages";
 import { departments } from "@/data/departments";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { InternalLinkGrid } from "@/components/seo/InternalLinkGrid";
 import { CtaBlock } from "@/components/seo/CtaBlock";
@@ -42,8 +43,8 @@ const TUTORIAL_STEPS = [
     text: "Abre el launcher. El juego se descargará automáticamente la primera vez (~500 MB). En Steam se instala directamente.",
   },
   {
-    name: "Busca el servidor Estación Capibara",
-    text: "En la pantalla de servidores, escribe 'Capibara' en el buscador. Haz clic en 'Estación Capibara' para conectarte. Es el servidor en español.",
+    name: "Busca los servidores Capibara",
+    text: "En la pantalla de servidores, escribe 'Capibara' en el buscador. La comunidad tiene cuatro servidores en español: Estación Capibara (SS14 clásico), Capibara Marines, Capibara SCP y Capibara Monolith. Haz clic en el que quieras para conectarte.",
   },
   {
     name: "Elige tu rol",
@@ -56,6 +57,14 @@ const TUTORIAL_STEPS = [
 ];
 
 const jsonLd = [
+  articleSchema({
+    title: page.title,
+    slug: page.slug,
+    description: page.metaDescription,
+    datePublished: page.datePublished,
+    dateModified: LAST_CONTENT_UPDATE,
+    basePath: "",
+  }),
   faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
 ];
@@ -68,6 +77,8 @@ export default function ComoJugarSpaceStation14Page() {
         subtitle={page.subtitle}
         breadcrumbs={[{ label: page.title, href: `/${page.slug}/` }]}
       />
+
+      {page.quickAnswer && <QuickAnswer>{page.quickAnswer}</QuickAnswer>}
 
       {/* Intro */}
       <section className="mb-12">

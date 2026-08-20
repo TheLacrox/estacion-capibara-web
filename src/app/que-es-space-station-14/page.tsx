@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/constants";
-import { faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
+import { LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
+import { articleSchema, faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES } from "@/data/seo-pages";
 import { departments } from "@/data/departments";
 import { antagonists } from "@/data/antagonists";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { FeatureHighlight } from "@/components/seo/FeatureHighlight";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { InternalLinkGrid } from "@/components/seo/InternalLinkGrid";
@@ -35,6 +36,14 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = [
+  articleSchema({
+    title: page.title,
+    slug: page.slug,
+    description: page.metaDescription,
+    datePublished: page.datePublished,
+    dateModified: LAST_CONTENT_UPDATE,
+    basePath: "",
+  }),
   faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
   {
@@ -68,6 +77,8 @@ export default function QueEsSpaceStation14Page() {
         subtitle={page.subtitle}
         breadcrumbs={[{ label: page.title, href: `/${page.slug}/` }]}
       />
+
+      {page.quickAnswer && <QuickAnswer>{page.quickAnswer}</QuickAnswer>}
 
       {/* Intro */}
       <section className="prose-sm mb-12">

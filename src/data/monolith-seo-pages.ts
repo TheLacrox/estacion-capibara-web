@@ -9,6 +9,8 @@ export type MonolithSeoPageData = ServerSeoPageData;
 export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
   slug: "monolith-station-en-espanol",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Capibara Monolith es la edición comunitaria en español de Monolith Station, un servidor de Space Station 14 ambientado en el Sector Colossus con naves pilotables, economía persistente, expediciones y facciones enfrentadas. Es un servidor independiente de Estación Capibara y tiene su propia wiki traducida en /wiki-monolith/.",
   title: "Monolith Station en Español: Capibara Monolith",
   subtitle:
     "Conoce la edición comunitaria en español de Monolith Station: un servidor separado de Estación Capibara, ambientado en el Sector Colossus y centrado en naves, economía persistente, expediciones y facciones.",
@@ -47,7 +49,7 @@ export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
       title: "Una experiencia distinta de SS14",
       paragraphs: [
         "En lugar de limitar toda la ronda a un solo complejo, las tripulaciones pueden operar naves, viajar entre localizaciones y participar en una economía persistente. Las expediciones, el comercio, la minería y la artillería naval conectan los trabajos de cada jugador con el estado del sector.",
-        "La wiki de Capibara Monolith reúne las guías traducidas del servidor sobre empleos, naves, medicina, química, economía, expediciones, facciones, reglas y sistemas de combate.",
+        "Todo ese engranaje está documentado en la wiki traducida del servidor: desde el manual de un empleo concreto hasta el reglamento, la química o el manejo de la artillería naval.",
       ],
       points: [
         "Naves pilotables y sistemas de artillería",
@@ -108,6 +110,8 @@ export const MONOLITH_SPANISH_PAGE: MonolithSeoPageData = {
 export const FRONTIER_SPANISH_PAGE: MonolithSeoPageData = {
   slug: "frontier-station-14-en-espanol",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Frontier Station 14 es la variante de Space Station 14 que sustituye la estación única por un sector abierto en el que las tripulaciones consiguen y operan sus propias naves. Capibara Monolith lleva esa fórmula al español a través de Monolith Station, con guías traducidas de pilotaje, expediciones y economía.",
   title: "Frontier Station 14 en Español y Capibara Monolith",
   subtitle:
     "Descubre el estilo Frontier de Space Station 14: tripulaciones con naves propias, expediciones y una economía que conecta todo un sector.",
@@ -145,7 +149,7 @@ export const FRONTIER_SPANISH_PAGE: MonolithSeoPageData = {
       title: "La versión de Capibara",
       paragraphs: [
         "Capibara Monolith no es un servidor oficial de Frontier Station ni de Monolith Station. Es un servidor comunitario separado, con identidad Capibara, recursos traducidos al español y una wiki generada a partir de sus propios datos de juego.",
-        "La wiki en español permite consultar de antemano trabajos, reglas, economía, medicina, química, naves y facciones con términos y fallbacks localizados.",
+        "Su wiki está pensada para leerse antes de entrar: puedes comparar oficios, repasar el reglamento, entender cómo se mueve el mercado del sector o consultar medicina y química sin necesidad de saltar al inglés.",
       ],
     },
   ],
@@ -194,6 +198,8 @@ export const FRONTIER_SPANISH_PAGE: MonolithSeoPageData = {
 export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
   slug: "juego-roleplay-espacial-con-naves",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Si buscas roleplay espacial con naves tripuladas, Capibara Monolith reparte cada viaje entre pilotaje, ingeniería, medicina, carga y artillería: ninguno de esos puestos lo cubre el juego por ti. Se juega sobre Space Station 14, de descarga gratuita, y las historias nacen de los encuentros entre tripulaciones del Sector Colossus.",
   title: "Juego de Roleplay Espacial con Naves y Tripulaciones",
   subtitle:
     "Capibara Monolith combina el sandbox de Space Station 14 con naves pilotables, trabajos especializados, expediciones, economía y facciones en un sector persistente.",
@@ -232,7 +238,7 @@ export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
       title: "Aprender con una wiki en español",
       paragraphs: [
         "La Wiki Monolith reúne cientos de guías generadas desde los datos del servidor. Allí puedes estudiar empleos, controles, naves, expediciones, sistemas de armas, economía, medicina y lore antes de asumir una responsabilidad nueva.",
-        "Capibara Monolith es una traducción comunitaria y su wiki presenta en español el contenido público de las guías, incluidas acciones, entidades y fallbacks técnicos.",
+        "La traducción la sostiene la propia comunidad, así que en esa wiki encontrarás en español no solo los textos de guía, sino también nombres de acciones, entidades y mensajes técnicos de respaldo.",
       ],
     },
   ],
@@ -250,7 +256,7 @@ export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
     {
       question: "¿Necesito conocer Space Station 14?",
       answer:
-        "No, pero sus sistemas tienen profundidad. Conviene leer la introducción y las guías del trabajo elegido, empezar con responsabilidades sencillas y pedir ayuda a la comunidad.",
+        "Puedes empezar sin haberlo tocado nunca, aunque la curva de aprendizaje es real. Elige un puesto sencillo, lee su guía antes de entrar y avisa por radio de que estás aprendiendo: en la comunidad suele haber alguien dispuesto a explicarlo.",
     },
     {
       question: "¿Dónde puedo aprender pilotaje y artillería?",
@@ -286,6 +292,8 @@ export const SPACESHIP_ROLEPLAY_PAGE: MonolithSeoPageData = {
 export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
   slug: "como-jugar-capibara-monolith",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Para jugar en Capibara Monolith basta con el cliente gratuito de Space Station 14 y un rato de preparación: repasa controles, canales de comunicación y la guía del trabajo que quieras estrenar en la Wiki Monolith. Los datos de acceso al servidor se anuncian en el Discord de la comunidad, que es donde se organizan las partidas.",
   title: "Cómo Jugar Capibara Monolith: Guía para Empezar",
   subtitle:
     "Una ruta clara para conocer Monolith Station en español, preparar tu personaje, dominar los controles básicos y elegir una primera responsabilidad en el Sector Colossus.",
@@ -303,8 +311,8 @@ export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
     {
       title: "Antes de entrar al Sector Colossus",
       paragraphs: [
-        "Capibara Monolith es un servidor comunitario de Space Station 14 separado de Estación Capibara. Utiliza el escenario y los sistemas de Monolith Station, con una wiki propia presentada en español.",
-        "No publicamos una dirección de conexión sin verificar. Consulta los anuncios actuales de la comunidad en Discord y utiliza la Wiki Monolith para preparar los controles, el personaje y el trabajo que quieras aprender.",
+        "Conviene saber dónde entras antes de nada: Capibara Monolith corre aparte de Estación Capibara, con el escenario y los sistemas de Monolith Station y un espacio de guías propio en español.",
+        "Los datos de acceso viven en el Discord de la comunidad y no en esta web: preferimos no fijar direcciones que después no podamos verificar. Mientras tanto, la Wiki Monolith te sirve para preparar controles, personaje y el trabajo que quieras aprender.",
       ],
       points: [
         "Lee la introducción para nuevos jugadores",
@@ -322,7 +330,7 @@ export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
     {
       title: "Una wiki organizada por responsabilidades",
       paragraphs: [
-        "La Wiki Monolith reúne guías de trabajos, naves, economía, expediciones, facciones, medicina, química y reglas. Puedes pasar de una introducción general a documentación específica sin mezclarla con la wiki de Estación Capibara.",
+        "El índice de la Wiki Monolith está ordenado por lo que vas a hacer, no por temas sueltos: desde la introducción general puedes saltar a la guía concreta de un puesto, una nave o un sistema sin cruzarte con material de Estación Capibara.",
         "Si una función te resulta nueva, consulta primero su guía y pregunta a la comunidad. Aprender de forma gradual ayuda a que la experiencia sea comprensible para ti y para quienes comparten la nave o el puesto.",
       ],
     },
@@ -336,7 +344,7 @@ export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
     {
       question: "¿Dónde encuentro el servidor de Capibara Monolith?",
       answer:
-        "Consulta los anuncios actuales de la comunidad en Discord. La web no publica una dirección de conexión que no haya sido verificada.",
+        "En el Discord de Capibara, donde se publican los anuncios al día. Esta web no lista direcciones de conexión, porque cambian con el tiempo y no siempre podemos comprobarlas.",
     },
     {
       question: "¿Qué debería leer primero?",
@@ -377,6 +385,8 @@ export const MONOLITH_GETTING_STARTED_PAGE: MonolithSeoPageData = {
 export const MONOLITH_ROLES_PAGE: MonolithSeoPageData = {
   slug: "roles-y-trabajos-monolith-station",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Los trabajos de Capibara Monolith se agrupan en cuatro áreas: naves (pilotaje, navegación e ingeniería), salud (medicina y química), logística (carga, comercio, minería y expediciones) y mando, seguridad y funciones de facción. El índice completo se genera desde los datos del propio servidor y se publica en la guía de Trabajos y roles de la Wiki Monolith.",
   title: "Roles y Trabajos de Monolith Station en Space Station 14",
   subtitle:
     "Descubre cómo se organizan los trabajos de Capibara Monolith y qué responsabilidades conectan naves, puestos, expediciones, comercio, medicina y facciones.",
@@ -469,6 +479,8 @@ export const MONOLITH_ROLES_PAGE: MonolithSeoPageData = {
 export const MULTIPLAYER_SPACESHIPS_PAGE: MonolithSeoPageData = {
   slug: "juego-de-naves-espaciales-multijugador",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Cada nave de Capibara Monolith funciona como un puesto de trabajo compartido y no como una cabina para un solo piloto: energía, atmósfera, carga, reparaciones y artillería se reparten entre la tripulación. Los astilleros del Sector Colossus ofrecen diseños orientados a transporte, salvamento, exploración o combate, cada uno con su documentación en español.",
   title: "Juego de Naves Espaciales Multijugador con Tripulación",
   subtitle:
     "Capibara Monolith propone una experiencia de Space Station 14 donde las naves son espacios de trabajo compartidos: se pilotan, mantienen, abastecen y defienden entre varios jugadores.",
@@ -564,6 +576,8 @@ export const MULTIPLAYER_SPACESHIPS_PAGE: MonolithSeoPageData = {
 export const SPACE_COOP_PAGE: MonolithSeoPageData = {
   slug: "juego-espacial-cooperativo",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "La cooperación en Capibara Monolith es obligatoria por diseño: quien pilota depende de que ingeniería mantenga la energía y la atmósfera, y ninguna expedición vuelve entera sin soporte médico ni logística. No existen misiones guionizadas, así que cada ronda produce una historia distinta y la comunidad hispanohablante se coordina desde su Discord.",
   title: "Juego Espacial Cooperativo con Roles y Tripulaciones",
   subtitle:
     "Una experiencia multijugador donde pilotaje, ingeniería, medicina, carga y expediciones dependen de la comunicación entre personas, no de una tripulación automática.",
@@ -615,7 +629,7 @@ export const SPACE_COOP_PAGE: MonolithSeoPageData = {
     {
       question: "¿Puedo jugar con amigos?",
       answer:
-        "Podéis coordinar responsabilidades y aprender sistemas complementarios. Consultad los anuncios actuales de la comunidad para conocer cómo acceder al servidor.",
+        "Podéis coordinar responsabilidades y aprender sistemas complementarios. Para entrar juntos, pasad antes por el Discord de la comunidad: allí se explica cómo acceder al servidor en cada momento.",
     },
     {
       question: "¿Qué roles cooperan dentro de una nave?",
@@ -625,7 +639,7 @@ export const SPACE_COOP_PAGE: MonolithSeoPageData = {
     {
       question: "¿Es un juego de campaña lineal?",
       answer:
-        "No. Es un sandbox de roleplay basado en sistemas, donde las historias emergen de las decisiones y encuentros entre jugadores.",
+        "No. No hay niveles ni misiones escritas de antemano: la ronda avanza según lo que hagan las tripulaciones, y dos partidas en el mismo sector pueden terminar de forma completamente distinta.",
     },
   ],
   wikiLinks: [
@@ -656,6 +670,8 @@ export const SPACE_COOP_PAGE: MonolithSeoPageData = {
 export const MONOLITH_ECONOMY_PAGE: MonolithSeoPageData = {
   slug: "economia-monolith-station",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "La economía de Capibara Monolith es persistente: el Central Galactic Bank sostiene las cuentas y los bienes circulan entre minería, expediciones, transporte de carga y comercio por todo el Sector Colossus. Las guías de Economía, Banco y Transporte de Carga explican el sistema, aunque los precios concretos no se publican aquí porque dependen del estado del servidor.",
   title: "Economía de Monolith Station: Comercio, Carga y Recursos",
   subtitle:
     "Entiende cómo la economía persistente de Capibara Monolith conecta bancos, transporte de carga, expediciones, minería y decisiones de las tripulaciones.",
@@ -694,7 +710,7 @@ export const MONOLITH_ECONOMY_PAGE: MonolithSeoPageData = {
       title: "Cómo aprender la economía sin adivinar",
       paragraphs: [
         "Empieza por la guía general de Economía y continúa con Banco o Transporte de Carga según la tarea que quieras realizar. Las Recetas de Economía reúnen información adicional del sistema.",
-        "Si una condición depende del estado actual del servidor, consulta los anuncios de la comunidad. La página explica el modelo y dirige a documentación verificable, sin inventar cifras ni endpoints.",
+        "Cuando una condición dependa de la configuración vigente, pregúntalo en el Discord antes de darlo por sentado. Esta página describe el modelo y remite a documentación verificable, sin inventar cifras ni direcciones.",
       ],
     },
   ],
@@ -748,6 +764,8 @@ export const MONOLITH_ECONOMY_PAGE: MonolithSeoPageData = {
 export const MONOLITH_EXPEDITIONS_PAGE: MonolithSeoPageData = {
   slug: "expediciones-monolith-station",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "Una expedición saca a la tripulación de su nave o su puesto para explorar localizaciones del Sector Colossus, recuperar materiales y enfrentarse a las amenazas que cada tipo de salida tiene documentadas. Volver depende tanto de la preparación previa (transporte, equipo y soporte médico) como de lo que se encuentre allí fuera.",
   title: "Expediciones de Monolith Station: Salvamento y Exploración",
   subtitle:
     "Conoce cómo las expediciones de Capibara Monolith combinan preparación, transporte, recuperación de recursos, amenazas y cooperación entre trabajos.",
@@ -843,6 +861,8 @@ export const MONOLITH_EXPEDITIONS_PAGE: MonolithSeoPageData = {
 export const MONOLITH_FACTIONS_PAGE: MonolithSeoPageData = {
   slug: "facciones-y-lore-monolith-station",
   datePublished: "2026-07-25",
+  quickAnswer:
+    "El lore de Capibara Monolith transcurre en el Sector Colossus, un territorio marcado por la región anómala llamada El Monolith tras la caída de Nanotrasen y la fragmentación del Syndicate. Sus dos facciones mayores, TSF y PDV, mantienen un conflicto abierto mientras mercenarios, comerciantes y organizaciones menores negocian su propio espacio.",
   title: "Facciones y Lore de Monolith Station en el Sector Colossus",
   subtitle:
     "Explora el contexto de Capibara Monolith: El Monolith, el Sector Colossus, el conflicto entre TSF y PDV, y las organizaciones que dan forma al roleplay.",
@@ -881,7 +901,7 @@ export const MONOLITH_FACTIONS_PAGE: MonolithSeoPageData = {
       title: "Lore al servicio del roleplay",
       paragraphs: [
         "Conocer el escenario ayuda a construir decisiones coherentes: alianzas, rutas, comercio y conflictos pueden interpretarse dentro del contexto del Sector Colossus.",
-        "Capibara Monolith es un servidor comunitario y no representa al servidor oficial del proyecto original. Su wiki en español organiza el lore y las reglas desde los datos publicados del servidor.",
+        "Ten presente que este proyecto lo sostiene la comunidad hispanohablante y no habla en nombre del equipo original de Monolith Station. Todo el lore y el reglamento que verás aquí se ordenan a partir de los datos que el propio servidor publica.",
       ],
     },
   ],

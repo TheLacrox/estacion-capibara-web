@@ -4,6 +4,10 @@ export interface SeoPageData {
   subtitle: string;
   metaTitle: string;
   metaDescription: string;
+  // Fecha de primera publicación (ISO YYYY-MM-DD) para el JSON-LD de la página
+  datePublished?: string;
+  // Respuesta directa de 1-2 frases a la consulta objetivo, mostrada bajo el H1
+  quickAnswer?: string;
   faqs: { question: string; answer: string }[];
   relatedWikiLinks: { label: string; href: string }[];
   relatedPages?: string[];
@@ -19,6 +23,9 @@ export const SEO_PAGES: SeoPageData[] = [
       "¿Qué es Space Station 14? Guía Completa en Español",
     metaDescription:
       "Qué es Space Station 14: juego multijugador gratis de simulación espacial con roleplay, 30+ roles y caos emergente. Guía completa en español.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Es un simulador multijugador de estación espacial, gratuito y de código abierto, en el que entre 10 y más de 100 personas se reparten más de 30 puestos —capitán, médico, ingeniero, detective, traidor— y sostienen la estación en tiempo real. Nadie escribe el guion: la ronda la decide lo que haga la tripulación, y en castellano el punto de encuentro es Estación Capibara, cuya comunidad se coordina por Discord.",
     faqs: [
       {
         question: "¿Space Station 14 es gratis?",
@@ -69,6 +76,9 @@ export const SEO_PAGES: SeoPageData[] = [
       "Juegos como Among Us: 7 Alternativas con Más Profundidad | 2026",
     metaDescription:
       "Los mejores juegos parecidos a Among Us para PC: deducción social, traidores, trabajo en equipo y roleplay. Descubre Space Station 14 y otras alternativas gratis.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "La alternativa más completa a Among Us es Space Station 14: conserva la mecánica de impostores infiltrados, pero con más de 30 roles y rondas que pasan de la hora. Project Winter, Barotrauma, Unfortunate Spacemen y Town of Salem cubren el resto del espectro de deducción social.",
     faqs: [
       {
         question: "¿Qué juegos son parecidos a Among Us?",
@@ -108,6 +118,9 @@ export const SEO_PAGES: SeoPageData[] = [
       "10 Juegos Gratis Multijugador PC 2026: Sin Pay-to-Win | Guía Completa",
     metaDescription:
       "Lista curada de los mejores juegos gratis multijugador para PC en 2026. Desde shooters hasta simulaciones espaciales. Sin microtransacciones abusivas.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Diez títulos multijugador de PC cuestan exactamente cero y no venden ventaja competitiva: Space Station 14, Dota 2, Counter-Strike 2, Path of Exile, Warframe y Team Fortress 2 encabezan la lista. Space Station 14 va un paso más allá, porque no tiene ninguna microtransacción, ni siquiera cosmética.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos gratis multijugador para PC?",
@@ -117,12 +130,12 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos gratis multijugador sin pay-to-win?",
         answer:
-          "Sí. Space Station 14 es completamente gratis sin ninguna microtransacción. Dota 2, CS2 y Team Fortress 2 también son gratuitos con cosméticos opcionales que no afectan el juego.",
+          "Ninguno de esta lista vende poder. Space Station 14 no incluye absolutamente ninguna microtransacción, y Dota 2, CS2 y Team Fortress 2 se financian solo con cosméticos que no tocan el equilibrio de las partidas.",
       },
       {
         question: "¿Cuál es el mejor juego gratis multijugador para jugar con amigos?",
         answer:
-          "Depende del género que prefieras. Para cooperativo: Warframe o Space Station 14. Para competitivo: Dota 2 o CS2. Para sandbox creativo: Space Station 14 o Unturned.",
+          "La respuesta cambia según el género que busquéis: para cooperativo, Warframe o Space Station 14; para competitivo, Dota 2 o CS2; para sandbox creativo, Space Station 14 o Unturned.",
       },
     ],
     relatedWikiLinks: [
@@ -141,11 +154,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-de-rol-online",
     title: "Juegos de Rol Online Gratis",
     subtitle:
-      "Los mejores juegos de roleplay online para PC. Desde MMORPGs clásicos hasta simulaciones sandbox donde TÚ creas la historia.",
+      "Rolear online no tiene por qué costar dinero. Desde MMORPGs clásicos hasta simulaciones sandbox donde la historia la escribes TÚ, esto es lo que merece tus tardes.",
     metaTitle:
       "Juegos de Rol Online Gratis para PC: Los Mejores RPG y Roleplay 2026",
     metaDescription:
       "Descubre los mejores juegos de rol online gratis para PC. RPGs, roleplay sandbox y simulaciones donde creas tu personaje y vives tu propia historia.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Para rolear online sin pagar nada, la vía más directa es Space Station 14: eliges uno de sus más de 30 puestos con responsabilidades reales y la trama sale de lo que hagáis entre todos. Si prefieres el RPG clásico, Guild Wars 2, Path of Exile y Star Wars: The Old Republic tienen versión gratuita; en castellano, las partidas de Estación Capibara se convocan desde su Discord.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos de rol online gratis?",
@@ -160,7 +176,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos de rol en español?",
         answer:
-          "Sí. Space Station 14 tiene servidores en español como Estación Capibara, con wiki y comunidad completamente en español. GTA V RP también tiene muchos servidores hispanos.",
+          "Sí. Dentro de Space Station 14, Estación Capibara traduce al castellano tanto el juego como su wiki y reúne a sus jugadores en Discord. GTA V RP también tiene muchos servidores hispanos.",
       },
     ],
     relatedWikiLinks: [
@@ -185,6 +201,9 @@ export const SEO_PAGES: SeoPageData[] = [
       "Juegos Sandbox Multijugador PC: Los Mejores Juegos de Mundo Abierto 2026",
     metaDescription:
       "Los mejores juegos sandbox multijugador para PC. Mundos abiertos, creatividad ilimitada y jugabilidad emergente. Incluye opciones gratis como Space Station 14.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "En un sandbox multijugador nadie reparte misiones: Space Station 14, Minecraft, Terraria, Garry's Mod, Barotrauma y Factorio dejan que sean los propios jugadores quienes construyan el mundo o lo rompan. De esos seis, solo Space Station 14 es gratuito y de código abierto.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos sandbox multijugador?",
@@ -194,7 +213,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos sandbox gratis para PC?",
         answer:
-          "Sí. Space Station 14 es un sandbox multijugador completamente gratis donde operas una estación espacial con otros jugadores. Unturned (survival sandbox) también es gratuito.",
+          "Sí: operar una estación espacial entera junto a otros jugadores en Space Station 14 no cuesta nada, ni de entrada ni después. Unturned (survival sandbox) es la otra opción gratuita que merece la pena.",
       },
       {
         question: "¿Qué juego sandbox tiene más contenido emergente?",
@@ -225,11 +244,14 @@ export const SEO_PAGES: SeoPageData[] = [
       "Cómo Jugar Space Station 14: Tutorial Completo en Español | 2026",
     metaDescription:
       "Aprende cómo descargar e instalar Space Station 14 gratis. Tutorial paso a paso para conectarte al servidor en español Estación Capibara y jugar tu primera ronda.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Descarga el launcher en spacestation14.com, crea una cuenta, escribe 'Capibara' en la lista de servidores y elige un puesto: son cuatro pasos y menos de diez minutos hasta tu primera ronda. Las partidas grandes de Estación Capibara empiezan viernes, sábado y domingo a partir de las 21:00 hora argentina, y se anuncian en el Discord de la comunidad.",
     faqs: [
       {
         question: "¿Space Station 14 es gratis?",
         answer:
-          "Sí, SS14 es 100% gratis. No tiene microtransacciones, pase de batalla ni pagos ocultos de ningún tipo. Puedes descargarlo desde spacestation14.com o Steam.",
+          "No cuesta nada y nunca lo hará: al ser un proyecto de código abierto, no existen pases de batalla, cajas ni tienda dentro del juego. La descarga está disponible en spacestation14.com y también en Steam.",
       },
       {
         question: "¿SS14 funciona en mi PC?",
@@ -239,7 +261,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Puedo jugar Space Station 14 en español?",
         answer:
-          "Sí. Estación Capibara es el servidor hispanohablante con wiki, guías y comunidad completamente en español. Busca 'Capibara' en la lista de servidores del launcher.",
+          "Sí. Estación Capibara traduce al castellano el servidor, su wiki y sus guías, y su comunidad habla español a diario en Discord. Escribe 'Capibara' en el buscador de servidores del launcher para encontrarlo.",
       },
       {
         question: "¿Cuándo hay partidas en Estación Capibara?",
@@ -269,11 +291,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-cooperativos-pc",
     title: "Juegos Cooperativos para PC",
     subtitle:
-      "Los mejores juegos cooperativos para PC en 2026. Juegos para jugar con amigos donde el trabajo en equipo es la clave del éxito.",
+      "Jugar con amigos en PC funciona mejor cuando el juego obliga a repartirse el trabajo. Estos son los cooperativos que mejor lo consiguen en 2026, gratuitos y de pago.",
     metaTitle:
       "Juegos Cooperativos PC: Los Mejores para Jugar con Amigos | 2026",
     metaDescription:
       "Descubre los mejores juegos cooperativos para PC. Desde simulaciones espaciales hasta survival, juegos para jugar con amigos online gratis y de pago.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "La lista corta del cooperativo en PC son Space Station 14, Deep Rock Galactic, Valheim, It Takes Two, Lethal Company y Phasmophobia. El primero es el único gratuito del grupo y el que más exige repartir tareas: con 30+ roles, nadie aguanta una ronda entera por su cuenta.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos cooperativos para PC?",
@@ -283,7 +308,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos cooperativos gratis para PC?",
         answer:
-          "Sí. Space Station 14 es completamente gratis y uno de los mejores cooperativos disponibles. También están Warframe, Path of Exile y Destiny 2 (base gratis).",
+          "Sí, y bastantes. Space Station 14 encabeza la lista sin coste alguno, y le acompañan Warframe, Path of Exile y Destiny 2 en su versión base.",
       },
       {
         question: "¿Qué juego cooperativo tiene más rejugabilidad?",
@@ -313,11 +338,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-espaciales-pc",
     title: "Juegos Espaciales para PC",
     subtitle:
-      "Los mejores juegos del espacio para PC. Desde exploración galáctica hasta simulación de estaciones espaciales, los mejores títulos del género.",
+      "El espacio en PC va de la exploración galáctica a la gestión milimétrica de una estación. Aquí tienes lo más destacado de cada rama del género.",
     metaTitle:
       "Juegos Espaciales PC: Los Mejores Juegos del Espacio Gratis y de Pago | 2026",
     metaDescription:
       "Descubre los mejores juegos espaciales para PC en 2026. Exploración, simulación, estrategia y supervivencia en el espacio. Incluye opciones gratis como Space Station 14.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "El género espacial en PC se reparte en subgéneros bien definidos: simulación de estación con Space Station 14, exploración con No Man's Sky, estrategia 4X con Stellaris, vuelo y comercio con Elite Dangerous y física orbital con Kerbal Space Program. De todos ellos, solo Space Station 14 se juega gratis y con el código abierto.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos espaciales para PC?",
@@ -337,7 +365,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Qué juego espacial tiene el mejor multijugador?",
         answer:
-          "Para cooperativo con roles profundos: Space Station 14. Para exploración: No Man's Sky. Para combate masivo: Eve Online. Para sandbox: Star Citizen. SS14 destaca por sus historias emergentes únicas.",
+          "Para cooperativo con roles profundos: Space Station 14. Para exploración: No Man's Sky. Para combate masivo: Eve Online. Para sandbox: Star Citizen. Lo que separa a SS14 del resto es que ninguna de sus rondas se parece a la anterior.",
       },
     ],
     relatedWikiLinks: [
@@ -357,11 +385,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-para-pc-de-bajos-recursos",
     title: "Juegos para PC de Bajos Recursos",
     subtitle:
-      "Los mejores juegos gratis y de pago que corren en cualquier PC. Sin necesidad de tarjeta gráfica dedicada ni 16 GB de RAM.",
+      "Ni tarjeta gráfica dedicada ni 16 GB de RAM: una selección de juegos gratuitos y de pago que arrancan en portátiles viejos y equipos de oficina.",
     metaTitle:
       "Juegos para PC de Bajos Recursos Gratis: Los Mejores 2026 | Requisitos Mínimos",
     metaDescription:
       "Los mejores juegos para PC de bajos recursos gratis en 2026. Juegos que corren en gráficos integrados con menos de 4 GB RAM. Incluye requisitos mínimos de cada juego.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Con 2 GB de RAM, un dual-core de 1.5 GHz y unos gráficos integrados Intel HD 4000 ya puedes mover Space Station 14, que ocupa apenas 500 MB de disco. Stardew Valley, Terraria, Among Us, Team Fortress 2, Hollow Knight, Celeste y Undertale piden requisitos parecidos o incluso menores.",
     faqs: [
       {
         question: "¿Qué juegos puedo jugar en un PC de bajos recursos?",
@@ -376,7 +407,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos gratis para PC de bajos recursos?",
         answer:
-          "Sí. Space Station 14, Team Fortress 2, Among Us (versión móvil gratis) y League of Legends corren en hardware antiguo y son completamente gratis o free-to-play.",
+          "Bastantes, sí: Space Station 14, Team Fortress 2, Among Us (gratis en su versión móvil) y League of Legends funcionan en hardware antiguo sin pedir un céntimo por entrar.",
       },
       {
         question: "¿Qué requisitos mínimos necesito para jugar SS14?",
@@ -400,11 +431,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-de-supervivencia-multijugador",
     title: "Juegos de Supervivencia Multijugador",
     subtitle:
-      "Los mejores juegos survival multijugador para PC. Sobrevive, coopera y lucha por recursos en mundos hostiles con otros jugadores.",
+      "Sobrevivir acompañado cambia el género por completo. Repasamos los survival multijugador de PC donde cooperar, repartir recursos y desconfiar del vecino ocurren en el mismo turno.",
     metaTitle:
       "Juegos de Supervivencia Multijugador PC: Los Mejores Survival Coop | 2026",
     metaDescription:
       "Descubre los mejores juegos de supervivencia multijugador para PC. Survival cooperativo, base building y exploración. Gratis y de pago, incluye Space Station 14.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Los survival multijugador más sólidos de PC son Project Zomboid, Valheim, The Forest, Raft, Barotrauma, Rust y Space Station 14. Este último le da la vuelta al género: las amenazas son la despresurización, los incendios y el sabotaje, y seguir vivo depende de que otros jugadores hagan bien su trabajo.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos survival multijugador?",
@@ -414,12 +448,12 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay juegos de supervivencia gratis?",
         answer:
-          "Sí. Space Station 14 es completamente gratis y combina supervivencia con roleplay y sistemas emergentes. Unturned (zombies) también es gratuito. La mayoría de los demás survival son de pago.",
+          "Pocos, pero los hay. Space Station 14 no cuesta nada y mezcla supervivencia con roleplay y sistemas emergentes; Unturned (zombies) es la otra alternativa sin coste. El resto del género suele ser de pago.",
       },
       {
         question: "¿Qué juego survival tiene el mejor cooperativo?",
         answer:
-          "Depende del estilo. Para cooperativo con roles especializados: SS14. Para construcción y exploración: Valheim. Para horror: The Forest. Para simulación: Barotrauma. SS14 destaca por la profundidad de sus sistemas cooperativos.",
+          "Cada uno brilla en un estilo distinto: roles especializados en SS14, construcción y exploración en Valheim, horror en The Forest y simulación en Barotrauma. Si lo que buscas son sistemas cooperativos profundos, SS14 es el que llega más lejos.",
       },
       {
         question: "¿SS14 es un juego de supervivencia?",
@@ -449,6 +483,9 @@ export const SEO_PAGES: SeoPageData[] = [
       "Juegos Parecidos a Barotrauma: Las Mejores Alternativas | 2026",
     metaDescription:
       "Los mejores juegos como Barotrauma: cooperación bajo presión, sistemas complejos y caos emergente. Space Station 14, FTL, Stormworks y más alternativas.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Lo más parecido a Barotrauma que puedes jugar gratis es Space Station 14: mismos roles especializados, mismos sistemas interconectados y las mismas reparaciones a contrarreloj, solo que en una estación espacial y con seis veces más puestos disponibles. FTL, Stormworks, Pulsar: Lost Colony y We Need To Go Deeper cubren otras piezas sueltas de la fórmula.",
     faqs: [
       {
         question: "¿Qué juegos son parecidos a Barotrauma?",
@@ -488,11 +525,14 @@ export const SEO_PAGES: SeoPageData[] = [
     slug: "juegos-de-simulacion-pc",
     title: "Juegos de Simulación para PC",
     subtitle:
-      "Los mejores simuladores para PC. Juegos con sistemas profundos, historias emergentes y complejidad adictiva que recompensan la dedicación.",
+      "Simuladores de PC con sistemas profundos, historias que se cuentan solas y una complejidad adictiva que recompensa a quien le dedica horas.",
     metaTitle:
       "Juegos de Simulación PC Gratis y de Pago: Los Mejores Simuladores | 2026",
     metaDescription:
       "Los mejores juegos de simulación para PC en 2026. Desde estaciones espaciales hasta fábricas, los simuladores más profundos y adictivos. Incluye opciones gratis.",
+    datePublished: "2026-03-19",
+    quickAnswer:
+      "Factorio, Rimworld, Dwarf Fortress, Cities: Skylines, Oxygen Not Included y Prison Architect son las simulaciones de referencia en PC. Space Station 14 es la única gratuita del grupo y la única en la que cada sistema —eléctrico, atmosférico, químico, médico— lo maneja una persona real en lugar de una IA.",
     faqs: [
       {
         question: "¿Cuáles son los mejores juegos de simulación para PC?",
@@ -502,7 +542,7 @@ export const SEO_PAGES: SeoPageData[] = [
       {
         question: "¿Hay simuladores gratis para PC?",
         answer:
-          "Sí. Space Station 14 es una simulación espacial multijugador completamente gratis y de código abierto. Combina simulación de sistemas con roleplay y cooperación online.",
+          "Los hay: Space Station 14 se descarga sin coste, tiene el código abierto y suma roleplay y cooperación online a su simulación de sistemas espaciales.",
       },
       {
         question: "¿Qué hace bueno a un juego de simulación?",

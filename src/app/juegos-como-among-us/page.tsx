@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/constants";
-import { faqSchema, itemListSchema, seoBreadcrumbSchema } from "@/lib/schema";
+import { LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
+import { articleSchema, faqSchema, itemListSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES, AMONG_US_ALTERNATIVES } from "@/data/seo-pages";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { GameComparisonTable } from "@/components/seo/GameComparisonTable";
 import { FeatureHighlight } from "@/components/seo/FeatureHighlight";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -34,6 +35,14 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = [
+  articleSchema({
+    title: page.title,
+    slug: page.slug,
+    description: page.metaDescription,
+    datePublished: page.datePublished,
+    dateModified: LAST_CONTENT_UPDATE,
+    basePath: "",
+  }),
   faqSchema(page.faqs),
   seoBreadcrumbSchema([{ name: page.title, url: `${SITE_URL}/${page.slug}/` }]),
   itemListSchema(
@@ -49,6 +58,8 @@ export default function JuegosComoAmongUsPage() {
         subtitle={page.subtitle}
         breadcrumbs={[{ label: page.title, href: `/${page.slug}/` }]}
       />
+
+      {page.quickAnswer && <QuickAnswer>{page.quickAnswer}</QuickAnswer>}
 
       {/* Intro */}
       <section className="mb-12">

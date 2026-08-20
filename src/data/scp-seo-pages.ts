@@ -3,6 +3,8 @@ import type { ServerSeoPageData } from "@/data/server-seo-types";
 export const SCP_HUB_PAGE: ServerSeoPageData = {
   slug: "scp-en-space-station-14",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Capibara SCP es un servidor comunitario en español de Space Station 14 ambientado en un Sitio de la Fundación: unos jugadores ocupan los puestos del personal y otros interpretan a las anomalías que ese personal debe mantener encerradas. Su wiki documenta cinco anomalías jugables (SCP-173, 096, 082, 106 y 457) con páginas separadas de capacidades, contención y fuga.",
   title: "SCP en Space Station 14: Capibara SCP",
   subtitle:
     "Capibara SCP es un servidor comunitario en español de Space Station 14 ambientado en un Sitio de la Fundación SCP, con anomalías jugables, procedimientos de contención y roleplay entre departamentos.",
@@ -101,6 +103,8 @@ export const SCP_HUB_PAGE: ServerSeoPageData = {
 export const SCP_GETTING_STARTED_PAGE: ServerSeoPageData = {
   slug: "como-jugar-capibara-scp",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Empezar cuesta tres pasos: descarga gratis el launcher de Space Station 14 en spacestation14.com, crea una cuenta y localiza Capibara SCP en el listado de servidores. Antes de la primera ronda merece la pena leer las guías de Primeros pasos y Controles junto al glosario de siglas de la Fundación; la comunidad resuelve dudas y anuncia el estado del servidor en su Discord.",
   title: "Cómo Jugar Capibara SCP: Guía para Empezar",
   subtitle:
     "Una ruta clara para descargar Space Station 14, entender los términos de la Fundación y elegir tu primera responsabilidad dentro del Sitio de Capibara SCP.",
@@ -126,7 +130,7 @@ export const SCP_GETTING_STARTED_PAGE: ServerSeoPageData = {
         "Descarga gratuita desde spacestation14.com",
         "Windows, Linux y macOS",
         "Funciona en PC modestos",
-        "No publicamos direcciones de conexión sin verificar",
+        "Acceso confirmado en Discord, nunca con direcciones sueltas",
       ],
     },
     {
@@ -140,7 +144,7 @@ export const SCP_GETTING_STARTED_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Capibara SCP no exige experiencia previa en Space Station 14, pero sí paciencia: sus sistemas tienen profundidad y aprender un puesto lleva varias rondas. Empezar por un rol con pocas responsabilidades críticas y avisar de que estás aprendiendo suele ser la forma más cómoda de entrar.",
-        "Toda la documentación del servidor está traducida en la Wiki SCP, y los anuncios sobre acceso, eventos y estado del servidor se publican en el Discord de la comunidad. No publicamos una dirección de conexión que no haya sido verificada.",
+        "Toda la documentación del servidor está traducida en la Wiki SCP, y los anuncios sobre acceso, eventos y estado del servidor se publican en el Discord de la comunidad. Ese Discord es la única vía que damos por buena para saber por dónde se entra: cualquier dirección que circule sin comprobar se queda fuera de esta web.",
       ],
     },
   ],
@@ -199,6 +203,8 @@ export const SCP_GETTING_STARTED_PAGE: ServerSeoPageData = {
 export const SCP_ANOMALIES_PAGE: ServerSeoPageData = {
   slug: "anomalias-scp-jugables",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "SCP-173, SCP-096, SCP-082, SCP-106 y SCP-457 son roles que ocupan jugadores en Capibara SCP, no enemigos controlados por el servidor. Las cinco empiezan la ronda encerradas en su cámara de contención y cuentan en la wiki con páginas propias de capacidades, contención y métodos de fuga.",
   title: "Anomalías SCP Jugables: SCP-173, 096, 082, 106 y 457",
   subtitle:
     "Qué hace cada anomalía documentada en Capibara SCP, cómo la contiene el personal del Sitio y qué ocurre cuando se produce una brecha de contención.",
@@ -237,8 +243,8 @@ export const SCP_ANOMALIES_PAGE: ServerSeoPageData = {
     {
       title: "Un juego gratuito para probarlo",
       paragraphs: [
-        "Todo esto ocurre dentro de Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D que funciona en PC modestos. Se descarga desde spacestation14.com para Windows, Linux y macOS, y no requiere compra ni suscripción.",
-        "Si quieres probarlo en español, Capibara SCP mantiene su wiki traducida con las páginas de cada anomalía. Los anuncios sobre acceso y estado del servidor se publican en el Discord de la comunidad.",
+        "Todo esto ocurre dentro de Space Station 14, un simulador multijugador de instalaciones que se ve desde arriba y en dos dimensiones. Su código es abierto, la descarga en spacestation14.com no cuesta nada en Windows, Linux ni macOS, y no hay suscripción ni tienda que lo acompañe.",
+        "Si quieres probarlo en español, Capibara SCP mantiene su wiki traducida con las páginas de cada anomalía. Para saber cómo está el servidor o cuándo se juega, el sitio al que mirar es el Discord de la comunidad.",
       ],
     },
   ],
@@ -293,6 +299,8 @@ export const SCP_ANOMALIES_PAGE: ServerSeoPageData = {
 export const SCP_ROLES_PAGE: ServerSeoPageData = {
   slug: "roles-fundacion-scp",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Un turno reparte al personal entre seis departamentos (ciencia, seguridad, medicina, ingeniería, carga y servicio), y por debajo de esa estructura queda el personal de Clase-D, destinado a las tareas de riesgo como limpiar la cámara de SCP-173. Ciencia consigue puntos de investigación estudiando las propias anomalías, y con ese material se desbloquea equipo de contención como el casco Obscura.",
   title: "Roles de la Fundación SCP: Científicos, Seguridad y Clase-D",
   subtitle:
     "Cómo se reparte el trabajo dentro de un Sitio de Capibara SCP: investigación anómala, seguridad y operaciones especiales, medicina, ingeniería, servicio y personal de Clase-D.",
@@ -386,6 +394,8 @@ export const SCP_ROLES_PAGE: ServerSeoPageData = {
 export const SCP_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-scp",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Los tres juegos de SCP más jugados no cuestan nada: SCP: Secret Laboratory para multijugador por rondas, SCP – Containment Breach para terror en solitario y Capibara SCP para roleplay de contención en español. Ninguno es oficial, porque la Fundación SCP es una ficción colaborativa publicada con licencia Creative Commons BY-SA.",
   title: "Juegos de SCP: las Mejores Opciones para PC",
   subtitle:
     "Una guía de los juegos ambientados en el universo SCP, qué propone cada uno y por dónde empezar si nunca has jugado a nada de la Fundación.",
@@ -419,7 +429,7 @@ export const SCP_GAMES_PAGE: ServerSeoPageData = {
       title: "Pruébalo gratis en español",
       paragraphs: [
         "Si lo que te atrae del universo SCP es la parte de contención y procedimientos, Capibara SCP es la opción más accesible en castellano. Funciona sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D que corre en PC modestos, sin compras ni suscripción.",
-        "Puedes descargar Space Station 14 desde spacestation14.com para Windows, Linux o macOS y leer antes la Wiki SCP traducida al español, con las guías de anomalías, roles e investigación del servidor. Los anuncios sobre acceso y estado se publican en el Discord de la comunidad.",
+        "Puedes descargar Space Station 14 desde spacestation14.com para Windows, Linux o macOS y leer antes la Wiki SCP traducida al español, con las guías de anomalías, roles e investigación del servidor. El Discord de la comunidad es donde se avisa de cuándo está el servidor abierto.",
       ],
     },
   ],
@@ -491,7 +501,7 @@ export const SCP_GAMES_PAGE: ServerSeoPageData = {
     {
       question: "¿Qué es Space Station 14?",
       answer:
-        "Es un juego multijugador gratuito y de código abierto con vista cenital en 2D en el que cada jugador ocupa un puesto dentro de una instalación simulada. Funciona en PC modestos y se descarga desde spacestation14.com.",
+        "Cada jugador ocupa un puesto concreto dentro de una instalación simulada al detalle, desde la electricidad hasta la atmósfera, y lo que hace o deja de hacer repercute en los demás. Es gratuito, de código abierto, ligero de requisitos y se descarga desde spacestation14.com.",
     },
   ],
   wikiLinks: [
@@ -522,6 +532,8 @@ export const SCP_GAMES_PAGE: ServerSeoPageData = {
 export const SCP_SL_ALTERNATIVES_PAGE: ServerSeoPageData = {
   slug: "juegos-como-scp-secret-laboratory",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Si lo que buscas es esa estructura de bandos enfrentados dentro de un complejo cerrado, las alternativas más cercanas son Capibara SCP, SCP – Containment Breach, SCP: 5K, GTFO y Lethal Company. La diferencia decisiva entre ellas es cuánto vive tu personaje: Secret Laboratory lo resuelve en rondas de minutos, mientras que un servidor de roleplay como Capibara SCP mantiene el mismo puesto durante un turno entero.",
   title: "Juegos como SCP: Secret Laboratory",
   subtitle:
     "Alternativas a SCP: Secret Laboratory con roles definidos, terror y cooperación, incluida una opción gratuita en español centrada en el roleplay en lugar de las rondas rápidas.",
@@ -560,8 +572,8 @@ export const SCP_SL_ALTERNATIVES_PAGE: ServerSeoPageData = {
     {
       title: "Pruébalo gratis en español",
       paragraphs: [
-        "Capibara SCP es la alternativa más directa si te interesa el lado de roleplay. Funciona sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D que no necesita un PC potente, y está mantenido por una comunidad hispanohablante.",
-        "Puedes descargarlo desde spacestation14.com para Windows, Linux o macOS, y consultar antes la Wiki SCP en español con las guías de roles, anomalías y procedimientos de contención. Los anuncios de acceso y estado se publican en el Discord de la comunidad.",
+        "Capibara SCP es la alternativa más directa si te interesa el lado de roleplay. Funciona sobre Space Station 14, un proyecto abierto y sin coste donde decenas de personas comparten la misma instalación vista desde arriba; el motor en dos dimensiones mantiene los requisitos por los suelos, y la comunidad que lo sostiene aquí es hispanohablante.",
+        "Puedes descargarlo desde spacestation14.com para Windows, Linux o macOS, y consultar antes la Wiki SCP en español con las guías de roles, anomalías y procedimientos de contención. Quien quiera saber si hay gente conectada lo encuentra en el Discord de la comunidad, que es también donde se organizan las partidas.",
       ],
     },
   ],
@@ -587,28 +599,28 @@ export const SCP_SL_ALTERNATIVES_PAGE: ServerSeoPageData = {
       {
         name: "SCP – Containment Breach",
         description:
-          "El original para un jugador: un complejo generado al azar, sin combate y con SCP-173 como amenaza constante. Es la referencia estética de casi todo lo demás, y sigue siendo gratuito con código fuente publicado.",
+          "Es el antepasado directo de Secret Laboratory: la misma instalación y los mismos SCP, pero en solitario y sin bandos que te cubran. Cada partida reordena el mapa y los objetos hay que identificarlos probándolos. Gratuito.",
         free: true,
         features: { roles: false, horror: true, coop: false },
       },
       {
         name: "SCP: 5K",
         description:
-          "Shooter táctico en primera persona donde los equipos se reparten funciones y equipamiento para contener anomalías. Más militar y más lento que Secret Laboratory. Título comercial en acceso anticipado.",
+          "Comparte con Secret Laboratory las Fuerzas Operativas Móviles, pero baja el ritmo: preparas el equipo, avanzas despacio y cada encuentro se resuelve con puntería y coordinación en lugar de con carreras por los pasillos. De pago y en acceso anticipado.",
         free: false,
         features: { roles: true, horror: true, coop: true },
       },
       {
         name: "Lethal Company",
         description:
-          "Cooperativo de terror en el que un grupo recoge chatarra en lunas industriales mientras esquiva criaturas. No hay roles asignados, pero los grupos acaban repartiéndose tareas por necesidad. Título comercial.",
+          "Lo que lo acerca a Secret Laboratory es el reparto improvisado de funciones: alguien se queda en la nave leyendo el monitor y guiando por walkie mientras el resto entra en la instalación. Sin bandos ni puestos fijos, y de pago.",
         free: false,
         features: { roles: false, horror: true, coop: true },
       },
       {
         name: "GTFO",
         description:
-          "Cooperativo de horror para cuatro personas en un complejo subterráneo, con sigilo obligatorio y planificación previa a cada expedición. El equipamiento define la función de cada jugador. Título comercial.",
+          "Cuatro jugadores bajan a un complejo subterráneo donde el ruido mata: hay que marcar enemigos, abrir puertas en silencio y cerrar el equipamiento antes de descender, porque a mitad de expedición ya no se cambia. Es un procedimiento de contención llevado al extremo. De pago.",
         free: false,
         features: { roles: true, horror: true, coop: true },
       },
@@ -664,6 +676,8 @@ export const SCP_SL_ALTERNATIVES_PAGE: ServerSeoPageData = {
 export const SCP_MULTIPLAYER_PAGE: ServerSeoPageData = {
   slug: "scp-multijugador",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Sí, el universo SCP se puede jugar online y sin pagar: Secret Laboratory ofrece rondas cortas de bandos enfrentados y Capibara SCP, turnos largos de roleplay en español sobre Space Station 14. Las dos opciones de pago, SCP: 5K y SCP: Pandemic, son shooters tácticos todavía en acceso anticipado.",
   title: "SCP Multijugador: Jugar Online con Amigos",
   subtitle:
     "Las opciones para jugar al universo SCP en multijugador, qué ofrece cada una y cuál elegir si buscas roleplay en español sin pagar nada.",
@@ -702,8 +716,8 @@ export const SCP_MULTIPLAYER_PAGE: ServerSeoPageData = {
     {
       title: "Pruébalo gratis en español",
       paragraphs: [
-        "Capibara SCP funciona sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D. No hace falta un PC potente ni comprar nada: se descarga desde spacestation14.com para Windows, Linux o macOS y se entra desde el listado de servidores del launcher.",
-        "Antes de la primera partida conviene repasar la Wiki SCP en español, con las guías de roles, anomalías y procedimientos. Para confirmar el acceso o el estado del servidor, consulta los anuncios actuales de la comunidad en Discord: no publicamos direcciones de conexión sin verificar.",
+        "Capibara SCP se juega dentro de Space Station 14, un título en dos dimensiones, de código abierto y sin precio que reúne a mucha gente en una misma instalación. No hace falta un PC potente ni comprar nada: se descarga desde spacestation14.com para Windows, Linux o macOS y se entra desde el listado de servidores del launcher.",
+        "Antes de la primera partida conviene repasar la Wiki SCP en español, con las guías de roles, anomalías y procedimientos. Para saber si el servidor está abierto, pregunta en el Discord de la comunidad; aquí no listamos direcciones de conexión que nadie haya comprobado.",
       ],
     },
   ],
@@ -721,7 +735,7 @@ export const SCP_MULTIPLAYER_PAGE: ServerSeoPageData = {
         name: "Capibara SCP (Space Station 14)",
         url: "/scp/",
         description:
-          "Gratis y en español, sobre Space Station 14: un juego 2D de código abierto que corre en PC modestos. Reparte roles de la Fundación (investigación, seguridad, medicina, Clase-D) y anomalías jugables, con turnos largos de roleplay y wiki traducida.",
+          "Gratis y en español sobre Space Station 14. Es la opción pensada para entrar en grupo y repartirse puestos que se complementan (uno en seguridad, otro en medicina, otro investigando), con canales de radio propios de cada departamento y turnos que se sostienen durante una hora larga.",
         free: true,
         features: { coop: true, roleplay: true, horror: true },
         highlighted: true,
@@ -729,21 +743,21 @@ export const SCP_MULTIPLAYER_PAGE: ServerSeoPageData = {
       {
         name: "SCP: Secret Laboratory",
         description:
-          "Multijugador gratuito por rondas en un complejo de la Fundación, con personal, Clase-D, Fuerzas Operativas Móviles y anomalías enfrentados. Partidas cortas y muy centradas en la acción.",
+          "Su mayor ventaja para jugar en grupo es el listado de servidores comunitarios abiertos a cualquier hora. La voz de proximidad y las radios convierten la comunicación en media partida, aunque el idioma dominante sea el inglés. Gratuito.",
         free: true,
         features: { coop: true, roleplay: false, horror: true },
       },
       {
         name: "SCP: 5K",
         description:
-          "Shooter táctico en primera persona para jugar en solitario o en escuadra, con un tono militar y mucho énfasis en el equipamiento. Título comercial en acceso anticipado.",
+          "Está pensado para escuadras pequeñas más que para partidas multitudinarias: dos o tres amigos hablando por voz y repartiéndose el equipo sacan mucho más que un jugador suelto. De pago y en acceso anticipado, con contenido que aún se amplía.",
         free: false,
         features: { coop: true, roleplay: false, horror: true },
       },
       {
         name: "SCP: Pandemic",
         description:
-          "Cooperativo táctico donde un equipo se despliega para contener brotes anómalos, con planificación y coordinación por voz. Título comercial en acceso anticipado.",
+          "La opción más orientada al grupo cerrado: se juega con la misma gente misión tras misión, hablando por voz y repartiéndose el material antes de salir. De pago y en acceso anticipado, así que conviene mirar su ficha antes de comprarlo.",
         free: false,
         features: { coop: true, roleplay: false, horror: true },
       },
@@ -798,6 +812,8 @@ export const SCP_MULTIPLAYER_PAGE: ServerSeoPageData = {
 export const SCP_FOUNDATION_PAGE: ServerSeoPageData = {
   slug: "que-es-la-fundacion-scp",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "La Fundación SCP no existe: es un proyecto de escritura colaborativa nacido en internet donde miles de autores publican informes ficticios sobre anomalías, cada uno numerado y redactado con el tono seco de un documento técnico. Sus siglas vienen del lema de esa organización imaginaria, Secure, Contain, Protect, y todo el material se comparte bajo licencia Creative Commons BY-SA.",
   title: "Qué es la Fundación SCP: Asegurar, Contener, Proteger",
   subtitle:
     "Una explicación desde cero de la Fundación SCP: qué es, de dónde salen sus informes, qué significan las clases de objeto y cómo esa ficción se convierte en un juego multijugador.",
@@ -836,7 +852,7 @@ export const SCP_FOUNDATION_PAGE: ServerSeoPageData = {
     {
       title: "De la ficción al juego multijugador",
       paragraphs: [
-        "Convertir esos informes en un juego es directo: si la ficción describe una anomalía, una instalación y un personal encargado de mantener el equilibrio, basta con repartir esos papeles entre jugadores. Eso es lo que hace Capibara SCP sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D que funciona en PC modestos.",
+        "Convertir esos informes en un juego es directo: si la ficción describe una anomalía, una instalación y un personal encargado de mantener el equilibrio, basta con repartir esos papeles entre jugadores. Eso es lo que hace Capibara SCP sobre Space Station 14, un título libre y sin coste donde la acción se sigue desde una cámara cenital y el hardware necesario es mínimo.",
         "En una partida, unas personas interpretan al personal del Sitio (investigación, seguridad, medicina, servicio, Clase-D) y otras a las anomalías, que empiezan la ronda en su cámara de contención. Puedes descargar el juego gratis en spacestation14.com y leer antes la Wiki SCP en español, con el glosario, los roles y las guías de cada anomalía.",
       ],
     },
@@ -895,6 +911,8 @@ export const SCP_FOUNDATION_PAGE: ServerSeoPageData = {
 export const COOP_HORROR_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-terror-cooperativo",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Phasmophobia, Lethal Company, GTFO, Content Warning, SCP: Secret Laboratory y Capibara SCP cubren casi todo lo que se juega hoy en terror de grupo para PC. De esos seis, solo dos son gratuitos, y el único con roles fijos y comunidad hispanohablante es Capibara SCP, que reparte los puestos de un Sitio de la Fundación y se coordina a través de Discord.",
   title: "Juegos de Terror Cooperativo para PC",
   subtitle:
     "Los mejores juegos de terror para jugar en grupo, desde la caza de fantasmas hasta la contención de anomalías, con una opción gratuita y en español.",
@@ -933,7 +951,7 @@ export const COOP_HORROR_GAMES_PAGE: ServerSeoPageData = {
     {
       title: "Pruébalo gratis en español",
       paragraphs: [
-        "Si quieres empezar sin gastar nada, Capibara SCP es un servidor comunitario en español sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D que funciona en PC modestos. Se descarga desde spacestation14.com para Windows, Linux o macOS.",
+        "Si quieres empezar sin gastar nada, Capibara SCP es un servidor comunitario en español montado sobre Space Station 14: un juego libre, de código abierto y en dos dimensiones que pide muy poco al ordenador. Se descarga desde spacestation14.com para Windows, Linux o macOS.",
         "Allí el terror no viene de los sustos, sino de saber que una anomalía se ha soltado en la otra punta del Sitio y que tu departamento tiene que responder. La Wiki SCP en español recoge los roles, los procedimientos y las guías de cada anomalía, y los anuncios de la comunidad están en Discord.",
       ],
     },
@@ -981,7 +999,7 @@ export const COOP_HORROR_GAMES_PAGE: ServerSeoPageData = {
       {
         name: "SCP: Secret Laboratory",
         description:
-          "Multijugador gratuito por rondas en un complejo de la Fundación, con bandos enfrentados: personal, Clase-D, Fuerzas Operativas Móviles y anomalías. Cooperación dentro de cada bando y conflicto entre ellos.",
+          "Aquí el miedo llega por megafonía: una cuenta atrás anuncia la descontaminación de la zona ligera y empuja a todo el mundo hacia territorio peor. Se coopera dentro del propio bando y se dispara a los demás. Gratuito.",
         free: true,
         features: { coop: true, pvp: true, roleplay: false },
       },
@@ -1013,7 +1031,7 @@ export const COOP_HORROR_GAMES_PAGE: ServerSeoPageData = {
     {
       question: "¿Qué es Space Station 14?",
       answer:
-        "Es un juego multijugador gratuito y de código abierto con vista cenital en 2D en el que cada jugador ocupa un puesto dentro de una instalación simulada. Se descarga en spacestation14.com para Windows, Linux y macOS.",
+        "Es un simulador multijugador de una instalación entera, visto desde arriba y en dos dimensiones, donde cada persona ocupa un puesto distinto y el resto nota las consecuencias de lo que hace. Su código es abierto y descargarlo en spacestation14.com no cuesta nada en Windows, Linux ni macOS.",
     },
   ],
   wikiLinks: [
@@ -1044,6 +1062,8 @@ export const COOP_HORROR_GAMES_PAGE: ServerSeoPageData = {
 export const FREE_HORROR_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-terror-gratis-pc",
   datePublished: "2026-08-18",
+  quickAnswer:
+    "Seis títulos de terror se juegan enteros sin pagar en PC: SCP – Containment Breach, SCP: Secret Laboratory, Cry of Fear, No More Room in Hell, Deceit y Capibara SCP. El más ligero de la lista es este último, porque corre sobre Space Station 14, cuyos requisitos quedan muy por debajo de los de cualquier terror en 3D.",
   title: "Juegos de Terror Gratis para PC",
   subtitle:
     "Seis juegos de terror que no cuestan nada, desde clásicos para un jugador hasta multijugador con comunidad activa, incluida una opción en español sobre Space Station 14.",
@@ -1082,7 +1102,7 @@ export const FREE_HORROR_GAMES_PAGE: ServerSeoPageData = {
     {
       title: "Pruébalo gratis en español",
       paragraphs: [
-        "Si buscas algo gratuito, ligero y en tu idioma, Capibara SCP es un servidor comunitario en español sobre Space Station 14, un juego multijugador gratuito y de código abierto con vista cenital en 2D. Se descarga desde spacestation14.com para Windows, Linux o macOS y no incluye compras de ningún tipo.",
+        "Si buscas algo gratuito, ligero y en tu idioma, Capibara SCP es un servidor comunitario en español montado sobre Space Station 14, un multijugador abierto y sin precio que se juega con la cámara en picado sobre la instalación. Se descarga desde spacestation14.com para Windows, Linux o macOS y no incluye compras de ningún tipo.",
         "La ambientación es un Sitio de la Fundación SCP: unos jugadores ocupan los puestos del personal y otros interpretan a las anomalías. La Wiki SCP recoge en español los roles, los procedimientos de contención y las guías de cada anomalía, y la comunidad publica sus anuncios en Discord.",
       ],
     },
@@ -1101,7 +1121,7 @@ export const FREE_HORROR_GAMES_PAGE: ServerSeoPageData = {
         name: "Capibara SCP (Space Station 14)",
         url: "/scp/",
         description:
-          "Gratis y en español, sobre Space Station 14: un juego 2D de código abierto que corre en PC modestos. Ofrece roles de la Fundación (investigación, seguridad, medicina, Clase-D) y anomalías jugables como SCP-173 o SCP-096, con la wiki traducida al castellano.",
+          "Gratis de verdad: ni compra, ni suscripción, ni ventajas a la venta, y el juego sobre el que corre tiene el código abierto. Es además el más ligero de esta lista, con roles de la Fundación, anomalías jugables y toda la documentación traducida al castellano.",
         free: true,
         features: { multiplayer: true, coop: true, openSource: true },
         highlighted: true,
@@ -1109,14 +1129,14 @@ export const FREE_HORROR_GAMES_PAGE: ServerSeoPageData = {
       {
         name: "SCP: Secret Laboratory",
         description:
-          "El multijugador de SCP más jugado: rondas cortas en un complejo con personal, Clase-D, Fuerzas Operativas Móviles y anomalías enfrentados. Gratuito y con comunidad amplia, mayoritariamente angloparlante.",
+          "La puerta de entrada gratuita al universo SCP y la que más gente reúne: se descarga sin coste y sus rondas duran tan poco que se puede probar en un rato. A cambio es 3D, así que pide más equipo que el resto de la lista, y su comunidad habla sobre todo inglés.",
         free: true,
         features: { multiplayer: true, coop: true, openSource: false },
       },
       {
         name: "SCP – Containment Breach",
         description:
-          "El clásico para un jugador que popularizó a SCP-173 y su mecánica de parpadeo. Complejo generado al azar, sin combate y con una tensión que aguanta muy bien el paso del tiempo. Su código fuente está publicado.",
+          "Pesa poco, nunca ha costado dinero y su código publicado ha alimentado una escena enorme de mods y traducciones. Salió en 2012 y es para un jugador, así que arranca en prácticamente cualquier PC de la última década.",
         free: true,
         features: { multiplayer: false, coop: false, openSource: true },
       },

@@ -25,6 +25,8 @@ export interface ServerSeoPageData {
   slug: string;
   /** ISO date (YYYY-MM-DD) the landing page was first published. */
   datePublished?: string;
+  /** 1-2 sentence direct answer to the page's target query, shown under the hero. */
+  quickAnswer?: string;
   title: string;
   subtitle: string;
   metaTitle: string;
