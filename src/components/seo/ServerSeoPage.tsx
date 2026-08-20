@@ -5,7 +5,7 @@ import type {
   ServerSeoGamesBlock,
   ServerSeoPageData,
 } from "@/data/server-seo-types";
-import { DISCORD_URL, LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
+import { DISCORD_URL, SITE_URL } from "@/lib/constants";
 import {
   articleSchema,
   faqSchema,
@@ -150,7 +150,6 @@ export function createServerSeoSchemas(page: ServerSeoPageData) {
       slug: page.slug,
       description: page.metaDescription,
       datePublished: page.datePublished,
-      dateModified: LAST_CONTENT_UPDATE,
       basePath: "",
     }),
     seoBreadcrumbSchema([{ name: page.title, url }]),

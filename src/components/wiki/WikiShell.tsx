@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import type { GuideTreeNode } from "@/data/guide-types";
+import { DISCORD_URL } from "@/lib/constants";
 import { WikiSidebar } from "./WikiSidebar";
 
 interface WikiShellProps {
@@ -101,6 +102,15 @@ export function WikiShell({
             >
               {wikiLabel}
             </span>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto shrink-0 px-3 py-1.5 rounded-sm text-xs font-mono font-bold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: "#5865F2" }}
+            >
+              Discord
+            </a>
           </header>
         </AnimatePresence>
 

@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, FileText, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import type { GuidePage } from "@/data/guide-types";
 import type { WikiSourceConfig } from "./wiki-source-config";
 import { GuideMarkup } from "./GuideMarkup";
 import { WikiBreadcrumb } from "./WikiBreadcrumb";
-import { LAST_CONTENT_UPDATE } from "@/lib/constants";
 
 interface WikiContentProps {
   guide: GuidePage;
@@ -26,6 +25,9 @@ const childCardVariants = {
 
 export function WikiContent({ guide, sourceConfig }: WikiContentProps) {
   const { basePath, slugsToMeta } = sourceConfig;
+  // A few generated guides ship no level-1 heading of their own — fall back
+  // to the guide title so every page keeps exactly one <h1>.
+  const contentHasH1 = /^\s*#\s/m.test(guide.content);
   const headings = Array.from(
     guide.content.matchAll(/^(#{2,3})\s+(.+)$/gm)
   ).map((m) => ({
@@ -50,22 +52,16 @@ export function WikiContent({ guide, sourceConfig }: WikiContentProps) {
       <article className="flex-1 min-w-0">
         <WikiBreadcrumb breadcrumb={guide.breadcrumb} basePath={basePath} />
 
-        <div className="flex items-center gap-1.5 text-xs font-mono text-text-muted/60 mb-4">
-          <Clock size={12} />
-          <time dateTime={LAST_CONTENT_UPDATE}>
-            Actualizado: {new Date(LAST_CONTENT_UPDATE).toLocaleDateString("es-ES", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
-        </div>
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
+          {!contentHasH1 && (
+            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-6 mt-2">
+              {guide.title}
+            </h1>
+          )}
           <GuideMarkup content={guide.content} sourceConfig={sourceConfig} />
         </motion.div>
 

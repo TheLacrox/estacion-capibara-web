@@ -119,7 +119,39 @@ export function organizationSchema() {
   };
 }
 
-export function videoGameSchema(server: {
+// Canonical node for the actual game. The servers are NOT the game: putting
+// VideoGame (with offers/operatingSystem) on server pages marks a community
+// server up as an installable software product — wrong entity. Server pages
+// emit this node once and point at it from a GameServer via `game`.
+export function videoGameSS14Schema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "@id": `${SITE_URL}/#videogame-ss14`,
+    name: "Space Station 14",
+    description:
+      "Juego multijugador gratuito y de código abierto de simulación y roleplay en una estación espacial, sucesor espiritual de Space Station 13.",
+    url: "https://spacestation14.com",
+    sameAs: [
+      "https://store.steampowered.com/app/1255460/Space_Station_14/",
+      "https://github.com/space-wizards/space-station-14",
+    ],
+    genre: ["Roleplay", "Simulation", "Multiplayer"],
+    gamePlatform: "PC",
+    playMode: "MultiPlayer",
+    applicationCategory: "Game",
+    operatingSystem: "Windows, Linux, macOS",
+    inLanguage: "es",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+  };
+}
+
+export function gameServerSchema(server: {
   name: string;
   slug: string;
   tagline: string;
@@ -128,28 +160,13 @@ export function videoGameSchema(server: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "VideoGame",
+    "@type": "GameServer",
+    "@id": `${SITE_URL}/${server.slug}/#gameserver`,
     name: `${server.name} - Servidor Español de SS14`,
     alternateName: [server.name],
     description: `${server.description} ${server.lineage}. Servidor en español de Space Station 14.`,
     url: `${SITE_URL}/${server.slug}/`,
-    genre: ["Roleplay", "Simulation", "Multiplayer"],
-    gamePlatform: "PC",
-    playMode: "MultiPlayer",
-    applicationCategory: "Game",
-    operatingSystem: "Windows, Linux, macOS",
-    inLanguage: "es",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "Estación Capibara",
-      url: SITE_URL,
-    },
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
+    game: { "@id": `${SITE_URL}/#videogame-ss14` },
   };
 }
 

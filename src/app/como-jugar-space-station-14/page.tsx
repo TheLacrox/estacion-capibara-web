@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL, DISCORD_URL, LAST_CONTENT_UPDATE } from "@/lib/constants";
+import { SITE_URL, SS14_DOWNLOAD_URL, SS14_STEAM_URL, DISCORD_URL } from "@/lib/constants";
 import { articleSchema, faqSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SEO_PAGES } from "@/data/seo-pages";
 import { departments } from "@/data/departments";
@@ -62,7 +62,6 @@ const jsonLd = [
     slug: page.slug,
     description: page.metaDescription,
     datePublished: page.datePublished,
-    dateModified: LAST_CONTENT_UPDATE,
     basePath: "",
   }),
   faqSchema(page.faqs),

@@ -36,9 +36,12 @@ export function serverPageMetadata(server: ServerDescriptor): Metadata {
 }
 
 export const siteMetadata: Metadata = {
-  title: "Estación Capibara | Space Station 14 en Español",
+  // "space station 14" is the account's biggest impression pool (GSC: pos ~9,
+  // 671 impr/28d, 0 clicks) — the game name leads the title and the
+  // description answers that query directly to earn the click.
+  title: "Space Station 14 en Español: 4 Servidores | Estación Capibara",
   description:
-    "Comunidad hispana de Space Station 14 con 4 servidores propios y wiki en español. Rondas de viernes a domingo, 30+ roles, gratis. Busca 'Capibara' y juega.",
+    "Juega Space Station 14 en español: comunidad hispana con 4 servidores propios (estación clásica, Colonial Marines, SCP y naves), wiki completa y rondas cada fin de semana. Gratis, sin registro: busca 'Capibara' en el launcher.",
   authors: [{ name: "Estación Capibara" }],
   creator: "Estación Capibara",
   metadataBase: new URL(SITE_URL),
@@ -50,9 +53,9 @@ export const siteMetadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: SITE_URL,
-    title: "Estación Capibara | Space Station 14 en Español",
+    title: "Space Station 14 en Español: 4 Servidores | Estación Capibara",
     description:
-      "Servidor español de SS14. Jugamos viernes a domingo con economía de Spesos, eventos especiales, 30+ roles y comunidad hispanohablante activa.",
+      "Comunidad hispana de Space Station 14 con 4 servidores propios, wiki en español y rondas de viernes a domingo. Gratis: busca 'Capibara' en el launcher.",
     siteName: "Estación Capibara",
     images: [
       {
@@ -93,35 +96,6 @@ export const siteMetadata: Metadata = {
   },
   other: {
     "discord:server": DISCORD_URL,
-  },
-};
-
-// Site-wide VideoGame entity for the homepage (the WebSite schema proper
-// lives in websiteSchema() in schema.ts).
-export const jsonLdVideoGame = {
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  name: "Estación Capibara - Servidores Españoles de SS14",
-  alternateName: ["Estación Capibara", "Servidor Español de SS14", "SS14 en Español"],
-  description:
-    "Comunidad española de Space Station 14 con cuatro servidores: Estación Capibara (estación clásica), Capibara Marines (Colonial Marines), Capibara SCP (Fundación SCP) y Capibara Monolith (naves y frontera). Jugamos viernes, sábados y domingos, totalmente en español.",
-  url: SITE_URL,
-  genre: ["Roleplay", "Simulation", "Multiplayer"],
-  gamePlatform: "PC",
-  playMode: "MultiPlayer",
-  numberOfPlayers: {
-    "@type": "QuantitativeValue",
-    minValue: 1,
-    maxValue: 30,
-  },
-  applicationCategory: "Game",
-  operatingSystem: "Windows, Linux, macOS",
-  inLanguage: "es",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-    availability: "https://schema.org/InStock",
   },
 };
 

@@ -17,6 +17,11 @@ const HeroScene = dynamic(
   { ssr: false, loading: () => null }
 );
 
+/** 1x1 transparent gif: <picture> fallback for the layout branch whose media
+    query doesn't match, so the hidden branch never downloads real art. */
+const BLANK_GIF =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 /** Horizontal offset of the diagonal edge, in px */
 const SLANT = 56;
 /** Negative margin between panels; SLANT minus this = visible seam width */
@@ -97,13 +102,23 @@ export function DiagonalHero() {
                 zIndex: isExpanded ? 2 : 1,
               }}
             >
-              {/* Gameplay background */}
-              <img
-                src={server.heroImage}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover"
-                fetchPriority={index < 2 ? "high" : "auto"}
-              />
+              {/* Gameplay background. Both hero layouts stay in the DOM
+                  (CSS-gated), and display:none images still download — the
+                  media-gated <source> plus a data-URI fallback keeps phones
+                  from fetching the desktop panels and vice versa. */}
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet={`${server.heroImage.replace(".webp", "-720.webp")} 720w, ${server.heroImage} 1100w`}
+                  sizes="42vw"
+                />
+                <img
+                  src={BLANK_GIF}
+                  alt={`Gameplay de ${server.name} - ${server.descriptor}`}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  fetchPriority={index < 2 ? "high" : "auto"}
+                />
+              </picture>
               {/* Legibility dim (lighter when expanded) */}
               <div
                 className="absolute inset-0 transition-opacity duration-300"
@@ -141,9 +156,10 @@ export function DiagonalHero() {
               >
                 <img
                   src={server.logo}
-                  alt=""
+                  alt={`Logo de ${server.name}`}
                   className="h-16 lg:h-20 w-auto max-w-[240px] object-contain transition-transform duration-300 group-hover:scale-110"
-                  height={80}
+                  width={server.logoWidth}
+                  height={server.logoHeight}
                 />
                 <span
                   className="font-heading font-bold text-xl lg:text-2xl tracking-wider text-text-primary"
@@ -202,17 +218,27 @@ export function DiagonalHero() {
 
       {/* Mobile: stacked banners, tap navigates */}
       <div className="relative z-20 flex md:hidden flex-col flex-1 gap-1.5">
-        {LIVE_SERVERS.map((server) => (
+        {LIVE_SERVERS.map((server, index) => (
           <Link
             key={server.id}
             href={`/${server.slug}/`}
             className="relative flex flex-1 min-h-24 overflow-hidden border-y border-grid-line bg-hull-panel/70"
           >
-            <img
-              src={server.heroImage}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+            {/* Wide art fits the short banner crop far better than the
+                portrait desktop panels — and at a third of the bytes. */}
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={`${server.heroWide.replace(".webp", "-768.webp")} 768w, ${server.heroWide} 1920w`}
+                sizes="100vw"
+              />
+              <img
+                src={BLANK_GIF}
+                alt={`Gameplay de ${server.name} - ${server.descriptor}`}
+                className="absolute inset-0 h-full w-full object-cover"
+                fetchPriority={index === 0 ? "high" : "auto"}
+              />
+            </picture>
             <div className="absolute inset-0 bg-space-void/60" />
             <div
               className="absolute inset-y-0 left-0 w-1 z-10"
@@ -221,9 +247,10 @@ export function DiagonalHero() {
             <div className="relative w-full flex items-center gap-4 pl-5 pr-4">
               <img
                 src={server.logo}
-                alt=""
+                alt={`Logo de ${server.name}`}
                 className="h-12 w-auto max-w-[120px] object-contain shrink-0"
-                height={48}
+                width={server.logoWidth}
+                height={server.logoHeight}
               />
               <div className="min-w-0 flex-1">
                 <span

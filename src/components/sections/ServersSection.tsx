@@ -72,7 +72,8 @@ export function ServersSection() {
                       src={server.logo}
                       alt={`Logo de ${server.name}`}
                       className="h-full w-auto object-contain"
-                      height={64}
+                      width={server.logoWidth}
+                      height={server.logoHeight}
                     />
                   </div>
                   <div>

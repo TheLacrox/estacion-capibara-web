@@ -4,8 +4,9 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Search, X, Book, Wrench, Shield, FlaskConical, Stethoscope, ShoppingCart, UtensilsCrossed, Users, Skull, type LucideIcon, Radio } from "lucide-react";
+import { ChevronRight, Search, X, Book, Wrench, Shield, FlaskConical, Stethoscope, ShoppingCart, UtensilsCrossed, Users, Skull, type LucideIcon, Radio, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { DISCORD_URL } from "@/lib/constants";
 import type { GuideTreeNode } from "@/data/guide-types";
 
 interface WikiSidebarProps {
@@ -275,6 +276,21 @@ export function WikiSidebar({
               )}
             </AnimatePresence>
           </div>
+        </div>
+
+        {/* Conversion path: the wiki is the biggest organic entry point and
+            had no route to the community at all. */}
+        <div className="px-3 pt-3 shrink-0">
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-3 py-2 rounded-sm text-xs font-mono font-bold text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "#5865F2" }}
+          >
+            <MessageCircle size={14} />
+            Únete al Discord
+          </a>
         </div>
 
         {/* Tree / Search results */}

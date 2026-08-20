@@ -28,6 +28,9 @@ interface GuideMarkupContext {
   guideSlugsToMeta: Record<string, { title: string }>;
   entityLabels: Record<string, string>;
   entitySprites: Record<string, string>;
+  /** Some generated guides carry multiple level-1 headings; only the first
+      may render as <h1> (mutated during the render pass). */
+  h1Seen: boolean;
 }
 
 // ─── Block-level parser (shared between top-level and Table internals) ───
@@ -69,11 +72,19 @@ function parseBlocks(
         .replace(/[^a-z0-9\s-]/g, "")
         .replace(/\s+/g, "-");
 
-      if (level === 1) {
+      if (level === 1 && !context.h1Seen) {
+        context.h1Seen = true;
         elements.push(
           <h1 key={keyRef.current++} id={id} className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-6 mt-2 first:mt-0">
             {parseInline(text, context)}
           </h1>
+        );
+      } else if (level === 1) {
+        // Later level-1 headings demote to h2 so the page keeps a single <h1>.
+        elements.push(
+          <h2 key={keyRef.current++} id={id} className="text-2xl font-heading font-bold text-text-primary mb-4 mt-8 border-b border-grid-line pb-2">
+            {parseInline(text, context)}
+          </h2>
         );
       } else if (level === 2) {
         elements.push(
@@ -285,6 +296,7 @@ export function GuideMarkup({ content, sourceConfig }: GuideMarkupProps) {
     guideSlugsToMeta: sourceConfig.slugsToMeta,
     entityLabels: sourceConfig.entityLabels,
     entitySprites: sourceConfig.entitySprites,
+    h1Seen: false,
   };
   const elements = parseBlocks(lines, keyRef, context);
   return <div className="wiki-content">{elements}</div>;

@@ -51,9 +51,11 @@ server {
         add_header Cross-Origin-Opener-Policy "same-origin" always;
     }
 
-    # Wiki sprites, branding and hero art: stable names, refresh daily.
+    # Wiki sprites, branding and hero art: stable names that change rarely —
+    # 30 days with stale-while-revalidate keeps repeat visits warm without
+    # blocking an art swap for a month.
     location ~ ^/(sprites|branding|heroes)/ {
-        add_header Cache-Control "public, max-age=86400";
+        add_header Cache-Control "public, max-age=2592000, stale-while-revalidate=86400";
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         add_header X-Content-Type-Options "nosniff" always;
         add_header Cross-Origin-Opener-Policy "same-origin" always;

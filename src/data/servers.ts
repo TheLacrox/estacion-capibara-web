@@ -29,6 +29,10 @@ export interface ServerDescriptor {
   /** CSS var reference, e.g. "var(--color-hazard-yellow)" */
   accentVar: string;
   logo: string;
+  /** Natural dimensions of the logo asset — width/height attrs reserve the
+      aspect ratio before load so the hero doesn't shift (CLS). */
+  logoWidth: number;
+  logoHeight: number;
   /** Gameplay/lobby art used as the landing hero panel background (portrait) */
   heroImage: string;
   /** Wide variant of the same art, used behind each server page's hero */
@@ -62,6 +66,8 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Basado en Goob Station",
     accentVar: "var(--color-hazard-yellow)",
     logo: "/branding/logo.svg",
+    logoWidth: 800,
+    logoHeight: 800,
     heroImage: "/heroes/panel-estacion.webp",
     heroWide: "/heroes/bg-estacion.webp",
     wikiBasePath: "/wiki",
@@ -86,6 +92,8 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de RMC-14 y CM-SS14",
     accentVar: "var(--color-marine-green)",
     logo: "/branding/marines-logo.webp",
+    logoWidth: 539,
+    logoHeight: 160,
     heroImage: "/heroes/panel-marines.webp",
     heroWide: "/heroes/bg-marines.webp",
     wikiBasePath: "/wiki-marines",
@@ -110,6 +118,8 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de SCP: Project Fire (Fire Station)",
     accentVar: "var(--color-scp-purple)",
     logo: "/branding/logo.svg",
+    logoWidth: 800,
+    logoHeight: 800,
     heroImage: "/heroes/panel-scp.webp",
     heroWide: "/heroes/bg-scp.webp",
     wikiBasePath: "/wiki-scp",
@@ -134,6 +144,8 @@ export const SERVERS: readonly ServerDescriptor[] = [
     lineage: "Derivado de Monolith Station y Frontier Station 14",
     accentVar: "var(--color-neon-cyan)",
     logo: "/branding/monolith-logo.svg",
+    logoWidth: 114,
+    logoHeight: 57,
     heroImage: "/heroes/panel-monolith.webp",
     heroWide: "/heroes/bg-monolith.webp",
     wikiBasePath: "/wiki-monolith",

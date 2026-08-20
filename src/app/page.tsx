@@ -7,8 +7,7 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DiagonalHero } from "@/components/sections/DiagonalHero";
-import { jsonLdVideoGame } from "@/lib/metadata";
-import { gameEventSchema, websiteSchema } from "@/lib/schema";
+import { gameEventSchema, videoGameSS14Schema, websiteSchema } from "@/lib/schema";
 
 const WhatIsSS14Section = dynamic(
   () =>
@@ -51,7 +50,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLdVideoGame),
+          __html: JSON.stringify(videoGameSS14Schema()),
         }}
       />
       <script

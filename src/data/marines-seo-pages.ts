@@ -5,17 +5,17 @@ export const RMC14_SPANISH_PAGE: ServerSeoPageData = {
   datePublished: "2026-08-18",
   quickAnswer:
     "Sí, hay RMC14 en español: Capibara Marines es un servidor comunitario hispanohablante que ejecuta ese contenido sobre Space Station 14, con la wiki traducida y rondas asimétricas entre una fuerza de marines y una colmena de xenónidos controlada por jugadores. No es el servidor oficial del proyecto, sino una comunidad aparte que se organiza en Discord.",
-  title: "RMC14 en Español: Capibara Marines",
+  title: "RMC14 en Español: Colonial Marines contra Xenónidos en SS14",
   subtitle:
-    "Conoce el servidor comunitario en español que ejecuta contenido de RMC14: rondas asimétricas donde una fuerza de marines desembarca y una colmena de xenónidos controlada por jugadores intenta detenerla.",
-  metaTitle: "RMC14 en Español | Capibara Marines SS14",
+    "Conoce el servidor comunitario en español que ejecuta contenido de RMC14 (el juego de marines coloniales sobre Space Station 14): rondas asimétricas donde una fuerza de marines desembarca y una colmena de xenónidos controlada por jugadores intenta detenerla.",
+  metaTitle: "RMC14 en Español: Colonial Marines Gratis | Capibara Marines",
   metaDescription:
-    "Descubre Capibara Marines, el servidor comunitario en español de RMC14 para Space Station 14: rondas de marines contra xenónidos y wiki traducida.",
+    "¿Un juego de marines contra alienígenas en español? Capibara Marines es el servidor comunitario de RMC14 (Colonial Marines sobre SS14): gratis y con wiki traducida.",
   searchQueries: [
     "rmc14 español",
-    "rmc14 space station 14",
+    "colonial marines en español",
+    "juego de marines contra alienígenas",
     "colonial marines ss14",
-    "rmc14 server",
     "capibara marines",
   ],
   eyebrow: "CAPIBARA MARINES",
@@ -534,19 +534,19 @@ export const SPACE_MARINE_GAMES_PAGE: ServerSeoPageData = {
   slug: "juegos-de-marines-espaciales",
   datePublished: "2026-08-18",
   quickAnswer:
-    "Entre los juegos de marines espaciales para PC destacan Warhammer 40,000: Space Marine 2, Helldivers 2, Aliens: Dark Descent y StarCraft II; la tabla de esta página compara seis títulos según su cooperativo, su PvP y su uso de escuadras. La propuesta comunitaria de la lista es Capibara Marines: gratis, en español y jugable sobre Space Station 14.",
-  title: "Juegos de Marines Espaciales para PC",
+    "Si buscas un juego de marines espaciales gratis y en español, la opción comunitaria es Capibara Marines: rondas de escuadras contra una colmena de xenónidos sobre Space Station 14, sin pagar nada y con wiki traducida. Entre los títulos comerciales destacan Warhammer 40,000: Space Marine 2, Helldivers 2 y Aliens: Dark Descent; la tabla de esta página compara seis según su cooperativo, su PvP y su uso de escuadras.",
+  title: "Juegos de Marines Espaciales para PC: Gratis y en Español",
   subtitle:
-    "Una selección de juegos donde encarnas a un soldado de infantería espacial, con opciones cooperativas, competitivas y de escuadra, incluida una alternativa gratuita en español.",
-  metaTitle: "Juegos de Marines Espaciales para PC",
+    "Una selección de juegos donde encarnas a un soldado de infantería espacial, con opciones cooperativas, competitivas y de escuadra — empezando por la alternativa gratuita y en español.",
+  metaTitle: "Juegos de Marines Espaciales Gratis y en Español para PC",
   metaDescription:
-    "Los mejores juegos de marines espaciales para PC: cooperativos, PvP y de escuadras. Incluye una opción gratuita en español para ordenadores modestos.",
+    "¿Juegos de marines espaciales gratis y en español? Compara la opción comunitaria gratuita con Space Marine 2, Helldivers 2 y más: cooperativo, PvP y escuadras.",
   searchQueries: [
+    "juegos de marines espaciales gratis",
+    "juegos de marines espaciales en español",
     "juegos de marines espaciales",
-    "mejores juegos de marines espaciales pc",
     "juegos de soldados espaciales",
     "juegos de infantería espacial",
-    "space marine games pc",
   ],
   eyebrow: "MARINES ESPACIALES",
   sections: [

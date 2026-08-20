@@ -1,6 +1,6 @@
 import { SERVER_BY_SLUG } from "@/data/servers";
 import { serverPageMetadata } from "@/lib/metadata";
-import { seoBreadcrumbSchema, videoGameSchema } from "@/lib/schema";
+import { gameServerSchema, seoBreadcrumbSchema, videoGameSS14Schema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/constants";
 import { MonolithPageClient } from "./MonolithPageClient";
 
@@ -10,7 +10,8 @@ export const metadata = serverPageMetadata(server);
 
 export default function MonolithPage() {
   const schemas = [
-    videoGameSchema(server),
+    videoGameSS14Schema(),
+    gameServerSchema(server),
     seoBreadcrumbSchema([
       { name: server.name, url: `${SITE_URL}/${server.slug}/` },
     ]),

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, LAST_CONTENT_UPDATE } from "@/lib/constants";
+import { SITE_URL } from "@/lib/constants";
 import { allGuideSlugs } from "@/data/guides";
 import { allMonolithGuideSlugs } from "@/data/monolith-guides";
 import { allMarinesGuideSlugs } from "@/data/marines-guides";
@@ -14,9 +14,10 @@ import { BLOG_POSTS } from "@/data/blog-posts";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Wiki entries carry no lastmod: guide content has no real per-page date
-  // yet, and Google only honors lastmod when it is verifiably accurate —
-  // accurate-or-absent beats a sitewide constant.
+  // Only blog posts carry lastmod (they have real per-post dates). Everything
+  // else omits it: Google only honors lastmod when it is verifiably accurate,
+  // and a sitewide build-date constant reads as "date of last deploy" —
+  // accurate-or-absent beats faking freshness.
   const wikiPages: MetadataRoute.Sitemap = allGuideSlugs.map((slug) => ({
     url: `${SITE_URL}/wiki/${slug}/`,
   }));
@@ -39,31 +40,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const serverPages: MetadataRoute.Sitemap = LIVE_SERVERS.map((server) => ({
     url: `${SITE_URL}/${server.slug}/`,
-    lastModified: new Date(LAST_CONTENT_UPDATE),
   }));
 
   const seoPages: MetadataRoute.Sitemap = SEO_PAGE_SLUGS.map((slug) => ({
     url: `${SITE_URL}/${slug}/`,
-    lastModified: new Date(LAST_CONTENT_UPDATE),
   }));
 
   const monolithSeoPages: MetadataRoute.Sitemap = MONOLITH_SEO_PAGES.map(
     (page) => ({
       url: `${SITE_URL}/${page.slug}/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     })
   );
 
   const marinesSeoPages: MetadataRoute.Sitemap = MARINES_SEO_PAGES.map(
     (page) => ({
       url: `${SITE_URL}/${page.slug}/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     })
   );
 
   const scpSeoPages: MetadataRoute.Sitemap = SCP_SEO_PAGES.map((page) => ({
     url: `${SITE_URL}/${page.slug}/`,
-    lastModified: new Date(LAST_CONTENT_UPDATE),
   }));
 
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
@@ -74,7 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${SITE_URL}/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/wiki/`,
@@ -90,19 +85,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/blog/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/quiz/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/privacidad/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/sobre-nosotros/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     ...serverPages,
     ...seoPages,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DISCORD_URL, LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
+import { DISCORD_URL, SITE_URL } from "@/lib/constants";
 import { personSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
@@ -32,7 +32,6 @@ const jsonLd = [
     name: "Sobre Nosotros - Estación Capibara",
     url: PAGE_URL,
     inLanguage: "es",
-    dateModified: LAST_CONTENT_UPDATE,
     mainEntity: {
       "@id": `${SITE_URL}/#organization`,
     },
