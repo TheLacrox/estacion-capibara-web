@@ -107,6 +107,7 @@ function TreeNode({
         )}
         <Link
           href={`${basePath}/${node.slug}`}
+          prefetch={false}
           className={cn(
             "sidebar-active flex-1 flex items-center gap-2 px-2 py-1.5 text-sm font-mono rounded-sm transition-all duration-200 truncate relative",
             !hasChildren && "ml-6",
@@ -290,6 +291,7 @@ export function WikiSidebar({
                   >
                     <Link
                       href={`${basePath}/${node.slug}`}
+                      prefetch={false}
                       onClick={onClose}
                       className="block px-3 py-2 text-sm font-mono text-text-muted hover:text-text-primary hover:bg-hull-panel rounded-sm transition-all duration-200 truncate hover:translate-x-1"
                     >

@@ -24,7 +24,10 @@ export function ServerLiveStatus({ server }: { server: ServerDescriptor }) {
         </FadeInView>
 
         <FadeInView>
-          <ServerStatusWidget endpoint={server.statusEndpoint} />
+          <ServerStatusWidget
+            endpoint={server.statusEndpoint}
+            enabled={server.statusLive}
+          />
         </FadeInView>
       </div>
     </section>

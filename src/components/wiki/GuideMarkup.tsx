@@ -319,7 +319,7 @@ function renderInlineNodes(
       case "textlink": {
         const targetSlug = context.guideIdToSlug[node.linkId];
         return targetSlug ? (
-          <Link key={key} href={`${context.basePath}/${targetSlug}`} className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors">
+          <Link key={key} href={`${context.basePath}/${targetSlug}`} prefetch={false} className="text-neon-cyan hover:text-hazard-yellow underline underline-offset-2 transition-colors">
             {node.label}
           </Link>
         ) : (
@@ -339,7 +339,7 @@ function renderInlineNodes(
         const label = targetSlug
           ? context.guideSlugsToMeta[targetSlug]?.title ?? "Guía relacionada"
           : "Guía relacionada";
-        return targetSlug ? <Link key={key} href={`${context.basePath}/${targetSlug}`} className="text-neon-cyan underline underline-offset-2">{label}</Link> : <span key={key}>{label}</span>;
+        return targetSlug ? <Link key={key} href={`${context.basePath}/${targetSlug}`} prefetch={false} className="text-neon-cyan underline underline-offset-2">{label}</Link> : <span key={key}>{label}</span>;
       }
       case "embed":
         return renderEmbed(node.name, node.attributes, context, key);

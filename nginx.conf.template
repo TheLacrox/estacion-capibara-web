@@ -3,8 +3,16 @@
 
 proxy_cache_path /var/cache/nginx/status levels=1 keys_zone=status_cache:1m max_size=10m inactive=60s;
 
+# Canonical-host redirect: www -> apex. TLS terminates at the reverse proxy,
+# so the redirect target must be absolute https regardless of what nginx sees.
 server {
     listen 80;
+    server_name www.estacioncapibara.com;
+    return 301 https://estacioncapibara.com$request_uri;
+}
+
+server {
+    listen 80 default_server;
     server_name _;
 
     root /usr/share/nginx/html;
@@ -16,11 +24,18 @@ server {
     absolute_redirect off;
 
     # Security headers (the static export cannot set them itself).
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    # NOTE: nginx add_header does NOT inherit into any location that declares
+    # its own add_header — every such location must repeat these.
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
+    # Report-Only while we confirm nothing breaks (static export needs
+    # 'unsafe-inline': Next.js emits inline RSC payload scripts). Flip to
+    # Content-Security-Policy once the browser console shows no violations.
+    add_header Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'" always;
 
     gzip on;
     gzip_min_length 1024;
@@ -31,13 +46,17 @@ server {
     # Hashed build assets: cache forever.
     location /_next/static/ {
         add_header Cache-Control "public, max-age=31536000, immutable";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         add_header X-Content-Type-Options "nosniff" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
     }
 
-    # Wiki sprites and branding: stable names, refresh daily.
-    location ~ ^/(sprites|branding)/ {
+    # Wiki sprites, branding and hero art: stable names, refresh daily.
+    location ~ ^/(sprites|branding|heroes)/ {
         add_header Cache-Control "public, max-age=86400";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         add_header X-Content-Type-Options "nosniff" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
     }
 
     # SS14 game-server status proxies. `/api/status` is kept as a legacy

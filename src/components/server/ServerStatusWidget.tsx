@@ -65,6 +65,9 @@ interface ServerStatusWidgetProps {
   /** Delay (ms) before the first fetch, to stagger multi-widget grids */
   initialDelay?: number;
   offlineHint?: string;
+  /** When false the widget never fetches (upstream not wired yet) and shows
+      the offline hint instead of throwing 502s in the console. */
+  enabled?: boolean;
 }
 
 export function ServerStatusWidget({
@@ -72,11 +75,15 @@ export function ServerStatusWidget({
   label,
   initialDelay = 0,
   offlineHint = "Jugamos viernes, sábados y domingos. Revisa Discord para horarios.",
+  enabled = true,
 }: ServerStatusWidgetProps) {
-  const [state, setState] = useState<FetchState>({ status: "loading" });
+  const [state, setState] = useState<FetchState>(
+    enabled ? { status: "loading" } : { status: "offline" }
+  );
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const fetchStatus = useCallback(async () => {
+    if (!enabled) return;
     try {
       const res = await fetch(endpoint, {
         signal: AbortSignal.timeout(10000),
@@ -88,16 +95,17 @@ export function ServerStatusWidget({
     } catch {
       setState({ status: "offline" });
     }
-  }, [endpoint]);
+  }, [endpoint, enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
     const initialFetch = window.setTimeout(() => void fetchStatus(), initialDelay);
     const interval = window.setInterval(() => void fetchStatus(), REFRESH_INTERVAL);
     return () => {
       window.clearTimeout(initialFetch);
       window.clearInterval(interval);
     };
-  }, [fetchStatus, initialDelay]);
+  }, [fetchStatus, initialDelay, enabled]);
 
   return (
     <Card hover={false} className="p-0 overflow-hidden">

@@ -63,3 +63,31 @@ git commit                     # generated data ships in the repo
 
 Repo locations are overridable via `ESTACION_RESOURCES_ROOT`,
 `MARINES_RESOURCES_ROOT`, `SCP_RESOURCES_ROOT`, `MONOLITH_RESOURCES_ROOT`.
+
+## Post-deploy: IndexNow
+
+After each deploy that changes content, notify Bing/Yandex:
+
+```bash
+node scripts/indexnow-submit.mjs --sitemap        # everything
+node scripts/indexnow-submit.mjs https://estacioncapibara.com/blog/nuevo-post/  # specific URLs
+```
+
+The key file (`public/9baa0ee0ac847828af0f5a2bf009278d.txt`) ships with the
+static export; do not delete it or IndexNow submissions stop validating.
+
+## CSP: flip from Report-Only to enforced
+
+`nginx.conf.template` currently sends `Content-Security-Policy-Report-Only`.
+After a deploy, browse the site with DevTools open and check the console for
+CSP violation reports. If none appear across landing, wiki, blog and quiz
+pages, rename the header to `Content-Security-Policy` (same value) and
+redeploy. The policy needs `'unsafe-inline'` script-src because the Next.js
+static export emits inline RSC payload scripts.
+
+## www redirect + DNS
+
+nginx now 301s `www.estacioncapibara.com` → apex. The DNS side still needs a
+manual fix: the `www` A record is round-robin across `54.37.85.130` (real
+origin) and `151.80.36.161` (dead, drops TCP). Remove the dead record (or
+CNAME `www` to the apex target) in the DNS panel.

@@ -92,6 +92,7 @@ export function WikiContent({ guide, sourceConfig }: WikiContentProps) {
                 >
                   <Link
                     href={`${basePath}/${child.slug}`}
+                    prefetch={false}
                     className="wiki-card holo-shimmer group relative block p-4 rounded-sm border border-grid-line bg-hull-panel/80 overflow-hidden"
                   >
                     {/* Hover glow line */}
@@ -127,6 +128,7 @@ export function WikiContent({ guide, sourceConfig }: WikiContentProps) {
           >
             <Link
               href={`${basePath}/${guide.parentSlug}`}
+              prefetch={false}
               className="group inline-flex items-center gap-2 text-sm font-mono text-text-muted hover:text-hazard-yellow transition-all duration-200"
             >
               <motion.span

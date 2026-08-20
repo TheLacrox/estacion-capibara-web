@@ -32,6 +32,7 @@ export function MultiServerStatus() {
                 endpoint={server.statusEndpoint}
                 label={server.shortName}
                 initialDelay={index * 250}
+                enabled={server.statusLive}
               />
             </FadeInView>
           ))}

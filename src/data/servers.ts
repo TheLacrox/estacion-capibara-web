@@ -36,6 +36,9 @@ export interface ServerDescriptor {
   wikiBasePath: string;
   wikiLabel: string;
   statusEndpoint: string;
+  /** Whether the status proxy upstream is wired to a real endpoint yet;
+      widgets skip fetching (and the 502 console noise) when false. */
+  statusLive: boolean;
   /** Search term inside the SS14 launcher */
   searchTerm: string;
   features: readonly string[];
@@ -64,6 +67,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     wikiBasePath: "/wiki",
     wikiLabel: "Wiki Estación",
     statusEndpoint: "/api/status/estacion",
+    statusLive: false,
     searchTerm: "Capibara",
     features: ["30+ trabajos", "8 departamentos", "Eventos comunitarios"],
     featureIcons: [Building2, UsersRound, Orbit],
@@ -81,12 +85,13 @@ export const SERVERS: readonly ServerDescriptor[] = [
       "La edición en español de Colonial Marines Universe: escuadrones de marines, cadena de mando, xenomorfos y operaciones tácticas por rondas.",
     lineage: "Derivado de RMC-14 y CM-SS14",
     accentVar: "var(--color-marine-green)",
-    logo: "/branding/marines-logo.png",
+    logo: "/branding/marines-logo.webp",
     heroImage: "/heroes/panel-marines.webp",
     heroWide: "/heroes/bg-marines.webp",
     wikiBasePath: "/wiki-marines",
     wikiLabel: "Wiki Marines",
     statusEndpoint: "/api/status/marines",
+    statusLive: true,
     searchTerm: "Capibara Marines",
     features: ["Combate táctico", "Marines vs xenomorfos", "Cadena de mando"],
     featureIcons: [Crosshair, ShieldHalf, Radio],
@@ -110,6 +115,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     wikiBasePath: "/wiki-scp",
     wikiLabel: "Wiki SCP",
     statusEndpoint: "/api/status/scp",
+    statusLive: false,
     searchTerm: "Capibara SCP",
     features: ["Anomalías SCP", "Brechas de contención", "Roleplay de terror"],
     featureIcons: [Radiation, Lock, Eye],
@@ -133,6 +139,7 @@ export const SERVERS: readonly ServerDescriptor[] = [
     wikiBasePath: "/wiki-monolith",
     wikiLabel: "Wiki Monolith",
     statusEndpoint: "/api/status/monolith",
+    statusLive: true,
     searchTerm: "Capibara Monolith",
     features: ["Economía persistente", "Naves y expediciones", "Facciones y artillería"],
     featureIcons: [Coins, Rocket, Crosshair],
