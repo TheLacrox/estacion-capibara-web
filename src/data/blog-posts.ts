@@ -29,6 +29,125 @@ export const TAG_LABELS: Record<BlogTag, string> = {
 };
 
 export const BLOG_POSTS: BlogPost[] = [
+  // === NOTICIAS — LANZAMIENTO DE LOS NUEVOS SERVIDORES (agosto 2026) ===
+  {
+    slug: "estacion-capibara-ahora-son-4-servidores",
+    title: "Estación Capibara ahora son 4 servidores",
+    description:
+      "La comunidad crece: a la estación original se suman Capibara Marines (RMC14), Capibara SCP y Capibara Monolith, cada uno con su propia wiki en español.",
+    content: `
+<p>Hoy anunciamos el cambio más grande en la historia de la comunidad: <strong>Estación Capibara deja de ser un servidor para convertirse en cuatro</strong>. La estación original sigue siendo el corazón del proyecto, pero ahora la acompañan tres experiencias completamente distintas de Space Station 14, todas en español y todas administradas por el mismo equipo.</p>
+
+<h2>Los cuatro servidores</h2>
+
+<ul>
+  <li><strong><a href="/estacion/">Estación Capibara</a></strong> — El servidor de siempre: departamentos, antagonistas, economía con Spesos y el caos cooperativo que ya conoces. Su wiki vive en <a href="/wiki/">/wiki/</a>.</li>
+  <li><strong><a href="/marines/">Capibara Marines</a></strong> — Combate táctico por escuadras contra xenónidos, derivado de RMC-14 y CM-SS14. Cadena de mando real y operaciones por rondas. Wiki en <a href="/wiki-marines/">/wiki-marines/</a>.</li>
+  <li><strong><a href="/scp/">Capibara SCP</a></strong> — Una instalación de la Fundación con anomalías jugables, brechas de contención y roleplay de terror, derivado de SCP: Project Fire. Wiki en <a href="/wiki-scp/">/wiki-scp/</a>.</li>
+  <li><strong><a href="/monolith/">Capibara Monolith</a></strong> — Naves propias, comercio persistente, expediciones y facciones en el Sector Colossus, derivado de Monolith Station y Frontier Station 14. Wiki en <a href="/wiki-monolith/">/wiki-monolith/</a>.</li>
+</ul>
+
+<h2>Cuatro wikis, más de 900 guías</h2>
+
+<p>Cada servidor tiene su propia wiki generada directamente desde los datos del juego, así que lo que lees es exactamente lo que encontrarás al conectarte. Entre las cuatro suman <strong>más de 900 guías en español</strong>: roles, mecánicas, equipamiento, anomalías, naves y todo lo que necesitas para tu primera ronda en cualquiera de los servidores.</p>
+
+<h2>Una web nueva para una comunidad nueva</h2>
+
+<p>La web también cambió: la portada ahora muestra los cuatro servidores, cada uno tiene su propia página con guías de conexión y estado en vivo, y este blog cubrirá las novedades de todos ellos. En los próximos días publicaremos un artículo dedicado a cada servidor nuevo — qué es, cómo se juega y por dónde empezar.</p>
+
+<h2>Cómo unirte</h2>
+
+<p>Como siempre, todo pasa por nuestra comunidad de Discord: allí están los anuncios de cada servidor, los horarios de las rondas y la gente que te va a enseñar a jugar. Space Station 14 es gratis y funciona en casi cualquier PC — descarga el launcher desde spacestation14.com, entra al Discord y elige tu destino: la estación, el frente, la Fundación o la frontera.</p>
+
+<p>Nos vemos en cualquiera de los cuatro.</p>`,
+    author: "TheLacrox",
+    publishedAt: "2026-08-20",
+    tags: ["noticias"],
+    featured: true,
+  },
+  {
+    slug: "lanzamiento-capibara-marines",
+    title: "Capibara Marines: combate táctico contra xenónidos en español",
+    description:
+      "Lanzamos Capibara Marines, la edición en español de Colonial Marines Universe (RMC14): escuadras, cadena de mando y operaciones contra xenónidos.",
+    content: `
+<p>El primero de nuestros nuevos servidores ya está operativo: <strong>Capibara Marines</strong>, la edición en español del universo Colonial Marines para Space Station 14, derivada de RMC-14 y CM-SS14. Si la estación clásica es caos cooperativo, esto es otra cosa: <strong>combate táctico asimétrico</strong> donde un pelotón de marines se despliega contra una colmena de xenónidos controlados por otros jugadores.</p>
+
+<h2>Cómo se juega</h2>
+
+<p>Cada ronda es una operación militar. Los marines se organizan en escuadras — Alpha, Bravo, Charlie y Delta — con roles especializados: fusileros, médicos de combate, ingenieros, especialistas de armas y una cadena de mando real que va del soldado raso al oficial al mando. Del otro lado, los xenónidos evolucionan por castas, cavan túneles, capturan huéspedes y expanden la colmena.</p>
+
+<p>La gracia está en la asimetría: los marines dependen de la coordinación, la disciplina de radio y el fuego concentrado; los xenónidos, del sigilo, el terreno y la superioridad numérica que crece si la ronda se alarga. Ninguna operación se parece a la anterior.</p>
+
+<h2>Todo en español</h2>
+
+<p>Como con la estación original, el objetivo es que el idioma no sea barrera: la interfaz, las guías y la comunidad están en español. La <a href="/wiki-marines/">wiki de Marines</a> tiene más de 250 guías generadas desde los datos del propio servidor: roles de marine, castas de xenónido, armamento, doctrina de escuadra y procedimientos de despliegue.</p>
+
+<h2>Por dónde empezar</h2>
+
+<p>Si nunca jugaste un shooter táctico dentro de SS14, empieza como fusilero: es el rol con menos responsabilidad y te deja aprender el ritmo de las operaciones pegado a tu escuadra. La <a href="/roles-y-escuadras-marines-rmc14/">guía de roles y escuadras</a> explica qué hace cada puesto y qué se espera de ti en tu primer despliegue.</p>
+
+<p>Los detalles de conexión y los horarios de las operaciones se anuncian en el Discord de la comunidad. Descarga Space Station 14 gratis, pásate por el canal de Marines y alístate. La colmena no se va a limpiar sola.</p>`,
+    author: "TheLacrox",
+    publishedAt: "2026-08-20",
+    tags: ["noticias"],
+  },
+  {
+    slug: "lanzamiento-capibara-scp",
+    title: "Capibara SCP: la Fundación abre sus puertas en español",
+    description:
+      "Lanzamos Capibara SCP: una instalación de la Fundación con anomalías jugables, brechas de contención y roleplay de terror, todo en español.",
+    content: `
+<p>Asegurar. Contener. Proteger. <strong>Capibara SCP</strong> ya está en línea: nuestro servidor ambientado en una instalación de la Fundación SCP, derivado de SCP: Project Fire (Fire Station). Es la experiencia más distinta de las cuatro que ofrecemos — menos comedia espacial, más tensión, procedimiento y terror cooperativo.</p>
+
+<h2>La vida en el Sitio</h2>
+
+<p>Cada ronda transcurre dentro de una instalación de la Fundación: científicos que investigan anomalías, personal de seguridad que custodia los pasillos, y las propias <strong>anomalías SCP como roles jugables</strong>. Mientras el personal sigue protocolos y mantiene la contención, las anomalías buscan el momento de romperla — y cuando ocurre una brecha, la ronda cambia de simulación de laboratorio a supervivencia pura.</p>
+
+<p>El roleplay pesa más aquí que en ningún otro servidor de la comunidad: los procedimientos importan, las credenciales importan, y abrir la puerta equivocada tiene consecuencias que toda la instalación va a lamentar.</p>
+
+<h2>En español, con wiki propia</h2>
+
+<p>La <a href="/wiki-scp/">wiki de Capibara SCP</a> reúne cerca de 200 guías en español generadas desde los datos del servidor: anomalías y sus mecánicas, roles del personal, protocolos de contención y equipamiento. Si vienes de juegos como SCP: Secret Laboratory, la <a href="/scp-multijugador/">comparativa de juegos SCP multijugador</a> te ayudará a ubicar qué hace diferente a esta versión: profundidad de simulación y roleplay persistente en lugar de rondas arcade.</p>
+
+<h2>Cómo entrar al Sitio</h2>
+
+<p>Empieza como personal general o de investigación para aprender el mapa y los protocolos antes de tocar un rol anómalo. Y como en todos nuestros servidores, los anuncios de conexión y horarios están en el Discord de la comunidad — el juego es gratuito y ligero, así que solo necesitas el launcher de Space Station 14 y ganas de pasar miedo en compañía.</p>
+
+<p>La Fundación necesita personal. El personal, suerte.</p>`,
+    author: "TheLacrox",
+    publishedAt: "2026-08-20",
+    tags: ["noticias"],
+  },
+  {
+    slug: "lanzamiento-capibara-monolith",
+    title: "Capibara Monolith: naves, comercio y facciones en el Sector Colossus",
+    description:
+      "Lanzamos Capibara Monolith, la edición en español de Monolith Station: compra tu nave, comercia, explora y combate en un sector abierto y persistente.",
+    content: `
+<p>El cuarto servidor de la familia rompe la regla más básica de Space Station 14: aquí no hay una estación que mantener. <strong>Capibara Monolith</strong>, derivado de Monolith Station y Frontier Station 14, te suelta en el <strong>Sector Colossus</strong> — un espacio abierto donde compras tu propia nave, montas tu negocio y decides tu historia.</p>
+
+<h2>Qué cambia respecto a la estación clásica</h2>
+
+<p>En la estación cada ronda empieza de cero y tu rol viene asignado. En Monolith mandas tú: la <strong>economía es persistente</strong>, así que lo que ganas hoy sigue en tu cuenta mañana. Puedes fletar una nave de carga y vivir del comercio, salir de expedición a puntos de interés hostiles, unirte a una facción, o armar tu nave con artillería y dedicarte a algo menos honorable. El sector es grande y las rutas las eliges tú.</p>
+
+<h2>Naves, expediciones y facciones</h2>
+
+<p>La flota disponible va desde pequeñas lanzaderas personales hasta cargueros y naves de combate con artillería naval. Las <a href="/expediciones-monolith-station/">expediciones</a> son el contenido PvE estrella: misiones instanciadas con enemigos y botín que financian tu próxima nave. Y las facciones dan la capa política: comerciantes, seguridad del sector y quienes prefieren vivir al margen de la ley.</p>
+
+<h2>Más de 200 guías en español</h2>
+
+<p>Todo está documentado en la <a href="/wiki-monolith/">wiki de Monolith</a>: más de 200 guías generadas desde los datos del servidor sobre trabajos, naves, comercio, expediciones y sistemas del sector. Si buscas un juego de naves multijugador y quieres saber cómo encaja Monolith frente a otras opciones, la <a href="/juego-de-naves-espaciales-multijugador/">comparativa de juegos de naves espaciales multijugador</a> te da el contexto: multijugador real con roles humanos en lugar de NPCs.</p>
+
+<h2>Despega</h2>
+
+<p>Como siempre: el juego es gratis, corre en PCs modestos, y los anuncios de conexión están en el Discord de la comunidad. Entra, pregunta por Monolith y en una tarde estarás volando tu primera lanzadera por el Sector Colossus.</p>
+
+<p>Buen viaje, capitán.</p>`,
+    author: "TheLacrox",
+    publishedAt: "2026-08-20",
+    tags: ["noticias"],
+  },
   // === PATCH NOTES ===
   {
     slug: "patch-notes-audio-y-voces",
@@ -160,7 +279,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
 <h2>¿Qué es Estación Capibara?</h2>
 
-<p>Estación Capibara es el servidor hispanohablante de Space Station 14 — un juego multijugador gratuito de simulación espacial donde decenas de jugadores operan una estación espacial juntos. Cada jugador elige un rol (capitán, ingeniero, médico, científico, oficial de seguridad, cocinero, payaso y muchos más) y debe cumplir sus responsabilidades mientras la estación enfrenta amenazas internas y externas.</p>
+<p>Estación Capibara es la comunidad hispanohablante de Space Station 14 — hoy con cuatro servidores propios — construida alrededor de un juego multijugador gratuito de simulación espacial donde decenas de jugadores operan una estación espacial juntos. Cada jugador elige un rol (capitán, ingeniero, médico, científico, oficial de seguridad, cocinero, payaso y muchos más) y debe cumplir sus responsabilidades mientras la estación enfrenta amenazas internas y externas.</p>
 
 <p>Lo que nos hace diferentes de otros servidores de SS14 es que <strong>todo está en español</strong>. La wiki con más de 200 guías, la comunidad de Discord, los eventos especiales y hasta el sistema de economía con nuestra moneda propia, los Spesos. No necesitas saber inglés para disfrutar el juego al máximo.</p>
 

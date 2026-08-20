@@ -22,7 +22,7 @@ const CATEGORY_META: Record<string, { icon: LucideIcon; color: string; descripti
   "capibara-economy": {
     icon: ShoppingCart,
     color: "var(--color-hazard-yellow)",
-    description: "Sistema económico exclusivo de Capibara Station",
+    description: "Sistema económico exclusivo de Estación Capibara",
   },
   antagonists: {
     icon: Skull,

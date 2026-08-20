@@ -4,9 +4,9 @@ import { SITE_URL, DISCORD_URL } from "@/lib/constants";
 import { CookieResetButton } from "./CookieResetButton";
 
 export const metadata: Metadata = {
-  title: "Politica de Privacidad - Estacion Capibara",
+  title: "Política de Privacidad - Estación Capibara",
   description:
-    "Politica de privacidad y uso de cookies de Estacion Capibara, servidor espanol de Space Station 14.",
+    "Política de privacidad y uso de cookies de Estación Capibara, comunidad española de Space Station 14.",
   alternates: {
     canonical: `${SITE_URL}/privacidad/`,
   },
@@ -29,10 +29,10 @@ export default function PrivacidadPage() {
         </Link>
 
         <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-2">
-          Politica de Privacidad
+          Política de Privacidad
         </h1>
         <p className="text-text-muted text-sm font-mono mb-10">
-          Ultima actualizacion: 7 de marzo de 2026
+          Última actualización: 7 de marzo de 2026
         </p>
 
         <div className="space-y-8 text-text-primary/90 font-mono text-sm leading-relaxed">
@@ -41,9 +41,9 @@ export default function PrivacidadPage() {
               1. Responsable del tratamiento
             </h2>
             <p>
-              Estacion Capibara es un proyecto comunitario sin animo de lucro que opera un servidor
-              de Space Station 14 en espanol. Este sitio web es mantenido por el equipo de
-              administracion de Estacion Capibara.
+              Estación Capibara es un proyecto comunitario sin ánimo de lucro que opera servidores
+              de Space Station 14 en español. Este sitio web es mantenido por el equipo de
+              administración de Estación Capibara.
             </p>
             <p className="mt-2">
               Contacto:{" "}
@@ -53,7 +53,7 @@ export default function PrivacidadPage() {
                 rel="noopener noreferrer"
                 className="text-neon-cyan hover:text-hazard-yellow transition-colors underline underline-offset-2"
               >
-                Discord de Estacion Capibara
+                Discord de Estación Capibara
               </a>
             </p>
           </section>
@@ -63,36 +63,36 @@ export default function PrivacidadPage() {
               2. Datos que recopilamos
             </h2>
             <p className="mb-3">
-              Este sitio web recopila datos de forma limitada y anonima a traves de:
+              Este sitio web recopila datos de forma limitada y anónima a través de:
             </p>
             <h3 className="text-lg font-heading font-bold text-text-primary mb-2">
               Google Analytics
             </h3>
             <p>
-              Utilizamos Google Analytics (ID: G-VZH5Y2ESMQ) para comprender como los visitantes
-              interactuan con nuestro sitio. Google Analytics recopila:
+              Utilizamos Google Analytics (ID: G-VZH5Y2ESMQ) para comprender cómo los visitantes
+              interactúan con nuestro sitio. Google Analytics recopila:
             </p>
             <ul className="list-none space-y-2 my-3 ml-1">
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
-                <span>Paginas visitadas y tiempo de permanencia</span>
+                <span>Páginas visitadas y tiempo de permanencia</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
-                <span>Informacion general del dispositivo y navegador</span>
+                <span>Información general del dispositivo y navegador</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
-                <span>Ubicacion geografica aproximada (a nivel de pais/region)</span>
+                <span>Ubicación geográfica aproximada (a nivel de país/región)</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
-                <span>Fuente de trafico (como llegaste al sitio)</span>
+                <span>Fuente de tráfico (cómo llegaste al sitio)</span>
               </li>
             </ul>
             <p>
               Google Analytics utiliza cookies para distinguir entre usuarios. Estos datos son
-              anonimos y no permiten identificar a personas individuales. Para mas informacion,
+              anónimos y no permiten identificar a personas individuales. Para más información,
               consulta la{" "}
               <a
                 href="https://policies.google.com/privacy"
@@ -100,7 +100,7 @@ export default function PrivacidadPage() {
                 rel="noopener noreferrer"
                 className="text-neon-cyan hover:text-hazard-yellow transition-colors underline underline-offset-2"
               >
-                politica de privacidad de Google
+                política de privacidad de Google
               </a>
               .
             </p>
@@ -119,10 +119,10 @@ export default function PrivacidadPage() {
                       Cookie
                     </th>
                     <th className="text-left px-3 py-2 border-b border-grid-line font-heading">
-                      Proposito
+                      Propósito
                     </th>
                     <th className="text-left px-3 py-2 border-b border-grid-line font-heading">
-                      Duracion
+                      Duración
                     </th>
                   </tr>
                 </thead>
@@ -132,22 +132,22 @@ export default function PrivacidadPage() {
                     <td className="px-3 py-2 border-b border-grid-line">
                       Distinguir usuarios (Google Analytics)
                     </td>
-                    <td className="px-3 py-2 border-b border-grid-line">2 anos</td>
+                    <td className="px-3 py-2 border-b border-grid-line">2 años</td>
                   </tr>
                   <tr>
                     <td className="px-3 py-2 border-b border-grid-line text-neon-cyan">
                       _ga_*
                     </td>
                     <td className="px-3 py-2 border-b border-grid-line">
-                      Mantener estado de sesion (Google Analytics)
+                      Mantener estado de sesión (Google Analytics)
                     </td>
-                    <td className="px-3 py-2 border-b border-grid-line">2 anos</td>
+                    <td className="px-3 py-2 border-b border-grid-line">2 años</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="mt-3">
-              No utilizamos cookies publicitarias ni de seguimiento de terceros mas alla de Google
+              No utilizamos cookies publicitarias ni de seguimiento de terceros más allá de Google
               Analytics. Puedes cambiar tu preferencia de cookies en cualquier momento:
             </p>
             <CookieResetButton />
@@ -158,28 +158,28 @@ export default function PrivacidadPage() {
               4. Tus derechos
             </h2>
             <p className="mb-3">
-              De acuerdo con el Reglamento General de Proteccion de Datos (RGPD) y legislaciones
+              De acuerdo con el Reglamento General de Protección de Datos (RGPD) y legislaciones
               similares, tienes derecho a:
             </p>
             <ul className="list-none space-y-2 ml-1">
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
                 <span>
-                  <strong className="text-text-primary">Acceso:</strong> Solicitar informacion
+                  <strong className="text-text-primary">Acceso:</strong> Solicitar información
                   sobre los datos que tenemos sobre ti.
                 </span>
               </li>
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
                 <span>
-                  <strong className="text-text-primary">Eliminacion:</strong> Solicitar la
-                  eliminacion de tus datos.
+                  <strong className="text-text-primary">Eliminación:</strong> Solicitar la
+                  eliminación de tus datos.
                 </span>
               </li>
               <li className="flex gap-2">
                 <span className="text-hazard-yellow shrink-0">{">"}</span>
                 <span>
-                  <strong className="text-text-primary">Oposicion:</strong> Puedes desactivar
+                  <strong className="text-text-primary">Oposición:</strong> Puedes desactivar
                   Google Analytics usando la{" "}
                   <a
                     href="https://tools.google.com/dlpage/gaoptout"
@@ -187,14 +187,14 @@ export default function PrivacidadPage() {
                     rel="noopener noreferrer"
                     className="text-neon-cyan hover:text-hazard-yellow transition-colors underline underline-offset-2"
                   >
-                    extension de exclusion de Google Analytics
+                    extensión de exclusión de Google Analytics
                   </a>{" "}
                   o configurando tu navegador para bloquear cookies.
                 </span>
               </li>
             </ul>
             <p className="mt-3">
-              Para ejercer estos derechos, contactanos a traves de nuestro{" "}
+              Para ejercer estos derechos, contáctanos a través de nuestro{" "}
               <a
                 href={DISCORD_URL}
                 target="_blank"
@@ -212,21 +212,21 @@ export default function PrivacidadPage() {
               5. Datos del juego
             </h2>
             <p>
-              Este sitio web es independiente del servidor de juego de Space Station 14. Los datos
-              generados durante el juego (nombre de personaje, acciones en partida, registros de
-              chat) son gestionados por el servidor de juego y no por este sitio web. Para
-              consultas sobre datos del servidor de juego, contacta a los administradores a traves
-              de Discord.
+              Este sitio web es independiente de los servidores de juego de Space Station 14. Los
+              datos generados durante el juego (nombre de personaje, acciones en partida, registros
+              de chat) son gestionados por cada servidor de juego y no por este sitio web. Para
+              consultas sobre datos de los servidores de juego, contacta a los administradores a
+              través de Discord.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-heading font-bold text-text-primary mb-3">
-              6. Cambios a esta politica
+              6. Cambios a esta política
             </h2>
             <p>
-              Podemos actualizar esta politica de privacidad ocasionalmente. Cualquier cambio sera
-              publicado en esta pagina con una nueva fecha de actualizacion.
+              Podemos actualizar esta política de privacidad ocasionalmente. Cualquier cambio será
+              publicado en esta página con una nueva fecha de actualización.
             </p>
           </section>
         </div>

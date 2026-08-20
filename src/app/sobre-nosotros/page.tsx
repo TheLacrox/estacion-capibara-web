@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DISCORD_URL, LAST_CONTENT_UPDATE, SITE_URL } from "@/lib/constants";
-import { seoBreadcrumbSchema } from "@/lib/schema";
+import { personSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
 import { CtaBlock } from "@/components/seo/CtaBlock";
@@ -38,6 +38,7 @@ const jsonLd = [
     },
   },
   seoBreadcrumbSchema([{ name: "Sobre Nosotros", url: PAGE_URL }]),
+  personSchema(),
 ];
 
 const SERVER_LINKS = [
@@ -113,6 +114,31 @@ export default function SobreNosotrosPage() {
               </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="mb-5 font-heading text-2xl font-bold text-text-primary">
+          Quién está detrás
+        </h2>
+        <div className="space-y-4">
+          <p className="font-mono text-sm leading-relaxed text-text-muted">
+            El proyecto lo fundó y administra{" "}
+            <strong className="text-text-primary">TheLacrox</strong>, que
+            mantiene los cuatro servidores, escribe los artículos del blog y
+            coordina las traducciones junto a los colaboradores de la
+            comunidad. El desarrollo del servidor de Estación Capibara es
+            público en su{" "}
+            <a
+              href="https://github.com/TheLacrox/Estacion-Capibara"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-hazard-yellow hover:text-hazard-orange transition-colors"
+            >
+              GitHub
+            </a>
+            , donde puede verse quién contribuye y qué cambia en cada versión.
+          </p>
         </div>
       </section>
 

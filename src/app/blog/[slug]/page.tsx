@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
-import { articleSchema, seoBreadcrumbSchema } from "@/lib/schema";
+import { DISCORD_URL, SITE_URL } from "@/lib/constants";
+import { articleSchema, personSchema, seoBreadcrumbSchema } from "@/lib/schema";
 import { BLOG_POSTS, BLOG_SLUGS, TAG_LABELS, type BlogTag } from "@/data/blog-posts";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBlock } from "@/components/seo/CtaBlock";
@@ -83,6 +83,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       datePublished: post.publishedAt,
       dateModified: post.updatedAt ?? post.publishedAt,
       basePath: "/blog",
+      // Matches the visible "Por TheLacrox" byline instead of the default
+      // Organization author.
+      author: personSchema(),
     }),
   ];
 
@@ -119,12 +122,12 @@ export default async function BlogPostPage({ params }: PageProps) {
               Wiki
             </Link>
             <a
-              href={SS14_DOWNLOAD_URL}
+              href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wider bg-hazard-yellow text-[#0b0f19] rounded-sm hover:bg-hazard-orange transition-colors"
+              className="inline-flex items-center px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wider bg-[#5865F2] text-white rounded-sm hover:bg-[#4752c4] transition-colors"
             >
-              Jugar Gratis
+              Discord
             </a>
           </div>
         </div>

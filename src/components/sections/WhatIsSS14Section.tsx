@@ -44,10 +44,10 @@ export function WhatIsSS14Section() {
             historias únicas porque los jugadores tienen libertad total para actuar
             dentro de su rol, mientras antagonistas secretos como traidores,
             revolucionarios o cambiaformas trabajan en las sombras para sabotear
-            la estación. Estación Capibara es el único servidor en español de SS14,
-            con una comunidad hispanohablante activa que juega cada fin de semana,
-            un sistema económico propio basado en Spesos y una wiki con más de 200
-            guías traducidas al español.
+            la estación. Estación Capibara es la comunidad hispanohablante de SS14
+            con cuatro servidores propios en español — Estación, Marines, SCP y
+            Monolith —, partidas cada fin de semana, un sistema económico propio
+            basado en Spesos y wikis con cientos de guías traducidas al español.
           </p>
         </FadeInView>
 
