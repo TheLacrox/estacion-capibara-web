@@ -96,7 +96,9 @@ export const siteMetadata: Metadata = {
   },
 };
 
-export const jsonLdWebsite = {
+// Site-wide VideoGame entity for the homepage (the WebSite schema proper
+// lives in websiteSchema() in schema.ts).
+export const jsonLdVideoGame = {
   "@context": "https://schema.org",
   "@type": "VideoGame",
   name: "Estación Capibara - Servidores Españoles de SS14",

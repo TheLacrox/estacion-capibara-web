@@ -32,13 +32,16 @@ export function FaqSection({ faqs }: FaqSectionProps) {
                 {openIndex === i ? "−" : "+"}
               </span>
             </button>
-            {openIndex === i && (
-              <div className="px-5 py-4 bg-space-void border-t border-grid-line">
-                <p className="text-text-muted font-mono text-sm leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            )}
+            {/* Always in the DOM so the answer text is server-rendered and
+                readable by crawlers; visibility toggles via `hidden`. */}
+            <div
+              hidden={openIndex !== i}
+              className="px-5 py-4 bg-space-void border-t border-grid-line"
+            >
+              <p className="text-text-muted font-mono text-sm leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
           </div>
         ))}
       </div>

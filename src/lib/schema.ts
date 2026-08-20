@@ -32,6 +32,23 @@ export function breadcrumbSchema(
   };
 }
 
+export function personSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/#thelacrox`,
+    name: "TheLacrox",
+    url: `${SITE_URL}/sobre-nosotros/`,
+    description:
+      "Fundador y administrador de Estación Capibara, la comunidad hispanohablante de Space Station 14 con cuatro servidores propios.",
+    sameAs: ["https://github.com/TheLacrox"],
+    worksFor: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
+}
+
 export function articleSchema(guide: {
   title: string;
   slug: string;
@@ -39,6 +56,8 @@ export function articleSchema(guide: {
   datePublished?: string;
   dateModified?: string;
   basePath?: string;
+  /** Overrides the default Organization author (e.g. personSchema() for blog posts). */
+  author?: Record<string, unknown>;
 }) {
   const basePath = guide.basePath ?? "/wiki";
   const url = `${SITE_URL}${basePath}/${guide.slug}/`;
@@ -56,7 +75,7 @@ export function articleSchema(guide: {
     },
     ...(guide.datePublished ? { datePublished: guide.datePublished } : {}),
     ...(dateModified ? { dateModified } : {}),
-    author: {
+    author: guide.author ?? {
       "@type": "Organization",
       name: "Estación Capibara",
       url: SITE_URL,
@@ -135,16 +154,15 @@ export function videoGameSchema(server: {
 }
 
 export function gameEventSchema() {
-  const nextFriday = getNextFriday();
-  const nextSunday = getNextSunday(nextFriday);
+  // EventSeries + eventSchedule instead of Event with concrete start/end
+  // dates: this is a static export, so any date computed at build time goes
+  // stale between deploys and reads as a past event.
   return {
     "@context": "https://schema.org",
-    "@type": "Event",
+    "@type": "EventSeries",
     name: "Rondas de Space Station 14 en Español - Estación Capibara",
     description:
-      "Partidas de SS14 en el servidor español Estación Capibara. Rondas normales con antagonistas y eventos especiales cada fin de semana.",
-    startDate: `${nextFriday}T21:00:00-03:00`,
-    endDate: `${nextSunday}T23:59:00-03:00`,
+      "Partidas de SS14 en los servidores españoles de Estación Capibara. Rondas normales con antagonistas y eventos especiales cada fin de semana.",
     eventSchedule: {
       "@type": "Schedule",
       repeatFrequency: "P1W",
@@ -289,18 +307,3 @@ export function seoBreadcrumbSchema(items: { name: string; url: string }[]) {
   };
 }
 
-function getNextFriday(): string {
-  const now = new Date();
-  const day = now.getDay();
-  const daysUntilFriday = (5 - day + 7) % 7 || 7;
-  const nextFriday = new Date(now);
-  nextFriday.setDate(now.getDate() + daysUntilFriday);
-  return nextFriday.toISOString().split("T")[0];
-}
-
-function getNextSunday(fridayDate: string): string {
-  const friday = new Date(fridayDate);
-  const sunday = new Date(friday);
-  sunday.setDate(friday.getDate() + 2);
-  return sunday.toISOString().split("T")[0];
-}

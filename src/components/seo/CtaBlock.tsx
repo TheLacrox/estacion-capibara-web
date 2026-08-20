@@ -15,11 +15,20 @@ export function CtaBlock() {
           a la comunidad hispanohablante más activa de SS14.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
+          {/* Discord is the conversion point; the download links are support acts. */}
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-[#5865F2] text-white rounded-sm border-2 border-[#5865F2] hover:bg-[#4752c4] hover:border-[#4752c4] transition-all"
+          >
+            Unirse al Discord
+          </a>
           <a
             href={SS14_DOWNLOAD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-hazard-yellow text-[#0b0f19] rounded-sm border-2 border-hazard-yellow hover:bg-hazard-orange hover:border-hazard-orange transition-all"
+            className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-transparent text-text-primary border-2 border-text-muted rounded-sm hover:border-hazard-yellow hover:text-hazard-yellow transition-all"
           >
             Descargar SS14 Gratis
           </a>
@@ -30,14 +39,6 @@ export function CtaBlock() {
             className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-transparent text-text-primary border-2 border-text-muted rounded-sm hover:border-hazard-yellow hover:text-hazard-yellow transition-all"
           >
             Ver en Steam
-          </a>
-          <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 text-sm font-heading font-bold uppercase tracking-wider bg-transparent text-text-primary border-2 border-text-muted rounded-sm hover:border-neon-cyan hover:text-neon-cyan transition-all"
-          >
-            Unirse al Discord
           </a>
           <Link
             href="/wiki"

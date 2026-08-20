@@ -1,13 +1,24 @@
 import Link from "next/link";
-import { DISCORD_URL, SS14_DOWNLOAD_URL } from "@/lib/constants";
+import { DISCORD_URL } from "@/lib/constants";
 import { Footer } from "@/components/layout/Footer";
 
 interface SeoPageLayoutProps {
   children: React.ReactNode;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Wiki link shown in the sticky nav; defaults to the estación wiki. */
+  wikiHref?: string;
+  wikiLabel?: string;
+  /** Internal server hub the "Jugar Gratis" action points to. */
+  hubHref?: string;
 }
 
-export function SeoPageLayout({ children, jsonLd }: SeoPageLayoutProps) {
+export function SeoPageLayout({
+  children,
+  jsonLd,
+  wikiHref = "/wiki/",
+  wikiLabel = "Wiki Estación",
+  hubHref = "/estacion/",
+}: SeoPageLayoutProps) {
   const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
   return (
@@ -31,32 +42,24 @@ export function SeoPageLayout({ children, jsonLd }: SeoPageLayoutProps) {
           </Link>
           <div className="flex items-center gap-4">
             <Link
-              href="/wiki/"
-              className="text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
+              href={wikiHref}
+              className="hidden md:block text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
             >
-              Wiki Estación
+              {wikiLabel}
             </Link>
             <Link
-              href="/wiki-monolith/"
-              className="hidden md:block text-sm font-mono text-neon-cyan hover:text-hazard-yellow transition-colors"
+              href={hubHref}
+              className="text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
             >
-              Wiki Monolith
+              Jugar Gratis
             </Link>
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-mono text-text-muted hover:text-hazard-yellow transition-colors"
+              className="inline-flex items-center px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wider bg-[#5865F2] text-white rounded-sm hover:bg-[#4752c4] transition-colors"
             >
               Discord
-            </a>
-            <a
-              href={SS14_DOWNLOAD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wider bg-hazard-yellow text-[#0b0f19] rounded-sm hover:bg-hazard-orange transition-colors"
-            >
-              Jugar Gratis
             </a>
           </div>
         </div>

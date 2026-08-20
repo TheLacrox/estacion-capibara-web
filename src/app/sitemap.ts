@@ -14,28 +14,27 @@ import { BLOG_POSTS } from "@/data/blog-posts";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Wiki entries carry no lastmod: guide content has no real per-page date
+  // yet, and Google only honors lastmod when it is verifiably accurate —
+  // accurate-or-absent beats a sitewide constant.
   const wikiPages: MetadataRoute.Sitemap = allGuideSlugs.map((slug) => ({
     url: `${SITE_URL}/wiki/${slug}/`,
-    lastModified: new Date(LAST_CONTENT_UPDATE),
   }));
 
   const monolithWikiPages: MetadataRoute.Sitemap = allMonolithGuideSlugs.map(
     (slug) => ({
       url: `${SITE_URL}/wiki-monolith/${slug}/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     })
   );
 
   const marinesWikiPages: MetadataRoute.Sitemap = allMarinesGuideSlugs.map(
     (slug) => ({
       url: `${SITE_URL}/wiki-marines/${slug}/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     })
   );
 
   const scpWikiPages: MetadataRoute.Sitemap = allScpGuideSlugs.map((slug) => ({
     url: `${SITE_URL}/wiki-scp/${slug}/`,
-    lastModified: new Date(LAST_CONTENT_UPDATE),
   }));
 
   const serverPages: MetadataRoute.Sitemap = LIVE_SERVERS.map((server) => ({
@@ -79,19 +78,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/wiki/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/wiki-monolith/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/wiki-marines/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/wiki-scp/`,
-      lastModified: new Date(LAST_CONTENT_UPDATE),
     },
     {
       url: `${SITE_URL}/blog/`,

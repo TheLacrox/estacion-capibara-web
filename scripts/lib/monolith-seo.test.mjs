@@ -114,8 +114,10 @@ test("every Monolith SEO intent has a static route with metadata and schemas", (
 });
 
 test("Monolith landing metadata publishes each page search queries", () => {
+  // Metadata creation moved into the shared ServerSeoPage renderer when
+  // MonolithSeoPage became a thin delegate.
   const component = readFileSync(
-    new URL("../../src/components/seo/MonolithSeoPage.tsx", import.meta.url),
+    new URL("../../src/components/seo/ServerSeoPage.tsx", import.meta.url),
     "utf8"
   );
   assert.match(component, /keywords:\s*page\.searchQueries/);

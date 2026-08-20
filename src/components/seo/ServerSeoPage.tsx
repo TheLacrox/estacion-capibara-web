@@ -15,6 +15,7 @@ import {
 import { SeoPageLayout } from "@/components/seo/SeoPageLayout";
 import { SeoHero } from "@/components/seo/SeoHero";
 import { FaqSection } from "@/components/seo/FaqSection";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 
 export type SeoServerKey = "monolith" | "marines" | "scp";
 
@@ -33,6 +34,8 @@ interface ServerSeoConfig {
   guidesHeading: string;
   wikiRoot: string;
   wikiCtaLabel: string;
+  navWikiLabel: string;
+  hub: string;
   ctaHeading: string;
   ctaBody: string;
   ogImage: string;
@@ -53,6 +56,8 @@ const SERVER_SEO_CONFIGS: Record<SeoServerKey, ServerSeoConfig> = {
     guidesHeading: "Guías de Capibara Monolith",
     wikiRoot: "/wiki-monolith/",
     wikiCtaLabel: "Abrir Wiki Monolith",
+    navWikiLabel: "Wiki Monolith",
+    hub: "/monolith/",
     ctaHeading: "Explora el Sector Colossus",
     ctaBody:
       "Consulta trabajos, reglas y sistemas antes de embarcarte. No publicamos una dirección de conexión sin verificar: busca los anuncios actuales de la comunidad en Discord.",
@@ -65,13 +70,15 @@ const SERVER_SEO_CONFIGS: Record<SeoServerKey, ServerSeoConfig> = {
       bg: "bg-marine-green/5",
       hoverBorder: "hover:border-marine-green/40",
     },
-    logo: "/branding/marines-logo.png",
+    logo: "/branding/marines-logo.webp",
     logoAlt: "Logo de Capibara Marines",
     brandLine:
       "Contenido basado en las guías y recursos del servidor comunitario Capibara Marines (RMC14 en español).",
     guidesHeading: "Guías de Capibara Marines",
     wikiRoot: "/wiki-marines/",
     wikiCtaLabel: "Abrir Wiki Marines",
+    navWikiLabel: "Wiki Marines",
+    hub: "/marines/",
     ctaHeading: "Alístate en Capibara Marines",
     ctaBody:
       "Repasa roles, escuadras y castas antes de tu primer despliegue. No publicamos una dirección de conexión sin verificar: busca los anuncios actuales de la comunidad en Discord.",
@@ -91,6 +98,8 @@ const SERVER_SEO_CONFIGS: Record<SeoServerKey, ServerSeoConfig> = {
     guidesHeading: "Guías de Capibara SCP",
     wikiRoot: "/wiki-scp/",
     wikiCtaLabel: "Abrir Wiki SCP",
+    navWikiLabel: "Wiki SCP",
+    hub: "/scp/",
     ctaHeading: "Accede al Sitio de la Fundación",
     ctaBody:
       "Estudia anomalías, roles y procedimientos antes de tu primer turno. No publicamos una dirección de conexión sin verificar: busca los anuncios actuales de la comunidad en Discord.",
@@ -287,12 +296,23 @@ export function ServerSeoPage({ page, server, jsonLd }: ServerSeoPageProps) {
   const config = SERVER_SEO_CONFIGS[server];
   const { accent } = config;
   return (
-    <SeoPageLayout jsonLd={jsonLd}>
+    <SeoPageLayout
+      jsonLd={jsonLd}
+      wikiHref={config.wikiRoot}
+      wikiLabel={config.navWikiLabel}
+      hubHref={config.hub}
+    >
       <SeoHero
         title={page.title}
         subtitle={page.subtitle}
         breadcrumbs={[{ label: page.title, href: `/${page.slug}/` }]}
       />
+
+      {page.quickAnswer && (
+        <QuickAnswer borderClass={accent.border} textClass={accent.text}>
+          {page.quickAnswer}
+        </QuickAnswer>
+      )}
 
       <div
         className={`mb-10 flex items-center gap-4 rounded-sm border p-4 ${accent.border} ${accent.bg}`}

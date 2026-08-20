@@ -186,10 +186,19 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile: Discord CTA always visible, not buried in the menu */}
+          <div className="md:hidden flex items-center gap-1">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 text-xs font-heading font-bold text-white bg-[#5865F2] rounded-sm hover:bg-[#4752C4] transition-colors"
+            >
+              Discord
+            </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-text-primary"
+            className="p-2 text-text-primary"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -216,6 +225,7 @@ export function Navbar() {
               )}
             </AnimatePresence>
           </button>
+          </div>
         </div>
       </div>
 
